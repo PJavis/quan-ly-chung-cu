@@ -30,6 +30,14 @@ public class TaiKhoanBQT {
 
     // Constructors, getters, setters, and other methods as needed
 
+    public TaiKhoanBQT(int id, String taiKhoan, String matKhau, int idNguoiQuanTri, QuanTriChungCu quanTriChungCu) {
+        this.id = id;
+        this.taiKhoan = taiKhoan;
+        this.matKhau = matKhau;
+        this.idNguoiQuanTri = idNguoiQuanTri;
+        this.quanTriChungCu = quanTriChungCu;
+    }
+
     public int getId() {
         return id;
     }

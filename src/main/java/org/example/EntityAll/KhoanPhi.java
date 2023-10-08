@@ -38,6 +38,16 @@ public class KhoanPhi {
 
     // Constructors, getters, setters, and other methods as needed
 
+    public KhoanPhi(int id, String tenKhoanPhi, String loaiKhoanPhi, double giaTri, Date ngayBatDau, Date ngayKetThuc, HoKhau hoKhau) {
+        this.id = id;
+        this.tenKhoanPhi = tenKhoanPhi;
+        this.loaiKhoanPhi = loaiKhoanPhi;
+        this.giaTri = giaTri;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.hoKhau = hoKhau;
+    }
+
     public int getId() {
         return id;
     }

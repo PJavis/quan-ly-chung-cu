@@ -28,6 +28,13 @@ public class LichSuThayDoi {
 
     // Constructors, getters, setters, and other methods as needed
 
+    public LichSuThayDoi(int id, Date ngayThayDoi, String thayDoi, HoKhau hoKhau) {
+        this.id = id;
+        this.ngayThayDoi = ngayThayDoi;
+        this.thayDoi = thayDoi;
+        this.hoKhau = hoKhau;
+    }
+
     public int getId() {
         return id;
     }

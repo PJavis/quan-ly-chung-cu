@@ -25,6 +25,13 @@ public class HoKhau {
 
     // Constructors, getters, setters, and other methods as needed
 
+    public HoKhau(int id, int idNguoiDan, double dienTichPhong, String chuHo) {
+        this.id = id;
+        this.idNguoiDan = idNguoiDan;
+        this.dienTichPhong = dienTichPhong;
+        this.chuHo = chuHo;
+    }
+
     public int getId() {
         return id;
     }

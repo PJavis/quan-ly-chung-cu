@@ -20,6 +20,11 @@ public class QuanTriChungCu {
 
     // Constructors, getters, setters, and other methods as needed
 
+    public QuanTriChungCu(int id, String tenNguoiQuanTri) {
+        this.id = id;
+        this.tenNguoiQuanTri = tenNguoiQuanTri;
+    }
+
     public int getId() {
         return id;
     }

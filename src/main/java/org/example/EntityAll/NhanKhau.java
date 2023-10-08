@@ -38,6 +38,16 @@ public class NhanKhau {
 
     // Constructors, getters, setters, and other methods as needed
 
+    public NhanKhau(int idNguoiDan, String ten, Date ngaySinh, String gioiTinh, String quocTich, HoKhau hoKhau, String trangThai) {
+        this.idNguoiDan = idNguoiDan;
+        this.ten = ten;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.quocTich = quocTich;
+        this.hoKhau = hoKhau;
+        this.trangThai = trangThai;
+    }
+
     public int getIdNguoiDan() {
         return idNguoiDan;
     }
