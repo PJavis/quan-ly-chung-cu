@@ -13,7 +13,7 @@ double x,y = 0;
     public void start(Stage primaryStage) {
         try{
         Parent root = FXMLLoader.load(getClass().getResource("/org.example/DashBoard.fxml"));
-            primaryStage.initStyle(StageStyle.UNDECORATED);
+
 
             root.setOnMousePressed(event -> {
                 x = event.getSceneX();
