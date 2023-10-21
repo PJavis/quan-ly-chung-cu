@@ -8,28 +8,30 @@ import javafx.scene.Scene;
 import javafx.stage.StageStyle;
 
 public class Main extends Application {
-//    public static void main(String[] args) {
-//        System.out.println("Hello world!");
-//    }
 double x,y = 0;
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("DashBoard.fxml"));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+    public void start(Stage primaryStage) {
+        try{
+        Parent root = FXMLLoader.load(getClass().getResource("/org.example/DashBoard.fxml"));
+            primaryStage.initStyle(StageStyle.UNDECORATED);
 
-        root.setOnMousePressed(event -> {
-            x = event.getSceneX();
-            y = event.getSceneY();
-        });
+            root.setOnMousePressed(event -> {
+                x = event.getSceneX();
+                y = event.getSceneY();
+            });
 
-        root.setOnMouseDragged(event -> {
-            primaryStage.setX(event.getScreenX() - x);
-            primaryStage.setY(event.getScreenY() - y);
-        });
-
-        primaryStage.setScene(new Scene(root, 800, 500));
-        primaryStage.show();
+            root.setOnMouseDragged(event -> {
+                primaryStage.setX(event.getScreenX() - x);
+                primaryStage.setY(event.getScreenY() - y);
+            });
+Scene scene=new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();}
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
+
     public static void main(String[] args) {
         launch(args);
     }

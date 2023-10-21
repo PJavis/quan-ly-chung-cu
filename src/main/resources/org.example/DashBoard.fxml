@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
+<?import javafx.scene.control.Button?>
 <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: White;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="org.example.ConTroller.DashBoardConTroller">
     <children>
         <AnchorPane prefHeight="46.0" prefWidth="800.0" style="-fx-background-color: #002d40;">
@@ -34,14 +33,10 @@
                 <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="44.0" spacing="10.0" style="-fx-background-color: white;" AnchorPane.topAnchor="20.0">
                     <children>
                         <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/home.png" />
-                            </image>
+                            <Image url="@../images/home.png"/>
                         </ImageView>
                         <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/add.png" />
-                            </image>
+                            <Image url="@../images/add.png"/>
                         </ImageView>
                         <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -77,36 +72,36 @@
             <children>
                 <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                     <children>
-                        <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" prefHeight="38.0" prefWidth="179.0" text="Dashboard">
+                        <Button  prefHeight="38.0" prefWidth="179.0" text="Dashboard">
                             <font>
                                 <Font size="16.0" />
                             </font>
-                        </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="179.0" text="Add New">
+                        </Button>
+                        <Button  layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="179.0" text="Add New">
                             <font>
                                 <Font size="16.0" />
                             </font>
-                        </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="58.0" prefHeight="38.0" prefWidth="179.0" text="Data">
+                        </Button>
+                        <Button  layoutX="10.0" layoutY="58.0" prefHeight="38.0" prefWidth="179.0" text="Data">
                             <font>
                                 <Font size="16.0" />
                             </font>
-                        </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="106.0" prefHeight="38.0" prefWidth="179.0" text="User">
+                        </Button>
+                        <Button layoutX="10.0" layoutY="106.0" prefHeight="38.0" prefWidth="179.0" text="User">
                             <font>
                                 <Font size="16.0" />
                             </font>
-                        </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="154.0" prefHeight="38.0" prefWidth="179.0" text="Setting">
+                        </Button>
+                        <Button  layoutX="10.0" layoutY="154.0" prefHeight="38.0" prefWidth="179.0" text="Setting">
                             <font>
                                 <Font size="16.0" />
                             </font>
-                        </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="202.0" prefHeight="38.0" prefWidth="179.0" text="BackUp">
+                        </Button>
+                        <Button  layoutX="10.0" layoutY="202.0" prefHeight="38.0" prefWidth="179.0" text="BackUp">
                             <font>
                                 <Font size="16.0" />
                             </font>
-                        </JFXButton>
+                        </Button>
                     </children>
                 </VBox>
             </children>

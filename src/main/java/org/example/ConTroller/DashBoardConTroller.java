@@ -12,6 +12,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 public class DashBoardConTroller implements Initializable {
     @FXML
+    private AnchorPane drawerPane;
+    @FXML
+    private AnchorPane opacityPane;
+    @FXML
     private AnchorPane pane1,pane2;
 
     @FXML
@@ -54,8 +58,6 @@ public class DashBoardConTroller implements Initializable {
         });
 
         pane1.setOnMouseClicked(event -> {
-
-
 
             FadeTransition fadeTransition1=new FadeTransition(Duration.seconds(0.5),pane1);
             fadeTransition1.setFromValue(0.15);
