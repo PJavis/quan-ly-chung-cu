@@ -5,9 +5,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HoKhauDao {
- private SessionFactory SessionFactory = null;
+ private SessionFactory sessionFactory = null;
  private  Session session = null;
 
     public static HoKhauDao getInstance() {
@@ -16,11 +18,11 @@ public class HoKhauDao {
 
     public boolean save(HoKhau hoKhau){
        try {
-           SessionFactory=Hibernate.getSessionFactory();
-           session=Hibernate.getSession(SessionFactory);
-           Serializable serializable= (Serializable) session.save(hoKhau);
+           sessionFactory=Hibernate.getSessionFactory();
+           session=Hibernate.getSession(sessionFactory);
+           Serializable serializable = (Serializable) session.save(hoKhau);
            Hibernate.closeSession(session);
-           Hibernate.closeSessionFactory(SessionFactory);
+           Hibernate.closeSessionFactory(sessionFactory);
            return (serializable!=null);
        } catch (Exception e) {
            System.out.println("Luu ho khau co loi");
@@ -28,6 +30,30 @@ public class HoKhauDao {
        }
     }
 
+    public List<HoKhau> selectAll() {
+        List<HoKhau> hoKhaus = new ArrayList<>();
+        try {
+            sessionFactory = Hibernate.getSessionFactory();
+            session = Hibernate.getSession(sessionFactory);
+            hoKhaus = session.createQuery("FROM HoKhau", HoKhau.class).getResultList();
+            Hibernate.closeSession(session);
+            Hibernate.closeSessionFactory(sessionFactory);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return hoKhaus;
+    }
 
+    public void deleteHoKhau(int id) {
+        try {
+            sessionFactory = Hibernate.getSessionFactory();
+            session = Hibernate.getSession(sessionFactory);
+            session.createQuery("DELETE FROM HoKhau "  + "WHERE id = :id").setParameter("id", id);
+            Hibernate.closeSession(session);
+            Hibernate.closeSessionFactory(sessionFactory);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

@@ -1,7 +1,5 @@
 package org.example.Hibernate.dao;
 
-import org.example.EntityAll.HoKhau;
-import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.LichSuThayDoi;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
