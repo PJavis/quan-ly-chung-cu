@@ -15,12 +15,14 @@ public class DashBoardConTroller implements Initializable {
 
 
     @FXML
-    void dashbroad(ActionEvent event) {
-
+    void hiendashbroad(ActionEvent event) {
 
     }
+
     @FXML
-    private ImageView exit;
+    void login(ActionEvent event) {
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
