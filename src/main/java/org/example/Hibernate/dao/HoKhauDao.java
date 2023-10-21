@@ -7,8 +7,8 @@ import org.hibernate.SessionFactory;
 import java.io.Serializable;
 
 public class HoKhauDao {
- private SessionFactory SessionFactory=null;
- private  Session session=null;
+ private SessionFactory SessionFactory = null;
+ private  Session session = null;
 
     public static HoKhauDao getInstance() {
         return new HoKhauDao();
@@ -27,5 +27,7 @@ public class HoKhauDao {
            throw new RuntimeException(e);
        }
     }
+
+
 
 }
