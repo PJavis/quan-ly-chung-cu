@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -26,54 +27,58 @@
                 </ImageView>
             </graphic>
         </Button>
-        <TitledPane expanded="false" layoutX="4.0" layoutY="219.0" text="Thống kê">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-            <graphic>
-                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/backup.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </TitledPane>
-        <TitledPane expanded="false" layoutX="4.0" layoutY="169.0" text="Điều chỉnh">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-            <graphic>
-                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/setting.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </TitledPane>
-        <TitledPane expanded="false" layoutX="4.0" layoutY="119.0" text="Tra cứu">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-            <graphic>
-                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/data.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </TitledPane>
-        <TitledPane expanded="false" layoutX="4.0" layoutY="66.0" text="Thu phí">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-            <graphic>
-                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/add.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </TitledPane>
+            <Accordion layoutX="5.0" layoutY="54.0">
+              <panes>
+              <TitledPane expanded="false" text="Thu phí">
+                  <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                  <graphic>
+                      <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/add.png" />
+                          </image>
+                      </ImageView>
+                  </graphic>
+              </TitledPane>
+              <TitledPane expanded="false" text="Tra cứu">
+                  <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                  <graphic>
+                      <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/data.png" />
+                          </image>
+                      </ImageView>
+                  </graphic>
+              </TitledPane>
+              <TitledPane expanded="false" text="Thống kê">
+                  <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                  <graphic>
+                      <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/backup.png" />
+                          </image>
+                      </ImageView>
+                  </graphic>
+              </TitledPane>
+              <TitledPane expanded="false" text="Điều chỉnh">
+                  <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                  <graphic>
+                      <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/setting.png" />
+                          </image>
+                      </ImageView>
+                  </graphic>
+              </TitledPane>
+              </panes>
+            </Accordion>
         </children>
        </Pane>
             <Pane prefHeight="46.0" prefWidth="860.0">
