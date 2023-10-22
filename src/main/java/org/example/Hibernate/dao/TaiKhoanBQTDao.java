@@ -1,6 +1,9 @@
 package org.example.Hibernate.dao;
 
 import org.example.EntityAll.TaiKhoanBQT;
+import org.example.Function.Delete;
+import org.example.Function.Save;
+import org.example.Function.SelectAll;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -8,12 +11,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaiKhoanBQTDao {
+public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
     private SessionFactory sessionFactory;
     private Session session;
     public static TaiKhoanBQTDao getInstance() {return new TaiKhoanBQTDao(); };
 
-    public boolean save(TaiKhoanBQT taiKhoanBQT){
+    @Override
+    public boolean save(TaiKhoanBQT taiKhoanBQT) {
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
@@ -27,7 +31,8 @@ public class TaiKhoanBQTDao {
         }
     }
 
-    public List<TaiKhoanBQT> selectAll() {
+    @Override
+    public List<?> selectAll() {
         List<TaiKhoanBQT> taiKhoanBQTS = new ArrayList<>();
         try {
             sessionFactory = Hibernate.getSessionFactory();
@@ -41,7 +46,8 @@ public class TaiKhoanBQTDao {
         return taiKhoanBQTS;
     }
 
-    public void deleteQuanTriChungCu(int id) {
+    @Override
+    public void delete(int id) {
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);

@@ -1,6 +1,9 @@
 package org.example.Hibernate.dao;
 
 import org.example.EntityAll.QuanTriChungCu;
+import org.example.Function.Delete;
+import org.example.Function.Save;
+import org.example.Function.SelectAll;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -8,12 +11,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuanTriChungCuDao {
+public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAll {
     private SessionFactory sessionFactory;
     private Session session;
     public static QuanTriChungCuDao getInstance() {return new QuanTriChungCuDao(); };
 
-    public boolean save(QuanTriChungCu quanTriChungCu){
+    @Override
+    public boolean save(QuanTriChungCu quanTriChungCu) {
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
@@ -27,7 +31,8 @@ public class QuanTriChungCuDao {
         }
     }
 
-    public List<QuanTriChungCu> selectAll() {
+    @Override
+    public List<?> selectAll() {
         List<QuanTriChungCu> quanTriChungCus = new ArrayList<>();
         try {
             sessionFactory = Hibernate.getSessionFactory();
@@ -41,7 +46,8 @@ public class QuanTriChungCuDao {
         return quanTriChungCus;
     }
 
-    public void deleteQuanTriChungCu(int id) {
+    @Override
+    public void delete(int id) {
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);

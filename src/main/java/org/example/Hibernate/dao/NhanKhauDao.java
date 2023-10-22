@@ -1,6 +1,9 @@
 package org.example.Hibernate.dao;
 
 import org.example.EntityAll.NhanKhau;
+import org.example.Function.Delete;
+import org.example.Function.Save;
+import org.example.Function.SelectAll;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -8,12 +11,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NhanKhauDao {
+public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete {
     private SessionFactory sessionFactory;
     private Session session;
     public static NhanKhauDao getInstance() {return new NhanKhauDao(); };
 
-    public boolean save(NhanKhau nhanKhau){
+    @Override
+    public boolean save(NhanKhau nhanKhau) {
         try {
             sessionFactory=Hibernate.getSessionFactory();
             session=Hibernate.getSession(sessionFactory);
@@ -26,7 +30,9 @@ public class NhanKhauDao {
             throw new RuntimeException(e);
         }
     }
-    public List<NhanKhau> selectAll() {
+
+    @Override
+    public List<?> selectAll() {
         List<NhanKhau> nhanKhaus = new ArrayList<>();
         try {
             sessionFactory = Hibernate.getSessionFactory();
@@ -40,7 +46,8 @@ public class NhanKhauDao {
         return nhanKhaus;
     }
 
-    public void deleteNhanKhau(int id) {
+    @Override
+    public void delete(int id) {
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);

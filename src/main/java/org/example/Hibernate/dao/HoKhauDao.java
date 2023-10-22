@@ -1,6 +1,9 @@
 package org.example.Hibernate.dao;
 
 import org.example.EntityAll.HoKhau;
+import org.example.Function.Delete;
+import org.example.Function.Save;
+import org.example.Function.SelectAll;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -8,7 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HoKhauDao {
+public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll {
  private SessionFactory sessionFactory = null;
  private  Session session = null;
 
@@ -44,7 +47,7 @@ public class HoKhauDao {
         return hoKhaus;
     }
 
-    public void deleteHoKhau(int id) {
+    public void delete(int id) {
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
