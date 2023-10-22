@@ -1,6 +1,6 @@
-package org.example.Hibernate.dao;
+package org.example.Hibernatedao;
 
-import org.example.EntityAll.NhanKhau;
+import org.example.EntityAll.TaiKhoanBQT;
 import org.example.Function.Delete;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
@@ -11,39 +11,39 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete {
+public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
     private SessionFactory sessionFactory;
     private Session session;
-    public static NhanKhauDao getInstance() {return new NhanKhauDao(); };
+    public static TaiKhoanBQTDao getInstance() {return new TaiKhoanBQTDao(); };
 
     @Override
-    public boolean save(NhanKhau nhanKhau) {
+    public boolean save(TaiKhoanBQT taiKhoanBQT) {
         try {
-            sessionFactory=Hibernate.getSessionFactory();
-            session=Hibernate.getSession(sessionFactory);
-            Serializable serializable= (Serializable) session.save(nhanKhau);
+            sessionFactory = Hibernate.getSessionFactory();
+            session = Hibernate.getSession(sessionFactory);
+            Serializable serializable = (Serializable) session.save(taiKhoanBQT);
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
             return (serializable!=null);
         } catch (Exception e) {
-            System.out.println("Luu nhan khau co loi");
+            System.out.println("Luu tai khoan ban quan tri co loi");
             throw new RuntimeException(e);
         }
     }
 
     @Override
     public List<?> selectAll() {
-        List<NhanKhau> nhanKhaus = new ArrayList<>();
+        List<TaiKhoanBQT> taiKhoanBQTS = new ArrayList<>();
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session=Hibernate.getSession(sessionFactory);
-            nhanKhaus = session.createQuery("FROM nhanKhau", NhanKhau.class).getResultList();
+            taiKhoanBQTS = session.createQuery("FROM TaiKhoanBQT", TaiKhoanBQT.class).getResultList();
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return nhanKhaus;
+        return taiKhoanBQTS;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete {
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
-            session.createQuery("DELETE FROM NhanKhau "  + "WHERE id = :id").setParameter("id", id);
+            session.createQuery("DELETE FROM TaiKhoanBQT "  + "WHERE id = :id").setParameter("id", id);
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
         } catch (Exception e) {

@@ -3,19 +3,82 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="664.0" prefWidth="860.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DashBoardConTroller">
     <children>
-      <Pane prefHeight="46.0" prefWidth="860.0">
+      <Pane fx:id="bangthongke" layoutY="46.0" prefHeight="619.0" prefWidth="213.0">
+    <children>
+        <Button layoutX="5.0" layoutY="14.0" prefHeight="40.0" prefWidth="133.0" text="Dashboard">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="28.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/home.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <TitledPane expanded="false" layoutX="4.0" layoutY="219.0" text="Thống kê">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+            <graphic>
+                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/backup.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </TitledPane>
+        <TitledPane expanded="false" layoutX="4.0" layoutY="169.0" text="Điều chỉnh">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+            <graphic>
+                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/setting.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </TitledPane>
+        <TitledPane expanded="false" layoutX="4.0" layoutY="119.0" text="Tra cứu">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+            <graphic>
+                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/data.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </TitledPane>
+        <TitledPane expanded="false" layoutX="4.0" layoutY="66.0" text="Thu phí">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+            <graphic>
+                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/add.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </TitledPane>
+        </children>
+       </Pane>
+            <Pane prefHeight="46.0" prefWidth="860.0">
          <children>
-            <Button layoutX="14.0" layoutY="1.0" mnemonicParsing="false" onAction="#hiendashbroad">
+            <Button layoutX="2.0" layoutY="1.0" mnemonicParsing="false" onAction="#hiendashbroad">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -23,94 +86,21 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <MenuButton layoutX="747.0" layoutY="5.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="98.0" text="MenuButton">
+            <MenuButton layoutX="796.0" layoutY="5.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="49.0">
               <items>
                 <MenuItem mnemonicParsing="false" text="Profile" />
                 <MenuItem mnemonicParsing="false" text="Log out" />
               </items>
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/user.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </MenuButton>
          </children>
       </Pane>
-          <Pane layoutY="47.0" prefHeight="616.0" prefWidth="860.0" style="-fx-background-color: #d9ecf2;" />
-      <Pane fx:id="tinhnang" layoutX="-230.0" layoutY="47.0" prefHeight="355.0" prefWidth="217.0">
-         <children>
-            <GridPane prefHeight="350.0" prefWidth="217.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="10.0" prefWidth="50.80001220703125" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.9999633789063" minWidth="10.0" prefWidth="184.39998779296874" />
-              </columnConstraints>
-              <rowConstraints>
-                  <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="63.19999389648437" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="119.20000610351562" minHeight="0.0" prefHeight="56.80000610351563" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="153.60000915527343" minHeight="10.0" prefHeight="59.20001831054688" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="160.00002136230466" minHeight="10.0" prefHeight="59.199981689453125" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="165.20001831054685" minHeight="10.0" prefHeight="58.19999999999999" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="175.79999389648435" minHeight="10.0" prefHeight="55.80000000000001" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                        <Button prefHeight="38.0" prefWidth="179.0" text="Add New" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Button>
-                        <Button prefHeight="38.0" prefWidth="179.0" text="Data" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Button>
-                        <Button prefHeight="38.0" prefWidth="179.0" text="User" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Button>
-                        <Button prefHeight="38.0" prefWidth="179.0" text="Setting" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Button>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-                            <image>
-                                <Image url="@../images/add.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
-                            <image>
-                                <Image url="@../images/data.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
-                            <image>
-                                <Image url="@../images/user.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
-                            <image>
-                                <Image url="@../images/setting.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5">
-                            <image>
-                                <Image url="@../images/backup.png" />
-                            </image>
-                        </ImageView>
-                        <Button prefHeight="38.0" prefWidth="179.0" text="Dashboard" GridPane.columnIndex="1">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Button>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/home.png" />
-                            </image>
-                        </ImageView>
-                        <Button prefHeight="28.0" prefWidth="176.0" text="BackUp" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Button>
-               </children>
-            </GridPane>
-         </children>
-      </Pane>
+      <AnchorPane fx:id="bangchinh" layoutX="213.0" layoutY="46.0" prefHeight="619.0" prefWidth="651.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="-18.0" AnchorPane.topAnchor="46.0" />
     </children>
 </Pane>

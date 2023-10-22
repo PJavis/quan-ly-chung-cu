@@ -1,4 +1,4 @@
-package org.example.Hibernate.dao;
+package org.example.Hibernatedao;
 
 import org.example.EntityAll.HoKhau;
 import org.example.Function.Delete;

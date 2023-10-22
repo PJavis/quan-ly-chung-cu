@@ -1,4 +1,4 @@
-package org.example.Hibernate.dao;
+package org.example.Hibernatedao;
 
 import org.example.EntityAll.LichSuThayDoi;
 import org.example.Function.Save;

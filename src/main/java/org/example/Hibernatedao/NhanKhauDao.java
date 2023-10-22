@@ -1,6 +1,6 @@
-package org.example.Hibernate.dao;
+package org.example.Hibernatedao;
 
-import org.example.EntityAll.QuanTriChungCu;
+import org.example.EntityAll.NhanKhau;
 import org.example.Function.Delete;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
@@ -11,39 +11,39 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAll {
+public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete {
     private SessionFactory sessionFactory;
     private Session session;
-    public static QuanTriChungCuDao getInstance() {return new QuanTriChungCuDao(); };
+    public static NhanKhauDao getInstance() {return new NhanKhauDao(); };
 
     @Override
-    public boolean save(QuanTriChungCu quanTriChungCu) {
+    public boolean save(NhanKhau nhanKhau) {
         try {
-            sessionFactory = Hibernate.getSessionFactory();
-            session = Hibernate.getSession(sessionFactory);
-            Serializable serializable= (Serializable) session.save(quanTriChungCu);
+            sessionFactory=Hibernate.getSessionFactory();
+            session=Hibernate.getSession(sessionFactory);
+            Serializable serializable= (Serializable) session.save(nhanKhau);
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
             return (serializable!=null);
         } catch (Exception e) {
-            System.out.println("Luu quan tri chung cu co loi");
+            System.out.println("Luu nhan khau co loi");
             throw new RuntimeException(e);
         }
     }
 
     @Override
     public List<?> selectAll() {
-        List<QuanTriChungCu> quanTriChungCus = new ArrayList<>();
+        List<NhanKhau> nhanKhaus = new ArrayList<>();
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session=Hibernate.getSession(sessionFactory);
-            quanTriChungCus = session.createQuery("FROM QuanTriChungCu", QuanTriChungCu.class).getResultList();
+            nhanKhaus = session.createQuery("FROM nhanKhau", NhanKhau.class).getResultList();
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return quanTriChungCus;
+        return nhanKhaus;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
-            session.createQuery("DELETE FROM QuanTriChungCu "  + "WHERE id = :id").setParameter("id", id);
+            session.createQuery("DELETE FROM NhanKhau "  + "WHERE id = :id").setParameter("id", id);
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
         } catch (Exception e) {
