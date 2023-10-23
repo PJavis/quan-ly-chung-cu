@@ -1,13 +1,17 @@
 package org.example.ConTroller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
@@ -15,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 public class DashBoardConTroller implements Initializable {
     @FXML
@@ -30,6 +35,8 @@ public class DashBoardConTroller implements Initializable {
 
     @FXML
     private TitledPane tracuu;
+    private Stage stage;
+    private Scene scene;
     private <T> void openTransition(T t,int x){
         TranslateTransition openTransition = new TranslateTransition(Duration.seconds(0.3), (Node) t);
         openTransition.setToY(113+x);
@@ -124,8 +131,12 @@ public class DashBoardConTroller implements Initializable {
     }
 
     @FXML
-    void login(ActionEvent event) {
-
+    public void login (ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/org.example/Loginscreen.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @Override
