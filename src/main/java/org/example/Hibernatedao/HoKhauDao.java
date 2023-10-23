@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll {
@@ -34,7 +33,7 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll {
     }
 
     public List<HoKhau> selectAll() {
-        List<HoKhau> hoKhaus = new ArrayList<>();
+        List<HoKhau> hoKhaus;
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
