@@ -3,8 +3,10 @@ package org.example;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
+import org.example.EntityAll.HoKhau;
+import org.example.Hibernatedao.HoKhauDao;
 
 
 public class Main extends Application {
@@ -12,8 +14,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try{
         Parent root = FXMLLoader.load(getClass().getResource("/org.example/DashBoard.fxml"));
-
-        Scene scene=new Scene(root);
+    
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();}
         catch (Exception e) {

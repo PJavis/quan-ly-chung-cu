@@ -51,7 +51,7 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
-            session.createQuery("DELETE FROM QuanTriChungCu "  + "WHERE id = :id").setParameter("id", id);
+            session.createQuery("DELETE FROM QuanTriChungCu "  + "WHERE id = :id").setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
         } catch (Exception e) {

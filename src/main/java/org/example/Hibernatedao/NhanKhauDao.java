@@ -51,7 +51,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete {
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
-            session.createQuery("DELETE FROM NhanKhau "  + "WHERE id = :id").setParameter("id", id);
+            session.createQuery("DELETE FROM NhanKhau "  + "WHERE id = :id").setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
         } catch (Exception e) {

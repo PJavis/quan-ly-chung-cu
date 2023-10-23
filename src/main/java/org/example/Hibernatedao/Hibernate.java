@@ -5,8 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 public class Hibernate {
     public static SessionFactory getSessionFactory() {
-        SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        return sessionFactory;
+        return new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
     }
 
     public static Session getSession(SessionFactory sessionFactory) {
