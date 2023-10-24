@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class LichSuThayDoiDao implements Save<LichSuThayDoi> {
     private SessionFactory sessionFactory;
     private Session session;
-    public static LichSuThayDoiDao getInstance() {return new LichSuThayDoiDao(); };
+    public static LichSuThayDoiDao getInstance() {return new LichSuThayDoiDao(); }
 
     @Override
     public boolean save(LichSuThayDoi lichSuThayDoi) {

@@ -8,13 +8,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
     private SessionFactory sessionFactory;
     private Session session;
-    public static TaiKhoanBQTDao getInstance() {return new TaiKhoanBQTDao(); };
+    public static TaiKhoanBQTDao getInstance() {return new TaiKhoanBQTDao(); }
 
     @Override
     public boolean save(TaiKhoanBQT taiKhoanBQT) {
@@ -33,7 +32,7 @@ public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
 
     @Override
     public List<?> selectAll() {
-        List<TaiKhoanBQT> taiKhoanBQTS = new ArrayList<>();
+        List<TaiKhoanBQT> taiKhoanBQTS;
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session=Hibernate.getSession(sessionFactory);
@@ -51,7 +50,7 @@ public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
-            session.createQuery("DELETE FROM TaiKhoanBQT "  + "WHERE id = :id").setParameter("id", id);
+            session.createQuery("DELETE FROM TaiKhoanBQT "  + "WHERE id = :id").setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
         } catch (Exception e) {
