@@ -4,20 +4,24 @@ package org.example.ConTroller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TitledPane;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 public class ThuphiConTroller implements Initializable {
+    @FXML
+    private Pane keodanbang;
     @FXML
     private Pane bangthongke;
     @FXML
@@ -27,7 +31,17 @@ public class ThuphiConTroller implements Initializable {
     private TitledPane thongke;
 
     @FXML
-    private TitledPane thuphi;
+    void home(ActionEvent event) {
+        try {
+            Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/org.example/DashBoard.fxml"));
+            Scene scene = new Scene(root);
+            ag0r1.setScene(scene);
+            ag0r1.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     @FXML
     private TitledPane tracuu;
@@ -42,36 +56,12 @@ public class ThuphiConTroller implements Initializable {
         closeTransition.play();
     }
 
-    private boolean isthuphi = false;
-    @FXML
-    void thuphi1(MouseEvent event) {
-        int x=0;
-
-        if(!isthuphi){
-            openTransition(tracuu,x);
-            if(istracuu)x=113;
-            openTransition(thongke,x);
-            if(isthongke)x+=113;
-            openTransition(dieuchinh,x);
-            isthuphi=true;
-        }else {
-
-            closeTransition(tracuu,x);
-            if(istracuu)x=113;
-            closeTransition(thongke,x);
-            if(isthongke)x+=113;
-            closeTransition(dieuchinh,x);
-            isthuphi=false;
-        }
-
-    }
 
     private boolean istracuu = false;
     @FXML
     void tracuu1(MouseEvent event) {
 
         int x=0;
-        if(isthuphi)x=113;
 
         if(!istracuu){
             openTransition(thongke,x);
@@ -91,9 +81,7 @@ public class ThuphiConTroller implements Initializable {
     void thongke1(MouseEvent event) {
 
         int x=0;
-        if(istracuu&&isthuphi)x=113+113;
-        else if (!istracuu&&isthuphi||istracuu&&!isthuphi) {x=113;
-        }
+        if(istracuu)x=113;
         if(!isthongke){
             openTransition(dieuchinh,x);
             isthongke=true;
@@ -109,20 +97,28 @@ public class ThuphiConTroller implements Initializable {
     private boolean isDashboardVisible = false;
     @FXML
     void hiendashbroad(ActionEvent event) {
+
+        ScaleTransition scaleMainPane = new ScaleTransition(Duration.millis(500),keodanbang);
+        TranslateTransition slideInTable = new TranslateTransition(Duration.millis(500), bangthongke);
+        TranslateTransition slideInTable1 = new TranslateTransition(Duration.millis(500), keodanbang);
         if (isDashboardVisible) {
             // Hiện bảng
-            TranslateTransition closeTransition = new TranslateTransition(Duration.seconds(0.5), bangthongke);
-            closeTransition.setToX(0);
-            closeTransition.play();
+            slideInTable.setToX(0);
+            scaleMainPane.setToX(1);
+            slideInTable1.setToX(0);
             isDashboardVisible = false;
         } else {
             // Ẩn  bảng
-            TranslateTransition openTransition = new TranslateTransition(Duration.seconds(0.5), bangthongke);
-            openTransition.setToX(-213);
-            openTransition.play();
+            scaleMainPane.setToX(1.3);
+            slideInTable1.setToX(-97);
+            slideInTable.setToX(-213);
             isDashboardVisible = true;
         }
+        slideInTable1.play();
+        slideInTable.play();
+        scaleMainPane.play();
     }
+
 
     @FXML
     void login(ActionEvent event) {
