@@ -133,7 +133,7 @@
       </Pane>
       <AnchorPane fx:id="bangchinh" layoutX="219.0" layoutY="46.0" prefHeight="619.0" prefWidth="651.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="46.0">
          <children>
-            <Button fx:id="abc" layoutX="511.0" layoutY="69.0" mnemonicParsing="false" onAction="#login" text="Button" />
+            <Button fx:id="abc" layoutX="342.0" layoutY="129.0" mnemonicParsing="false" onAction="#login" text="Button" />
          </children></AnchorPane>
     </children>
 </Pane>
