@@ -14,7 +14,7 @@ import java.util.List;
 public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAll {
     private SessionFactory sessionFactory;
     private Session session;
-    public static QuanTriChungCuDao getInstance() {return new QuanTriChungCuDao(); };
+    public static QuanTriChungCuDao getInstance() {return new QuanTriChungCuDao(); }
 
     @Override
     public boolean save(QuanTriChungCu quanTriChungCu) {
@@ -33,7 +33,7 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
 
     @Override
     public List<?> selectAll() {
-        List<QuanTriChungCu> quanTriChungCus = new ArrayList<>();
+        List<QuanTriChungCu> quanTriChungCus;
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session=Hibernate.getSession(sessionFactory);
@@ -51,7 +51,7 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
-            session.createQuery("DELETE FROM QuanTriChungCu "  + "WHERE id = :id").setParameter("id", id);
+            session.createQuery("DELETE FROM QuanTriChungCu "  + "WHERE id = :id").setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
         } catch (Exception e) {

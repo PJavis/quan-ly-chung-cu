@@ -4,6 +4,7 @@ package org.example.ConTroller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,8 @@ import javafx.util.Duration;
 public class TracuuController implements Initializable {
     @FXML
     private Pane bangthongke;
+    @FXML
+    private Pane keodanbang;
     @FXML
     private TitledPane dieuchinh;
 
@@ -103,27 +106,31 @@ public class TracuuController implements Initializable {
         }
 
     }
-    @FXML
-    private AnchorPane bangchinh;
     //   Stage a = (Stage) desciption1.getScene().getWindow();
     private boolean isDashboardVisible = false;
     @FXML
     void hiendashbroad(ActionEvent event) {
+
+        ScaleTransition scaleMainPane = new ScaleTransition(Duration.millis(500),keodanbang);
+        TranslateTransition slideInTable = new TranslateTransition(Duration.millis(500), bangthongke);
+        TranslateTransition slideInTable1 = new TranslateTransition(Duration.millis(500), keodanbang);
         if (isDashboardVisible) {
             // Hiện bảng
-            TranslateTransition closeTransition = new TranslateTransition(Duration.seconds(0.5), bangthongke);
-            closeTransition.setToX(0);
-            closeTransition.play();
+            slideInTable.setToX(0);
+            scaleMainPane.setToX(1);
+            slideInTable1.setToX(0);
             isDashboardVisible = false;
         } else {
             // Ẩn  bảng
-            TranslateTransition openTransition = new TranslateTransition(Duration.seconds(0.5), bangthongke);
-            openTransition.setToX(-213);
-            openTransition.play();
+            scaleMainPane.setToX(1.3);
+            slideInTable1.setToX(-97);
+            slideInTable.setToX(-213);
             isDashboardVisible = true;
         }
+        slideInTable1.play();
+        slideInTable.play();
+        scaleMainPane.play();
     }
-
     @FXML
     void login(ActionEvent event) {
 

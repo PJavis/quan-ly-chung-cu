@@ -8,13 +8,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete {
     private SessionFactory sessionFactory;
     private Session session;
-    public static NhanKhauDao getInstance() {return new NhanKhauDao(); };
+    public static NhanKhauDao getInstance() {return new NhanKhauDao(); }
 
     @Override
     public boolean save(NhanKhau nhanKhau) {
@@ -33,7 +32,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete {
 
     @Override
     public List<?> selectAll() {
-        List<NhanKhau> nhanKhaus = new ArrayList<>();
+        List<NhanKhau> nhanKhaus;
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session=Hibernate.getSession(sessionFactory);
@@ -51,7 +50,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete {
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
-            session.createQuery("DELETE FROM NhanKhau "  + "WHERE id = :id").setParameter("id", id);
+            session.createQuery("DELETE FROM NhanKhau "  + "WHERE id = :id").setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
         } catch (Exception e) {

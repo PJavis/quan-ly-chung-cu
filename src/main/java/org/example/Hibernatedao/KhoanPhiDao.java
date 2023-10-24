@@ -18,8 +18,6 @@ public class KhoanPhiDao implements Save<KhoanPhi>, SelectAll {
         return new KhoanPhiDao();
     }
 
-    ;
-
     @Override
     public boolean save(KhoanPhi khoanPhi) {
         try {
@@ -37,7 +35,7 @@ public class KhoanPhiDao implements Save<KhoanPhi>, SelectAll {
 
     @Override
     public List<?> selectAll() {
-        List<KhoanPhi> khoanPhis = new ArrayList<>();
+        List<KhoanPhi> khoanPhis;
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
