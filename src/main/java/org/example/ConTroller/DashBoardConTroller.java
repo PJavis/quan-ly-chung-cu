@@ -99,9 +99,9 @@ public class DashBoardConTroller implements Initializable {
     @FXML
     void hiendashbroad(ActionEvent event) {
 
-        ScaleTransition scaleMainPane = new ScaleTransition(Duration.millis(500),keodanbang);
-        TranslateTransition slideInTable = new TranslateTransition(Duration.millis(500), bangthongke);
-        TranslateTransition slideInTable1 = new TranslateTransition(Duration.millis(500), keodanbang);
+        ScaleTransition scaleMainPane = new ScaleTransition(Duration.millis(300),keodanbang);
+        TranslateTransition slideInTable = new TranslateTransition(Duration.millis(300), bangthongke);
+        TranslateTransition slideInTable1 = new TranslateTransition(Duration.millis(300), keodanbang);
         if (isDashboardVisible) {
             // Hiện bảng
             slideInTable.setToX(0);
@@ -121,12 +121,16 @@ public class DashBoardConTroller implements Initializable {
     }
 
     @FXML
-    public void login (ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org.example/Loginscreen.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void dangxuat (ActionEvent event)  {
+        try {
+            Stage ag0r1 =(Stage) tracuu.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/org.example/Loginscreen.fxml"));
+            Scene scene = new Scene(root);
+            ag0r1.setScene(scene);
+            ag0r1.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
