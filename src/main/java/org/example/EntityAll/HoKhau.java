@@ -12,8 +12,9 @@ public class HoKhau {
     @Column(name = "id_nguoidan", nullable = false)
     private int idNguoiDan;
 
-    @Column(name = "dien_tich_phong", precision = 5, scale = 2, nullable = false)
+    @Column(name = "dien_tich_phong", columnDefinition = "double precision")
     private double dienTichPhong;
+
 
     @Column(name = "chu_ho", nullable = false)
     private String chuHo;

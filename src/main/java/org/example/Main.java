@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.EntityAll.HoKhau;
+import org.example.Hibernatedao.HoKhauDao;
 
 
 public class Main extends Application {
@@ -21,6 +23,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        HoKhau hk = new HoKhau(1, 1, 12.0, "A Hoang");
+        HoKhauDao.getInstance().save(hk);
         launch(args);
     }
 }

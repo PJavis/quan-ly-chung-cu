@@ -27,7 +27,6 @@ public class TaophiController {
 
     @FXML
     void taomoi(ActionEvent event) {
-
         Stage a = (Stage) sotien.getScene().getWindow();
         a.close();
     }
