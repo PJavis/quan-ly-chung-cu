@@ -22,7 +22,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-public class DashBoardConTroller implements Initializable {
+public class DashBoardConTroller {
     @FXML
     private Pane bangthongke;
     @FXML
@@ -31,13 +31,30 @@ public class DashBoardConTroller implements Initializable {
     @FXML
     private TitledPane thongke;
 
+
+
     @FXML
     void thuphi1(ActionEvent event) {
         try {
             Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/org.example/Thuphi.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Thuphi.fxml"));
+            Parent root = loader.load();
             Scene scene = new Scene(root);
             ag0r1.setScene(scene);
+            ag0r1.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    @FXML
+    void home(ActionEvent event) {
+        try {
+            Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/DashBoard.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            ag0r1.setScene(scene);
+
             ag0r1.show();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -58,21 +75,46 @@ public class DashBoardConTroller implements Initializable {
         closeTransition.play();
     }
 
+    @FXML
+    void thongkecackhoanphi(ActionEvent event) {
+        try {
+            Stage ag0r1 =(Stage) tracuu.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/org.example/Thongke.fxml"));
+            Scene scene = new Scene(root);
+            ag0r1.setScene(scene);
+            ag0r1.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    void thongkephong(ActionEvent event) {
+
+    }
+
+    @FXML
+    void thongkethaydoi(ActionEvent event) {
+
+    }
+
     private boolean istracuu = false;
     @FXML
     void tracuu1(MouseEvent event) {
 
         int x=0;
         if(!istracuu){
+            istracuu=true;
             openTransition(thongke,x);
             if(isthongke)x+=113;
             openTransition(dieuchinh,x);
-            istracuu=true;
+
         }else {
+            istracuu=false;
             closeTransition(thongke,x);
             if(isthongke)x+=113;
             closeTransition(dieuchinh,x);
-            istracuu=false;
+
         }
 
     }
@@ -82,11 +124,13 @@ public class DashBoardConTroller implements Initializable {
         int x=0;
         if(istracuu)x=113;
         if(!isthongke){
-            openTransition(dieuchinh,x);
             isthongke=true;
+            openTransition(dieuchinh,x);
+
         }else {
-            closeTransition(dieuchinh,x);
             isthongke=false;
+            closeTransition(dieuchinh,x);
+
         }
        
     }
@@ -104,16 +148,18 @@ public class DashBoardConTroller implements Initializable {
         TranslateTransition slideInTable1 = new TranslateTransition(Duration.millis(300), keodanbang);
         if (isDashboardVisible) {
             // Hiện bảng
+            isDashboardVisible = false;
             slideInTable.setToX(0);
             scaleMainPane.setToX(1);
             slideInTable1.setToX(0);
-            isDashboardVisible = false;
+
         } else {
             // Ẩn  bảng
+            isDashboardVisible = true;
             scaleMainPane.setToX(1.3);
             slideInTable1.setToX(-97);
             slideInTable.setToX(-213);
-            isDashboardVisible = true;
+
         }
         slideInTable1.play();
         slideInTable.play();
@@ -133,11 +179,7 @@ public class DashBoardConTroller implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-
-    }
 
 
 }
