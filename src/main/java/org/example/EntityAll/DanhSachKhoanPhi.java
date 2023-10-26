@@ -35,6 +35,10 @@ public class DanhSachKhoanPhi {
         this.gia_tri = gia_tri;
     }
 
+    public DanhSachKhoanPhi() {
+
+    }
+
     public int getId() {
         return id;
     }
