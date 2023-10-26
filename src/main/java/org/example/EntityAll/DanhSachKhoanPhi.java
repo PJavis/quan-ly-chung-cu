@@ -32,6 +32,10 @@ public class DanhSachKhoanPhi {
         this.ket_thuc = ket_thuc;
     }
 
+    public DanhSachKhoanPhi() {
+
+    }
+
     public int getId() {
         return id;
     }

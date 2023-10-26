@@ -6,6 +6,10 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.example.EntityAll.DanhSachKhoanPhi;
+
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class TaophiController {
 
@@ -27,6 +31,13 @@ public class TaophiController {
 
     @FXML
     void taomoi(ActionEvent event) {
+        DanhSachKhoanPhi danhSachKhoanPhi=new DanhSachKhoanPhi();
+        danhSachKhoanPhi.setLoai_khoan_phi(loaikhoanphi.getText());
+        danhSachKhoanPhi.setTen_khoan_phi(tenkhoanphi.getText());
+        LocalDate currentDate = LocalDate.now();
+        danhSachKhoanPhi.setBat_dau(Date.valueOf(currentDate));
+        danhSachKhoanPhi.setKet_thuc(Date.valueOf(hannop.getValue()));
+
         Stage a = (Stage) sotien.getScene().getWindow();
         a.close();
     }
