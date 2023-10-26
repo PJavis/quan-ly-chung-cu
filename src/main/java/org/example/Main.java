@@ -23,8 +23,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        HoKhau hk = new HoKhau(1, 1, 12.0, "A Hoang");
-        HoKhauDao.getInstance().save(hk);
         launch(args);
     }
 }
