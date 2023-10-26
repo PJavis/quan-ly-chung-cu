@@ -65,6 +65,19 @@ public class DashBoardController {
         closeTransition.setToY(x);
         closeTransition.play();
     }
+    @FXML
+    void dieuchinhcackhoanphi(ActionEvent event) {
+        try {
+            Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Dieuchinh.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            ag0r1.setScene(scene);
+            ag0r1.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     @FXML
     void thongkecackhoanphi(ActionEvent event) {

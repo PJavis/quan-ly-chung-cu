@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<Pane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.ConTroller.DieuchinhController"
-            prefHeight="400.0" prefWidth="600.0">
+<Pane prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DieuchinhController">
     <fx:include source="DashBoard.fxml" />
+   <TabPane layoutX="213.0" layoutY="46.0" prefHeight="704.0" prefWidth="619.0" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+         <Tab text="Điều chỉnh các khoản phí">
+            <content>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                     <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#taophi" text="Tạo khoản phí mới" />
+                     <Label fx:id="chonkhoanphicandieuchinh" layoutX="14.0" layoutY="76.0" text="Chọn khoản phí cần điều chỉnh: " />
+                     <ComboBox editable="true" layoutX="209.0" layoutY="71.0" prefHeight="26.0" prefWidth="336.0" promptText="None" />
+                     <Label layoutX="14.0" layoutY="147.0" text="Loại khoản phí: " />
+                     <Label layoutX="14.0" layoutY="205.0" text="Số tiền: " />
+                     <TextField layoutX="209.0" layoutY="201.0" />
+                     <TextField layoutX="209.0" layoutY="143.0" />
+                     <Button layoutX="138.0" layoutY="313.0" mnemonicParsing="false" text="Sửa khoản phí" />
+                     <Button layoutX="342.0" layoutY="313.0" mnemonicParsing="false" text="Xóa khoản phí" />
+                  </children>
+               </AnchorPane>
+            </content>
+         </Tab>
+         <Tab text="Điều chỉnh dân cư">
+            <content>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+         </Tab>
+         <Tab text="Điều chỉnh phòng">
+            <content>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+         </Tab>
+      </tabs>
+   </TabPane>
 </Pane>
