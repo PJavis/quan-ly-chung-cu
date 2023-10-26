@@ -8,7 +8,7 @@
 
 <Pane prefHeight="750.0" prefWidth="832.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.ThongkeController">
     <fx:include source="DashBoard.fxml" />
-   <TabPane layoutX="214.0" layoutY="46.0" prefHeight="704.0" prefWidth="619.0" tabClosingPolicy="UNAVAILABLE">
+   <TabPane layoutX="213.0" layoutY="46.0" prefHeight="704.0" prefWidth="619.0" tabClosingPolicy="UNAVAILABLE">
      <tabs>
        <Tab text="Thống kê các khoản phí">
          <content>

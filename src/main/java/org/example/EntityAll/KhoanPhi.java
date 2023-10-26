@@ -36,7 +36,7 @@ public class KhoanPhi {
         // Default constructor required by Hibernate
     }
 
-    // Constructors, getters, setters, and other methods as needed
+
 
     public KhoanPhi(int id, String tenKhoanPhi, String loaiKhoanPhi, double giaTri, Date ngayBatDau, Date ngayKetThuc, HoKhau hoKhau) {
         this.id = id;
