@@ -9,31 +9,27 @@ import org.hibernate.SessionFactory;
 import java.io.Serializable;
 import java.util.List;
 
-public class KhoanPhiDao implements Save<NopPhi>, SelectAll {
-    private SessionFactory sessionFactory;
-    private Session session;
-
-    public static KhoanPhiDao getInstance() {
-        return new KhoanPhiDao();
-    }
+public class NopPhiDao implements Save<NopPhi>, SelectAll {
+    private SessionFactory sessionFactory = null;
+    private Session session = null;
+    public static NopPhiDao getInstance() {return  new NopPhiDao();}
 
     @Override
     public boolean save(NopPhi nopPhi) {
         try {
-            sessionFactory = Hibernate.getSessionFactory();
-            session = Hibernate.getSession(sessionFactory);
+            sessionFactory=Hibernate.getSessionFactory();
+            session=Hibernate.getSession(sessionFactory);
             Serializable serializable = (Serializable) session.save(nopPhi);
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
-            return (serializable != null);
+            return (serializable!=null);
         } catch (Exception e) {
-            System.out.println("Luu khoan phi co loi");
+            System.out.println("Luu nop phi co loi");
             throw new RuntimeException(e);
         }
     }
 
-    @Override
-    public List<?> selectAll() {
+    public List<NopPhi> selectAll() {
         List<NopPhi> nopPhis;
         try {
             sessionFactory = Hibernate.getSessionFactory();
