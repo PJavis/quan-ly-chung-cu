@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="832.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DashBoardConTroller">
+<AnchorPane prefHeight="750.0" prefWidth="832.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DashBoardController">
     <children>
             <Pane prefHeight="46.0" prefWidth="832.0">
          <children>
@@ -99,9 +99,9 @@
                      <content>
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="48.0" mnemonicParsing="false" onAction="#thongkecackhoanphi" prefHeight="38.0" prefWidth="60.0" text="Thông kê các khoản phí" />
-                              <Button layoutX="48.0" layoutY="38.0" mnemonicParsing="false" onAction="#thongkephong" prefHeight="38.0" prefWidth="60.0" text="Thống kê phòng " />
-                              <Button layoutX="48.0" layoutY="76.0" mnemonicParsing="false" onAction="#thongkethaydoi" prefHeight="38.0" prefWidth="60.0" text="Thống kê thay đổi" />
+                              <Button layoutX="23.0" mnemonicParsing="false" onAction="#thongkecackhoanphi" prefHeight="38.0" prefWidth="155.0" text="Thông kê các khoản phí" />
+                              <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#thongkephong" prefHeight="38.0" prefWidth="155.0" text="Thống kê phòng " />
+                              <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#thongkethaydoi" prefHeight="38.0" prefWidth="155.0" text="Thống kê thay đổi" />
                            </children>
                         </Pane>
                      </content>
@@ -124,10 +124,7 @@
                   </Button>
               </children>
              </Pane>
-            <Pane fx:id="keodanbang" layoutX="214.0" prefHeight="704.0" prefWidth="619.0">
-               <children>
-                  <Button layoutX="146.0" layoutY="264.0" mnemonicParsing="false" text="Button" />
-               </children></Pane>
+            <Pane fx:id="keodanbang" layoutX="214.0" prefHeight="704.0" prefWidth="619.0" />
          </children></Pane>
     </children>
 </AnchorPane>
