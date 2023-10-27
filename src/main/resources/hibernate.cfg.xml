@@ -26,7 +26,6 @@
         <mapping class="org.example.EntityAll.HoKhau"/>
         <mapping class="org.example.EntityAll.DanhSachKhoanPhi"/>
         <mapping class="org.example.EntityAll.NopPhi"/>
-
         <mapping class="org.example.EntityAll.NhanKhau"/>
         <mapping class="org.example.EntityAll.QuanTriChungCu"/>
         <mapping class="org.example.EntityAll.TaiKhoanBQT"/>
