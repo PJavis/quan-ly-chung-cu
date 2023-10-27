@@ -9,22 +9,26 @@ public class NopPhi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
-    @Column(name = "id_khoan_phi", nullable = false, length = 255)
+    @ManyToOne
+    @JoinColumn(name = "id_khoan_phi", referencedColumnName = "id", nullable = false)
     private int id_khoan_phi;
 
     @ManyToOne
     @JoinColumn(name = "ho_khau_id", referencedColumnName = "id")
     private HoKhau hoKhau;
 
+    @Column(name = "trang_thai_dong_phi")
+    private boolean trang_thai_dong_phi;
+
+
     public NopPhi() {
         // Default constructor required by Hibernate
     }
 
-    public NopPhi(int id, int id_khoan_phi, HoKhau hoKhau) {
-        this.id = id;
+    public NopPhi(int id_khoan_phi, HoKhau hoKhau, boolean trang_thai_dong_phi) {
         this.id_khoan_phi = id_khoan_phi;
         this.hoKhau = hoKhau;
+        this.trang_thai_dong_phi = trang_thai_dong_phi;
     }
 
     public int getId() {
@@ -38,12 +42,15 @@ public class NopPhi {
     public HoKhau getHoKhau() {
         return hoKhau;
     }
-
-    public void setId_khoan_phi(int id_khoan_phi) {
-        this.id_khoan_phi = id_khoan_phi;
-    }
-
     public void setHoKhau(HoKhau hoKhau) {
         this.hoKhau = hoKhau;
+    }
+
+    public boolean isTrang_thai_dong_phi() {
+        return trang_thai_dong_phi;
+    }
+
+    public void setTrang_thai_dong_phi(boolean trang_thai_dong_phi) {
+        this.trang_thai_dong_phi = trang_thai_dong_phi;
     }
 }
