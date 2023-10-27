@@ -32,13 +32,16 @@ public class NhanKhau {
     @Column(name = "trang_thai", length = 1000)
     private String trangThai;
 
+    @Column(name = "chu_ho")
+    private boolean chuHo;
+
     public NhanKhau() {
         // Default constructor required by Hibernate
     }
 
     // Constructors, getters, setters, and other methods as needed
 
-    public NhanKhau(int idNguoiDan, String ten, Date ngaySinh, String gioiTinh, String quocTich, HoKhau hoKhau, String trangThai) {
+    public NhanKhau(int idNguoiDan, String ten, Date ngaySinh, String gioiTinh, String quocTich, HoKhau hoKhau, String trangThai, boolean chuHo) {
         this.idNguoiDan = idNguoiDan;
         this.ten = ten;
         this.ngaySinh = ngaySinh;
@@ -46,6 +49,7 @@ public class NhanKhau {
         this.quocTich = quocTich;
         this.hoKhau = hoKhau;
         this.trangThai = trangThai;
+        this.chuHo = chuHo;
     }
 
     public int getIdNguoiDan() {
@@ -62,6 +66,14 @@ public class NhanKhau {
 
     public void setTen(String ten) {
         this.ten = ten;
+    }
+
+    public boolean isChuHo() {
+        return chuHo;
+    }
+
+    public void setChuHo(boolean chuHo) {
+        this.chuHo = chuHo;
     }
 
     public Date getNgaySinh() {
@@ -103,4 +115,6 @@ public class NhanKhau {
     public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
     }
+
+
 }

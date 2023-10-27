@@ -3,7 +3,6 @@ package org.example.ConTroller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.EntityAll.DanhSachKhoanPhi;
@@ -32,11 +31,11 @@ public class TaophiController {
     @FXML
     void taomoi(ActionEvent event) {
         DanhSachKhoanPhi danhSachKhoanPhi=new DanhSachKhoanPhi();
-        danhSachKhoanPhi.setLoai_khoan_phi(loaikhoanphi.getText());
-        danhSachKhoanPhi.setTen_khoan_phi(tenkhoanphi.getText());
+        danhSachKhoanPhi.setLoaiKhoanPhi(loaikhoanphi.getText());
+        danhSachKhoanPhi.setTenKhoanPhi(tenkhoanphi.getText());
         LocalDate currentDate = LocalDate.now();
-        danhSachKhoanPhi.setBat_dau(Date.valueOf(currentDate));
-        danhSachKhoanPhi.setKet_thuc(Date.valueOf(hannop.getValue()));
+        danhSachKhoanPhi.setBatDau(Date.valueOf(currentDate));
+        danhSachKhoanPhi.setKetThuc(Date.valueOf(hannop.getValue()));
 
         Stage a = (Stage) sotien.getScene().getWindow();
         a.close();

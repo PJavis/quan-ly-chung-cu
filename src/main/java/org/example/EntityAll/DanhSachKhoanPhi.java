@@ -13,26 +13,26 @@ public class DanhSachKhoanPhi {
     private int id;
 
     @Column(name = "ten_khoan_phi")
-    private String ten_khoan_phi;
+    private String tenKhoanPhi;
 
     @Column(name = "loai_khoan_phi")
-    private String loai_khoan_phi;
+    private String loaiKhoanPhi;
 
     @Column(name = "bat_dau")
-    private Date bat_dau;
+    private Date batDau;
 
     @Column(name = "ket_thuc")
-    private Date ket_thuc;
+    private Date ketThuc;
 
     @Column(name = "gia_tri")
-    private double gia_tri;
+    private double giaTri;
 
-    public DanhSachKhoanPhi(String ten_khoan_phi, String loai_khoan_phi, Date bat_dau, Date ket_thuc, double gia_tri) {
-        this.ten_khoan_phi = ten_khoan_phi;
-        this.loai_khoan_phi = loai_khoan_phi;
-        this.bat_dau = bat_dau;
-        this.ket_thuc = ket_thuc;
-        this.gia_tri = gia_tri;
+    public DanhSachKhoanPhi(String tenKhoanPhi, String loaiKhoanPhi, Date batDau, Date ketThuc, double giaTri) {
+        this.tenKhoanPhi = tenKhoanPhi;
+        this.loaiKhoanPhi = loaiKhoanPhi;
+        this.batDau = batDau;
+        this.ketThuc = ketThuc;
+        this.giaTri = giaTri;
     }
 
     public DanhSachKhoanPhi() {
@@ -43,43 +43,43 @@ public class DanhSachKhoanPhi {
         return id;
     }
 
-    public double getGia_tri() {
-        return gia_tri;
+    public double getGiaTri() {
+        return giaTri;
     }
 
-    public void setGia_tri(double gia_tri) {
-        this.gia_tri = gia_tri;
+    public void setGiaTri(double giaTri) {
+        this.giaTri = giaTri;
     }
 
-    public String getTen_khoan_phi() {
-        return ten_khoan_phi;
+    public String getTenKhoanPhi() {
+        return tenKhoanPhi;
     }
 
-    public void setTen_khoan_phi(String ten_khoan_phi) {
-        this.ten_khoan_phi = ten_khoan_phi;
+    public void setTenKhoanPhi(String tenKhoanPhi) {
+        this.tenKhoanPhi = tenKhoanPhi;
     }
 
-    public String getLoai_khoan_phi() {
-        return loai_khoan_phi;
+    public String getLoaiKhoanPhi() {
+        return loaiKhoanPhi;
     }
 
-    public void setLoai_khoan_phi(String loai_khoan_phi) {
-        this.loai_khoan_phi = loai_khoan_phi;
+    public void setLoaiKhoanPhi(String loaiKhoanPhi) {
+        this.loaiKhoanPhi = loaiKhoanPhi;
     }
 
-    public Date getBat_dau() {
-        return bat_dau;
+    public Date getBatDau() {
+        return batDau;
     }
 
-    public void setBat_dau(Date bat_dau) {
-        this.bat_dau = bat_dau;
+    public void setBatDau(Date batDau) {
+        this.batDau = batDau;
     }
 
-    public Date getKet_thuc() {
-        return ket_thuc;
+    public Date getKetThuc() {
+        return ketThuc;
     }
 
-    public void setKet_thuc(Date ket_thuc) {
-        this.ket_thuc = ket_thuc;
+    public void setKetThuc(Date ketThuc) {
+        this.ketThuc = ketThuc;
     }
 }
