@@ -31,17 +31,17 @@
     -fx-scale-y: 1.2;
     -fx-background-color: #716d6d;
 }
-.titlepane {
+.title pane {
     -fx-background-color: inherit;
     -fx-text-fill: white;
     -fx-font-size: 10px;
     -fx-padding: 10px 12px;
 }
-.titlepane .title {
+.title pane .title {
     -fx-text-fill: white;
     -fx-padding: 10px 12px;
 }
-.titlepane: hover {
+.title pane: hover {
     -fx-background-color: #716d6d;
     -fx-text-fill: #df6828;
     -fx-fond-weight: bold;
