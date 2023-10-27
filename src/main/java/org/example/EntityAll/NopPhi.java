@@ -13,7 +13,7 @@ public class NopPhi {
     private int id;
     @ManyToOne
     @JoinColumn(name = "id_khoan_phi", referencedColumnName = "id", nullable = false)
-    private int id_khoan_phi;
+    private DanhSachKhoanPhi danhSachKhoanPhi;
 
     @ManyToOne
     @JoinColumn(name = "ho_khau_id", referencedColumnName = "id")
@@ -30,20 +30,26 @@ public class NopPhi {
         // Default constructor required by Hibernate
     }
 
-    public NopPhi(int id_khoan_phi, HoKhau hoKhau, boolean trang_thai_dong_phi, Date ngay_nop_phi) {
-        this.id_khoan_phi = id_khoan_phi;
+    public NopPhi(DanhSachKhoanPhi danhSachKhoanPhi, HoKhau hoKhau, boolean trang_thai_dong_phi, Date ngay_nop_phi) {
+        this.danhSachKhoanPhi = danhSachKhoanPhi;
         this.hoKhau = hoKhau;
         this.trang_thai_dong_phi = trang_thai_dong_phi;
         this.ngay_nop_phi = ngay_nop_phi;
+    }
+
+    public DanhSachKhoanPhi getDanhSachKhoanPhi() {
+        return danhSachKhoanPhi;
+    }
+
+    public void setDanhSachKhoanPhi(DanhSachKhoanPhi danhSachKhoanPhi) {
+        this.danhSachKhoanPhi = danhSachKhoanPhi;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getId_khoan_phi() {
-        return id_khoan_phi;
-    }
+
 
     public HoKhau getHoKhau() {
         return hoKhau;

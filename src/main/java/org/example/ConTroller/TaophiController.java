@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.EntityAll.DanhSachKhoanPhi;
+import org.example.Hibernatedao.DanhSachKhoanPhiDao;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -37,7 +38,8 @@ public class TaophiController {
         LocalDate currentDate = LocalDate.now();
         danhSachKhoanPhi.setBat_dau(Date.valueOf(currentDate));
         danhSachKhoanPhi.setKet_thuc(Date.valueOf(hannop.getValue()));
-
+        danhSachKhoanPhi.setGia_tri(Double.parseDouble(sotien.getText()));
+        DanhSachKhoanPhiDao.getInstance().save(danhSachKhoanPhi);
         Stage a = (Stage) sotien.getScene().getWindow();
         a.close();
     }
