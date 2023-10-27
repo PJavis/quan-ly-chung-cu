@@ -18,6 +18,8 @@ public class DanhSachKhoanPhi {
     @Column(name = "loai_khoan_phi")
     private String loaiKhoanPhi;
 
+    private String loai_khoan_phi;
+
     @Column(name = "bat_dau")
     private Date batDau;
 

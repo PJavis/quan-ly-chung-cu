@@ -6,6 +6,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.EntityAll.DanhSachKhoanPhi;
+import org.example.Hibernatedao.DanhSachKhoanPhiDao;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -37,6 +38,9 @@ public class TaophiController {
         danhSachKhoanPhi.setBatDau(Date.valueOf(currentDate));
         danhSachKhoanPhi.setKetThuc(Date.valueOf(hannop.getValue()));
 
+
+        danhSachKhoanPhi.setGiaTri(Double.parseDouble(sotien.getText()));
+        DanhSachKhoanPhiDao.getInstance().save(danhSachKhoanPhi);
         Stage a = (Stage) sotien.getScene().getWindow();
         a.close();
     }
