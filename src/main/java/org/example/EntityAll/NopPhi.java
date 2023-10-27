@@ -59,4 +59,12 @@ public class NopPhi {
     public void setTrang_thai_dong_phi(boolean trang_thai_dong_phi) {
         this.trang_thai_dong_phi = trang_thai_dong_phi;
     }
+
+    public Date getNgay_nop_phi() {
+        return ngay_nop_phi;
+    }
+
+    public void setNgay_nop_phi(Date ngay_nop_phi) {
+        this.ngay_nop_phi = ngay_nop_phi;
+    }
 }

@@ -18,6 +18,8 @@ public class DanhSachKhoanPhi {
     @Column(name = "loai_khoan_phi")
     private String loai_khoan_phi;
 
+
+
     @Column(name = "bat_dau")
     private Date bat_dau;
 
@@ -66,6 +68,8 @@ public class DanhSachKhoanPhi {
     public void setLoai_khoan_phi(String loai_khoan_phi) {
         this.loai_khoan_phi = loai_khoan_phi;
     }
+
+
 
     public Date getBat_dau() {
         return bat_dau;

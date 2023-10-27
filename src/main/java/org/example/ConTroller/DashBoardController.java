@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -71,9 +73,12 @@ public class DashBoardController {
             Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Dieuchinh.fxml"));
             Parent root = loader.load();
+            TabPane newTabPane = (TabPane) root.lookup("#tabpanedieuchinh");
+            Tab desiredTab = newTabPane.getTabs().get(0);
             Scene scene = new Scene(root);
             ag0r1.setScene(scene);
             ag0r1.show();
+            newTabPane.getSelectionModel().select(desiredTab);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -82,24 +87,50 @@ public class DashBoardController {
     @FXML
     void thongkecackhoanphi(ActionEvent event) {
         try {
-            Stage ag0r1 =(Stage) tracuu.getScene().getWindow();
+            Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/org.example/Thongke.fxml"));
+            TabPane newTabPane = (TabPane) root.lookup("#tabpanethongke");
+            Tab desiredTab = newTabPane.getTabs().get(0);
             Scene scene = new Scene(root);
             ag0r1.setScene(scene);
             ag0r1.show();
+            newTabPane.getSelectionModel().select(desiredTab);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
     @FXML
     void thongkephong(ActionEvent event) {
+        try {
+            Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/org.example/Thongke.fxml"));
+            TabPane newTabPane = (TabPane) root.lookup("#tabpanethongke");
+            Tab desiredTab = newTabPane.getTabs().get(2);
+            Scene scene = new Scene(root);
+            ag0r1.setScene(scene);
+            ag0r1.show();
+            newTabPane.getSelectionModel().select(desiredTab);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
     @FXML
     void thongkethaydoi(ActionEvent event) {
-
+        try {
+            Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/org.example/Thongke.fxml"));
+            TabPane newTabPane = (TabPane) root.lookup("#tabpanethongke");
+            Tab desiredTab = newTabPane.getTabs().get(1);
+            Scene scene = new Scene(root);
+            ag0r1.setScene(scene);
+            ag0r1.show();
+            newTabPane.getSelectionModel().select(desiredTab);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean istracuu = false;
