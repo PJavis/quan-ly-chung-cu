@@ -48,8 +48,17 @@ public class NopPhi {
     public HoKhau getHoKhau() {
         return hoKhau;
     }
+
     public void setHoKhau(HoKhau hoKhau) {
         this.hoKhau = hoKhau;
+    }
+
+    public Date getNgayNopPhi() {
+        return ngayNopPhi;
+    }
+
+    public void setNgayNopPhi(Date ngayNopPhi) {
+        this.ngayNopPhi = ngayNopPhi;
     }
 
     public boolean isTrangThaiDongPhi() {
@@ -60,11 +69,4 @@ public class NopPhi {
         this.trangThaiDongPhi = trangThaiDongPhi;
     }
 
-    public Date getNgay_nop_phi() {
-        return ngay_nop_phi;
-    }
-
-    public void setNgay_nop_phi(Date ngay_nop_phi) {
-        this.ngay_nop_phi = ngay_nop_phi;
-    }
 }

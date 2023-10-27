@@ -38,9 +38,8 @@ public class TaophiController {
         danhSachKhoanPhi.setBatDau(Date.valueOf(currentDate));
         danhSachKhoanPhi.setKetThuc(Date.valueOf(hannop.getValue()));
 
-        danhSachKhoanPhi.setBat_dau(Date.valueOf(currentDate));
-        danhSachKhoanPhi.setKet_thuc(Date.valueOf(hannop.getValue()));
-        danhSachKhoanPhi.setGia_tri(Double.parseDouble(sotien.getText()));
+
+        danhSachKhoanPhi.setGiaTri(Double.parseDouble(sotien.getText()));
         DanhSachKhoanPhiDao.getInstance().save(danhSachKhoanPhi);
         Stage a = (Stage) sotien.getScene().getWindow();
         a.close();
