@@ -43,7 +43,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutY="46.0" prefHeight="704.0" prefWidth="832.0">
+      <Pane fx:id="leftpane" layoutY="46.0" prefHeight="704.0" prefWidth="832.0">
          <children>
             <Pane fx:id="bangthongke" prefHeight="704.0" prefWidth="213.0">
           <children>
