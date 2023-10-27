@@ -1,13 +1,10 @@
-.root {
-    -fx-background-color: white;
-}
 .label{
     -fx-font-size: 20px;
     -fx-text-fill: black;
     -fx-font-weight: bold;
     -fx-alignment: center;
 }
-.toppane{
+#toppane{
     -fx-min-width: 0;
     -fx-min-height: 0;
     -fx-pref-width: 100%;
@@ -15,12 +12,9 @@
     -fx-background-color: #fff;
     -fx-border-style: none;
 }
-.leftpane {
+#leftpane {
     -fx-width: 40px;
     -fx-background-color: black;
-}
-.rightpane {
-    -fx-background-color: white;
 }
 .button {
     -fx-background-color: inherit;
