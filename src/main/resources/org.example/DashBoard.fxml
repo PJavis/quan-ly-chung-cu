@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="832.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DashBoardController">
+<AnchorPane prefHeight="750.0" prefWidth="832.0" stylesheets="@css/DashBroad.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DashBoardController">
     <children>
             <Pane prefHeight="46.0" prefWidth="832.0">
          <children>
@@ -63,9 +63,9 @@
                   <content>
                       <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="48.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="60.0" text="Button" />
-                              <Button layoutX="48.0" layoutY="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="60.0" text="Button" />
-                              <Button layoutX="48.0" layoutY="76.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="60.0" text="Button" />
+                              <Button layoutX="48.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="60.0" text="Số người ở hiện tại trong chung cư" />
+                              <Button layoutX="48.0" layoutY="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="60.0" text="Thông tin phòng nào đó???" />
+                              <Button layoutX="48.0" layoutY="76.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="60.0" text="Các khoản phí đóng trong ngày cụ thể" />
                            </children>
                         </Pane>
                   </content>

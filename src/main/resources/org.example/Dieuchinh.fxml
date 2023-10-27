@@ -11,7 +11,7 @@
 
 <Pane prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DieuchinhController">
     <fx:include source="DashBoard.fxml" />
-   <TabPane layoutX="213.0" layoutY="46.0" prefHeight="704.0" prefWidth="619.0" tabClosingPolicy="UNAVAILABLE">
+   <TabPane fx:id="tabpanedieuchinh" layoutX="213.0" layoutY="46.0" prefHeight="704.0" prefWidth="619.0" tabClosingPolicy="UNAVAILABLE">
       <tabs>
          <Tab text="Điều chỉnh các khoản phí">
             <content>
