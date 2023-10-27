@@ -11,20 +11,15 @@ public class HoKhau {
     @Column(name = "dien_tich_phong", columnDefinition = "double precision")
     private double dienTichPhong;
 
-
-    @Column(name = "chu_ho", nullable = false)
-    private String chuHo;
-
     public HoKhau() {
         // Default constructor required by Hibernate
     }
 
     // Constructors, getters, setters, and other methods as needed
 
-    public HoKhau(int id, double dienTichPhong, String chuHo) {
+    public HoKhau(int id, double dienTichPhong) {
         this.id = id;
         this.dienTichPhong = dienTichPhong;
-        this.chuHo = chuHo;
     }
 
     public int getId() {
@@ -41,13 +36,5 @@ public class HoKhau {
 
     public void setDienTichPhong(double dienTichPhong) {
         this.dienTichPhong = dienTichPhong;
-    }
-
-    public String getChuHo() {
-        return chuHo;
-    }
-
-    public void setChuHo(String chuHo) {
-        this.chuHo = chuHo;
     }
 }
