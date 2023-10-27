@@ -15,5 +15,6 @@
       <Label layoutX="325.0" layoutY="229.0" text="Haven't got an account yet?" />
       <Button layoutX="343.0" layoutY="256.0" mnemonicParsing="false" onAction="#dangki" text="Sign up" textFill="#1b1212" />
       <PasswordField layoutX="259.0" layoutY="179.0" promptText="password" />
+      <Button fx:id="home" layoutX="65.0" layoutY="40.0" mnemonicParsing="false" onAction="#vedashboard" text="HOME" />
    </children>
 </AnchorPane>

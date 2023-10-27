@@ -13,43 +13,37 @@ public class NopPhi {
     private int id;
     @ManyToOne
     @JoinColumn(name = "id_khoan_phi", referencedColumnName = "id", nullable = false)
-    private DanhSachKhoanPhi danhSachKhoanPhi;
+    private DanhSachKhoanPhi idKhoanPhi;
 
     @ManyToOne
     @JoinColumn(name = "ho_khau_id", referencedColumnName = "id")
     private HoKhau hoKhau;
 
     @Column(name = "trang_thai_dong_phi")
-    private boolean trang_thai_dong_phi;
+    private boolean trangThaiDongPhi;
 
     @Column(name = "ngay_nop_phi")
-    private Date ngay_nop_phi;
+    private Date ngayNopPhi;
 
 
     public NopPhi() {
         // Default constructor required by Hibernate
     }
 
-    public NopPhi(DanhSachKhoanPhi danhSachKhoanPhi, HoKhau hoKhau, boolean trang_thai_dong_phi, Date ngay_nop_phi) {
-        this.danhSachKhoanPhi = danhSachKhoanPhi;
+    public NopPhi(DanhSachKhoanPhi idKhoanPhi, HoKhau hoKhau, boolean trangThaiDongPhi, Date ngayNopPhi) {
+        this.idKhoanPhi = idKhoanPhi;
         this.hoKhau = hoKhau;
-        this.trang_thai_dong_phi = trang_thai_dong_phi;
-        this.ngay_nop_phi = ngay_nop_phi;
-    }
-
-    public DanhSachKhoanPhi getDanhSachKhoanPhi() {
-        return danhSachKhoanPhi;
-    }
-
-    public void setDanhSachKhoanPhi(DanhSachKhoanPhi danhSachKhoanPhi) {
-        this.danhSachKhoanPhi = danhSachKhoanPhi;
+        this.trangThaiDongPhi = trangThaiDongPhi;
+        this.ngayNopPhi = ngayNopPhi;
     }
 
     public int getId() {
         return id;
     }
 
-
+    public DanhSachKhoanPhi getIdKhoanPhi() {
+        return idKhoanPhi;
+    }
 
     public HoKhau getHoKhau() {
         return hoKhau;
@@ -58,12 +52,12 @@ public class NopPhi {
         this.hoKhau = hoKhau;
     }
 
-    public boolean isTrang_thai_dong_phi() {
-        return trang_thai_dong_phi;
+    public boolean isTrangThaiDongPhi() {
+        return trangThaiDongPhi;
     }
 
-    public void setTrang_thai_dong_phi(boolean trang_thai_dong_phi) {
-        this.trang_thai_dong_phi = trang_thai_dong_phi;
+    public void setTrangThaiDongPhi(boolean trangThaiDongPhi) {
+        this.trangThaiDongPhi = trangThaiDongPhi;
     }
 
     public Date getNgay_nop_phi() {
