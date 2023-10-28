@@ -4,13 +4,14 @@ import org.example.EntityAll.NhanKhau;
 import org.example.Function.Delete;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
+import org.example.Function.SelectByName;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete {
+public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByName<NhanKhau> {
     private SessionFactory sessionFactory;
     private Session session;
     public static NhanKhauDao getInstance() {return new NhanKhauDao(); }
@@ -56,5 +57,20 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<NhanKhau> selectByName(String name) {
+        List<NhanKhau> nhanKhaus;
+        try {
+            sessionFactory = Hibernate.getSessionFactory();
+            session=Hibernate.getSession(sessionFactory);
+            nhanKhaus = session.createQuery("FROM nhanKhau WHERE ten LIKE %name%:name").setParameter("name", name).getResultList();
+            Hibernate.closeSession(session);
+            Hibernate.closeSessionFactory(sessionFactory);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return nhanKhaus;
     }
 }

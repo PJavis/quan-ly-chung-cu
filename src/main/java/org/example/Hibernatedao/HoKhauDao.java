@@ -4,13 +4,14 @@ import org.example.EntityAll.HoKhau;
 import org.example.Function.Delete;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
+import org.example.Function.SelectById;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll {
+public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, SelectById<HoKhau> {
  private SessionFactory sessionFactory = null;
  private  Session session = null;
 
@@ -58,4 +59,18 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll {
         }
     }
 
+    @Override
+    public HoKhau selectById(int id) {
+        HoKhau hoKhau;
+        try {
+            sessionFactory = Hibernate.getSessionFactory();
+            session = Hibernate.getSession(sessionFactory);
+            hoKhau = session.createQuery("FROM HoKhau WHERE id = :id", HoKhau.class).setParameter("id", id).uniqueResult();
+            Hibernate.closeSession(session);
+            Hibernate.closeSessionFactory(sessionFactory);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return hoKhau;
+    }
 }
