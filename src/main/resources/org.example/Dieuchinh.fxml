@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -37,8 +38,8 @@
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                     <Button layoutX="14.0" layoutY="26.0" mnemonicParsing="false" text="Thêm nhân khẩu mới" />
-                     <Button layoutX="510.0" layoutY="86.0" mnemonicParsing="false" text="Tìm" />
+                     <Button layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onAction="#themnhankhaumoi" text="Thêm nhân khẩu mới" />
+                     <Button layoutX="510.0" layoutY="86.0" mnemonicParsing="false" onAction="#tim" text="Tìm" />
                      <GridPane layoutX="14.0" layoutY="69.0" prefHeight="492.0" prefWidth="480.0">
                        <columnConstraints>
                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.5999755859375" minWidth="10.0" prefWidth="173.79998779296875" />
@@ -55,25 +56,26 @@
                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                        </rowConstraints>
                         <children>
-                           <Label text="Nhân khẩu cần điều chỉnh: " />
-                           <TextField prefHeight="26.0" prefWidth="289.0" GridPane.columnIndex="1" />
+                           <Label text="Tên nhân khẩu cần điều chỉnh: " />
+                           <TextField fx:id="tennhankhaucandieuchinh" prefHeight="26.0" prefWidth="289.0" GridPane.columnIndex="1" />
                            <Label text="Tên nhân khẩu: " GridPane.rowIndex="1" />
                            <Label text="Ngày sinh: " GridPane.rowIndex="2" />
                            <Label text="Giới tính: " GridPane.rowIndex="3" />
                            <Label text="Số phòng: " GridPane.rowIndex="4" />
-                           <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                           <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                           <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                           <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                           <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                           <Label text="Chủ hộ:" GridPane.rowIndex="5" />
+                           <TextField fx:id="sophong" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           <TextField fx:id="gioitinh" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           <TextField fx:id="tennhankhau" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           <TextField fx:id="ngaysinh" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            <Label text="Quốc tịch: " GridPane.rowIndex="6" />
-                           <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                           <Label text="Trạng thái: " GridPane.rowIndex="7" />
-                           <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                           <TextField fx:id="quoctich" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                           <Label text="Trạng thái: " GridPane.rowIndex="5" />
+                           <TextField fx:id="trangthai" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           <Label text="Chủ hộ:" GridPane.rowIndex="7" />
+                           <CheckBox fx:id="co" mnemonicParsing="false" text="Có" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         </children>
                      </GridPane>
-                     <Button layoutX="284.0" layoutY="575.0" mnemonicParsing="false" text="Điều chỉnh nhân khẩu" />
+                     <Button layoutX="244.0" layoutY="588.0" mnemonicParsing="false" onAction="#dieuchinhnhankhau" text="Điều chỉnh nhân khẩu" />
+                     <Label fx:id="nhankhauduocdieuchinhthanhcon" layoutX="204.0" layoutY="561.0" text="*Nhân khẩu được điều chỉnh thành công*" />
                   </children></AnchorPane>
             </content>
          </Tab>
@@ -81,7 +83,7 @@
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                     <Button layoutX="14.0" layoutY="23.0" mnemonicParsing="false" text="Thêm phòng mới" />
+                     <Button layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#themphongmoi" text="Thêm phòng mới" />
                      <GridPane layoutX="22.0" layoutY="66.0" prefHeight="214.0" prefWidth="495.0">
                        <columnConstraints>
                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.5999755859375" minWidth="10.0" prefWidth="151.5999755859375" />
