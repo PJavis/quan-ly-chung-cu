@@ -59,13 +59,13 @@
                       </ImageView>
                   </graphic>
               </Button>
-              <TitledPane fx:id="tracuu" expanded="false" layoutX="6.0" layoutY="93.0" onMouseClicked="#tracuu1" text="Tra cứu">
+              <TitledPane fx:id="tracuu" expanded="false" layoutX="6.0" layoutY="94.0" onMouseClicked="#tracuu1" text="Tra cứu">
                   <content>
                       <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="48.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="60.0" text="Số người ở hiện tại trong chung cư" />
-                              <Button layoutX="48.0" layoutY="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="60.0" text="Thông tin phòng nào đó???" />
-                              <Button layoutX="48.0" layoutY="76.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="60.0" text="Các khoản phí đóng trong ngày cụ thể" />
+                              <Button layoutX="-1.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Số người ở hiện tại trong chung cư" />
+                              <Button layoutX="-1.0" layoutY="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Thông tin phòng nào đó???" />
+                              <Button layoutX="1.0" layoutY="76.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Các khoản phí đóng trong ngày cụ thể" />
                            </children>
                         </Pane>
                   </content>

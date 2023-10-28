@@ -57,5 +57,4 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll {
             throw new RuntimeException(e);
         }
     }
-
 }
