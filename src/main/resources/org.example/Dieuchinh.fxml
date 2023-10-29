@@ -21,15 +21,16 @@
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                     <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#taophi" text="Tạo khoản phí mới" />
                      <Label fx:id="chonkhoanphicandieuchinh" layoutX="14.0" layoutY="76.0" text="Chọn khoản phí cần điều chỉnh: " />
                      <ComboBox editable="true" layoutX="209.0" layoutY="71.0" prefHeight="26.0" prefWidth="336.0" promptText="None" />
                      <Label layoutX="14.0" layoutY="147.0" text="Loại khoản phí: " />
                      <Label layoutX="14.0" layoutY="205.0" text="Số tiền: " />
                      <TextField layoutX="209.0" layoutY="201.0" />
                      <TextField layoutX="209.0" layoutY="143.0" />
-                     <Button layoutX="138.0" layoutY="313.0" mnemonicParsing="false" text="Sửa khoản phí" />
-                     <Button layoutX="342.0" layoutY="313.0" mnemonicParsing="false" text="Xóa khoản phí" />
+                     <Button layoutX="138.0" layoutY="313.0" mnemonicParsing="false" text="Điều chỉnh khoản phí" />
+                     <Button layoutX="383.0" layoutY="313.0" mnemonicParsing="false" text="Xóa khoản phí" />
+                     <Label layoutX="114.0" layoutY="288.0" text="Điều chỉnh khoản phí thành công" />
+                     <Label layoutX="359.0" layoutY="288.0" text="Xóa khoản phí thành công" />
                   </children>
                </AnchorPane>
             </content>
@@ -38,7 +39,6 @@
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                     <Button layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onAction="#themnhankhaumoi" text="Thêm nhân khẩu mới" />
                      <Button layoutX="510.0" layoutY="86.0" mnemonicParsing="false" onAction="#tim" text="Tìm" />
                      <GridPane layoutX="14.0" layoutY="69.0" prefHeight="492.0" prefWidth="480.0">
                        <columnConstraints>
@@ -74,8 +74,10 @@
                            <CheckBox fx:id="co" mnemonicParsing="false" text="Có" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         </children>
                      </GridPane>
-                     <Button layoutX="244.0" layoutY="588.0" mnemonicParsing="false" onAction="#dieuchinhnhankhau" text="Điều chỉnh nhân khẩu" />
-                     <Label fx:id="nhankhauduocdieuchinhthanhcon" layoutX="204.0" layoutY="561.0" text="*Nhân khẩu được điều chỉnh thành công*" />
+                     <Button layoutX="159.0" layoutY="589.0" mnemonicParsing="false" onAction="#dieuchinhnhankhau" text="Điều chỉnh nhân khẩu" />
+                     <Label fx:id="nhankhauduocdieuchinhthanhcon" layoutX="121.0" layoutY="561.0" text="Nhân khẩu được điều chỉnh thành công" />
+                     <Button layoutX="419.0" layoutY="589.0" mnemonicParsing="false" text="Xóa nhân khẩu" />
+                     <Label layoutX="395.0" layoutY="561.0" text="Xóa nhân khẩu thành công" />
                   </children></AnchorPane>
             </content>
          </Tab>
@@ -83,7 +85,6 @@
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                     <Button layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#themphongmoi" text="Thêm phòng mới" />
                      <GridPane layoutX="22.0" layoutY="66.0" prefHeight="214.0" prefWidth="495.0">
                        <columnConstraints>
                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.5999755859375" minWidth="10.0" prefWidth="151.5999755859375" />
@@ -104,7 +105,10 @@
                         </children>
                      </GridPane>
                      <Button layoutX="536.0" layoutY="88.0" mnemonicParsing="false" text="Tìm" />
-                     <Button layoutX="284.0" layoutY="23.0" mnemonicParsing="false" text="Điều chỉnh" />
+                     <Button layoutX="132.0" layoutY="312.0" mnemonicParsing="false" text="Điều chỉnh phòng" />
+                     <Button layoutX="407.0" layoutY="312.0" mnemonicParsing="false" text="Xóa phòng" />
+                     <Label layoutX="108.0" layoutY="287.0" text="Điều chỉnh phòng thành công" />
+                     <Label layoutX="383.0" layoutY="287.0" text="Xóa phòng thành công" />
                   </children></AnchorPane>
             </content>
          </Tab>
