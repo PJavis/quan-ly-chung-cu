@@ -1,71 +1,35 @@
 package org.example.ConTroller;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.CheckBox;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import org.example.EntityAll.HoKhau;
+import org.example.Hibernatedao.HoKhauDao;
 
-public class DieuchinhController {
+import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class DieuchinhController implements Initializable {
+
     @FXML
     private Label chonkhoanphicandieuchinh;
-    @FXML
-    void themnhankhaumoi(ActionEvent event) {
-        try {
-            Stage a = (Stage) chonkhoanphicandieuchinh.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Taonhankhau.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage ag0r1=new Stage();
-            ag0r1.setScene(scene);
-            ag0r1.initModality(Modality.APPLICATION_MODAL);
-            ag0r1.initOwner(a);
-            ag0r1.show();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
     @FXML
-    void themphongmoi(ActionEvent event) {
-        try {
-            Stage a = (Stage) chonkhoanphicandieuchinh.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Taophong.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage ag0r1=new Stage();
-            ag0r1.setScene(scene);
-            ag0r1.initModality(Modality.APPLICATION_MODAL);
-            ag0r1.initOwner(a);
-            ag0r1.show();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-    @FXML
-    void taophi(ActionEvent event) {
-        try {
-            Stage a = (Stage) chonkhoanphicandieuchinh.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Taophi.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage ag0r1=new Stage();
-            ag0r1.setScene(scene);
-            ag0r1.initModality(Modality.APPLICATION_MODAL);
-            ag0r1.initOwner(a);
-            ag0r1.show();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
+    private TextField chuho;
 
     @FXML
     private CheckBox co;
+
+    @FXML
+    private TextField dientichphong;
+
+    @FXML
+    private Button dieuchinhphong;
 
     @FXML
     private TextField gioitinh;
@@ -82,6 +46,11 @@ public class DieuchinhController {
     @FXML
     private TextField sophong;
 
+    @FXML
+    private TextField sophongdieuchinhphong;
+
+    @FXML
+    private TabPane tabpanedieuchinh;
 
     @FXML
     private TextField tennhankhau;
@@ -93,15 +62,65 @@ public class DieuchinhController {
     private TextField trangthai;
 
     @FXML
+    private Button xoaphong;
+
+    @FXML
     void dieuchinhnhankhau(ActionEvent event) {
 
     }
 
-
-
     @FXML
-    void tim(ActionEvent event) {
+    void timnhankhau(ActionEvent event) {
 
     }
+    @FXML
+    private Label khongtimthayphong;
 
+    @FXML
+    void timphong(ActionEvent event) {
+        HoKhau hoKhau=HoKhauDao.getInstance().selectById(Integer.parseInt(sophongdieuchinhphong.getText()));
+        if(hoKhau==null)khongtimthayphong.setVisible(true);
+        else {
+            khongtimthayphong.setVisible(false);
+            dientichphong.setText(String.valueOf(hoKhau.getDienTichPhong()));
+        }
+
+    }
+    @FXML
+    void listviewsophong(MouseEvent event) {
+        String selectedItem = listviewsophong.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            sophongdieuchinhphong.setText(selectedItem);
+            listviewsophong.setVisible(false);
+        }
+    }
+    @FXML
+    private ListView<String> listviewsophong;
+   private  List<HoKhau>tenphong= HoKhauDao.getInstance().selectAll();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        String []a=new String[tenphong.size()];
+        for(int i=0;i<a.length;i++){
+            a[i]= String.valueOf(tenphong.get(i).getId());
+        }
+        sophongdieuchinhphong.textProperty().addListener((observable, oldValue, newValue) -> {
+            String input = sophongdieuchinhphong.getText().toLowerCase();
+            if (input.isEmpty()) {
+                listviewsophong.getItems().clear();
+                listviewsophong.setVisible(false);
+            } else {
+                // Lọc các từ gợi ý dựa trên input của người dùng
+                String[] filteredSuggestions =
+                        Arrays.stream(a).filter(s -> s.toLowerCase().startsWith(input)).toArray(String[]::new);
+
+                listviewsophong.setItems(FXCollections.observableArrayList(filteredSuggestions));
+
+                // Hiển thị danh sách gợi ý
+
+                listviewsophong.setVisible(true);
+            }
+        });
+
+    }
 }
