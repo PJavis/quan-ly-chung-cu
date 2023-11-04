@@ -42,42 +42,47 @@ public class LoginController {
         stage2.setScene(scene2);
         stage2.show();
     }
-    public TextField txtusername;
-    public PasswordField txt_hide_Password;
-    public TextField txt_show_passwod;
-    public ImageView lbl_open_eye;
-    public ImageView lbl_close_eye;
+    @FXML
+    private TextField tendangnhap;
+    @FXML
+    private PasswordField hide_password;
+    @FXML
+    private TextField show_password;
+    @FXML
+    private ImageView open_eye_action;
+    @FXML
+    private ImageView close_eye_action;
     String password;
     @FXML
     public  void initialize(){
-        txt_show_passwod.setVisible(false);
-        lbl_open_eye.setVisible(false);
+        show_password.setVisible(false);
+        open_eye_action.setVisible(false);
     }
     @FXML
-    public void hidePasswordOnAction(KeyEvent keyEvent) {
-        password=txt_hide_Password.getText();
-        txt_show_passwod.setText(password);
+    public void hidepassword(KeyEvent keyEvent) {
+        password= hide_password.getText();
+        show_password.setText(password);
 
     }
     @FXML
-    public void showPasswordOnAction(KeyEvent keyEvent) {
-        password=txt_show_passwod.getText();
-        txt_hide_Password.setText(password);
+    public void showpassword(KeyEvent keyEvent) {
+        password= show_password.getText();
+        hide_password.setText(password);
     }
     @FXML
-    public void open_Eye_ClickOnAction(MouseEvent mouseEvent) {
-        txt_show_passwod.setVisible(false);
-        lbl_open_eye.setVisible(false);
-        lbl_close_eye.setVisible(true);
-        txt_hide_Password.setVisible(true);
+    public void momat(MouseEvent mouseEvent) {
+        show_password.setVisible(false);
+        open_eye_action.setVisible(false);
+        close_eye_action.setVisible(true);
+        hide_password.setVisible(true);
 
     }
     @FXML
-    public void close_Eye_Click_OnAction(MouseEvent mouseEvent) {
-        txt_show_passwod.setVisible(true);
-        lbl_open_eye.setVisible(true);
-        lbl_close_eye.setVisible(false);
-        txt_hide_Password.setVisible(false);
+    public void nhammat(MouseEvent mouseEvent) {
+        show_password.setVisible(true);
+        open_eye_action.setVisible(true);
+        close_eye_action.setVisible(false);
+        hide_password.setVisible(false);
     }
 
 }
