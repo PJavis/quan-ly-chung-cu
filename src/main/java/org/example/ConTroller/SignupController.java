@@ -32,7 +32,12 @@ public class SignupController {
     private ImageView open_eye1;
     @FXML
     private ImageView close_eye1;
+    @FXML
+    private TextField show_pass1;
+    @FXML
+    private PasswordField hide_pass1;
     String password;
+    String password1;
 
     @FXML
     private Button logi1;
@@ -56,6 +61,9 @@ public class SignupController {
     public  void initialize(){
         show_pass.setVisible(false);
         open_eye.setVisible(false);
+        show_pass1.setVisible(false);
+        open_eye1.setVisible(false);
+
     }
     @FXML
     public void hidePasswordOnAction(KeyEvent keyEvent) {
@@ -82,5 +90,32 @@ public class SignupController {
         open_eye.setVisible(true);
         close_eye.setVisible(false);
         hide_pass.setVisible(false);
+    }
+    // pass2
+    @FXML
+    public void hidePasswordOnAction1(KeyEvent keyEvent) {
+        password1=hide_pass1.getText();
+        show_pass1.setText(password1);
+
+    }
+    @FXML
+    public void showPasswordOnAction1(KeyEvent keyEvent) {
+        password1=show_pass1.getText();
+        hide_pass1.setText(password1);
+    }
+    @FXML
+    public void open_Eye_ClickOnAction1(MouseEvent mouseEvent) {
+        show_pass1.setVisible(false);
+        open_eye1.setVisible(false);
+        close_eye1.setVisible(true);
+        hide_pass1.setVisible(true);
+
+    }
+    @FXML
+    public void close_Eye_Click_OnAction1(MouseEvent mouseEvent) {
+        show_pass1.setVisible(true);
+        open_eye1.setVisible(true);
+        close_eye1.setVisible(false);
+        hide_pass1.setVisible(false);
     }
 }
