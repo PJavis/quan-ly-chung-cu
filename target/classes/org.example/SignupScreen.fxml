@@ -18,7 +18,7 @@
             <Image url="@../images/pinocchioooo2.jpg" />
          </image>
       </ImageView>
-      <Pane layoutX="359.0" layoutY="22.0" opacity="0.89" prefHeight="413.0" prefWidth="297.0" style="-fx-background-radius: 20; -fx-background-color: white;">
+      <Pane layoutX="359.0" layoutY="22.0" onKeyReleased="#showPasswordOnAction1" opacity="0.89" prefHeight="413.0" prefWidth="297.0" style="-fx-background-radius: 20; -fx-background-color: white;">
          <children>
             <ImageView fitHeight="96.0" fitWidth="117.0" layoutX="95.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -74,16 +74,17 @@
                   <Image url="@../images/lookicon.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="close_eye1" fitHeight="19.0" fitWidth="24.0" layoutX="265.0" layoutY="244.0" onMouseClicked="#close_Eye_Click_OnAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="close_eye1" fitHeight="19.0" fitWidth="24.0" layoutX="265.0" layoutY="244.0" onMouseClicked="#close_Eye_Click_OnAction1" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/closeeye.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="open_eye1" fitHeight="19.0" fitWidth="24.0" layoutX="265.0" layoutY="244.0" onMouseClicked="#open_Eye_ClickOnAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="open_eye1" fitHeight="19.0" fitWidth="24.0" layoutX="265.0" layoutY="242.0" onMouseClicked="#open_Eye_ClickOnAction1" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/open_eye.png" />
                </image>
             </ImageView>
+            <PasswordField fx:id="hide_pass1" layoutX="38.0" layoutY="241.0" onKeyReleased="#hidePasswordOnAction1" prefHeight="25.0" prefWidth="221.0" />
          </children></Pane>
       <Button fx:id="returnhome" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnlogin" prefHeight="27.0" prefWidth="107.0" style="-fx-background-radius: 40; -fx-background-color: red;" text="Home" textFill="#fcf6f6">
          <font>
