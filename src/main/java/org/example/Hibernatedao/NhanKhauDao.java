@@ -1,6 +1,5 @@
 package org.example.Hibernatedao;
 
-import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
 import org.example.Function.*;
 import org.hibernate.Session;
@@ -101,4 +100,20 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
         return nhanKhau;
 
     }
+
+    public NhanKhau selectChuHoById(int id) {
+        NhanKhau nhanKhau;
+        try {
+            sessionFactory = Hibernate.getSessionFactory();
+            session = Hibernate.getSession(sessionFactory);
+            nhanKhau = session.createQuery("FROM NhanKhau WHERE ho_khau_id = :id", NhanKhau.class).setParameter("id", id).uniqueResult();
+            Hibernate.closeSession(session);
+            Hibernate.closeSessionFactory(sessionFactory);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return nhanKhau;
+
+    }
+
 }

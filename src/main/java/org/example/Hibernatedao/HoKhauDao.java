@@ -1,6 +1,7 @@
 package org.example.Hibernatedao;
 
 import org.example.EntityAll.HoKhau;
+import org.example.EntityAll.NhanKhau;
 import org.example.Function.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -85,5 +86,8 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
         }
     }
 
-
+    public NhanKhau layChuHo(HoKhau hoKhau) {
+        NhanKhau nhanKhau= NhanKhauDao.getInstance().selectChuHoById(hoKhau.getId());
+        return nhanKhau;
+    }
 }

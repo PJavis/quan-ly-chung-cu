@@ -12,7 +12,7 @@ public class NhanKhau {
     @Column(name = "id_nguoi_dan")
     private int idNguoiDan;
 
-    @Column(name = "ten", nullable = false, length = 255)
+    @Column(name = "ten", nullable = false)
     private String ten;
 
     @Column(name = "ngay_sinh", nullable = false)
@@ -115,6 +115,4 @@ public class NhanKhau {
     public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
     }
-
-
 }
