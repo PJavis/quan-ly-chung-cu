@@ -106,7 +106,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
-            nhanKhau = session.createQuery("FROM NhanKhau WHERE ho_khau_id = :id", NhanKhau.class).setParameter("id", id).uniqueResult();
+            nhanKhau = session.createQuery("FROM NhanKhau WHERE ho_khau_id = :id AND chu_ho = TRUE", NhanKhau.class).setParameter("id", id).uniqueResult();
             Hibernate.closeSession(session);
             Hibernate.closeSessionFactory(sessionFactory);
         } catch (Exception e) {
