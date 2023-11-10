@@ -7,7 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import org.example.EntityAll.HoKhau;
+import org.example.EntityAll.NhanKhau;
 import org.example.Hibernatedao.HoKhauDao;
+import org.example.Hibernatedao.NhanKhauDao;
 
 import java.net.URL;
 import java.util.Arrays;
@@ -75,14 +77,18 @@ public class DieuchinhController implements Initializable {
     }
     @FXML
     private Label khongtimthayphong;
+    private HoKhau hoKhau=new HoKhau();
+    private NhanKhau nhanKhau=new NhanKhau();
 
     @FXML
     void timphong(ActionEvent event) {
-        HoKhau hoKhau=HoKhauDao.getInstance().selectById(Integer.parseInt(sophongdieuchinhphong.getText()));
+        hoKhau=HoKhauDao.getInstance().selectById(Integer.parseInt(sophongdieuchinhphong.getText()));
         if(hoKhau==null)khongtimthayphong.setVisible(true);
         else {
+            nhanKhau= NhanKhauDao.getInstance().selectById(hoKhau.getId());
             khongtimthayphong.setVisible(false);
             dientichphong.setText(String.valueOf(hoKhau.getDienTichPhong()));
+            chuho.setText(nhanKhau.getTen());
         }
 
     }
@@ -97,7 +103,17 @@ public class DieuchinhController implements Initializable {
     @FXML
     private ListView<String> listviewsophong;
    private  List<HoKhau>tenphong= HoKhauDao.getInstance().selectAll();
+    @FXML
+    void dieuchinhphong(ActionEvent event) {
+hoKhau.setId(Integer.parseInt(sophongdieuchinhphong.getText()));
+hoKhau.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
+HoKhauDao.getInstance().update(hoKhau);
 
+    }
+    @FXML
+    void xoaphong(ActionEvent event) {
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String []a=new String[tenphong.size()];

@@ -4,13 +4,14 @@ import org.example.EntityAll.DanhSachKhoanPhi;
 import org.example.Function.Delete;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
+import org.example.Function.Update;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, SelectAll {
+public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, SelectAll, Update<DanhSachKhoanPhi> {
     private SessionFactory sessionFactory = null;
     private Session session = null;
     public static DanhSachKhoanPhiDao getInstance() {return new DanhSachKhoanPhiDao();}
@@ -60,5 +61,19 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
             throw new RuntimeException(e);
         }
         return danhSachKhoanPhis;
+    }
+
+    @Override
+    public void update(DanhSachKhoanPhi danhSachKhoanPhi) {
+        try {
+            sessionFactory=Hibernate.getSessionFactory();
+            session=Hibernate.getSession(sessionFactory);
+            session.update(danhSachKhoanPhi);
+            Hibernate.closeSession(session);
+            Hibernate.closeSessionFactory(sessionFactory);
+        } catch (Exception e) {
+            System.out.println("Luu ho khau co loi");
+            throw new RuntimeException(e);
+        }
     }
 }

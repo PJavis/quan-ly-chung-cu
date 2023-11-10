@@ -116,8 +116,8 @@
                         </children>
                      </GridPane>
                      <Button layoutX="536.0" layoutY="65.0" mnemonicParsing="false" onAction="#timphong" text="Tìm" />
-                     <Button fx:id="dieuchinhphong" layoutX="132.0" layoutY="312.0" mnemonicParsing="false" text="Điều chỉnh phòng" />
-                     <Button layoutX="407.0" layoutY="312.0" mnemonicParsing="false" text="Xóa phòng" fx:id="xoaphong" />
+                     <Button layoutX="132.0" layoutY="312.0" mnemonicParsing="false" onAction="#dieuchinhphong" text="Điều chỉnh phòng" />
+                     <Button layoutX="407.0" layoutY="312.0" mnemonicParsing="false" onAction="#xoaphong" text="Xóa phòng" />
                      <Label layoutX="108.0" layoutY="287.0" text="Điều chỉnh phòng thành công" />
                      <Label layoutX="383.0" layoutY="287.0" text="Xóa phòng thành công" />
                      <Label fx:id="khongtimthayphong" layoutX="176.0" layoutY="47.0" text="Không tìm thấy phòng" visible="false" />

@@ -1,17 +1,14 @@
 package org.example.Hibernatedao;
 
 import org.example.EntityAll.HoKhau;
-import org.example.Function.Delete;
-import org.example.Function.Save;
-import org.example.Function.SelectAll;
-import org.example.Function.SelectById;
+import org.example.Function.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, SelectById<HoKhau> {
+public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau>,SelectById<HoKhau> {
  private SessionFactory sessionFactory = null;
  private  Session session = null;
 
@@ -59,7 +56,7 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, SelectById<Ho
         }
     }
 
-    @Override
+
     public HoKhau selectById(int id) {
         HoKhau hoKhau;
         try {
@@ -73,4 +70,20 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, SelectById<Ho
         }
         return hoKhau;
     }
+
+    @Override
+    public void update(HoKhau hoKhau) {
+        try {
+            sessionFactory=Hibernate.getSessionFactory();
+            session=Hibernate.getSession(sessionFactory);
+            session.update(hoKhau);
+            Hibernate.closeSession(session);
+            Hibernate.closeSessionFactory(sessionFactory);
+        } catch (Exception e) {
+            System.out.println("Luu ho khau co loi");
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

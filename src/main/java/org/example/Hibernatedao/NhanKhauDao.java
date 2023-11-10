@@ -1,17 +1,15 @@
 package org.example.Hibernatedao;
 
+import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
-import org.example.Function.Delete;
-import org.example.Function.Save;
-import org.example.Function.SelectAll;
-import org.example.Function.SelectByName;
+import org.example.Function.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByName<NhanKhau> {
+public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByName<NhanKhau>, Update<NhanKhau>,SelectById<NhanKhau> {
     private SessionFactory sessionFactory;
     private Session session;
     public static NhanKhauDao getInstance() {return new NhanKhauDao(); }
@@ -72,5 +70,35 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
             throw new RuntimeException(e);
         }
         return nhanKhaus;
+    }
+
+    @Override
+    public void update(NhanKhau nhanKhau) {
+        try {
+            sessionFactory=Hibernate.getSessionFactory();
+            session=Hibernate.getSession(sessionFactory);
+            session.update(nhanKhau);
+            Hibernate.closeSession(session);
+            Hibernate.closeSessionFactory(sessionFactory);
+        } catch (Exception e) {
+            System.out.println("Luu ho khau co loi");
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public NhanKhau selectById(int id) {
+        NhanKhau nhanKhau;
+        try {
+            sessionFactory = Hibernate.getSessionFactory();
+            session = Hibernate.getSession(sessionFactory);
+            nhanKhau = session.createQuery("FROM NhanKhau WHERE id = :id", NhanKhau.class).setParameter("id", id).uniqueResult();
+            Hibernate.closeSession(session);
+            Hibernate.closeSessionFactory(sessionFactory);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return nhanKhau;
+
     }
 }

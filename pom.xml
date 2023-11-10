@@ -26,29 +26,33 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>6.1.7.Final</version>
+            <version>6.2.0.CR3</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>17.0.6</version>
+            <version>21-ea+17</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>17.0.6</version>
+            <version>21-ea+17</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.27</version> <!-- Replace with the desired version -->
+            <version>8.0.33</version> <!-- Replace with the desired version -->
         </dependency>
         <dependency>
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
             <version>0.9.5.5</version> <!-- Thay phiên bản tùy theo yêu cầu của bạn -->
         </dependency>
-
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.1.2</version> <!-- Thay version bằng phiên bản mới nhất -->
+        </dependency>
     </dependencies>
 
     <build>
