@@ -21,7 +21,7 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll {
             session=Hibernate.getSession(sessionFactory);
             Serializable serializable = (Serializable) session.save(nopPhi);
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
             return (serializable!=null);
         } catch (Exception e) {
             System.out.println("Luu nop phi co loi");
@@ -36,7 +36,7 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll {
             session = Hibernate.getSession(sessionFactory);
             nopPhis = session.createQuery("FROM NopPhi", NopPhi.class).getResultList();
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

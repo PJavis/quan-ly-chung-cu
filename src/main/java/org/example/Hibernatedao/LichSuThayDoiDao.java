@@ -19,7 +19,7 @@ public class LichSuThayDoiDao implements Save<LichSuThayDoi> {
             session=Hibernate.getSession(sessionFactory);
             Serializable serializable= (Serializable) session.save(lichSuThayDoi);
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
             return (serializable!=null);
         } catch (Exception e) {
             System.out.println("Luu lich su thay doi co loi");

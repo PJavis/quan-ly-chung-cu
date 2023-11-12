@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau>,SelectById<HoKhau> {
@@ -23,7 +24,7 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
            session=Hibernate.getSession(sessionFactory);
            Serializable serializable = (Serializable) session.save(hoKhau);
            Hibernate.closeSession(session);
-           Hibernate.closeSessionFactory(sessionFactory);
+
            return (serializable!=null);
        } catch (Exception e) {
            System.out.println("Luu ho khau co loi");
@@ -38,7 +39,7 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
             session = Hibernate.getSession(sessionFactory);
             hoKhaus = session.createQuery("FROM HoKhau", HoKhau.class).getResultList();
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -51,7 +52,7 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
             session = Hibernate.getSession(sessionFactory);
             session.createQuery("DELETE FROM HoKhau WHERE id = :id" ).setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -65,7 +66,7 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
             session = Hibernate.getSession(sessionFactory);
             hoKhau = session.createQuery("FROM HoKhau WHERE id = :id", HoKhau.class).setParameter("id", id).uniqueResult();
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -79,7 +80,7 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
             session=Hibernate.getSession(sessionFactory);
             session.update(hoKhau);
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
         } catch (Exception e) {
             System.out.println("Luu ho khau co loi");
             throw new RuntimeException(e);
@@ -87,7 +88,25 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
     }
 
     public NhanKhau layChuHo(HoKhau hoKhau) {
-        NhanKhau nhanKhau= NhanKhauDao.getInstance().selectChuHoById(hoKhau.getId());
-        return nhanKhau;
+        List<NhanKhau> nhanKhau= NhanKhauDao.getInstance().selectNhanKhauById(hoKhau.getId());
+        NhanKhau out = null;
+        for (NhanKhau n : nhanKhau) {
+            if (n.isChuHo()) {
+                out = n;
+                break;
+            }
+        }
+        return out;
+    }
+
+    public List<NhanKhau> layNhanKhau(HoKhau hoKhau) {
+        List<NhanKhau> nhanKhau= NhanKhauDao.getInstance().selectNhanKhauById(hoKhau.getId());
+        List<NhanKhau> out = new ArrayList<>();
+        for (NhanKhau n : nhanKhau) {
+            if (!n.isChuHo()) {
+                out.add(n);
+            }
+        }
+        return out;
     }
 }
