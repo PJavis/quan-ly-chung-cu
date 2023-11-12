@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAll {
-    private SessionFactory sessionFactory;
+    private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session;
     public static QuanTriChungCuDao getInstance() {return new QuanTriChungCuDao(); }
 

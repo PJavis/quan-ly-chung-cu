@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, SelectAll, Update<DanhSachKhoanPhi> {
-    private SessionFactory sessionFactory = null;
+    private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session = null;
     public static DanhSachKhoanPhiDao getInstance() {return new DanhSachKhoanPhiDao();}
 
@@ -36,7 +36,7 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
     @Override
     public boolean save(DanhSachKhoanPhi danhSachKhoanPhi) {
         try {
-            sessionFactory=Hibernate.getSessionFactory();
+
             session=Hibernate.getSession(sessionFactory);
             Serializable serializable = (Serializable) session.save(danhSachKhoanPhi);
             Hibernate.closeSession(session);
@@ -66,7 +66,7 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
     @Override
     public void update(DanhSachKhoanPhi danhSachKhoanPhi) {
         try {
-            sessionFactory=Hibernate.getSessionFactory();
+
             session=Hibernate.getSession(sessionFactory);
             session.update(danhSachKhoanPhi);
             Hibernate.closeSession(session);

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau>,SelectById<HoKhau> {
- private SessionFactory sessionFactory = null;
+ private SessionFactory sessionFactory = Hibernate.getSessionFactory();
  private  Session session = null;
 
     public static HoKhauDao getInstance() {
@@ -20,7 +20,6 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
 
     public boolean save(HoKhau hoKhau){
        try {
-           sessionFactory=Hibernate.getSessionFactory();
            session=Hibernate.getSession(sessionFactory);
            Serializable serializable = (Serializable) session.save(hoKhau);
            Hibernate.closeSession(session);
@@ -76,7 +75,7 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
     @Override
     public void update(HoKhau hoKhau) {
         try {
-            sessionFactory=Hibernate.getSessionFactory();
+
             session=Hibernate.getSession(sessionFactory);
             session.update(hoKhau);
             Hibernate.closeSession(session);

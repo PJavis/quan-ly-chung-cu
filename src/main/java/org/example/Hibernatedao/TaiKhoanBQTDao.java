@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
-    private SessionFactory sessionFactory;
+    private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session;
     public static TaiKhoanBQTDao getInstance() {return new TaiKhoanBQTDao(); }
 

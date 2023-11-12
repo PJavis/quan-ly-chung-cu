@@ -9,14 +9,14 @@ import java.io.Serializable;
 import java.util.List;
 
 public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByName<NhanKhau>, Update<NhanKhau>,SelectById<NhanKhau> {
-    private SessionFactory sessionFactory;
+    private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session;
     public static NhanKhauDao getInstance() {return new NhanKhauDao(); }
 
     @Override
     public boolean save(NhanKhau nhanKhau) {
         try {
-            sessionFactory=Hibernate.getSessionFactory();
+
             session=Hibernate.getSession(sessionFactory);
             Serializable serializable= (Serializable) session.save(nhanKhau);
             Hibernate.closeSession(session);
@@ -74,7 +74,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
     @Override
     public void update(NhanKhau nhanKhau) {
         try {
-            sessionFactory=Hibernate.getSessionFactory();
+
             session=Hibernate.getSession(sessionFactory);
             session.update(nhanKhau);
             Hibernate.closeSession(session);

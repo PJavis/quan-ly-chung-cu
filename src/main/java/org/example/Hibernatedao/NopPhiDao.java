@@ -10,14 +10,14 @@ import java.io.Serializable;
 import java.util.List;
 
 public class NopPhiDao implements Save<NopPhi>, SelectAll {
-    private SessionFactory sessionFactory = null;
+    private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session = null;
     public static NopPhiDao getInstance() {return  new NopPhiDao();}
 
     @Override
     public boolean save(NopPhi nopPhi) {
         try {
-            sessionFactory=Hibernate.getSessionFactory();
+
             session=Hibernate.getSession(sessionFactory);
             Serializable serializable = (Serializable) session.save(nopPhi);
             Hibernate.closeSession(session);
