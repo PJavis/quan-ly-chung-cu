@@ -12,7 +12,7 @@
     -fx-min-height: 0;
     -fx-pref-width: 100%;
     -fx-pref-height: 100%;
-    -fx-background-color: orange;
+    -fx-background-color: white;
     -fx-border-style: none;
 }
 #leftpane {
@@ -39,11 +39,11 @@
     -fx-background-color: inherit;
     -fx-text-fill: white;
     -fx-font-size: 10px;
-    -fx-padding: 10px 12px;
+    -fx-padding: 5px 5px;
 }
 .titlepane .title {
     -fx-text-fill: white;
-    -fx-padding: 10px 12px;
+    -fx-padding: 5px 5px;
 }
 .titlepane: hover {
     -fx-background-color: #716d6d;
