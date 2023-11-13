@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
-    private SessionFactory sessionFactory;
+    private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session;
     public static TaiKhoanBQTDao getInstance() {return new TaiKhoanBQTDao(); }
 
@@ -22,7 +22,7 @@ public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
             session = Hibernate.getSession(sessionFactory);
             Serializable serializable = (Serializable) session.save(taiKhoanBQT);
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
             return (serializable!=null);
         } catch (Exception e) {
             System.out.println("Luu tai khoan ban quan tri co loi");
@@ -38,7 +38,7 @@ public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
             session=Hibernate.getSession(sessionFactory);
             taiKhoanBQTS = session.createQuery("FROM TaiKhoanBQT", TaiKhoanBQT.class).getResultList();
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -52,7 +52,7 @@ public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
             session = Hibernate.getSession(sessionFactory);
             session.createQuery("DELETE FROM TaiKhoanBQT "  + "WHERE id = :id").setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
