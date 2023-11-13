@@ -19,6 +19,9 @@
     -fx-width: 40px;
     -fx-background-color: black;
 }
+#rightpane {
+    -fx-background-color: white;
+}
 .button {
     -fx-background-color: inherit;
     -fx-border-style: none;
