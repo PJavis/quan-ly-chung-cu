@@ -30,7 +30,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
     }
 
     @Override
-    public List<?> selectAll() {
+    public List<NhanKhau> selectAll() {
         List<NhanKhau> nhanKhaus;
         try {
             sessionFactory = Hibernate.getSessionFactory();

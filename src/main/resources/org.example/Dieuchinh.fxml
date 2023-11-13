@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
@@ -13,7 +14,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 
 <Pane prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DieuchinhController">
     <fx:include source="DashBoard.fxml" />
@@ -87,40 +87,43 @@
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                     <GridPane layoutX="22.0" layoutY="66.0" prefHeight="214.0" prefWidth="495.0">
-                       <columnConstraints>
-                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.5999755859375" minWidth="10.0" prefWidth="151.5999755859375" />
-                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.6000061035156" minWidth="10.0" prefWidth="343.6000244140625" />
-                       </columnConstraints>
-                       <rowConstraints>
-                         <RowConstraints maxHeight="119.4" minHeight="0.0" prefHeight="81.20000610351562" vgrow="SOMETIMES" />
-                         <RowConstraints maxHeight="142.8" minHeight="10.0" prefHeight="89.79999389648438" vgrow="SOMETIMES" />
-                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                       </rowConstraints>
-                        <children>
-                           <Label text="Diện tích phòng: " GridPane.rowIndex="1" />
-                           <TextField fx:id="dientichphong" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                           <Label text="Chủ hộ: " GridPane.rowIndex="2" />
-                           <TextField fx:id="chuho" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                           <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
-                              <children>
-                                 <TextField fx:id="sophongdieuchinhphong" />
-                                 <ListView fx:id="listviewsophong" onMouseClicked="#listviewsophong" prefHeight="200.0" prefWidth="200.0" visible="false" />
-                              </children>
-                           </VBox>
-                           <Pane prefHeight="200.0" prefWidth="200.0">
-                              <children>
-                                 <Label layoutY="3.0" text="Số phòng: " />
-                              </children>
-                           </Pane>
-                        </children>
-                     </GridPane>
-                     <Button layoutX="536.0" layoutY="65.0" mnemonicParsing="false" onAction="#timphong" text="Tìm" />
-                     <Button layoutX="132.0" layoutY="312.0" mnemonicParsing="false" onAction="#dieuchinhphong" text="Điều chỉnh phòng" />
-                     <Button layoutX="407.0" layoutY="312.0" mnemonicParsing="false" onAction="#xoaphong" text="Xóa phòng" />
-                     <Label layoutX="108.0" layoutY="287.0" text="Điều chỉnh phòng thành công" />
-                     <Label layoutX="383.0" layoutY="287.0" text="Xóa phòng thành công" />
+                     <ListView fx:id="listviewsophong" layoutX="200.0" layoutY="103.0" onMouseClicked="#listviewsophong" prefHeight="75.0" prefWidth="274.0" visible="false" />
+                     <Button layoutX="481.0" layoutY="78.0" mnemonicParsing="false" onAction="#timphong" text="Tìm" />
+                     <Button layoutX="119.0" layoutY="613.0" mnemonicParsing="false" onAction="#dieuchinhphong" text="Điều chỉnh phòng" />
+                     <Button layoutX="407.0" layoutY="613.0" mnemonicParsing="false" onAction="#xoaphong" text="Xóa phòng" />
+                     <Label layoutX="95.0" layoutY="594.0" text="Điều chỉnh phòng thành công" />
+                     <Label layoutX="383.0" layoutY="594.0" text="Xóa phòng thành công" />
                      <Label fx:id="khongtimthayphong" layoutX="176.0" layoutY="47.0" text="Không tìm thấy phòng" visible="false" />
+                     <TextField fx:id="chuho" layoutX="200.0" layoutY="226.0" prefHeight="26.0" prefWidth="275.0" />
+                     <Label layoutX="42.0" layoutY="230.0" text="Chủ hộ: " />
+                     <Label layoutX="42.0" layoutY="182.0" prefWidth="91.0" text="Diện tích phòng: " />
+                     <TextField fx:id="dientichphong" layoutX="200.0" layoutY="178.0" prefHeight="26.0" prefWidth="273.0" />
+                     <Label layoutX="42.0" layoutY="82.0" text="Số phòng: " />
+                     <TextField fx:id="sophongdieuchinhphong" layoutX="200.0" layoutY="78.0" prefHeight="26.0" prefWidth="273.0" />
+                     <ScrollPane hbarPolicy="NEVER" layoutX="42.0" layoutY="275.0" prefHeight="277.0" prefWidth="486.0" vbarPolicy="NEVER">
+                       <content>
+                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="277.0" prefWidth="486.0">
+                              <children>
+                                 <GridPane fx:id="thanhvienphong" layoutX="13.0" prefHeight="91.0" prefWidth="473.0">
+                                   <columnConstraints>
+                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.00001220703126" minWidth="10.0" prefWidth="101.6" />
+                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="322.4" minWidth="10.0" prefWidth="269.6000732421875" />
+                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.59995117187498" minWidth="10.0" prefWidth="101.19992675781248" />
+                                   </columnConstraints>
+                                   <rowConstraints>
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                   </rowConstraints>
+                                    <children>
+                                       <Label text="Số thứ tự" />
+                                       <Label text="Tên thành viên" GridPane.columnIndex="1" />
+                                    </children>
+                                 </GridPane>
+                              </children>
+                           </AnchorPane>
+                       </content>
+                     </ScrollPane>
                   </children></AnchorPane>
             </content>
          </Tab>

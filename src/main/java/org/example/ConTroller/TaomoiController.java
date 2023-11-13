@@ -3,10 +3,7 @@ package org.example.ConTroller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.example.EntityAll.DanhSachKhoanPhi;
 import org.example.EntityAll.HoKhau;
@@ -34,6 +31,14 @@ public class TaomoiController implements Initializable {
 
     @FXML
     private CheckBox co;
+    @FXML
+    private Label labeltaomoinhankhau;
+
+    @FXML
+    private Label labeltaomoiphi;
+
+    @FXML
+    private Label labeltaomoiphong;
 
     @FXML
     private TextField dientichphong;
@@ -84,7 +89,7 @@ public class TaomoiController implements Initializable {
         danhSachKhoanPhi.setKetThuc(Date.valueOf(datetime));
         danhSachKhoanPhi.setGiaTri(Double.parseDouble(sotien.getText()));
         DanhSachKhoanPhiDao.getInstance().save(danhSachKhoanPhi);
-
+        labeltaomoiphi.setVisible(true);
     }
 
     @FXML
@@ -103,6 +108,7 @@ public class TaomoiController implements Initializable {
         nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText())));
         nhanKhau.setTrangThai("Đang ở");
         NhanKhauDao.getInstance().save(nhanKhau);
+        labeltaomoinhankhau.setVisible(true);
 
     }
 
@@ -112,6 +118,7 @@ public class TaomoiController implements Initializable {
         hoKhau.setId(Integer.parseInt(sophongtaophong.getText()));
         hoKhau.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
         HoKhauDao.getInstance().save(hoKhau);
+        labeltaomoiphong.setVisible(true);
     }
     private void checkAllFieldsFilled(TextField[] textFields,Button buttontaomoi ) {
         boolean allFilled = true;

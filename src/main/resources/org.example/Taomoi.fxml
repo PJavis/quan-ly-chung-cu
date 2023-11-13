@@ -43,6 +43,7 @@
                                 </children>
                             </GridPane>
                             <Button fx:id="buttontaomoikhoanphi" disable="true" layoutX="280.0" layoutY="356.0" mnemonicParsing="false" onAction="#taomoikhoanphi" text="Tạo mới" />
+                     <Label fx:id="labeltaomoiphi" layoutX="255.0" layoutY="338.0" text="Tạo mới thành công" visible="false" />
 
                         </children>
                     </AnchorPane>
@@ -81,6 +82,7 @@
                                 </children>
                             </GridPane>
                             <Button fx:id="buttontaomoinhankhau" disable="true" layoutX="280.0" layoutY="530.0" mnemonicParsing="false" onAction="#taomoinhankhau" text="Tạo mới" />
+                     <Label fx:id="labeltaomoinhankhau" layoutX="256.0" layoutY="506.0" text="Tạo mới thành công" visible="false" />
 
                         </children></AnchorPane>
                 </content>
@@ -106,6 +108,7 @@
                                 </children>
                             </GridPane>
                             <Button fx:id="buttontaomoiphong" disable="true" layoutX="270.0" layoutY="303.0" mnemonicParsing="false" onAction="#taomoiphong" text="Tạo mới" />
+                     <Label fx:id="labeltaomoiphong" layoutX="246.0" layoutY="279.0" text="Tạo mới thành công" visible="false" />
 
                         </children></AnchorPane>
                 </content>
