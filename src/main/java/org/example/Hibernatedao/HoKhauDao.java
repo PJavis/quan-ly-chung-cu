@@ -1,5 +1,6 @@
 package org.example.Hibernatedao;
 
+import javafx.scene.control.Alert;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
 import org.example.Function.*;
@@ -26,7 +27,9 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
 
            return (serializable!=null);
        } catch (Exception e) {
-           System.out.println("Luu ho khau co loi");
+           Alert alert=new Alert(Alert.AlertType.ERROR);
+           alert.setContentText("Số phòng đã tồn tại");
+           alert.showAndWait();
            throw new RuntimeException(e);
        }
     }

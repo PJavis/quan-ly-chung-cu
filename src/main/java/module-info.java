@@ -5,7 +5,7 @@ module quan.ly.chung.cu {
     requires org.hibernate.orm.core;
     requires java.naming;
     requires jakarta.persistence;
-    requires org.controlsfx.controls;
+
     requires javafx.base;
     exports org.example;
     exports org.example.ConTroller;

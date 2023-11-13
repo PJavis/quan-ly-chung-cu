@@ -1,5 +1,6 @@
 package org.example.Hibernatedao;
 
+import javafx.scene.control.Alert;
 import org.example.EntityAll.NhanKhau;
 import org.example.Function.*;
 import org.hibernate.Session;
@@ -23,7 +24,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
 
             return (serializable!=null);
         } catch (Exception e) {
-            System.out.println("Luu nhan khau co loi");
+
             throw new RuntimeException(e);
         }
     }
@@ -106,7 +107,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
         try {
             sessionFactory = Hibernate.getSessionFactory();
             session = Hibernate.getSession(sessionFactory);
-            nhanKhau = session.createQuery("FROM NhanKhau n WHERE n.hoKhau.id = :id AND n.chuHo = true", NhanKhau.class)
+            nhanKhau = session.createQuery("FROM NhanKhau n WHERE n.hoKhau.id = :id ", NhanKhau.class)
                     .setParameter("id", id)
                     .getResultList();
             Hibernate.closeSession(session);
