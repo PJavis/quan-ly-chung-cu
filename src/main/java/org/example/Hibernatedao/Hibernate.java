@@ -4,11 +4,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 public class Hibernate {
+    private static SessionFactory sessionFactory =  null;
+    static {
+        sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+    }
     public static SessionFactory getSessionFactory() {
-        SessionFactory sessionFactory =  null;
-        if (sessionFactory == null || sessionFactory.isClosed()) {
-            sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        }
         return sessionFactory;
     }
 
