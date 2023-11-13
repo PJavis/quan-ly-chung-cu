@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAll {
-    private SessionFactory sessionFactory;
+    private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session;
     public static QuanTriChungCuDao getInstance() {return new QuanTriChungCuDao(); }
 
@@ -23,7 +23,7 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
             session = Hibernate.getSession(sessionFactory);
             Serializable serializable= (Serializable) session.save(quanTriChungCu);
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
             return (serializable!=null);
         } catch (Exception e) {
             System.out.println("Luu quan tri chung cu co loi");
@@ -39,7 +39,7 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
             session=Hibernate.getSession(sessionFactory);
             quanTriChungCus = session.createQuery("FROM QuanTriChungCu", QuanTriChungCu.class).getResultList();
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -53,7 +53,7 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
             session = Hibernate.getSession(sessionFactory);
             session.createQuery("DELETE FROM QuanTriChungCu "  + "WHERE id = :id").setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);
-            Hibernate.closeSessionFactory(sessionFactory);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

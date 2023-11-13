@@ -47,7 +47,7 @@
          <children>
             <Pane fx:id="bangthongke" prefHeight="704.0" prefWidth="213.0">
           <children>
-              <Button layoutX="5.0" layoutY="14.0" onAction="#home" prefHeight="38.0" prefWidth="160.0" text="Dashboard">
+              <Button layoutX="6.0" layoutY="14.0" onAction="#home" prefHeight="38.0" prefWidth="160.0" text="Dashboard">
                   <font>
                       <Font size="16.0" />
                   </font>
@@ -59,13 +59,22 @@
                       </ImageView>
                   </graphic>
               </Button>
-              <TitledPane fx:id="tracuu" expanded="false" layoutX="6.0" layoutY="93.0" onMouseClicked="#tracuu1" text="Tra cứu">
+              <Button layoutX="6.0" layoutY="53.0" mnemonicParsing="false" onAction="#thuphi1" prefHeight="41.0" prefWidth="120.0" text="Thu phí">
+                  <graphic>
+                      <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/add.png" />
+                          </image>
+                      </ImageView>
+                  </graphic>
+              </Button>
+              <TitledPane fx:id="tracuu" expanded="false" layoutX="6.0" layoutY="94.0" onMouseClicked="#tracuu1" text="Tra cứu">
                   <content>
                       <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="48.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="60.0" text="Button" />
-                              <Button layoutX="48.0" layoutY="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="60.0" text="Button" />
-                              <Button layoutX="48.0" layoutY="76.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="60.0" text="Button" />
+                              <Button layoutX="-1.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Số người ở hiện tại trong chung cư" />
+                              <Button layoutX="-1.0" layoutY="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Thông tin phòng nào đó???" />
+                              <Button layoutX="1.0" layoutY="76.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Các khoản phí đóng trong ngày cụ thể" />
                            </children>
                         </Pane>
                   </content>
@@ -77,13 +86,32 @@
                       </ImageView>
                   </graphic>
               </TitledPane>
-              <TitledPane fx:id="dieuchinh" expanded="false" layoutX="6.0" layoutY="173.0" text="Điều chỉnh">
+              <TitledPane fx:id="thongke" expanded="false" layoutX="6.0" layoutY="134.0" onMouseClicked="#thongke1" text="Thống kê">
+                  <content>
+                      <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
+                          <children>
+                              <Button layoutX="23.0" mnemonicParsing="false" onAction="#thongkecackhoanphi" prefHeight="38.0" prefWidth="155.0" text="Thông kê các khoản phí" />
+                              <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#thongkephong" prefHeight="38.0" prefWidth="155.0" text="Thống kê phòng " />
+                              <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#thongkethaydoi" prefHeight="38.0" prefWidth="155.0" text="Thống kê thay đổi" />
+                          </children>
+                      </Pane>
+                  </content>
+                  <graphic>
+                      <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/backup.png" />
+                          </image>
+                      </ImageView>
+                  </graphic>
+              </TitledPane>
+
+              <TitledPane fx:id="dieuchinh" expanded="false" layoutX="6.0" layoutY="174.0" onMouseClicked="#dieuchinh1" text="Điều chỉnh">
                   <content>
                       <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                            <children>
                               <Button layoutX="23.0" mnemonicParsing="false" onAction="#dieuchinhcackhoanphi" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh các khoản phí" />
-                              <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh dân cư" />
-                              <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh phòng " />
+                              <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#dieuchinhdancu" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh dân cư" />
+                              <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#dieuchinhphong" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh phòng " />
                            </children>
                         </Pane>
                   </content>
@@ -95,36 +123,28 @@
                       </ImageView>
                   </graphic>
               </TitledPane>
-                  <TitledPane fx:id="thongke" expanded="false" layoutX="6.0" layoutY="133.0" onMouseClicked="#thongke1" text="Thống kê">
-                     <content>
-                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
+
+                  <TitledPane fx:id="taomoi" expanded="false" layoutX="6.0" layoutY="214.0" text="Tạo mới">
+                    <content>
+                      <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="23.0" mnemonicParsing="false" onAction="#thongkecackhoanphi" prefHeight="38.0" prefWidth="155.0" text="Thông kê các khoản phí" />
-                              <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#thongkephong" prefHeight="38.0" prefWidth="155.0" text="Thống kê phòng " />
-                              <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#thongkethaydoi" prefHeight="38.0" prefWidth="155.0" text="Thống kê thay đổi" />
+                              <Button layoutX="23.0" mnemonicParsing="false" onAction="#taokhoanphimoi" prefHeight="38.0" prefWidth="155.0" text="Tạo khoản phí mới" />
+                              <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#themnhankhaumoi" prefHeight="38.0" prefWidth="155.0" text="Thêm nhân khẩu mới" />
+                              <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#themphongmoi" prefHeight="38.0" prefWidth="155.0" text="Thêm phòng mới" />
                            </children>
                         </Pane>
-                     </content>
+                    </content>
                      <graphic>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/backup.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </TitledPane>
-                  <Button layoutX="6.0" layoutY="53.0" mnemonicParsing="false" onAction="#thuphi1" prefHeight="41.0" prefWidth="120.0" text="Thu phí">
-                     <graphic>
-                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="36.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/add.png" />
                            </image>
                         </ImageView>
                      </graphic>
-                  </Button>
+                  </TitledPane>
               </children>
              </Pane>
-            <Pane fx:id="keodanbang" layoutX="214.0" prefHeight="704.0" prefWidth="619.0" />
+            <Pane fx:id="keodanbang" layoutX="225.0" prefHeight="704.0" prefWidth="619.0" />
          </children></Pane>
     </children>
 </AnchorPane>
