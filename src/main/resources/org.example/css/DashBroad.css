@@ -37,14 +37,16 @@
 }
 .titlepane {
     -fx-background-color: transparent;
+    -fx-border-style: none;
     -fx-text-fill: white;
-    -fx-font-size: 15px;
+    -fx-font-size: 20px;
     -fx-padding: 5px 5px;
 }
-.titlepane .title {
+/*.titlepane .title {
     -fx-text-fill: white;
     -fx-padding: 10px 10px;
 }
+*/
 .titlepane: hover {
     -fx-background-color: #716d6d;
     -fx-text-fill: #df6828;
