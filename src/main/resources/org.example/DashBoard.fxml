@@ -144,7 +144,7 @@
                   </TitledPane>
               </children>
              </Pane>
-            <Pane fx:id="keodanbang" layoutX="225.0" prefHeight="704.0" prefWidth="619.0" />
+            <Pane fx:id="rightpane" layoutX="225.0" prefHeight="704.0" prefWidth="619.0" />
          </children></Pane>
     </children>
 </AnchorPane>
