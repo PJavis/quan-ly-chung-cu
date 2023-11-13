@@ -3,7 +3,7 @@
 }
 .Label{
     -fx-font-size: 20px;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-alignment: center;
 }
@@ -17,7 +17,7 @@
 }
 #leftpane {
     -fx-width: 40px;
-    -fx-background-color: black;
+    -fx-background-color: white;
 }
 #rightpane {
     -fx-background-color: white;
