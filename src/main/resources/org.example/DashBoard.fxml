@@ -15,7 +15,7 @@
     <children>
             <Pane fx:id="toppane" prefHeight="46.0" prefWidth="832.0">
          <children>
-            <Button layoutX="2.0" layoutY="1.0" mnemonicParsing="false" onAction="#hiendashbroad">
+            <Button styleClass="button" layoutX="2.0" layoutY="1.0" mnemonicParsing="false" onAction="#hiendashbroad">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -144,7 +144,7 @@
                   </TitledPane>
               </children>
              </Pane>
-            <Pane fx:id="keodanbang" layoutX="225.0" prefHeight="704.0" prefWidth="619.0" />
+            <Pane fx:id="rightpane" layoutX="225.0" prefHeight="704.0" prefWidth="619.0" />
          </children></Pane>
     </children>
 </AnchorPane>
