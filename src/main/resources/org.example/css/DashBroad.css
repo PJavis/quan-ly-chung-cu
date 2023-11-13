@@ -1,6 +1,7 @@
 .root {
     -fx-background-color: white;
-.label{
+}
+.Label{
     -fx-font-size: 20px;
     -fx-text-fill: black;
     -fx-font-weight: bold;
@@ -17,6 +18,9 @@
 #leftpane {
     -fx-width: 40px;
     -fx-background-color: black;
+}
+#rightpane {
+    -fx-background-color: white;
 }
 .button {
     -fx-background-color: inherit;

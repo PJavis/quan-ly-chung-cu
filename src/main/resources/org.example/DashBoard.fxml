@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="750.0" prefWidth="832.0" stylesheets="@css/DashBroad.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DashBoardController">
     <children>
-            <Pane prefHeight="46.0" prefWidth="832.0">
+            <Pane fx:id="toppane" prefHeight="46.0" prefWidth="832.0">
          <children>
             <Button layoutX="2.0" layoutY="1.0" mnemonicParsing="false" onAction="#hiendashbroad">
                <graphic>
@@ -43,7 +43,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutY="46.0" prefHeight="704.0" prefWidth="832.0">
+      <Pane fx:id="leftpane" layoutY="46.0" prefHeight="704.0" prefWidth="832.0">
          <children>
             <Pane fx:id="bangthongke" prefHeight="704.0" prefWidth="213.0">
           <children>
