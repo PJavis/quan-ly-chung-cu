@@ -1,6 +1,5 @@
 package org.example.Hibernatedao;
 
-import javafx.scene.control.Alert;
 import org.example.EntityAll.NhanKhau;
 import org.example.Function.*;
 import org.hibernate.Session;
@@ -63,7 +62,9 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
         try {
 
             session=Hibernate.getSession(sessionFactory);
-            nhanKhaus = session.createQuery("FROM nhanKhau WHERE ten LIKE %name%:name").setParameter("name", name).getResultList();
+            nhanKhaus = session.createQuery("FROM NhanKhau n WHERE n.ten LIKE :name", NhanKhau.class)
+                    .setParameter("name", "%" + name + "%")
+                    .getResultList();
             Hibernate.closeSession(session);
 
         } catch (Exception e) {

@@ -78,11 +78,12 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
     public List<DanhSachKhoanPhi> selectByName(String name) {
         List<DanhSachKhoanPhi> danhSachKhoanPhis;
         try {
-
             session=Hibernate.getSession(sessionFactory);
-            danhSachKhoanPhis = session.createQuery("FROM DanhSachKhoanPhi WHERE ten LIKE %name%:name").setParameter("name", name).getResultList();
+            danhSachKhoanPhis = session
+                    .createQuery("FROM DanhSachKhoanPhi d WHERE d.tenKhoanPhi LIKE :name", DanhSachKhoanPhi.class)
+                    .setParameter("name", "%" + name + "%")
+                    .getResultList();
             Hibernate.closeSession(session);
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
