@@ -1,17 +1,14 @@
 package org.example.Hibernatedao;
 
 import org.example.EntityAll.DanhSachKhoanPhi;
-import org.example.Function.Delete;
-import org.example.Function.Save;
-import org.example.Function.SelectAll;
-import org.example.Function.Update;
+import org.example.Function.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, SelectAll, Update<DanhSachKhoanPhi> {
+public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, SelectAll, Update<DanhSachKhoanPhi>, SelectByName<DanhSachKhoanPhi> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session = null;
     public static DanhSachKhoanPhiDao getInstance() {return new DanhSachKhoanPhiDao();}
@@ -23,9 +20,9 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
     @Override
     public void delete(int id) {
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session = Hibernate.getSession(sessionFactory);
-            session.createQuery("DELETE FROM DanhSachQuanLy WHERE id = :id" ).setParameter("id", id).executeUpdate();
+            session.createQuery("DELETE FROM DanhSachKhoanPhi WHERE id = :id",DanhSachKhoanPhi.class).setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
@@ -52,9 +49,9 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
     public List<DanhSachKhoanPhi> selectAll() {
         List<DanhSachKhoanPhi> danhSachKhoanPhis;
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session = Hibernate.getSession(sessionFactory);
-            danhSachKhoanPhis = session.createQuery("FROM DanhSachQuanLy", DanhSachKhoanPhi.class).getResultList();
+            danhSachKhoanPhis = session.createQuery("FROM DanhSachKhoanPhi", DanhSachKhoanPhi.class).getResultList();
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
@@ -75,5 +72,20 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
             System.out.println("Luu ho khau co loi");
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<DanhSachKhoanPhi> selectByName(String name) {
+        List<DanhSachKhoanPhi> danhSachKhoanPhis;
+        try {
+
+            session=Hibernate.getSession(sessionFactory);
+            danhSachKhoanPhis = session.createQuery("FROM DanhSachKhoanPhi WHERE ten LIKE %name%:name").setParameter("name", name).getResultList();
+            Hibernate.closeSession(session);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return danhSachKhoanPhis;
     }
 }

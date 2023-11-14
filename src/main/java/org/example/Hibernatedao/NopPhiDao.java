@@ -32,7 +32,7 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll {
     public List<NopPhi> selectAll() {
         List<NopPhi> nopPhis;
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session = Hibernate.getSession(sessionFactory);
             nopPhis = session.createQuery("FROM NopPhi", NopPhi.class).getResultList();
             Hibernate.closeSession(session);

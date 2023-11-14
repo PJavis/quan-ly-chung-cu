@@ -19,7 +19,7 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
     @Override
     public boolean save(QuanTriChungCu quanTriChungCu) {
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session = Hibernate.getSession(sessionFactory);
             Serializable serializable= (Serializable) session.save(quanTriChungCu);
             Hibernate.closeSession(session);
@@ -35,7 +35,7 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
     public List<?> selectAll() {
         List<QuanTriChungCu> quanTriChungCus;
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session=Hibernate.getSession(sessionFactory);
             quanTriChungCus = session.createQuery("FROM QuanTriChungCu", QuanTriChungCu.class).getResultList();
             Hibernate.closeSession(session);
@@ -49,7 +49,7 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
     @Override
     public void delete(int id) {
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session = Hibernate.getSession(sessionFactory);
             session.createQuery("DELETE FROM QuanTriChungCu "  + "WHERE id = :id").setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);

@@ -37,7 +37,7 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
     public List<HoKhau> selectAll() {
         List<HoKhau> hoKhaus;
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session = Hibernate.getSession(sessionFactory);
             hoKhaus = session.createQuery("FROM HoKhau", HoKhau.class).getResultList();
             Hibernate.closeSession(session);
@@ -50,7 +50,7 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
 
     public void delete(int id) {
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session = Hibernate.getSession(sessionFactory);
             session.createQuery("DELETE FROM HoKhau WHERE id = :id" ).setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);
@@ -64,7 +64,7 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
     public HoKhau selectById(int id) {
         HoKhau hoKhau;
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session = Hibernate.getSession(sessionFactory);
             hoKhau = session.createQuery("FROM HoKhau WHERE id = :id", HoKhau.class).setParameter("id", id).uniqueResult();
             Hibernate.closeSession(session);

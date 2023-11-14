@@ -33,7 +33,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
     public List<NhanKhau> selectAll() {
         List<NhanKhau> nhanKhaus;
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session=Hibernate.getSession(sessionFactory);
             nhanKhaus = session.createQuery("FROM NhanKhau", NhanKhau.class).getResultList();
             Hibernate.closeSession(session);
@@ -47,7 +47,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
     @Override
     public void delete(int id) {
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session = Hibernate.getSession(sessionFactory);
             session.createQuery("DELETE FROM NhanKhau "  + "WHERE id = :id").setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);
@@ -61,7 +61,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
     public List<NhanKhau> selectByName(String name) {
         List<NhanKhau> nhanKhaus;
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session=Hibernate.getSession(sessionFactory);
             nhanKhaus = session.createQuery("FROM nhanKhau WHERE ten LIKE %name%:name").setParameter("name", name).getResultList();
             Hibernate.closeSession(session);
@@ -90,7 +90,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
     public NhanKhau selectById(int id) {
         NhanKhau nhanKhau;
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session = Hibernate.getSession(sessionFactory);
             nhanKhau = session.createQuery("FROM NhanKhau WHERE id = :id", NhanKhau.class).setParameter("id", id).uniqueResult();
             Hibernate.closeSession(session);
@@ -105,7 +105,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
     public List<NhanKhau> selectNhanKhauById(int id) {
         List<NhanKhau> nhanKhau = null;
         try {
-            sessionFactory = Hibernate.getSessionFactory();
+
             session = Hibernate.getSession(sessionFactory);
             nhanKhau = session.createQuery("FROM NhanKhau n WHERE n.hoKhau.id = :id ", NhanKhau.class)
                     .setParameter("id", id)
