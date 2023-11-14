@@ -1,21 +1,27 @@
 package org.example.ConTroller;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import org.example.EntityAll.DanhSachKhoanPhi;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
+import org.example.Hibernatedao.DanhSachKhoanPhiDao;
 import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.NhanKhauDao;
 
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class DieuchinhController implements Initializable {
+    @FXML
+    private TextField khoanphidieuchinh;
     @FXML
     private GridPane thanhvienphong;
 
@@ -49,6 +55,20 @@ public class DieuchinhController implements Initializable {
 
     @FXML
     private TextField sophong;
+    @FXML
+    private ListView<String> listviewphi;
+    @FXML
+    void listviewphi(MouseEvent event) {
+        String selectedItem = listviewphi.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            khoanphidieuchinh.setText(selectedItem);
+            listviewphi.setVisible(false);
+        }
+    }
+    @FXML
+    void timphi(ActionEvent event) {
+
+    }
 
     @FXML
     private TextField sophongdieuchinhphong;
@@ -67,12 +87,15 @@ public class DieuchinhController implements Initializable {
 
     @FXML
     private Button xoaphong;
-    List<NhanKhau> nhanKhauList= NhanKhauDao.getInstance().selectAll();
 
+    @FXML
+    private ListView<String> listviewnhankhaucandieuchinh;
+    private  List<NhanKhau> nhanKhauList= NhanKhauDao.getInstance().selectAll();
     @FXML
     void dieuchinhnhankhau(ActionEvent event) {
 
     }
+
 
     @FXML
     void timnhankhau(ActionEvent event) {
@@ -134,15 +157,25 @@ thanhvienphong.add(label3,1,0);
     }
     @FXML
     void listviewsophong(MouseEvent event) {
-        String selectedItem = listviewsophong.getSelectionModel().getSelectedItem();
+        String selectedItem = String.valueOf(listviewsophong.getSelectionModel().getSelectedItem());
         if (selectedItem != null) {
             sophongdieuchinhphong.setText(selectedItem);
             listviewsophong.setVisible(false);
         }
     }
     @FXML
-    private ListView<String> listviewsophong;
-   private  List<HoKhau>tenphong= HoKhauDao.getInstance().selectAll();
+    void listviewnhankhaucandieuchinh(MouseEvent event) {
+        String selectedItem = listviewnhankhaucandieuchinh.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            tennhankhaucandieuchinh.setText(selectedItem);
+            listviewnhankhaucandieuchinh.setVisible(false);
+        }
+    }
+    @FXML
+    private ListView<Integer> listviewsophong;
+    private List<DanhSachKhoanPhi>danhSachKhoanPhiList= DanhSachKhoanPhiDao.getInstance().selectAll();
+
+   private List<HoKhau>tenphong= HoKhauDao.getInstance().selectAll();
     @FXML
     void dieuchinhphong(ActionEvent event) {
 hoKhau.setId(Integer.parseInt(sophongdieuchinhphong.getText()));
@@ -169,10 +202,6 @@ alert.setContentText("Khi đó thông tin về các thành viên của phòng s�
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        String []a=new String[tenphong.size()];
-        for(int i=0;i<a.length;i++){
-            a[i]= String.valueOf(tenphong.get(i).getId());
-        }
         sophongdieuchinhphong.textProperty().addListener((observable, oldValue, newValue) -> {
             String input = sophongdieuchinhphong.getText().toLowerCase();
             if (input.isEmpty()) {
@@ -180,16 +209,37 @@ alert.setContentText("Khi đó thông tin về các thành viên của phòng s�
                 listviewsophong.setVisible(false);
             } else {
                 // Lọc các từ gợi ý dựa trên input của người dùng
-                String[] filteredSuggestions =
-                        Arrays.stream(a).filter(s -> s.toLowerCase().startsWith(input)).toArray(String[]::new);
-
-                listviewsophong.setItems(FXCollections.observableArrayList(filteredSuggestions));
-
+                List<Integer> list=tenphong.stream().map(HoKhau::getId).filter(s->String.valueOf(s).toLowerCase().startsWith(input)).collect(Collectors.toList());
+                ObservableList<Integer>observableList=FXCollections.observableList(list);
                 // Hiển thị danh sách gợi ý
-
+                listviewsophong.setItems(observableList);
                 listviewsophong.setVisible(true);
             }
         });
-
+        tennhankhaucandieuchinh.textProperty().addListener((observable, oldValue, newValue) -> {
+                String input=tennhankhaucandieuchinh.getText().toLowerCase();
+                if(input.isEmpty()){
+                    listviewnhankhaucandieuchinh.setVisible(false);
+                    listviewnhankhaucandieuchinh.getItems().clear();
+                }
+                else{
+                    List<String> list=nhanKhauList.stream().map(NhanKhau::getTen).filter(s -> s.toLowerCase().startsWith(input)).collect(Collectors.toList());
+                    ObservableList<String> observableList = FXCollections.observableList(list);
+                    listviewnhankhaucandieuchinh.setItems(observableList);
+                    listviewnhankhaucandieuchinh.setVisible(true);
+                }
+            });
+        khoanphidieuchinh.textProperty().addListener((observable, oldValue, newValue) -> {
+            String input=khoanphidieuchinh.getText().toLowerCase();
+            if(input.isEmpty()){
+                listviewphi.getItems().clear();
+                listviewphi.setVisible(false);
+            }else{
+                List<String>list=danhSachKhoanPhiList.stream().map(DanhSachKhoanPhi::getTenKhoanPhi).filter(s->s.toLowerCase().startsWith(input)).collect(Collectors.toList());
+                ObservableList<String> observableList = FXCollections.observableList(list);
+                listviewphi.setItems(observableList);
+                listviewphi.setVisible(true);
+            }
+        });
     }
 }

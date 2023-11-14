@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
@@ -24,7 +23,6 @@
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
                      <Label fx:id="chonkhoanphicandieuchinh" layoutX="14.0" layoutY="76.0" text="Chọn khoản phí cần điều chỉnh: " />
-                     <ComboBox editable="true" layoutX="209.0" layoutY="71.0" prefHeight="26.0" prefWidth="336.0" promptText="None" />
                      <Label layoutX="14.0" layoutY="147.0" text="Loại khoản phí: " />
                      <Label layoutX="14.0" layoutY="205.0" text="Số tiền: " />
                      <TextField layoutX="209.0" layoutY="201.0" />
@@ -33,6 +31,9 @@
                      <Button layoutX="383.0" layoutY="313.0" mnemonicParsing="false" text="Xóa khoản phí" />
                      <Label layoutX="114.0" layoutY="288.0" text="Điều chỉnh khoản phí thành công" />
                      <Label layoutX="359.0" layoutY="288.0" text="Xóa khoản phí thành công" />
+                     <TextField fx:id="khoanphidieuchinh" layoutX="210.0" layoutY="72.0" prefHeight="26.0" prefWidth="205.0" />
+                     <Button layoutX="430.0" layoutY="73.0" mnemonicParsing="false" onAction="#timphi" text="Tìm" />
+                     <ListView fx:id="listviewphi" layoutX="210.0" layoutY="98.0" onMouseClicked="#listviewphi" prefHeight="70.0" prefWidth="206.0" visible="false" />
                   </children>
                </AnchorPane>
             </content>
@@ -41,7 +42,7 @@
             <content>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                     <Button layoutX="510.0" layoutY="86.0" mnemonicParsing="false" onAction="#timnhankhau" text="Tìm" />
+                     <Button layoutX="500.0" layoutY="86.0" mnemonicParsing="false" onAction="#timnhankhau" text="Tìm" />
                      <GridPane layoutX="14.0" layoutY="69.0" prefHeight="492.0" prefWidth="480.0">
                        <columnConstraints>
                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.5999755859375" minWidth="10.0" prefWidth="173.79998779296875" />
@@ -80,6 +81,7 @@
                      <Label fx:id="nhankhauduocdieuchinhthanhcon" layoutX="121.0" layoutY="561.0" text="Nhân khẩu được điều chỉnh thành công" />
                      <Button layoutX="419.0" layoutY="589.0" mnemonicParsing="false" text="Xóa nhân khẩu" />
                      <Label layoutX="395.0" layoutY="561.0" text="Xóa nhân khẩu thành công" />
+                     <ListView fx:id="listviewnhankhaucandieuchinh" layoutX="183.0" layoutY="112.0" onMouseClicked="#listviewnhankhaucandieuchinh" prefHeight="91.0" prefWidth="310.0" visible="false" />
                   </children></AnchorPane>
             </content>
          </Tab>
@@ -115,10 +117,6 @@
                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                    </rowConstraints>
-                                    <children>
-                                       <Label text="Số thứ tự" />
-                                       <Label text="Tên thành viên" GridPane.columnIndex="1" />
-                                    </children>
                                  </GridPane>
                               </children>
                            </AnchorPane>
