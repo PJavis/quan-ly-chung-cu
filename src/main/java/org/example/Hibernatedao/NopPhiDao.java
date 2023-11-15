@@ -45,12 +45,11 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll {
         return nopPhis;
     }
 
-    public NopPhi selectByTenKhoanPhiVaHoKhau(String tenKhoanPhi, HoKhau hoKhau) {
-        DanhSachKhoanPhi danhSachKhoanPhi = DanhSachKhoanPhiDao.getInstance().selectByName(tenKhoanPhi).get(0);
+    public NopPhi selectByTenKhoanPhiVaHoKhau(DanhSachKhoanPhi danhSachKhoanPhi, HoKhau hoKhau) {
         NopPhi nopPhi;
         try {
             session=Hibernate.getSession(sessionFactory);
-            nopPhi = session.createQuery("FROM NopPhi n WHERE n.id = :id AND n.hoKhau = :hoKhau", NopPhi.class)
+            nopPhi = session.createQuery("FROM NopPhi n WHERE n.idKhoanPhi = :id AND n.hoKhau = :hoKhau", NopPhi.class)
                     .setParameter("id", danhSachKhoanPhi.getId())
                     .setParameter("hoKhau", hoKhau)
                     .uniqueResult();
