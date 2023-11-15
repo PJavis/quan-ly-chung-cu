@@ -11,13 +11,13 @@ public class NopPhi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @ManyToOne
-    @JoinColumn(name = "id_khoan_phi", referencedColumnName = "id", nullable = false)
-    private DanhSachKhoanPhi idKhoanPhi;
 
-    @ManyToOne
-    @JoinColumn(name = "ho_khau_id", referencedColumnName = "id")
-    private HoKhau hoKhau;
+    @Column(name = "id_khoan_phi", nullable = false)
+    private int idKhoanPhi;
+
+
+    @Column(name = "ho_khau_id",nullable = false)
+    private int hoKhau;
 
     @Column(name = "trang_thai_dong_phi")
     private boolean trangThaiDongPhi;
@@ -33,7 +33,7 @@ public class NopPhi {
         // Default constructor required by Hibernate
     }
 
-    public NopPhi(int id, DanhSachKhoanPhi idKhoanPhi, HoKhau hoKhau, boolean trangThaiDongPhi, Date ngayNopPhi, double soTienDaDong) {
+    public NopPhi(int id, int idKhoanPhi, int hoKhau, boolean trangThaiDongPhi, Date ngayNopPhi, double soTienDaDong) {
         this.id = id;
         this.idKhoanPhi = idKhoanPhi;
         this.hoKhau = hoKhau;
@@ -46,15 +46,15 @@ public class NopPhi {
         return id;
     }
 
-    public DanhSachKhoanPhi getIdKhoanPhi() {
+    public int getIdKhoanPhi() {
         return idKhoanPhi;
     }
 
-    public HoKhau getHoKhau() {
+    public int getHoKhau() {
         return hoKhau;
     }
 
-    public void setHoKhau(HoKhau hoKhau) {
+    public void setHoKhau(int hoKhau) {
         this.hoKhau = hoKhau;
     }
 
