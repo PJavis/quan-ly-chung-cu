@@ -5,13 +5,14 @@ import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NopPhi;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
+import org.example.Function.Update;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class NopPhiDao implements Save<NopPhi>, SelectAll {
+public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session = null;
     public static NopPhiDao getInstance() {return  new NopPhiDao();}
@@ -61,5 +62,19 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll {
         }
 
         return nopPhi;
+    }
+
+    @Override
+    public void update(NopPhi in) {
+        try {
+
+            session=Hibernate.getSession(sessionFactory);
+            session.update(in);
+            Hibernate.closeSession(session);
+
+        } catch (Exception e) {
+
+            throw new RuntimeException(e);
+        }
     }
 }

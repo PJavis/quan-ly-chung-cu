@@ -46,6 +46,10 @@ public class NopPhi {
         return id;
     }
 
+    public void setIdKhoanPhi(int idKhoanPhi) {
+        this.idKhoanPhi = idKhoanPhi;
+    }
+
     public int getIdKhoanPhi() {
         return idKhoanPhi;
     }
