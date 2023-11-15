@@ -36,10 +36,10 @@
                                     <Label text="Loại khoản phí: " GridPane.rowIndex="1" />
                                     <Label text="Số tiền: " GridPane.rowIndex="2" />
                                     <TextField fx:id="tenkhoanphi" GridPane.columnIndex="1" />
-                                    <TextField fx:id="loaikhoanphi" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <TextField fx:id="sotien" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <Label text="Hạn nộp: " GridPane.rowIndex="3" />
                                     <TextField fx:id="hannop" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           <CheckBox fx:id="loaikhoanphi" mnemonicParsing="false" text="Bắt buộc" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                 </children>
                             </GridPane>
                             <Button fx:id="buttontaomoikhoanphi" disable="true" layoutX="280.0" layoutY="356.0" mnemonicParsing="false" onAction="#taomoikhoanphi" text="Tạo mới" />

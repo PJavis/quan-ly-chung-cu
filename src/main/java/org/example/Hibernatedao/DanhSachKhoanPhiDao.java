@@ -1,5 +1,6 @@
 package org.example.Hibernatedao;
 
+import javafx.scene.control.Alert;
 import org.example.EntityAll.DanhSachKhoanPhi;
 import org.example.Function.*;
 import org.hibernate.Session;
@@ -55,6 +56,9 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
+            Alert alert1=new Alert(Alert.AlertType.ERROR);
+            alert1.setContentText("Không tìm thấy phí");
+            alert1.showAndWait();
             throw new RuntimeException(e);
         }
         return danhSachKhoanPhis;
@@ -85,6 +89,7 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
                     .getResultList();
             Hibernate.closeSession(session);
         } catch (Exception e) {
+
             throw new RuntimeException(e);
         }
         return danhSachKhoanPhis;

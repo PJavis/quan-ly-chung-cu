@@ -8,14 +8,17 @@ import javafx.stage.Stage;
 import org.example.EntityAll.DanhSachKhoanPhi;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
+import org.example.EntityAll.NopPhi;
 import org.example.Hibernatedao.DanhSachKhoanPhiDao;
 import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.NhanKhauDao;
+import org.example.Hibernatedao.NopPhiDao;
 
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class TaomoiController implements Initializable {
@@ -50,7 +53,7 @@ public class TaomoiController implements Initializable {
     private TextField hannop;
 
     @FXML
-    private TextField loaikhoanphi;
+    private CheckBox loaikhoanphi;
 
     @FXML
     private TextField ngaysinh;
@@ -79,7 +82,11 @@ public class TaomoiController implements Initializable {
     @FXML
     void taomoikhoanphi(ActionEvent event) {
         DanhSachKhoanPhi danhSachKhoanPhi=new DanhSachKhoanPhi();
-        danhSachKhoanPhi.setLoaiKhoanPhi(loaikhoanphi.getText());
+        if(loaikhoanphi.isSelected()){
+            danhSachKhoanPhi.setLoaiKhoanPhi("Bắt buộc");
+
+        }else   danhSachKhoanPhi.setLoaiKhoanPhi("Tự nguyện");
+
         danhSachKhoanPhi.setTenKhoanPhi(tenkhoanphi.getText());
         LocalDate currentDate = LocalDate.now();
         danhSachKhoanPhi.setBatDau(Date.valueOf(currentDate));
@@ -90,7 +97,11 @@ public class TaomoiController implements Initializable {
         danhSachKhoanPhi.setGiaTri(Double.parseDouble(sotien.getText()));
         DanhSachKhoanPhiDao.getInstance().save(danhSachKhoanPhi);
         labeltaomoiphi.setVisible(true);
+
+
     }
+
+
 
     @FXML
     void taomoinhankhau(ActionEvent event) {
@@ -134,7 +145,7 @@ public class TaomoiController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TextField[] textFields={tenkhoanphi,loaikhoanphi,sotien,hannop};
+        TextField[] textFields={tenkhoanphi,sotien,hannop};
         for (TextField textField : textFields) {
             textField.textProperty().addListener((observable, oldValue, newValue) -> checkAllFieldsFilled(textFields,buttontaomoikhoanphi));
         }

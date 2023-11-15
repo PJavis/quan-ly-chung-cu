@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import org.example.EntityAll.DanhSachKhoanPhi;
 import org.example.EntityAll.HoKhau;
@@ -16,15 +17,24 @@ import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.NhanKhauDao;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class DieuchinhController implements Initializable {
+
+    @FXML
+    private AnchorPane anchopanethanhvienphong;
     @FXML
     private TextField khoanphidieuchinh;
     @FXML
     private GridPane thanhvienphong;
 
+    @FXML
+    private TextField loaikhoanphi;
+
+    @FXML
+    private TextField sotien;
 
     @FXML
     private Label chonkhoanphicandieuchinh;
@@ -57,6 +67,9 @@ public class DieuchinhController implements Initializable {
     private TextField sophong;
     @FXML
     private ListView<String> listviewphi;
+
+    @FXML
+    private TextField hannop;
     @FXML
     void listviewphi(MouseEvent event) {
         String selectedItem = listviewphi.getSelectionModel().getSelectedItem();
@@ -65,8 +78,30 @@ public class DieuchinhController implements Initializable {
             listviewphi.setVisible(false);
         }
     }
+    private DanhSachKhoanPhi danhSachKhoanPhi;
     @FXML
     void timphi(ActionEvent event) {
+
+danhSachKhoanPhi=DanhSachKhoanPhiDao.getInstance().selectByName(khoanphidieuchinh.getText()).get(0);
+if(danhSachKhoanPhi==null){
+    Alert alert1=new Alert(Alert.AlertType.ERROR);
+    alert1.setContentText("Không tìm thấy phí");
+    alert1.showAndWait();
+}else{
+loaikhoanphi.setText(danhSachKhoanPhi.getLoaiKhoanPhi());
+sotien.setText(String.valueOf(danhSachKhoanPhi.getGiaTri()));
+hannop.setText(String.valueOf(danhSachKhoanPhi.getKetThuc()));
+    }}
+    @FXML
+    void dieuchinhkhoanphi(ActionEvent event) {
+danhSachKhoanPhi.setLoaiKhoanPhi(loaikhoanphi.getText());
+danhSachKhoanPhi.setGiaTri(Double.parseDouble(sotien.getText()));
+danhSachKhoanPhi.setKetThuc(Date.valueOf(hannop.getText()));
+danhSachKhoanPhi.setTenKhoanPhi(khoanphidieuchinh.getText());
+DanhSachKhoanPhiDao.getInstance().update(danhSachKhoanPhi);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Điều chỉnh thành công");
+        alert.showAndWait();
 
     }
 
@@ -85,8 +120,7 @@ public class DieuchinhController implements Initializable {
     @FXML
     private TextField trangthai;
 
-    @FXML
-    private Button xoaphong;
+
 
     @FXML
     private ListView<String> listviewnhankhaucandieuchinh;
@@ -105,16 +139,20 @@ public class DieuchinhController implements Initializable {
     private Label khongtimthayphong;
     private HoKhau hoKhau=new HoKhau();
     private NhanKhau nhanKhau=new NhanKhau();
-
+    List<NhanKhau> nhanKhaucuaphong=new ArrayList<>();
 
     @FXML
     void timphong(ActionEvent event) {
         thanhvienphong.getChildren().clear();
         listviewsophong.setVisible(false);
         hoKhau=HoKhauDao.getInstance().selectById(Integer.parseInt(sophongdieuchinhphong.getText()));
-        if(hoKhau==null)khongtimthayphong.setVisible(true);
+        if(hoKhau==null){
+            Alert alert1=new Alert(Alert.AlertType.ERROR);
+            alert1.setContentText("Không tìm thấy phòng");
+            alert1.showAndWait();
+        }
         else {
-            List<NhanKhau> nhanKhaucuaphong=new ArrayList<>();
+
             nhanKhau= HoKhauDao.getInstance().layChuHo(hoKhau);
             nhanKhaucuaphong=HoKhauDao.getInstance().layNhanKhau(hoKhau);
             khongtimthayphong.setVisible(false);
@@ -124,6 +162,7 @@ Label label2=new Label("Số thứ tự");
 Label label3=new Label("Tên thành viên");
 thanhvienphong.add(label2,0 ,0);
 thanhvienphong.add(label3,1,0);
+            anchopanethanhvienphong.setPrefHeight(nhanKhaucuaphong.size()*30);
            for(int i=0;i<nhanKhaucuaphong.size();i++){
                Label label=new Label(""+(i+1));
                Label label1=new Label(nhanKhaucuaphong.get(i).getTen());
@@ -181,13 +220,15 @@ thanhvienphong.add(label3,1,0);
 hoKhau.setId(Integer.parseInt(sophongdieuchinhphong.getText()));
 hoKhau.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
 HoKhauDao.getInstance().update(hoKhau);
-
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Điều chỉnh thành công");
+        alert.showAndWait();
     }
     @FXML
     void xoaphong(ActionEvent event) {
 Alert alert=new Alert(Alert.AlertType.WARNING);
 alert.setHeaderText("Bạn chắc chắn muốn xóa phòng ?");
-alert.setContentText("Khi đó thông tin về các thành viên của phòng sẽ không còn");
+alert.setContentText("Khi đó thông tin phòng sẽ không còn");
         ButtonType buttonTypeOK = new ButtonType("OK", ButtonType.OK.getButtonData());
         // Thêm nút "Hủy"
         ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonType.CANCEL.getButtonData());
@@ -196,6 +237,10 @@ alert.setContentText("Khi đó thông tin về các thành viên của phòng s�
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == buttonTypeOK) {
+            for(NhanKhau nhanKhau1: nhanKhaucuaphong){
+                nhanKhau1.setHoKhau(null);
+                nhanKhau1.setChuHo(false);
+            }
             HoKhauDao.getInstance().delete(hoKhau.getId());
         }
     }
