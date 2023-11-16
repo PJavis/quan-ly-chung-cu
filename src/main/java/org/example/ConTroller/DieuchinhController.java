@@ -18,6 +18,9 @@ import org.example.Hibernatedao.NhanKhauDao;
 
 import java.net.URL;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -127,18 +130,39 @@ DanhSachKhoanPhiDao.getInstance().update(danhSachKhoanPhi);
     private  List<NhanKhau> nhanKhauList= NhanKhauDao.getInstance().selectAll();
     @FXML
     void dieuchinhnhankhau(ActionEvent event) {
+nhanKhau.setTen(tennhankhau.getText());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String date= ngaysinh.getText();
+        LocalDate datetime = LocalDate.parse(date, formatter);
+        nhanKhau.setNgaySinh(Date.valueOf(datetime));
 
+nhanKhau.setGioiTinh(gioitinh.getText());
+nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText())));
+nhanKhau.setTrangThai(trangthai.getText());
+nhanKhau.setQuocTich(quoctich.getText());
+nhanKhau.setChuHo(co.isSelected());
+NhanKhauDao.getInstance().update(nhanKhau);
     }
 
-
+private NhanKhau nhanKhau=new NhanKhau();
     @FXML
     void timnhankhau(ActionEvent event) {
+listviewnhankhaucandieuchinh.setVisible(false);
+nhanKhau=NhanKhauDao.getInstance().selectByName(tennhankhaucandieuchinh.getText()).get(0);
+tennhankhau.setText(nhanKhau.getTen());
+        SimpleDateFormat newDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+ngaysinh.setText(newDateFormat.format(nhanKhau.getNgaySinh()));
+gioitinh.setText(nhanKhau.getGioiTinh());
+sophong.setText(String.valueOf(nhanKhau.getHoKhau().getId()));
+trangthai.setText(nhanKhau.getTrangThai());
+quoctich.setText(nhanKhau.getQuocTich());
+co.setSelected(nhanKhau.isChuHo());
 
     }
     @FXML
     private Label khongtimthayphong;
     private HoKhau hoKhau=new HoKhau();
-    private NhanKhau nhanKhau=new NhanKhau();
+
     List<NhanKhau> nhanKhaucuaphong=new ArrayList<>();
 
     @FXML

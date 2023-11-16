@@ -113,9 +113,7 @@ public class TaomoiController implements Initializable {
         String date= ngaysinh.getText();
         LocalDate datetime = LocalDate.parse(date, formatter);
         nhanKhau.setNgaySinh(Date.valueOf(datetime));
-        if(co.isSelected()){
-            nhanKhau.setChuHo(true);
-        }else nhanKhau.setChuHo(false);
+        nhanKhau.setChuHo(co.isSelected());
         nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText())));
         nhanKhau.setTrangThai("Đang ở");
         NhanKhauDao.getInstance().save(nhanKhau);
