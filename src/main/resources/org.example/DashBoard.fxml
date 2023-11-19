@@ -7,17 +7,14 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="832.0" stylesheets="@css/DashBroad.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DashBoardController">
+<AnchorPane prefHeight="750.0" prefWidth="215.0" stylesheets="@css/DashBroad.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DashBoardController">
     <children>
-      <Pane fx:id="bangthongke" prefHeight="750.0" prefWidth="213.0">
-    <children>
-        <Button layoutX="5.0" layoutY="209.0" onAction="#home" prefHeight="32.0" prefWidth="202.0" text="Trang chủ">
-            <font>
-                <Font size="16.0" />
-            </font>
+
+        <Button layoutX="5.0" layoutY="212.0" onAction="#home" prefHeight="32.0" prefWidth="202.0" text="Trang chủ">
                <graphic>
                   <FontAwesomeIconView glyphName="HOME" size="30" />
                </graphic>
@@ -33,9 +30,13 @@
             <content>
                 <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="-1.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Số người ở hiện tại trong chung cư" />
-                        <Button layoutX="-1.0" layoutY="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Thông tin phòng nào đó???" />
-                        <Button layoutX="1.0" layoutY="76.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Các khoản phí đóng trong ngày cụ thể" />
+                    <VBox prefHeight="117.0" prefWidth="202.0">
+                    <children>
+                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="202.4" text="Số người ở hiện tại trong chung cư" />
+                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="202.4" text="Thông tin phòng nào đó???" />
+                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="202.4" text="Các khoản phí đóng trong ngày cụ thể" />
+                    </children>
+                    </VBox>
                      </children>
                   </Pane>
             </content>
@@ -47,9 +48,13 @@
             <content>
                 <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                     <children>
-                        <Button layoutX="23.0" mnemonicParsing="false" onAction="#thongkecackhoanphi" prefHeight="38.0" prefWidth="155.0" text="Thông kê các khoản phí" />
-                        <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#thongkephong" prefHeight="38.0" prefWidth="155.0" text="Thống kê phòng " />
-                        <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#thongkethaydoi" prefHeight="38.0" prefWidth="155.0" text="Thống kê thay đổi" />
+                    <VBox prefHeight="117.0" prefWidth="202.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#thongkecackhoanphi" prefHeight="38.0" prefWidth="202.4" text="Thông kê các khoản phí" />
+                        <Button mnemonicParsing="false" onAction="#thongkephong" prefHeight="38.0" prefWidth="202.4" text="Thống kê phòng " />
+                        <Button mnemonicParsing="false" onAction="#thongkethaydoi" prefHeight="38.0" prefWidth="202.4" text="Thống kê thay đổi" />
+                    </children>
+                    </VBox>
                     </children>
                 </Pane>
             </content>
@@ -61,9 +66,13 @@
             <content>
                 <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="23.0" mnemonicParsing="false" onAction="#dieuchinhcackhoanphi" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh các khoản phí" />
-                        <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#dieuchinhdancu" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh dân cư" />
-                        <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#dieuchinhphong" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh phòng " />
+                    <VBox prefHeight="117.0" prefWidth="202.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#dieuchinhcackhoanphi" prefHeight="38.0" prefWidth="202.4" text="Điều chỉnh các khoản phí" />
+                        <Button mnemonicParsing="false" onAction="#dieuchinhdancu" prefHeight="38.0" prefWidth="202.4" text="Điều chỉnh dân cư" />
+                        <Button mnemonicParsing="false" onAction="#dieuchinhphong" prefHeight="38.0" prefWidth="202.4" text="Điều chỉnh phòng " />
+                    </children>
+                    </VBox>
                      </children>
                   </Pane>
             </content>
@@ -75,9 +84,13 @@
             <content>
                 <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                     <children>
-                        <Button layoutX="23.0" mnemonicParsing="false" onAction="#taokhoanphimoi" prefHeight="38.0" prefWidth="155.0" text="Tạo khoản phí mới" />
-                        <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#themnhankhaumoi" prefHeight="38.0" prefWidth="155.0" text="Thêm nhân khẩu mới" />
-                        <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#themphongmoi" prefHeight="38.0" prefWidth="155.0" text="Thêm phòng mới" />
+                              <VBox prefHeight="117.0" prefWidth="202.0">
+                                 <children>
+                              <Button mnemonicParsing="false" onAction="#taokhoanphimoi" prefHeight="38.0" prefWidth="202.4" text="Tạo khoản phí mới" />
+                              <Button mnemonicParsing="false" onAction="#themnhankhaumoi" prefHeight="38.0" prefWidth="202.4" text="Thêm nhân khẩu mới" />
+                              <Button mnemonicParsing="false" onAction="#themphongmoi" prefHeight="38.0" prefWidth="202.4" text="Thêm phòng mới" />
+                                 </children>
+                              </VBox>
                     </children>
                 </Pane>
             </content>
@@ -87,26 +100,26 @@
         </TitledPane>
         </panes>
         </Accordion>
-            <Button layoutX="13.0" layoutY="626.0" mnemonicParsing="false" text="Thông tin tài khoản">
+            <Button layoutX="16.0" layoutY="672.0" mnemonicParsing="false" text="Thông tin tài khoản">
                <graphic>
                   <FontAwesomeIconView glyphName="GEAR" size="2em" />
-               </graphic></Button>
-            <Button layoutX="13.0" layoutY="665.0" mnemonicParsing="false" onAction="#dangxuat" text="Đăng xuất">
+               </graphic>
+            </Button>
+            <Button layoutX="16.0" layoutY="704.0" mnemonicParsing="false" onAction="#dangxuat" text="Đăng xuất">
                <graphic>
                   <FontAwesomeIconView glyphName="SIGN_OUT" size="2em" />
-               </graphic></Button>
+               </graphic>
+            </Button>
             <Label layoutX="30.0" layoutY="14.0" text="Quản lý chung cư">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Line endX="66.0" layoutX="124.0" layoutY="200.0" startX="-100.0" />
+            <Line endX="83.20001220703125" layoutX="124.0" layoutY="200.0" startX="-116.0" />
             <FontAwesomeIconView glyphName="USER" layoutX="71.0" layoutY="128.0" selectionStart="0" size="8em" text="" wrappingWidth="70.134765625" />
             <Label layoutX="71.0" layoutY="142.0" prefHeight="30.0" prefWidth="70.0" text="Chào mừng," />
             <Label layoutX="64.0" layoutY="164.0" text="Tên nhà quản trị" />
-            <Line endX="66.0" layoutX="123.0" layoutY="609.0" startX="-100.0" />
-
-        </children>
-       </Pane>
+            <Line endX="80.20001220703125" layoutX="123.0" layoutY="656.0" startX="-107.79998779296875" />
+        
     </children>
 </AnchorPane>

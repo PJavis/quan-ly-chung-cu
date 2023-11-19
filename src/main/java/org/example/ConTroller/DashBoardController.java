@@ -16,15 +16,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 public class DashBoardController {
-    @FXML
-    private Pane bangthongke;
-    @FXML
-    private TitledPane dieuchinh;
-
-    @FXML
-    private TitledPane thongke;
-    @FXML
-    private TitledPane taomoi;
 
 
     @FXML
@@ -44,7 +35,7 @@ public class DashBoardController {
     void home(ActionEvent event) {
         try {
             Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/DashBoard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Trangchu.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             ag0r1.setScene(scene);
@@ -54,8 +45,7 @@ public class DashBoardController {
             System.out.println(e.getMessage());
         }
     }
-    @FXML
-    private TitledPane tracuu;
+
     private Stage stage;
     private Scene scene;
 
@@ -161,7 +151,7 @@ public class DashBoardController {
     @FXML
     public void dangxuat (ActionEvent event)  {
         try {
-            Stage ag0r1 =(Stage) tracuu.getScene().getWindow();
+            Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/org.example/Loginscreen.fxml"));
             Scene scene = new Scene(root);
             ag0r1.setScene(scene);
