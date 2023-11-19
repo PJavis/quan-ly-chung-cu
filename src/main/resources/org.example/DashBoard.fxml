@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
@@ -15,28 +14,22 @@
     <children>
       <Pane fx:id="bangthongke" prefHeight="750.0" prefWidth="213.0">
     <children>
-        <Button layoutX="6.0" layoutY="217.0" onAction="#home" prefHeight="38.0" prefWidth="160.0" text="Trang chủ">
+        <Button layoutX="5.0" layoutY="209.0" onAction="#home" prefHeight="32.0" prefWidth="202.0" text="Trang chủ">
             <font>
                 <Font size="16.0" />
             </font>
-            <graphic>
-                <ImageView fitHeight="28.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/home.png" />
-                    </image>
-                </ImageView>
-            </graphic>
+               <graphic>
+                  <FontAwesomeIconView glyphName="HOME" size="30" />
+               </graphic>
         </Button>
-        <Button layoutX="6.0" layoutY="257.0" mnemonicParsing="false" onAction="#thuphi1" prefHeight="41.0" prefWidth="120.0" text="Thu phí">
-            <graphic>
-                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/add.png" />
-                    </image>
-                </ImageView>
-            </graphic>
+        <Button layoutX="5.0" layoutY="250.0" mnemonicParsing="false" onAction="#thuphi1" prefHeight="41.0" prefWidth="202.0" text="Thu phí">
+               <graphic>
+                  <FontAwesomeIconView glyphName="MONEY" size="30" />
+               </graphic>
         </Button>
-        <TitledPane fx:id="tracuu" expanded="false" layoutX="6.0" layoutY="298.0" onMouseClicked="#tracuu1" styleClass="titlepane" text="Tra cứu">
+        <Accordion layoutX="5.0" layoutY="291.0">
+        <panes>
+        <TitledPane expanded="false" layoutX="6.0" layoutY="298.0" styleClass="titlepane" text="Tra cứu">
             <content>
                 <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                      <children>
@@ -46,15 +39,11 @@
                      </children>
                   </Pane>
             </content>
-            <graphic>
-                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/data.png" />
-                    </image>
-                </ImageView>
-            </graphic>
+               <graphic>
+                  <FontAwesomeIconView glyphName="SEARCH" size="30" />
+               </graphic>
         </TitledPane>
-        <TitledPane fx:id="thongke" expanded="false" layoutX="6.0" layoutY="338.0" onMouseClicked="#thongke1" styleClass="titlepane" text="Thống kê">
+        <TitledPane expanded="false" layoutX="6.0" layoutY="338.0" styleClass="titlepane" text="Thống kê">
             <content>
                 <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                     <children>
@@ -64,16 +53,11 @@
                     </children>
                 </Pane>
             </content>
-            <graphic>
-                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/backup.png" />
-                    </image>
-                </ImageView>
-            </graphic>
+               <graphic>
+                  <FontAwesomeIconView glyphName="SIGNAL" size="30" />
+               </graphic>
         </TitledPane>
-
-        <TitledPane fx:id="dieuchinh" expanded="false" layoutX="6.0" layoutY="378.0" onMouseClicked="#dieuchinh1" styleClass="titlepane" text="Điều chỉnh">
+        <TitledPane expanded="false" layoutX="6.0" layoutY="378.0" styleClass="titlepane" text="Điều chỉnh">
             <content>
                 <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                      <children>
@@ -83,15 +67,11 @@
                      </children>
                   </Pane>
             </content>
-            <graphic>
-                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/setting.png" />
-                    </image>
-                </ImageView>
-            </graphic>
+               <graphic>
+                  <FontAwesomeIconView glyphName="GEAR" size="30" />
+               </graphic>
         </TitledPane>
-        <TitledPane fx:id="taomoi" expanded="false" layoutX="6.0" layoutY="418.0" styleClass="titlepane" text="Tạo mới">
+        <TitledPane expanded="false" layoutX="6.0" layoutY="418.0" styleClass="titlepane" text="Tạo mới">
             <content>
                 <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
                     <children>
@@ -101,17 +81,15 @@
                     </children>
                 </Pane>
             </content>
-            <graphic>
-                <ImageView fitHeight="36.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/add.png" />
-                    </image>
-                </ImageView>
-            </graphic>
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLUS" size="30" />
+               </graphic>
         </TitledPane>
+        </panes>
+        </Accordion>
             <Button layoutX="13.0" layoutY="626.0" mnemonicParsing="false" text="Thông tin tài khoản">
                <graphic>
-                  <FontAwesomeIconView glyphName="USER" selectionStart="0" size="2em" text="" wrappingWidth="14.134769439697266" />
+                  <FontAwesomeIconView glyphName="GEAR" size="2em" />
                </graphic></Button>
             <Button layoutX="13.0" layoutY="665.0" mnemonicParsing="false" onAction="#dangxuat" text="Đăng xuất">
                <graphic>
@@ -126,7 +104,7 @@
             <FontAwesomeIconView glyphName="USER" layoutX="71.0" layoutY="128.0" selectionStart="0" size="8em" text="" wrappingWidth="70.134765625" />
             <Label layoutX="71.0" layoutY="142.0" prefHeight="30.0" prefWidth="70.0" text="Chào mừng," />
             <Label layoutX="64.0" layoutY="164.0" text="Tên nhà quản trị" />
-            <Line endX="66.0" layoutX="124.0" layoutY="604.0" startX="-100.0" />
+            <Line endX="66.0" layoutX="123.0" layoutY="609.0" startX="-100.0" />
 
         </children>
        </Pane>
