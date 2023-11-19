@@ -1,144 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="832.0" stylesheets="@css/DashBroad.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DashBoardController">
+<AnchorPane prefHeight="750.0" prefWidth="832.0" stylesheets="@css/DashBroad.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DashBoardController">
     <children>
-            <Pane fx:id="toppane" prefHeight="46.0" prefWidth="832.0">
-         <children>
-            <Button layoutX="2.0" layoutY="1.0" mnemonicParsing="false" onAction="#hiendashbroad" styleClass="button">
-               <graphic>
-                  <ImageView fitHeight="39.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
+      <Pane fx:id="bangthongke" prefHeight="750.0" prefWidth="213.0">
+    <children>
+        <Button layoutX="6.0" layoutY="217.0" onAction="#home" prefHeight="38.0" prefWidth="160.0" text="Trang chủ">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="28.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/home.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button layoutX="6.0" layoutY="257.0" mnemonicParsing="false" onAction="#thuphi1" prefHeight="41.0" prefWidth="120.0" text="Thu phí">
+            <graphic>
+                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/add.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <TitledPane fx:id="tracuu" expanded="false" layoutX="6.0" layoutY="298.0" onMouseClicked="#tracuu1" styleClass="titlepane" text="Tra cứu">
+            <content>
+                <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="-1.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Số người ở hiện tại trong chung cư" />
+                        <Button layoutX="-1.0" layoutY="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Thông tin phòng nào đó???" />
+                        <Button layoutX="1.0" layoutY="76.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Các khoản phí đóng trong ngày cụ thể" />
+                     </children>
+                  </Pane>
+            </content>
+            <graphic>
+                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
                         <Image url="@../images/data.png" />
-                     </image>
-                  </ImageView>
+                    </image>
+                </ImageView>
+            </graphic>
+        </TitledPane>
+        <TitledPane fx:id="thongke" expanded="false" layoutX="6.0" layoutY="338.0" onMouseClicked="#thongke1" styleClass="titlepane" text="Thống kê">
+            <content>
+                <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
+                    <children>
+                        <Button layoutX="23.0" mnemonicParsing="false" onAction="#thongkecackhoanphi" prefHeight="38.0" prefWidth="155.0" text="Thông kê các khoản phí" />
+                        <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#thongkephong" prefHeight="38.0" prefWidth="155.0" text="Thống kê phòng " />
+                        <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#thongkethaydoi" prefHeight="38.0" prefWidth="155.0" text="Thống kê thay đổi" />
+                    </children>
+                </Pane>
+            </content>
+            <graphic>
+                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/backup.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </TitledPane>
+
+        <TitledPane fx:id="dieuchinh" expanded="false" layoutX="6.0" layoutY="378.0" onMouseClicked="#dieuchinh1" styleClass="titlepane" text="Điều chỉnh">
+            <content>
+                <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="23.0" mnemonicParsing="false" onAction="#dieuchinhcackhoanphi" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh các khoản phí" />
+                        <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#dieuchinhdancu" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh dân cư" />
+                        <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#dieuchinhphong" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh phòng " />
+                     </children>
+                  </Pane>
+            </content>
+            <graphic>
+                <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/setting.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </TitledPane>
+        <TitledPane fx:id="taomoi" expanded="false" layoutX="6.0" layoutY="418.0" styleClass="titlepane" text="Tạo mới">
+            <content>
+                <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
+                    <children>
+                        <Button layoutX="23.0" mnemonicParsing="false" onAction="#taokhoanphimoi" prefHeight="38.0" prefWidth="155.0" text="Tạo khoản phí mới" />
+                        <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#themnhankhaumoi" prefHeight="38.0" prefWidth="155.0" text="Thêm nhân khẩu mới" />
+                        <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#themphongmoi" prefHeight="38.0" prefWidth="155.0" text="Thêm phòng mới" />
+                    </children>
+                </Pane>
+            </content>
+            <graphic>
+                <ImageView fitHeight="36.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/add.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </TitledPane>
+            <Button layoutX="13.0" layoutY="626.0" mnemonicParsing="false" text="Thông tin tài khoản">
+               <graphic>
+                  <FontAwesomeIconView glyphName="USER" selectionStart="0" size="2em" text="" wrappingWidth="14.134769439697266" />
                </graphic></Button>
-            <Label layoutX="352.0" layoutY="17.0" text="Quản lý chung cư">
+            <Button layoutX="13.0" layoutY="665.0" mnemonicParsing="false" onAction="#dangxuat" text="Đăng xuất">
+               <graphic>
+                  <FontAwesomeIconView glyphName="SIGN_OUT" size="2em" />
+               </graphic></Button>
+            <Label layoutX="30.0" layoutY="14.0" text="Quản lý chung cư">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-         </children>
-      </Pane>
-      <Pane fx:id="leftpane" layoutY="46.0" prefHeight="704.0" prefWidth="832.0">
-         <children>
-            <Pane fx:id="bangthongke" prefHeight="704.0" prefWidth="213.0">
-          <children>
-              <Button layoutX="6.0" layoutY="14.0" onAction="#home" prefHeight="38.0" prefWidth="160.0" text="Dashboard">
-                  <font>
-                      <Font size="16.0" />
-                  </font>
-                  <graphic>
-                      <ImageView fitHeight="28.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                          <image>
-                              <Image url="@../images/home.png" />
-                          </image>
-                      </ImageView>
-                  </graphic>
-              </Button>
-              <Button layoutX="6.0" layoutY="53.0" mnemonicParsing="false" onAction="#thuphi1" prefHeight="41.0" prefWidth="120.0" text="Thu phí">
-                  <graphic>
-                      <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                          <image>
-                              <Image url="@../images/add.png" />
-                          </image>
-                      </ImageView>
-                  </graphic>
-              </Button>
-              <TitledPane fx:id="tracuu" expanded="false" layoutX="6.0" layoutY="94.0" onMouseClicked="#tracuu1" styleClass="titlepane" text="Tra cứu">
-                  <content>
-                      <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
-                           <children>
-                              <Button layoutX="-1.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Số người ở hiện tại trong chung cư" />
-                              <Button layoutX="-1.0" layoutY="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Thông tin phòng nào đó???" />
-                              <Button layoutX="1.0" layoutY="76.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0" text="Các khoản phí đóng trong ngày cụ thể" />
-                           </children>
-                        </Pane>
-                  </content>
-                  <graphic>
-                      <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                          <image>
-                              <Image url="@../images/data.png" />
-                          </image>
-                      </ImageView>
-                  </graphic>
-              </TitledPane>
-              <TitledPane fx:id="thongke" expanded="false" layoutX="6.0" layoutY="134.0" onMouseClicked="#thongke1" styleClass="titlepane" text="Thống kê">
-                  <content>
-                      <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
-                          <children>
-                              <Button layoutX="23.0" mnemonicParsing="false" onAction="#thongkecackhoanphi" prefHeight="38.0" prefWidth="155.0" text="Thông kê các khoản phí" />
-                              <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#thongkephong" prefHeight="38.0" prefWidth="155.0" text="Thống kê phòng " />
-                              <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#thongkethaydoi" prefHeight="38.0" prefWidth="155.0" text="Thống kê thay đổi" />
-                          </children>
-                      </Pane>
-                  </content>
-                  <graphic>
-                      <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                          <image>
-                              <Image url="@../images/backup.png" />
-                          </image>
-                      </ImageView>
-                  </graphic>
-              </TitledPane>
+            <Line endX="66.0" layoutX="124.0" layoutY="200.0" startX="-100.0" />
+            <FontAwesomeIconView glyphName="USER" layoutX="71.0" layoutY="128.0" selectionStart="0" size="8em" text="" wrappingWidth="70.134765625" />
+            <Label layoutX="71.0" layoutY="142.0" prefHeight="30.0" prefWidth="70.0" text="Chào mừng," />
+            <Label layoutX="64.0" layoutY="164.0" text="Tên nhà quản trị" />
+            <Line endX="66.0" layoutX="124.0" layoutY="604.0" startX="-100.0" />
 
-              <TitledPane fx:id="dieuchinh" expanded="false" layoutX="6.0" layoutY="174.0" onMouseClicked="#dieuchinh1" styleClass="titlepane" text="Điều chỉnh">
-                  <content>
-                      <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
-                           <children>
-                              <Button layoutX="23.0" mnemonicParsing="false" onAction="#dieuchinhcackhoanphi" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh các khoản phí" />
-                              <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#dieuchinhdancu" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh dân cư" />
-                              <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#dieuchinhphong" prefHeight="38.0" prefWidth="155.0" text="Điều chỉnh phòng " />
-                           </children>
-                        </Pane>
-                  </content>
-                  <graphic>
-                      <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                          <image>
-                              <Image url="@../images/setting.png" />
-                          </image>
-                      </ImageView>
-                  </graphic>
-              </TitledPane>
-
-                  <TitledPane fx:id="taomoi" expanded="false" layoutX="6.0" layoutY="235.0" prefHeight="66.0" prefWidth="212.0" styleClass="titlepane" text="Tạo mới">
-                    <content>
-                      <Pane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="200.0">
-                           <children>
-                              <Button layoutX="23.0" mnemonicParsing="false" onAction="#taokhoanphimoi" prefHeight="38.0" prefWidth="155.0" text="Tạo khoản phí mới" />
-                              <Button layoutX="23.0" layoutY="39.0" mnemonicParsing="false" onAction="#themnhankhaumoi" prefHeight="38.0" prefWidth="155.0" text="Thêm nhân khẩu mới" />
-                              <Button layoutX="23.0" layoutY="77.0" mnemonicParsing="false" onAction="#themphongmoi" prefHeight="38.0" prefWidth="155.0" text="Thêm phòng mới" />
-                           </children>
-                        </Pane>
-                    </content>
-                     <graphic>
-                        <ImageView fitHeight="36.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/add.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </TitledPane>
-              </children>
-             </Pane>
-            <Pane fx:id="rightpane" layoutX="225.0" prefHeight="704.0" prefWidth="619.0" />
-         </children></Pane>
-      <MenuButton layoutX="755.0" layoutY="-10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="49.0" styleClass="button">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Profile" />
-          <MenuItem mnemonicParsing="false" onAction="#dangxuat" text="Log out" />
-        </items>
-         <graphic>
-            <ImageView fitHeight="28.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/user.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </MenuButton>
+        </children>
+       </Pane>
     </children>
 </AnchorPane>
