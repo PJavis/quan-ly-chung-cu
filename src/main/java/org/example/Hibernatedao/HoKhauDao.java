@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau>,SelectById<HoKhau> {
+public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau>{
  private SessionFactory sessionFactory = Hibernate.getSessionFactory();
  private  Session session = null;
 

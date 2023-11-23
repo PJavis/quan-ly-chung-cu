@@ -53,7 +53,7 @@ public class Taomoinhankhau implements Initializable {
         LocalDate datetime = LocalDate.parse(date, formatter);
         nhanKhau.setNgaySinh(Date.valueOf(datetime));
         nhanKhau.setChuHo(co.isSelected());
-        nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText())));
+        nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText())).getId());
         nhanKhau.setTrangThai("Đang ở");
         NhanKhauDao.getInstance().save(nhanKhau);
         getData.getInstance().addNhankhau(nhanKhau);

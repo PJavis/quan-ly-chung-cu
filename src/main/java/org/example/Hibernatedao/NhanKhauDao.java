@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import java.io.Serializable;
 import java.util.List;
 
-public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByName<NhanKhau>, Update<NhanKhau>,SelectById<NhanKhau> {
+public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByName<NhanKhau>, Update<NhanKhau> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session;
     public static NhanKhauDao getInstance() {return new NhanKhauDao(); }
@@ -87,7 +87,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
         }
     }
 
-    @Override
+
     public NhanKhau selectById(int id) {
         NhanKhau nhanKhau;
         try {

@@ -49,7 +49,7 @@ public class Dieuchinhnhankhau {
         SimpleDateFormat newDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         ngaysinh.setText(newDateFormat.format(nhanKhau.getNgaySinh()));
         gioitinh.setText(nhanKhau.getGioiTinh());
-        sophong.setText(String.valueOf(nhanKhau.getHoKhau().getId()));
+        sophong.setText(String.valueOf(nhanKhau.getHoKhau()));
         trangthai.setText(nhanKhau.getTrangThai());
         quoctich.setText(nhanKhau.getQuocTich());
         co.setSelected(nhanKhau.isChuHo());
@@ -64,7 +64,7 @@ public class Dieuchinhnhankhau {
             LocalDate datetime = LocalDate.parse(date, formatter);
             nhanKhau.setNgaySinh(Date.valueOf(datetime));
             nhanKhau.setGioiTinh(gioitinh.getText());
-            nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText())));
+            nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText())).getId());
             nhanKhau.setTrangThai(trangthai.getText());
             nhanKhau.setQuocTich(quoctich.getText());
             nhanKhau.setChuHo(co.isSelected());

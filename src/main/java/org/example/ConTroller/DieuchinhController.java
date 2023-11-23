@@ -137,7 +137,7 @@ nhanKhau.setTen(tennhankhau.getText());
         nhanKhau.setNgaySinh(Date.valueOf(datetime));
 
 nhanKhau.setGioiTinh(gioitinh.getText());
-nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText())));
+nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText())).getId());
 nhanKhau.setTrangThai(trangthai.getText());
 nhanKhau.setQuocTich(quoctich.getText());
 nhanKhau.setChuHo(co.isSelected());
@@ -153,7 +153,7 @@ tennhankhau.setText(nhanKhau.getTen());
         SimpleDateFormat newDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 ngaysinh.setText(newDateFormat.format(nhanKhau.getNgaySinh()));
 gioitinh.setText(nhanKhau.getGioiTinh());
-sophong.setText(String.valueOf(nhanKhau.getHoKhau().getId()));
+sophong.setText(String.valueOf(nhanKhau.getHoKhau()));
 trangthai.setText(nhanKhau.getTrangThai());
 quoctich.setText(nhanKhau.getQuocTich());
 co.setSelected(nhanKhau.isChuHo());
@@ -203,7 +203,7 @@ thanhvienphong.add(label3,1,0);
                    // Hiển thị Alert và xử lý kết quả
                    Optional<ButtonType> result = alert.showAndWait();
                    if (result.isPresent() && result.get() == buttonTypeYes) {
-                       nhanKhau1.setHoKhau(null);
+                       nhanKhau1.setHoKhau(0);
                     NhanKhauDao.getInstance().update(nhanKhau1);
                        Alert alert1=new Alert(Alert.AlertType.CONFIRMATION);
                        alert1.setContentText("Xóa thành công");
@@ -262,7 +262,7 @@ alert.setContentText("Khi đó thông tin phòng sẽ không còn");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == buttonTypeOK) {
             for(NhanKhau nhanKhau1: nhanKhaucuaphong){
-                nhanKhau1.setHoKhau(null);
+                nhanKhau1.setHoKhau(0);
                 nhanKhau1.setChuHo(false);
             }
             HoKhauDao.getInstance().delete(hoKhau.getId());

@@ -24,9 +24,8 @@ public class NhanKhau {
     @Column(name = "quoc_tich", length = 50)
     private String quocTich;
 
-    @ManyToOne
-    @JoinColumn(name = "ho_khau_id", referencedColumnName = "id")
-    private HoKhau hoKhau;
+    @Column(name = "ho_khau_id")
+    private int hoKhau;
 
     @Column(name = "trang_thai", length = 1000)
     private String trangThai;
@@ -40,7 +39,7 @@ public class NhanKhau {
 
     // Constructors, getters, setters, and other methods as needed
 
-    public NhanKhau(int idNguoiDan, String ten, Date ngaySinh, String gioiTinh, String quocTich, HoKhau hoKhau, String trangThai, boolean chuHo) {
+    public NhanKhau(int idNguoiDan, String ten, Date ngaySinh, String gioiTinh, String quocTich, int hoKhau, String trangThai, boolean chuHo) {
         this.idNguoiDan = idNguoiDan;
         this.ten = ten;
         this.ngaySinh = ngaySinh;
@@ -99,11 +98,11 @@ public class NhanKhau {
         this.quocTich = quocTich;
     }
 
-    public HoKhau getHoKhau() {
+    public int getHoKhau() {
         return hoKhau;
     }
 
-    public void setHoKhau(HoKhau hoKhau) {
+    public void setHoKhau(int hoKhau) {
         this.hoKhau = hoKhau;
     }
 
