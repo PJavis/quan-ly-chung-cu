@@ -10,11 +10,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="733.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Dieuchinhnhankhau">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Dieuchinhnhankhau">
    <children>
       <Label layoutX="300.0" layoutY="14.0" text="Điều chỉnh nhân khẩu" />
-      <GridPane layoutX="118.0" layoutY="47.0" prefHeight="310.0" prefWidth="526.0">
+      <GridPane layoutX="74.0" layoutY="37.0" prefHeight="320.0" prefWidth="570.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.5999755859375" minWidth="10.0" prefWidth="173.79998779296875" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.20001220703125" minWidth="10.0" prefWidth="316.20001220703125" />
@@ -43,8 +42,8 @@
          </children>
       </GridPane>
       <TextField fx:id="trangthai" layoutX="318.0" layoutY="366.0" prefHeight="26.0" prefWidth="325.0" />
-      <Label layoutX="118.0" layoutY="371.0" text="Trạng thái: " />
-      <Label layoutX="118.0" layoutY="417.0" text="Lý do:" />
+      <Label layoutX="74.0" layoutY="370.0" text="Trạng thái: " />
+      <Label layoutX="74.0" layoutY="416.0" prefHeight="18.0" prefWidth="32.0" text="Lý do:" />
       <TextArea layoutX="128.0" layoutY="446.0" prefHeight="200.0" prefWidth="526.0" />
       <Button layoutX="148.0" layoutY="665.0" mnemonicParsing="false" onAction="#dieuchinhnhankhau" text="Điều chỉnh nhân khẩu" />
       <Button layoutX="538.0" layoutY="665.0" mnemonicParsing="false" onAction="#xoanhankhau" text="Xóa nhân khẩu" />

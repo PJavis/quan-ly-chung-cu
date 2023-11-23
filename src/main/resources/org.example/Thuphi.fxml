@@ -8,7 +8,7 @@
 
 <Pane prefHeight="750.0" prefWidth="832.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.ThuphiController">
         <fx:include source="DashBoard.fxml" />
-   <Pane layoutX="214.0" layoutY="46.0" prefHeight="704.0" prefWidth="619.0">
+   <Pane layoutX="224.0" prefHeight="750.0" prefWidth="609.0" styleClass="pane_11" stylesheets="@css/pinocchio.css">
            <Label layoutX="14.0" layoutY="44.0" prefHeight="30.0" prefWidth="49.0" text="Tên phí :" />
            <Label layoutX="11.0" layoutY="279.0" text="Người nộp phí :" />
            <Label layoutX="14.0" layoutY="210.0" prefHeight="18.0" prefWidth="60.0" text="Số phòng :" />
