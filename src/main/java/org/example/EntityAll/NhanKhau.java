@@ -2,7 +2,7 @@ package org.example.EntityAll;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name = "nhan_khau")
@@ -16,12 +16,11 @@ public class NhanKhau {
     private String ten;
 
     @Column(name = "ngay_sinh", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+
     private Date ngaySinh;
 
     @Column(name = "gioi_tinh", nullable = false, length = 10)
     private String gioiTinh;
-
     @Column(name = "quoc_tich", length = 50)
     private String quocTich;
 
