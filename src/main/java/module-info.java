@@ -7,9 +7,10 @@ module quan.ly.chung.cu {
     requires jakarta.persistence;
 
     requires javafx.base;
+    requires de.jensd.fx.glyphs.fontawesome;
     exports org.example;
     exports org.example.ConTroller;
-    opens org.example.EntityAll to org.hibernate.orm.core;
+    opens org.example.EntityAll to org.hibernate.orm.core, javafx.base;
     opens org.example to javafx.fxml;
     opens org.example.ConTroller to javafx.fxml;
 }
