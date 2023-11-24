@@ -8,6 +8,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
 import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.NhanKhauDao;
@@ -40,6 +41,10 @@ public class Dieuchinhnhankhau {
         private TextField tennhankhau;
 
         @FXML
+        private TextField sotang;
+
+
+    @FXML
         private TextField trangthai;
         private NhanKhau nhanKhau;
 
@@ -49,7 +54,8 @@ public class Dieuchinhnhankhau {
         SimpleDateFormat newDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         ngaysinh.setText(newDateFormat.format(nhanKhau.getNgaySinh()));
         gioitinh.setText(nhanKhau.getGioiTinh());
-        sophong.setText(String.valueOf(nhanKhau.getHoKhau()));
+        sophong.setText(String.valueOf(nhanKhau.getSophong()));
+        sotang.setText(String.valueOf(nhanKhau.getSotang()));
         trangthai.setText(nhanKhau.getTrangThai());
         quoctich.setText(nhanKhau.getQuocTich());
         co.setSelected(nhanKhau.isChuHo());
@@ -64,7 +70,17 @@ public class Dieuchinhnhankhau {
             LocalDate datetime = LocalDate.parse(date, formatter);
             nhanKhau.setNgaySinh(Date.valueOf(datetime));
             nhanKhau.setGioiTinh(gioitinh.getText());
-            nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText())).getId());
+        HoKhau hoKhau=HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
+        try {
+            nhanKhau.setSophong(hoKhau.getId());
+            nhanKhau.setSotang(hoKhau.getSotang());
+        }
+        catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Thất bại");
+            alert.setContentText("Không tìm thấy phòng");
+            alert.showAndWait();
+        }
             nhanKhau.setTrangThai(trangthai.getText());
             nhanKhau.setQuocTich(quoctich.getText());
             nhanKhau.setChuHo(co.isSelected());

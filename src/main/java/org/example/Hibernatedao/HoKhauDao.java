@@ -54,12 +54,12 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
     }
 
 
-    public HoKhau selectById(int id) {
+    public HoKhau selectById(int sophong,int sotang) {
         HoKhau hoKhau;
         try {
 
             session = Hibernate.getSession(sessionFactory);
-            hoKhau = session.createQuery("FROM HoKhau WHERE id = :id", HoKhau.class).setParameter("id", id).uniqueResult();
+            hoKhau = session.createQuery("FROM HoKhau WHERE id = :sophong AND so_tang=:sotang", HoKhau.class).setParameter("id", sophong).setParameter("so_tang", sotang).uniqueResult();
             Hibernate.closeSession(session);
 
         } catch (Exception e) {

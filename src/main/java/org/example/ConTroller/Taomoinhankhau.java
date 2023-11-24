@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
 import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.NhanKhauDao;
@@ -52,15 +53,16 @@ public class Taomoinhankhau implements Initializable {
         LocalDate datetime = LocalDate.parse(date, formatter);
         nhanKhau.setNgaySinh(Date.valueOf(datetime));
         nhanKhau.setChuHo(false);
+        HoKhau hoKhau=HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText()),Integer.parseInt(sotang.getText()));
         try {
-        nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText())).getId());
-        
+            nhanKhau.setSophong(hoKhau.getId());
+            nhanKhau.setSotang(hoKhau.getSotang());
         }
         catch (Exception e){
-            Alert alert=new Alert(Alert.AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Thất bại");
-            alert.setContentText("Số phòng không tồn tại");
-            alert.show();
+            alert.setContentText("Không tìm thấy phòng");
+            alert.showAndWait();
         }
         nhanKhau.setTrangThai("Đang ở");
         NhanKhauDao.getInstance().save(nhanKhau);
