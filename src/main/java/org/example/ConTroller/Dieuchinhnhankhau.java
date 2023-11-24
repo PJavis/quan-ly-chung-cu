@@ -80,18 +80,19 @@ public class Dieuchinhnhankhau {
             alert.setHeaderText("Thất bại");
             alert.setContentText("Không tìm thấy phòng");
             alert.showAndWait();
-        }
             nhanKhau.setTrangThai(trangthai.getText());
             nhanKhau.setQuocTich(quoctich.getText());
             nhanKhau.setChuHo(co.isSelected());
             NhanKhauDao.getInstance().update(nhanKhau);
-        getData.getInstance().addNhankhau(nhanKhau);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("Thành công");
-            alert.setContentText("Điều chỉnh nhân khẩu thành công");
-            alert.showAndWait();
-        Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            getData.getInstance().addNhankhau(nhanKhau);
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setHeaderText("Thành công");
+            alert1.setContentText("Điều chỉnh nhân khẩu thành công");
+            alert1.showAndWait();
+            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
             ag0r.close();
+        }
+
         }
     @FXML
     void xoanhankhau(ActionEvent event) {
