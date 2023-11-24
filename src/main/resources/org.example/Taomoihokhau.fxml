@@ -28,20 +28,20 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Tên chủ hộ:" GridPane.rowIndex="3" />
-            <Label text="Ngày sinh: " GridPane.rowIndex="4" />
-            <Label text="Giới tính: " GridPane.rowIndex="5" />
+            <TextField fx:id="sophong" prefHeight="26.0" prefWidth="266.0" GridPane.columnIndex="1" />
+            <TextField fx:id="sotang" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="dientichphong" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="tenchuho" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="ngaysinh" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="gioitinh" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label text="Quốc tịch: " GridPane.rowIndex="6" />
             <TextField fx:id="quoctich" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label text="Tên chủ hộ:" GridPane.rowIndex="3" />
+            <Label text="Ngày sinh: " GridPane.rowIndex="4" />
+            <Label text="Giới tính: " GridPane.rowIndex="5" />
+            <Label text="Quốc tịch: " GridPane.rowIndex="6" />
             <Label text="Số phòng:" />
-            <TextField fx:id="sophong" prefHeight="26.0" prefWidth="266.0" GridPane.columnIndex="1" />
             <Label text="Diện tích phòng:" GridPane.rowIndex="2" />
-            <TextField fx:id="dientichphong" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Số tầng:" GridPane.rowIndex="1" />
-            <TextField fx:id="sotang" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>
