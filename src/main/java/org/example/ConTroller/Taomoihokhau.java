@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
 import org.example.Hibernatedao.HoKhauDao;
@@ -46,7 +47,8 @@ public class Taomoihokhau implements Initializable {
 
         @FXML
         void huy(ActionEvent event) {
-
+Stage a=(Stage) tenchuho.getScene().getWindow();
+a.close();
         }
 
         @FXML
@@ -93,7 +95,7 @@ public class Taomoihokhau implements Initializable {
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-                TextField[] textFields2={sophong,dientichphong};
+                TextField[] textFields2={sophong,dientichphong,tenchuho,gioitinh,quoctich,ngaysinh};
                 for (TextField textField : textFields2) {
                         textField.textProperty().addListener((observable, oldValue, newValue) -> checkAllFieldsFilled(textFields2,buttontaomoihokhau));
                 }
