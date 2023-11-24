@@ -24,9 +24,6 @@ public class Taomoinhankhau implements Initializable {
     private Button buttontaomoinhankhau;
 
     @FXML
-    private CheckBox co;
-
-    @FXML
     private TextField gioitinh;
 
     @FXML
@@ -52,8 +49,15 @@ public class Taomoinhankhau implements Initializable {
         String date= ngaysinh.getText();
         LocalDate datetime = LocalDate.parse(date, formatter);
         nhanKhau.setNgaySinh(Date.valueOf(datetime));
-        nhanKhau.setChuHo(co.isSelected());
-        nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText())).getId());
+        nhanKhau.setChuHo(false);
+        try {
+        nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText())).getId());}
+        catch (Exception e){
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Thất bại");
+            alert.setContentText("Số phòng không tồn tại");
+            alert.show();
+        }
         nhanKhau.setTrangThai("Đang ở");
         NhanKhauDao.getInstance().save(nhanKhau);
         getData.getInstance().addNhankhau(nhanKhau);
@@ -64,7 +68,6 @@ public class Taomoinhankhau implements Initializable {
         tennhankhau.clear();
         gioitinh.clear();
         quoctich.clear();
-        co.setSelected(false);
         sophongtaonhankhau.clear();
         ngaysinh.clear();
 
@@ -82,7 +85,7 @@ public class Taomoinhankhau implements Initializable {
     }
     @FXML
     void huy(ActionEvent event) {
-        Stage a= (Stage) co.getScene().getWindow();
+        Stage a= (Stage) tennhankhau.getScene().getWindow();
         a.close();
     }
 
