@@ -57,9 +57,9 @@ a.close();
                 hoKhau.setId(Integer.parseInt(sophong.getText()));
                 hoKhau.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
                 hoKhau.setSotang(Integer.parseInt(sotang.getText()));
-                HoKhauDao.getInstance().save(hoKhau);
-                try {
 
+                try {
+                        HoKhauDao.getInstance().save(hoKhau);
                 NhanKhau nhanKhau=new NhanKhau();
                 nhanKhau.setTen(tenchuho.getText());
                 nhanKhau.setGioiTinh(gioitinh.getText());
