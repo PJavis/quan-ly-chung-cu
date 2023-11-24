@@ -76,7 +76,14 @@ a.close();
                 Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setHeaderText("Thành công");
                 alert.setContentText("Tạo mới hộ khẩu thành công");
-                alert.show();}
+                alert.show();
+                sophong.clear();
+                sotang.clear();
+                dientichphong.clear();
+                tenchuho.clear();
+                ngaysinh.clear();
+                gioitinh.clear();
+                quoctich.clear();}
                 catch (Exception e){
                         Alert alert=new Alert(Alert.AlertType.ERROR);
                         alert.setHeaderText("Thất bại");
