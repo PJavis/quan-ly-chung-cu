@@ -14,14 +14,12 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
     public static NhanKhauDao getInstance() {return new NhanKhauDao(); }
 
     @Override
-    public boolean save(NhanKhau nhanKhau) {
+    public void save(NhanKhau nhanKhau) {
         try {
 
             session=Hibernate.getSession(sessionFactory);
-            Serializable serializable= (Serializable) session.save(nhanKhau);
+            session.save(nhanKhau);
             Hibernate.closeSession(session);
-
-            return (serializable!=null);
         } catch (Exception e) {
 
             throw new RuntimeException(e);

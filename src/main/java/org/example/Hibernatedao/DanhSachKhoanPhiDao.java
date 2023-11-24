@@ -32,14 +32,13 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
     }
 
     @Override
-    public boolean save(DanhSachKhoanPhi danhSachKhoanPhi) {
+    public void save(DanhSachKhoanPhi danhSachKhoanPhi) {
         try {
 
             session=Hibernate.getSession(sessionFactory);
-            Serializable serializable = (Serializable) session.save(danhSachKhoanPhi);
+            session.save(danhSachKhoanPhi);
             Hibernate.closeSession(session);
 
-            return (serializable!=null);
         } catch (Exception e) {
             System.out.println("Luu khoan phi co loi");
             throw new RuntimeException(e);

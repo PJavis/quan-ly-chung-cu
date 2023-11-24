@@ -18,14 +18,12 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi> {
     public static NopPhiDao getInstance() {return  new NopPhiDao();}
 
     @Override
-    public boolean save(NopPhi nopPhi) {
+    public void save(NopPhi nopPhi) {
         try {
 
             session=Hibernate.getSession(sessionFactory);
-            Serializable serializable = (Serializable) session.save(nopPhi);
+            session.save(nopPhi);
             Hibernate.closeSession(session);
-
-            return (serializable!=null);
         } catch (Exception e) {
             System.out.println("Luu nop phi co loi");
             throw new RuntimeException(e);

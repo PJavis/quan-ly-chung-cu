@@ -1,13 +1,11 @@
 package org.example.Hibernatedao;
 
-import javafx.scene.control.Alert;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
 import org.example.Function.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,13 +17,11 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
         return new HoKhauDao();
     }
 
-    public boolean save(HoKhau hoKhau){
+    public void save(HoKhau hoKhau){
        try {
            session=Hibernate.getSession(sessionFactory);
-           Serializable serializable = (Serializable) session.save(hoKhau);
+           session.save(hoKhau);
            Hibernate.closeSession(session);
-
-           return (serializable!=null);
        } catch (Exception e) {
            throw new RuntimeException(e);
        }

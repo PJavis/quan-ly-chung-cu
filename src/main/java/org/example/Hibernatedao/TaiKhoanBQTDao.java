@@ -16,14 +16,12 @@ public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
     public static TaiKhoanBQTDao getInstance() {return new TaiKhoanBQTDao(); }
 
     @Override
-    public boolean save(TaiKhoanBQT taiKhoanBQT) {
+    public void save(TaiKhoanBQT taiKhoanBQT) {
         try {
 
             session = Hibernate.getSession(sessionFactory);
-            Serializable serializable = (Serializable) session.save(taiKhoanBQT);
+            session.save(taiKhoanBQT);
             Hibernate.closeSession(session);
-
-            return (serializable!=null);
         } catch (Exception e) {
             System.out.println("Luu tai khoan ban quan tri co loi");
             throw new RuntimeException(e);

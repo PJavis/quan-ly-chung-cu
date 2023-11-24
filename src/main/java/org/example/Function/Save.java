@@ -1,5 +1,5 @@
 package org.example.Function;
 
 public interface Save<T> {
-    public boolean save(T in);
+    public void save(T in);
 }

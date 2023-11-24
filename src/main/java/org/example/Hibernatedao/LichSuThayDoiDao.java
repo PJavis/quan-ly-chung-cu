@@ -13,14 +13,12 @@ public class LichSuThayDoiDao implements Save<LichSuThayDoi> {
     public static LichSuThayDoiDao getInstance() {return new LichSuThayDoiDao(); }
 
     @Override
-    public boolean save(LichSuThayDoi lichSuThayDoi) {
+    public void save(LichSuThayDoi lichSuThayDoi) {
         try {
 
             session=Hibernate.getSession(sessionFactory);
-            Serializable serializable= (Serializable) session.save(lichSuThayDoi);
+            session.save(lichSuThayDoi);
             Hibernate.closeSession(session);
-
-            return (serializable!=null);
         } catch (Exception e) {
             System.out.println("Luu lich su thay doi co loi");
             throw new RuntimeException(e);
