@@ -27,9 +27,6 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
 
            return (serializable!=null);
        } catch (Exception e) {
-           Alert alert=new Alert(Alert.AlertType.ERROR);
-           alert.setContentText("Số phòng đã tồn tại");
-           alert.showAndWait();
            throw new RuntimeException(e);
        }
     }

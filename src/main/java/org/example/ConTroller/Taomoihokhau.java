@@ -56,8 +56,10 @@ a.close();
                 HoKhau hoKhau=new HoKhau();
                 hoKhau.setId(Integer.parseInt(sophong.getText()));
                 hoKhau.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
-                try {
+                hoKhau.setSotang(Integer.parseInt(sotang.getText()));
                 HoKhauDao.getInstance().save(hoKhau);
+                try {
+
                 NhanKhau nhanKhau=new NhanKhau();
                 nhanKhau.setTen(tenchuho.getText());
                 nhanKhau.setGioiTinh(gioitinh.getText());
@@ -95,7 +97,7 @@ a.close();
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-                TextField[] textFields2={sophong,dientichphong,tenchuho,gioitinh,quoctich,ngaysinh};
+                TextField[] textFields2={sophong,dientichphong,tenchuho,gioitinh,quoctich,ngaysinh,sotang};
                 for (TextField textField : textFields2) {
                         textField.textProperty().addListener((observable, oldValue, newValue) -> checkAllFieldsFilled(textFields2,buttontaomoihokhau));
                 }
