@@ -23,6 +23,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Label text="Tên nhân khẩu: " />
@@ -33,8 +34,10 @@
             <TextField fx:id="gioitinh" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Số phòng: " GridPane.rowIndex="3" />
             <TextField fx:id="sophongtaonhankhau" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Quốc tịch: " GridPane.rowIndex="4" />
-            <TextField fx:id="quoctich" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Quốc tịch: " GridPane.rowIndex="5" />
+            <TextField fx:id="quoctich" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Số tầng:" GridPane.rowIndex="4" />
+            <TextField fx:id="sotang" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <Button fx:id="buttontaomoinhankhau" disable="true" layoutX="232.0" layoutY="447.0" mnemonicParsing="false" onAction="#taomoinhankhau" text="Tạo mới" />
