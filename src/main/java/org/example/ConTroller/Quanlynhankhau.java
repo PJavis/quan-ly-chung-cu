@@ -37,6 +37,8 @@ public class Quanlynhankhau implements Initializable {
 
     @FXML
     private TableColumn<NhanKhau, Integer> sophongdango;
+    @FXML
+    private TableColumn<NhanKhau, Integer> sotang;
 
     @FXML
     private TableColumn<NhanKhau, Integer> sothutu;
@@ -67,8 +69,9 @@ public class Quanlynhankhau implements Initializable {
         });
         hovaten.setCellValueFactory(new PropertyValueFactory<>("ten"));
         ngaysinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
-        sophongdango.setCellValueFactory(new PropertyValueFactory<>("hoKhau"));
+        sophongdango.setCellValueFactory(new PropertyValueFactory<>("sophong"));
         trangthai.setCellValueFactory(new PropertyValueFactory<>("trangThai"));
+        sotang.setCellValueFactory(new PropertyValueFactory<>("sotang"));
         dieuchinh.setCellFactory(cell->{
             return new TableCell<NhanKhau,Void>(){
                 @Override

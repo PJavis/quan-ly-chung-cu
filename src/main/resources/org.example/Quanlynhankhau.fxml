@@ -40,11 +40,12 @@
    <TableView fx:id="danhsachnhankhau" layoutX="229.0" layoutY="58.0" prefHeight="330.0" prefWidth="600.0">
      <columns>
        <TableColumn fx:id="sothutu" prefWidth="70.4000244140625" text="Số thứ tự" />
-       <TableColumn fx:id="hovaten" prefWidth="202.39996337890625" text="Họ và tên" />
-         <TableColumn fx:id="ngaysinh" prefWidth="107.20001220703125" text="Ngày sinh" />
-         <TableColumn fx:id="sophongdango" minWidth="0.0" prefWidth="61.60003662109375" text="Số phòng" />
-         <TableColumn fx:id="trangthai" prefWidth="85.60009765625" text="Trạng thái" />
-         <TableColumn fx:id="dieuchinh" prefWidth="68.0" text="Điều chỉnh" />
+       <TableColumn fx:id="hovaten" prefWidth="130.39996337890625" text="Họ và tên" />
+         <TableColumn fx:id="ngaysinh" prefWidth="87.20001220703125" text="Ngày sinh" />
+         <TableColumn fx:id="sophongdango" minWidth="0.0" prefWidth="78.39996337890625" text="Số phòng" />
+         <TableColumn fx:id="sotang" prefWidth="81.60003662109375" text="Số tầng" />
+         <TableColumn fx:id="trangthai" minWidth="6.4000244140625" prefWidth="72.7999267578125" text="Trạng thái" />
+         <TableColumn fx:id="dieuchinh" prefWidth="76.7999267578125" text="Điều chỉnh" />
      </columns>
    </TableView>
    <Button layoutX="669.0" layoutY="14.0" mnemonicParsing="false" onAction="#taomoinhankhau" prefHeight="34.0" prefWidth="148.0" text="Tạo mới nhân khẩu">
