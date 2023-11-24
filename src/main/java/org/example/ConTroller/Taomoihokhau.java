@@ -74,7 +74,7 @@ a.close();
                 NhanKhauDao.getInstance().save(nhanKhau);
                 Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setHeaderText("Thành công");
-                alert.setContentText("Tạo mới nhân khẩu thành công");
+                alert.setContentText("Tạo mới hộ khẩu thành công");
                 alert.show();}
                 catch (Exception e){
                         Alert alert=new Alert(Alert.AlertType.ERROR);

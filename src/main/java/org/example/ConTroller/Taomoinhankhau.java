@@ -37,6 +37,8 @@ public class Taomoinhankhau implements Initializable {
 
     @FXML
     private TextField tennhankhau;
+    @FXML
+    private TextField sotang;
 
 
     @FXML
@@ -51,7 +53,9 @@ public class Taomoinhankhau implements Initializable {
         nhanKhau.setNgaySinh(Date.valueOf(datetime));
         nhanKhau.setChuHo(false);
         try {
-        nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText())).getId());}
+        nhanKhau.setHoKhau(HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText())).getId());
+        
+        }
         catch (Exception e){
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Thất bại");
