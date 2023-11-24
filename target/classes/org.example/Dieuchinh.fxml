@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<Pane prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DieuchinhController">
+    <fx:include source="DashBoard.fxml" />
+   <TabPane fx:id="tabpanedieuchinh" layoutX="227.0" layoutY="10.0" prefHeight="740.0" prefWidth="605.0" styleClass="inner_pane" stylesheets="@css/pinocchio.css" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+         <Tab text="Điều chỉnh các khoản phí">
+            <content>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="727.0" prefWidth="600.0">
+                  <children>
+                     <Label fx:id="chonkhoanphicandieuchinh" layoutX="14.0" layoutY="76.0" text="Chọn khoản phí cần điều chỉnh: " />
+                     <Label layoutX="14.0" layoutY="147.0" text="Loại khoản phí: " />
+                     <Label layoutX="14.0" layoutY="205.0" text="Số tiền: " />
+                     <TextField fx:id="sotien" layoutX="209.0" layoutY="201.0" />
+                     <TextField fx:id="loaikhoanphi" layoutX="209.0" layoutY="143.0" />
+                     <Button layoutX="138.0" layoutY="378.0" mnemonicParsing="false" onAction="#dieuchinhkhoanphi" text="Điều chỉnh khoản phí" />
+                     <Button layoutX="384.0" layoutY="378.0" mnemonicParsing="false" text="Xóa khoản phí" />
+                     <TextField fx:id="khoanphidieuchinh" layoutX="210.0" layoutY="72.0" prefHeight="26.0" prefWidth="205.0" />
+                     <Button layoutX="430.0" layoutY="73.0" mnemonicParsing="false" onAction="#timphi" text="Tìm" />
+                     <ListView fx:id="listviewphi" layoutX="210.0" layoutY="98.0" onMouseClicked="#listviewphi" prefHeight="70.0" prefWidth="206.0" visible="false" />
+                     <Label layoutX="14.0" layoutY="263.0" text="Hạn nộp:" />
+                     <TextField fx:id="hannop" layoutX="209.0" layoutY="259.0" />
+                  </children>
+               </AnchorPane>
+            </content>
+         </Tab>
+         <Tab text="Điều chỉnh nhân khẩu">
+            <content>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                     <Button layoutX="500.0" layoutY="86.0" mnemonicParsing="false" onAction="#timnhankhau" text="Tìm" />
+                     <GridPane layoutX="14.0" layoutY="69.0" prefHeight="492.0" prefWidth="480.0">
+                       <columnConstraints>
+                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.5999755859375" minWidth="10.0" prefWidth="173.79998779296875" />
+                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.20001220703125" minWidth="10.0" prefWidth="316.20001220703125" />
+                       </columnConstraints>
+                       <rowConstraints>
+                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                       </rowConstraints>
+                        <children>
+                           <Label text="Tên nhân khẩu cần điều chỉnh: " />
+                           <TextField fx:id="tennhankhaucandieuchinh" prefHeight="26.0" prefWidth="289.0" GridPane.columnIndex="1" />
+                           <Label text="Tên nhân khẩu: " GridPane.rowIndex="1" />
+                           <Label text="Ngày sinh: " GridPane.rowIndex="2" />
+                           <Label text="Giới tính: " GridPane.rowIndex="3" />
+                           <Label text="Số phòng: " GridPane.rowIndex="4" />
+                           <TextField fx:id="sophong" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           <TextField fx:id="gioitinh" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           <TextField fx:id="tennhankhau" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           <TextField fx:id="ngaysinh" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           <Label text="Quốc tịch: " GridPane.rowIndex="6" />
+                           <TextField fx:id="quoctich" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                           <Label text="Trạng thái: " GridPane.rowIndex="5" />
+                           <TextField fx:id="trangthai" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           <Label text="Chủ hộ:" GridPane.rowIndex="7" />
+                           <CheckBox fx:id="co" mnemonicParsing="false" text="Có" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        </children>
+                     </GridPane>
+                     <Button layoutX="159.0" layoutY="589.0" mnemonicParsing="false" onAction="#dieuchinhnhankhau" text="Điều chỉnh nhân khẩu" />
+                     <Label fx:id="nhankhauduocdieuchinhthanhcon" layoutX="121.0" layoutY="561.0" text="Nhân khẩu được điều chỉnh thành công" />
+                     <Button layoutX="419.0" layoutY="589.0" mnemonicParsing="false" text="Xóa nhân khẩu" />
+                     <Label layoutX="395.0" layoutY="561.0" text="Xóa nhân khẩu thành công" />
+                     <ListView fx:id="listviewnhankhaucandieuchinh" layoutX="183.0" layoutY="112.0" onMouseClicked="#listviewnhankhaucandieuchinh" prefHeight="91.0" prefWidth="310.0" visible="false" />
+                  </children></AnchorPane>
+            </content>
+         </Tab>
+         <Tab text="Điều chỉnh phòng">
+            <content>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                     <ListView fx:id="listviewsophong" layoutX="200.0" layoutY="103.0" onMouseClicked="#listviewsophong" prefHeight="75.0" prefWidth="274.0" visible="false" />
+                     <Button layoutX="481.0" layoutY="78.0" mnemonicParsing="false" onAction="#timphong" text="Tìm" />
+                     <Button layoutX="119.0" layoutY="613.0" mnemonicParsing="false" onAction="#dieuchinhphong" text="Điều chỉnh phòng" />
+                     <Button layoutX="407.0" layoutY="613.0" mnemonicParsing="false" onAction="#xoaphong" text="Xóa phòng" />
+                     <Label fx:id="khongtimthayphong" layoutX="176.0" layoutY="47.0" text="Không tìm thấy phòng" visible="false" />
+                     <TextField fx:id="chuho" layoutX="200.0" layoutY="226.0" prefHeight="26.0" prefWidth="275.0" />
+                     <Label layoutX="42.0" layoutY="230.0" text="Chủ hộ: " />
+                     <Label layoutX="42.0" layoutY="182.0" prefWidth="91.0" text="Diện tích phòng: " />
+                     <TextField fx:id="dientichphong" layoutX="200.0" layoutY="178.0" prefHeight="26.0" prefWidth="273.0" />
+                     <Label layoutX="42.0" layoutY="82.0" text="Số phòng: " />
+                     <TextField fx:id="sophongdieuchinhphong" layoutX="200.0" layoutY="78.0" prefHeight="26.0" prefWidth="273.0" />
+                     <ScrollPane hbarPolicy="NEVER" layoutX="42.0" layoutY="275.0" prefHeight="277.0" prefWidth="486.0" vbarPolicy="NEVER">
+                       <content>
+                         <AnchorPane fx:id="anchopanethanhvienphong" minHeight="0.0" minWidth="0.0" prefHeight="277.0" prefWidth="486.0">
+                              <children>
+                                 <GridPane fx:id="thanhvienphong" layoutX="13.0" prefHeight="90.0" prefWidth="473.0">
+                                   <columnConstraints>
+                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.00001220703126" minWidth="10.0" prefWidth="101.6" />
+                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="322.4" minWidth="10.0" prefWidth="269.6000732421875" />
+                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.59995117187498" minWidth="10.0" prefWidth="101.19992675781248" />
+                                   </columnConstraints>
+                                   <rowConstraints>
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                   </rowConstraints>
+                                 </GridPane>
+                              </children>
+                           </AnchorPane>
+                       </content>
+                     </ScrollPane>
+                  </children></AnchorPane>
+            </content>
+         </Tab>
+      </tabs>
+   </TabPane>
+</Pane>
