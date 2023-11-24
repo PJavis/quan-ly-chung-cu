@@ -14,8 +14,11 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.example.getData;
+
 public class DashBoardController {
     @FXML
     private Button trangchu1;
@@ -82,6 +85,18 @@ public class DashBoardController {
     }
     @FXML
     void quanlyphongo(ActionEvent event) {
+        try {
+            Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlyphong.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
 
+            ag0r1.setScene(scene);
+
+            ag0r1.show();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
