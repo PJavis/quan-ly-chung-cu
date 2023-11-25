@@ -12,6 +12,7 @@ import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
 import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.NhanKhauDao;
+import org.example.getData;
 
 import java.net.URL;
 import java.sql.Date;
@@ -57,9 +58,10 @@ a.close();
                 hoKhau.setId(Integer.parseInt(sophong.getText()));
                 hoKhau.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
                 hoKhau.setSoTang(Integer.parseInt(sotang.getText()));
+                hoKhau.setTenchuho(tenchuho.getText());
 
-                try {
-                        HoKhauDao.getInstance().save(hoKhau);
+                try {HoKhauDao.getInstance().save(hoKhau);
+                        getData.getInstance().addHokhau(hoKhau);
                 NhanKhau nhanKhau=new NhanKhau();
                 nhanKhau.setTen(tenchuho.getText());
                 nhanKhau.setGioiTinh(gioitinh.getText());
@@ -73,6 +75,7 @@ a.close();
                 nhanKhau.setSotang(hoKhau.getSoTang());
                 nhanKhau.setTrangThai("Đang ở");
                 NhanKhauDao.getInstance().save(nhanKhau);
+                getData.getInstance().addNhankhau(nhanKhau);
                 Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setHeaderText("Thành công");
                 alert.setContentText("Tạo mới hộ khẩu thành công");

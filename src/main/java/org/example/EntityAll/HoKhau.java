@@ -28,16 +28,21 @@ public class HoKhau {
 
     @Column(name = "dien_tich_phong", columnDefinition = "double precision")
     private double dienTichPhong;
+    @Column(name="ten_chu-ho")
+    private String tenchuho;
+
 
     // Default constructor required by Hibernate
     public HoKhau() {
     }
 
     // Parameterized constructor
-    public HoKhau(int id, int soTang, double dienTichPhong) {
+    public HoKhau(int id, int soTang, double dienTichPhong,String tenchuho) {
         this.id = id;
         this.soTang = soTang;
         this.dienTichPhong = dienTichPhong;
+        this.tenchuho=tenchuho;
+
     }
 
     // Getters and setters
@@ -63,5 +68,17 @@ public class HoKhau {
 
     public void setDienTichPhong(double dienTichPhong) {
         this.dienTichPhong = dienTichPhong;
+    }
+
+    public String getTenchuho() {
+        return tenchuho;
+    }
+
+
+
+
+    public void setTenchuho(String tenchuho) {
+        this.tenchuho = tenchuho;
+
     }
 }

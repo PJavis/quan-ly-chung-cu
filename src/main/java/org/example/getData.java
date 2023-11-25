@@ -14,7 +14,8 @@ public class getData {
 
     private getData() {
         // Khởi tạo dữ liệu khi lớp được tạo ra
-        reloadData();
+        reloadHokhau();
+        reloadNhankhau();
     }
 
     public static getData getInstance() {
@@ -37,10 +38,19 @@ public class getData {
     public List<HoKhau> getHoKhaus() {
         return hoKhaus;
     }
+    public void addHokhau(HoKhau hoKhau){
+        hoKhaus.add(hoKhau);
+    }
+    public void removeHokhau(HoKhau hoKhau){
+        hoKhaus.remove(hoKhau);
+    }
 
-    public void reloadData() {
+    public void reloadNhankhau() {
         // Làm mới dữ liệu từ HoKhauDao và NhanKhauDao
-        this.hoKhaus = HoKhauDao.getInstance().selectAll();
+
         this.nhanKhaus = NhanKhauDao.getInstance().selectAll();
+    }
+    public void reloadHokhau(){
+        this.hoKhaus = HoKhauDao.getInstance().selectAll();
     }
 }

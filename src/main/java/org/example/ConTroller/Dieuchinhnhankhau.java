@@ -22,8 +22,7 @@ import java.util.Optional;
 
 public class Dieuchinhnhankhau {
 
-        @FXML
-        private CheckBox co;
+
 
         @FXML
         private TextField gioitinh;
@@ -44,7 +43,7 @@ public class Dieuchinhnhankhau {
         private TextField sotang;
 
 
-    @FXML
+        @FXML
         private TextField trangthai;
         private NhanKhau nhanKhau;
 
@@ -58,7 +57,7 @@ public class Dieuchinhnhankhau {
         sotang.setText(String.valueOf(nhanKhau.getSotang()));
         trangthai.setText(nhanKhau.getTrangThai());
         quoctich.setText(nhanKhau.getQuocTich());
-        co.setSelected(nhanKhau.isChuHo());
+
     }
 
     @FXML
@@ -70,13 +69,13 @@ public class Dieuchinhnhankhau {
             LocalDate datetime = LocalDate.parse(date, formatter);
             nhanKhau.setNgaySinh(Date.valueOf(datetime));
             nhanKhau.setGioiTinh(gioitinh.getText());
-        HoKhau hoKhau=HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
+            HoKhau hoKhau1=HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
+
         try {
-            nhanKhau.setSophong(hoKhau.getId());
-            nhanKhau.setSotang(hoKhau.getSoTang());
+            nhanKhau.setSophong(hoKhau1.getId());
+            nhanKhau.setSotang(hoKhau1.getSoTang());
             nhanKhau.setTrangThai(trangthai.getText());
             nhanKhau.setQuocTich(quoctich.getText());
-            nhanKhau.setChuHo(co.isSelected());
             NhanKhauDao.getInstance().update(nhanKhau);
             getData.getInstance().addNhankhau(nhanKhau);
             Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
@@ -109,6 +108,7 @@ public class Dieuchinhnhankhau {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == buttonTypeOK) {
             NhanKhauDao.getInstance().delete(nhanKhau.getIdNguoiDan());
+
             getData.getInstance().removeNhankhau(nhanKhau);
         }
         Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();

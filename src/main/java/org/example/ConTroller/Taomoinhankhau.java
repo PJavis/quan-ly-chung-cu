@@ -57,6 +57,18 @@ public class Taomoinhankhau implements Initializable {
         try {
             nhanKhau.setSophong(hoKhau.getId());
             nhanKhau.setSotang(hoKhau.getSoTang());
+            nhanKhau.setTrangThai("Đang ở");
+            NhanKhauDao.getInstance().save(nhanKhau);
+            getData.getInstance().addNhankhau(nhanKhau);
+            Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Thành công");
+            alert.setContentText("Tạo mới nhân khẩu thành công");
+            alert.show();
+            tennhankhau.clear();
+            gioitinh.clear();
+            quoctich.clear();
+            sophongtaonhankhau.clear();
+            ngaysinh.clear();
         }
         catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -64,18 +76,7 @@ public class Taomoinhankhau implements Initializable {
             alert.setContentText("Không tìm thấy phòng");
             alert.showAndWait();
         }
-        nhanKhau.setTrangThai("Đang ở");
-        NhanKhauDao.getInstance().save(nhanKhau);
-        getData.getInstance().addNhankhau(nhanKhau);
-        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("Thành công");
-        alert.setContentText("Tạo mới nhân khẩu thành công");
-        alert.show();
-        tennhankhau.clear();
-        gioitinh.clear();
-        quoctich.clear();
-        sophongtaonhankhau.clear();
-        ngaysinh.clear();
+
 
     }
     private void checkAllFieldsFilled(TextField[] textFields,Button buttontaomoi ) {
