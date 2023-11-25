@@ -73,13 +73,7 @@ public class Dieuchinhnhankhau {
         HoKhau hoKhau=HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
         try {
             nhanKhau.setSophong(hoKhau.getId());
-            nhanKhau.setSotang(hoKhau.getSotang());
-        }
-        catch (Exception e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Thất bại");
-            alert.setContentText("Không tìm thấy phòng");
-            alert.showAndWait();
+            nhanKhau.setSotang(hoKhau.getSoTang());
             nhanKhau.setTrangThai(trangthai.getText());
             nhanKhau.setQuocTich(quoctich.getText());
             nhanKhau.setChuHo(co.isSelected());
@@ -91,6 +85,13 @@ public class Dieuchinhnhankhau {
             alert1.showAndWait();
             Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
             ag0r.close();
+        }
+        catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Thất bại");
+            alert.setContentText("Không tìm thấy phòng");
+            alert.showAndWait();
+
         }
 
         }

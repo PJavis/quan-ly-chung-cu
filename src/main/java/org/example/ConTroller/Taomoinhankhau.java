@@ -56,7 +56,7 @@ public class Taomoinhankhau implements Initializable {
         HoKhau hoKhau=HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText()),Integer.parseInt(sotang.getText()));
         try {
             nhanKhau.setSophong(hoKhau.getId());
-            nhanKhau.setSotang(hoKhau.getSotang());
+            nhanKhau.setSotang(hoKhau.getSoTang());
         }
         catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -56,7 +56,7 @@ a.close();
                 HoKhau hoKhau=new HoKhau();
                 hoKhau.setId(Integer.parseInt(sophong.getText()));
                 hoKhau.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
-                hoKhau.setSotang(Integer.parseInt(sotang.getText()));
+                hoKhau.setSoTang(Integer.parseInt(sotang.getText()));
 
                 try {
                         HoKhauDao.getInstance().save(hoKhau);
@@ -70,7 +70,7 @@ a.close();
                 nhanKhau.setNgaySinh(Date.valueOf(datetime));
                 nhanKhau.setChuHo(true);
                 nhanKhau.setSophong(hoKhau.getId());
-                nhanKhau.setSotang(hoKhau.getSotang());
+                nhanKhau.setSotang(hoKhau.getSoTang());
                 nhanKhau.setTrangThai("Đang ở");
                 NhanKhauDao.getInstance().save(nhanKhau);
                 Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
