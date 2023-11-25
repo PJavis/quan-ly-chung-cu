@@ -1,44 +1,60 @@
 package org.example.EntityAll;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
+
+
+@Embeddable
+class HoKhauId implements Serializable {
+    private int id;
+    private int soTang;
+
+    // constructors, equals, hashCode methods as needed
+
+    // getters and setters
+}
 
 @Entity
 @Table(name = "ho_khau")
+@IdClass(HoKhauId.class)
 public class HoKhau {
     @Id
     @Column(name = "id")
     private int id;
-    @Column(name = "dien_tich_phong", columnDefinition = "double precision")
-    private double dienTichPhong;
+
     @Id
     @Column(name = "so_tang")
-    private int sotang;
+    private int soTang;
+
+    @Column(name = "dien_tich_phong", columnDefinition = "double precision")
+    private double dienTichPhong;
+
+    // Default constructor required by Hibernate
     public HoKhau() {
-        // Default constructor required by Hibernate
     }
 
-    // Constructors, getters, setters, and other methods as needed
-
-    public HoKhau(int id, double dienTichPhong,int sotang) {
+    // Parameterized constructor
+    public HoKhau(int id, int soTang, double dienTichPhong) {
         this.id = id;
+        this.soTang = soTang;
         this.dienTichPhong = dienTichPhong;
-        this.sotang=sotang;
     }
 
-    public int getSotang() {
-        return sotang;
-    }
-
-    public void setSotang(int sotang) {
-        this.sotang = sotang;
-    }
-
+    // Getters and setters
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getSoTang() {
+        return soTang;
+    }
+
+    public void setSoTang(int soTang) {
+        this.soTang = soTang;
     }
 
     public double getDienTichPhong() {

@@ -54,12 +54,14 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
     }
 
 
-    public HoKhau selectById(int sophong,int sotang) {
+    public HoKhau selectById(int sophong, int sotang) {
         HoKhau hoKhau;
         try {
-
             session = Hibernate.getSession(sessionFactory);
-            hoKhau = session.createQuery("FROM HoKhau WHERE id = :sophong AND so_tang=:sotang", HoKhau.class).setParameter("id", sophong).setParameter("so_tang", sotang).uniqueResult();
+            hoKhau = session.createQuery("FROM HoKhau WHERE id = :sophong AND soTang = :sotang", HoKhau.class)
+                    .setParameter("sophong", sophong)
+                    .setParameter("sotang", sotang)
+                    .uniqueResult();
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
@@ -67,6 +69,7 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
         }
         return hoKhau;
     }
+
 
     @Override
     public void update(HoKhau hoKhau) {
