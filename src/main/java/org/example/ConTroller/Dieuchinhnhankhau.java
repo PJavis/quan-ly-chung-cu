@@ -107,7 +107,7 @@ public class Dieuchinhnhankhau {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == buttonTypeOK) {
-            NhanKhauDao.getInstance().delete(nhanKhau.getIdNguoiDan());
+            NhanKhauDao.getInstance().delete(nhanKhau);
 
             getData.getInstance().removeNhankhau(nhanKhau);
         }

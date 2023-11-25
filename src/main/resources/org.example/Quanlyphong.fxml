@@ -40,7 +40,7 @@
        <TableColumn fx:id="sophong" prefWidth="121.5999755859375" text="Số phòng" />
          <TableColumn fx:id="sotang" prefWidth="97.60006713867188" text="Số tầng" />
          <TableColumn fx:id="tenchuho" prefWidth="190.39990234375" text="Tên chủ hộ" />
-         <TableColumn fx:id="dieuchinh" prefWidth="112.8001708984375" text="Điều chỉnh" />
+         <TableColumn fx:id="dieuchinh" prefWidth="109.5999755859375" text="Điều chỉnh" />
      </columns>
    </TableView>
    <ComboBox editable="true" layoutX="665.0" layoutY="420.0" prefWidth="150.0" promptText="Thống kê" />

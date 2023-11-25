@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import java.io.Serializable;
 import java.util.List;
 
-public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByName<NhanKhau>, Update<NhanKhau> {
+public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<NhanKhau>, Update<NhanKhau> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session;
     public static NhanKhauDao getInstance() {return new NhanKhauDao(); }
@@ -41,12 +41,12 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
         return nhanKhaus;
     }
 
-    @Override
-    public void delete(int id) {
+
+    public void delete(NhanKhau nhanKhau) {
         try {
 
             session = Hibernate.getSession(sessionFactory);
-            session.createQuery("DELETE FROM NhanKhau "  + "WHERE id = :id").setParameter("id", id).executeUpdate();
+            session.delete(nhanKhau);
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
@@ -101,13 +101,14 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, Delete, SelectByN
 
     }
 
-    public List<NhanKhau> selectNhanKhauById(int id) {
+    public List<NhanKhau> selectNhanKhauById(int sophong,int sotang) {
         List<NhanKhau> nhanKhau = null;
         try {
 
             session = Hibernate.getSession(sessionFactory);
-            nhanKhau = session.createQuery("FROM NhanKhau n WHERE n.hoKhau.id = :id ", NhanKhau.class)
-                    .setParameter("id", id)
+            nhanKhau = session.createQuery("FROM NhanKhau  WHERE  sophong= :sophong AND sotang = :sotang ", NhanKhau.class)
+                    .setParameter("sophong", sophong)
+                    .setParameter("sotang",sotang)
                     .getResultList();
             Hibernate.closeSession(session);
 

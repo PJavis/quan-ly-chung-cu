@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau>{
+public class HoKhauDao implements Save<HoKhau>, SelectAll, Update<HoKhau>{
  private SessionFactory sessionFactory = Hibernate.getSessionFactory();
  private  Session session = null;
 
@@ -40,18 +40,17 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
         }
         return hoKhaus;
     }
-
-    public void delete(int id) {
+    public void delete(HoKhau hoKhau){
         try {
-
-            session = Hibernate.getSession(sessionFactory);
-            session.createQuery("DELETE FROM HoKhau WHERE id = :id" ).setParameter("id", id).executeUpdate();
+            session=Hibernate.getSession(sessionFactory);
+            session.delete(hoKhau);
             Hibernate.closeSession(session);
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
+
 
 
     public HoKhau selectById(int sophong, int sotang) {
@@ -85,26 +84,5 @@ public class HoKhauDao implements Save<HoKhau>, Delete, SelectAll, Update<HoKhau
         }
     }
 
-    public NhanKhau layChuHo(HoKhau hoKhau) {
-        List<NhanKhau> nhanKhau= NhanKhauDao.getInstance().selectNhanKhauById(hoKhau.getId());
-        NhanKhau out = null;
-        for (NhanKhau n : nhanKhau) {
-            if (n.isChuHo()) {
-                out = n;
-                break;
-            }
-        }
-        return out;
-    }
 
-    public List<NhanKhau> layNhanKhau(HoKhau hoKhau) {
-        List<NhanKhau> nhanKhau= NhanKhauDao.getInstance().selectNhanKhauById(hoKhau.getId());
-        List<NhanKhau> out = new ArrayList<>();
-        for (NhanKhau n : nhanKhau) {
-            if (!n.isChuHo()) {
-                out.add(n);
-            }
-        }
-        return out;
-    }
 }
