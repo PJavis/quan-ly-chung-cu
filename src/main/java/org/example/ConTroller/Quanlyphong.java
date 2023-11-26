@@ -47,10 +47,13 @@ public class Quanlyphong implements Initializable {
 
     @FXML
     private TextField timkiem;
+    @FXML
+    private Label tongsohokhau;
+
     private List<HoKhau> hoKhauList=getData.getInstance().getHoKhaus();
     private ObservableList<HoKhau> hoKhaus;
     public void danhsachhokhau(){
-
+        tongsohokhau.setText(String.valueOf(hoKhauList.size()));
         hoKhaus= FXCollections.observableArrayList(hoKhauList);
         hoKhaus.sort(Comparator.comparingInt(HoKhau::getSoTang).thenComparing(HoKhau::getId));
         sothutu.setCellValueFactory(cellData -> {

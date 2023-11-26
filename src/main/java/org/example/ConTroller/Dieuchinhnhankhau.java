@@ -107,12 +107,19 @@ public class Dieuchinhnhankhau {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == buttonTypeOK) {
-            NhanKhauDao.getInstance().delete(nhanKhau);
+            if(nhanKhau.isChuHo()){
+                Alert alert1 = new Alert(Alert.AlertType.ERROR);
+                alert1.setHeaderText("Thất bại");
+                alert1.setContentText("Bạn không được xóa chủ hộ");
+                alert1.showAndWait();
+            }
+            else {NhanKhauDao.getInstance().delete(nhanKhau);
 
             getData.getInstance().removeNhankhau(nhanKhau);
+                Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                ag0r.close();}
         }
-        Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ag0r.close();
+
     }
 
     }

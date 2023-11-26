@@ -116,6 +116,7 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
                         Alert alert=new Alert(Alert.AlertType.WARNING);
                         alert.setHeaderText("Bạn chắc chắn muốn xóa nhân khẩu ?");
                         alert.setContentText("Khi đó thông tin về nhân khẩu sẽ không còn");
+
                         ButtonType buttonTypeOK = new ButtonType("OK", ButtonType.OK.getButtonData());
                         // Thêm nút "Hủy"
                         ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonType.CANCEL.getButtonData());
@@ -134,8 +135,8 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
                             else {NhanKhauDao.getInstance().delete(person);
                             getData.getInstance().removeNhankhau(person);
                             nhanKhaus.remove(person);
-                            Quanlynhankhau.setNhanKhauList();
-                            danhsachthanhvien();}
+                            danhsachthanhvien();
+                            }
                         }
                     });
                  }

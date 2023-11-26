@@ -52,6 +52,8 @@
        <NumberAxis side="LEFT" />
      </yAxis>
    </BarChart>
+   <Label layoutX="248.0" layoutY="424.0" text="Tổng số hộ khẩu:" />
+   <Label fx:id="tongsohokhau" layoutX="351.0" layoutY="424.0" text="Label" />
     <children>
      
    </children>

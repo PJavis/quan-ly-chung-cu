@@ -47,12 +47,8 @@ public class Quanlynhankhau implements Initializable {
     private TableColumn<NhanKhau, String> trangthai;
     @FXML
     private TableColumn<NhanKhau, Void> dieuchinh;
-    private static List<NhanKhau> nhanKhauList=getData.getInstance().getNhanKhaus();
+    private  List<NhanKhau> nhanKhauList=getData.getInstance().getNhanKhaus();
 
-    public static void setNhanKhauList() {
-        nhanKhauList = getData.getInstance().getNhanKhaus();
-
-    }
 
     private ObservableList<NhanKhau> nhanKhaus;
     @FXML
@@ -166,7 +162,7 @@ public class Quanlynhankhau implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        nhanKhauList = getData.getInstance().getNhanKhaus();
+
         danhsachnhankhau();
         timkiem();
     }
