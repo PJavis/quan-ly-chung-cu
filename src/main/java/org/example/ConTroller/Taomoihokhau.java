@@ -79,7 +79,7 @@ a.close();
                 Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setHeaderText("Thành công");
                 alert.setContentText("Tạo mới hộ khẩu thành công");
-                alert.show();
+                alert.showAndWait();
                 sophong.clear();
                 sotang.clear();
                 dientichphong.clear();
@@ -91,7 +91,7 @@ a.close();
                         Alert alert=new Alert(Alert.AlertType.ERROR);
                         alert.setHeaderText("Thất bại");
                         alert.setContentText("Số phòng đã tồn tại");
-                        alert.show();
+                        alert.showAndWait();
                 }
         }
         private void checkAllFieldsFilled(TextField[] textFields,Button buttontaomoi ) {

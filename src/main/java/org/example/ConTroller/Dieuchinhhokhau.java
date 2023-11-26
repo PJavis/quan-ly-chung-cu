@@ -132,7 +132,12 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
                                 alert1.setContentText("Bạn không được xóa chủ hộ");
                                 alert1.showAndWait();
                             }
-                            else {NhanKhauDao.getInstance().delete(person);
+                            else {
+                                Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert1.setHeaderText("Thành công");
+                                alert1.setContentText("Xóa nhân khẩu thành công");
+                                alert1.showAndWait();
+                                NhanKhauDao.getInstance().delete(person);
                             getData.getInstance().removeNhankhau(person);
                             nhanKhaus.remove(person);
                             danhsachthanhvien();
@@ -201,6 +206,10 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
             HoKhauDao.getInstance().delete(hoKhaus);
             getData.getInstance().removeHokhau(hoKhaus);
         }
+        Alert alert1=new Alert(Alert.AlertType.CONFIRMATION);
+        alert1.setHeaderText("Thành công");
+        alert1.setContentText("Xóa hộ khẩu thành công");
+        alert1.showAndWait();
         Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
         ag0r.close();
     }

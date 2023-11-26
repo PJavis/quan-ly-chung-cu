@@ -23,6 +23,9 @@ import java.util.Optional;
 public class Dieuchinhnhankhau {
 
 
+    @FXML
+    private CheckBox chuho;
+
 
         @FXML
         private TextField gioitinh;
@@ -57,7 +60,7 @@ public class Dieuchinhnhankhau {
         sotang.setText(String.valueOf(nhanKhau.getSotang()));
         trangthai.setText(nhanKhau.getTrangThai());
         quoctich.setText(nhanKhau.getQuocTich());
-
+        chuho.setSelected(nhanKhau.isChuHo());
     }
 
     @FXML
@@ -113,8 +116,12 @@ public class Dieuchinhnhankhau {
                 alert1.setContentText("Bạn không được xóa chủ hộ");
                 alert1.showAndWait();
             }
-            else {NhanKhauDao.getInstance().delete(nhanKhau);
-
+            else {
+                Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
+                alert2.setHeaderText("Thành công");
+                alert2.setContentText("Xóa nhân khẩu thành công");
+                alert2.showAndWait();
+                NhanKhauDao.getInstance().delete(nhanKhau);
             getData.getInstance().removeNhankhau(nhanKhau);
                 Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 ag0r.close();}

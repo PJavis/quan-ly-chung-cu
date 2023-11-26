@@ -63,7 +63,7 @@ public class Taomoinhankhau implements Initializable {
             Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText("Thành công");
             alert.setContentText("Tạo mới nhân khẩu thành công");
-            alert.show();
+            alert.showAndWait();
             tennhankhau.clear();
             gioitinh.clear();
             quoctich.clear();
