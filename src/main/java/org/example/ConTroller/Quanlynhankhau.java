@@ -2,6 +2,7 @@ package org.example.ConTroller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
@@ -47,7 +48,7 @@ public class Quanlynhankhau implements Initializable {
     private TableColumn<NhanKhau, String> trangthai;
     @FXML
     private TableColumn<NhanKhau, Void> dieuchinh;
-    private  List<NhanKhau> nhanKhauList=getData.getInstance().getNhanKhaus();
+    private  Map<Integer,NhanKhau> nhanKhauList=getData.getInstance().getNhanKhaus();
 
 
     private ObservableList<NhanKhau> nhanKhaus;
@@ -55,7 +56,7 @@ public class Quanlynhankhau implements Initializable {
     private Label tongsonhankhau;
     public void danhsachnhankhau(){
         tongsonhankhau.setText(String.valueOf(nhanKhauList.size()));
-       nhanKhaus= FXCollections.observableArrayList(nhanKhauList);
+       nhanKhaus= FXCollections.observableArrayList(nhanKhauList.values());
         nhanKhaus.sort((o1, o2) -> {
             String[] words1 = o1.getTen().split(" ");
             String[] words2 = o2.getTen().split(" ");

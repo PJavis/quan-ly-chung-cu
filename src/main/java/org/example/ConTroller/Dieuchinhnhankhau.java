@@ -65,7 +65,7 @@ public class Dieuchinhnhankhau {
 
     @FXML
         void dieuchinhnhankhau(ActionEvent event) {
-        getData.getInstance().removeNhankhau(nhanKhau);
+
             nhanKhau.setTen(tennhankhau.getText());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String date= ngaysinh.getText();
@@ -80,7 +80,7 @@ public class Dieuchinhnhankhau {
             nhanKhau.setTrangThai(trangthai.getText());
             nhanKhau.setQuocTich(quoctich.getText());
             NhanKhauDao.getInstance().update(nhanKhau);
-            getData.getInstance().addNhankhau(nhanKhau);
+            getData.getInstance().setNhankhau(nhanKhau);
             Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
             alert1.setHeaderText("Thành công");
             alert1.setContentText("Điều chỉnh nhân khẩu thành công");
