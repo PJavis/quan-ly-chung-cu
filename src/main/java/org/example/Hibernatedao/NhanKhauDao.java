@@ -1,12 +1,17 @@
 package org.example.Hibernatedao;
 
 import org.example.EntityAll.NhanKhau;
-import org.example.Function.*;
+import org.example.Function.Save;
+import org.example.Function.SelectAll;
+import org.example.Function.SelectByName;
+import org.example.Function.Update;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<NhanKhau>, Update<NhanKhau> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
@@ -54,6 +59,22 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<Nhan
         }
     }
 
+    public Map<Integer, NhanKhau> selectReturnMap() {
+        Map<Integer, NhanKhau> result = new HashMap<>();
+        try {
+            session = Hibernate.getSession(sessionFactory);
+            List<NhanKhau> nhanKhaus = session.createQuery("FROM NhanKhau", NhanKhau.class)
+                    .getResultList();
+            Hibernate.closeSession(session);
+
+            result = nhanKhaus.stream()
+                    .collect(Collectors.toMap(NhanKhau::getIdNguoiDan, nhanKhau -> nhanKhau));
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
     @Override
     public List<NhanKhau> selectByName(String name) {
         List<NhanKhau> nhanKhaus;
@@ -86,20 +107,6 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<Nhan
     }
 
 
-    public NhanKhau selectById(int id) {
-        NhanKhau nhanKhau;
-        try {
-
-            session = Hibernate.getSession(sessionFactory);
-            nhanKhau = session.createQuery("FROM NhanKhau WHERE id = :id", NhanKhau.class).setParameter("id", id).uniqueResult();
-            Hibernate.closeSession(session);
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return nhanKhau;
-
-    }
 
     public List<NhanKhau> selectNhanKhauById(int sophong,int sotang) {
         List<NhanKhau> nhanKhau = null;
