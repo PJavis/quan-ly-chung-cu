@@ -67,6 +67,7 @@ public class Taomoinhankhau implements Initializable {
             tennhankhau.clear();
             gioitinh.clear();
             quoctich.clear();
+            sotang.clear();
             sophongtaonhankhau.clear();
             ngaysinh.clear();
         }

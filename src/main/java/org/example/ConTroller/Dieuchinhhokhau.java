@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 
 import javafx.scene.control.*;
-import javafx.scene.control.cell.CheckBoxTableCell;
+
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.stage.Stage;
@@ -20,11 +20,9 @@ import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.NhanKhauDao;
 import org.example.getData;
 
-import javax.sound.midi.VoiceStatus;
+
 import java.net.URL;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Dieuchinhhokhau implements Initializable {
 
@@ -36,8 +34,6 @@ public class Dieuchinhhokhau implements Initializable {
     @FXML
     private TextField dientichphong;
 
-    @FXML
-    private Button dieuchinh;
 
     @FXML
     private TableColumn<NhanKhau, Void> dieuchinhnhankhau;
@@ -62,6 +58,8 @@ public class Dieuchinhhokhau implements Initializable {
 
     private HoKhau hoKhaus;
      private  List<NhanKhau> nhanKhaus;
+     private NhanKhau nhanKhau;
+    private ToggleGroup toggleGroup=new ToggleGroup();
     public void setHokhau(HoKhau hoKhau){
         this.hoKhaus=hoKhau;
 sophong.setText(String.valueOf(hoKhau.getId()));
@@ -73,6 +71,8 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
  public void danhsachthanhvien(){
 
      ObservableList<NhanKhau>nhanKhauObservableList= FXCollections.observableArrayList(nhanKhaus);
+     nhanKhauObservableList.sort(Comparator.comparing(NhanKhau::isChuHo).reversed());
+
      sothutu.setCellValueFactory(cellData -> {
          int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
          return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
@@ -80,6 +80,27 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
      tenthanhvien.setCellValueFactory(new PropertyValueFactory<>("ten"));
      ngaysinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
      trangthai.setCellValueFactory(new PropertyValueFactory<>("trangThai"));
+     chuho.setCellFactory(cell->{
+         return new TableCell<NhanKhau, Void>(){
+             @Override
+             protected void updateItem(Void item, boolean empty) {
+                 super.updateItem(item, empty);
+
+                 if (empty) {
+                     setGraphic(null);
+                 } else {
+                     NhanKhau person = getTableView().getItems().get(getIndex());
+                     RadioButton radioButton=new RadioButton();
+                     radioButton.setSelected(person.isChuHo());
+                     radioButton.setToggleGroup(toggleGroup);
+                     radioButton.setOnAction(event -> {
+                         nhanKhau=person;
+                     });
+                     setGraphic(radioButton);
+                 }
+             }
+         };
+     });
      dieuchinhnhankhau.setCellFactory(cell->{
          return new TableCell<NhanKhau,Void>(){
              @Override
@@ -104,38 +125,60 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
                         Optional<ButtonType> result = alert.showAndWait();
                         if (result.isPresent() && result.get() == buttonTypeOK) {
                             NhanKhau person = getTableView().getItems().get(getIndex());
-                            NhanKhauDao.getInstance().delete(person);
+                            if(person.isChuHo()){
+                                Alert alert1 = new Alert(Alert.AlertType.ERROR);
+                                alert1.setHeaderText("Thất bại");
+                                alert1.setContentText("Bạn không được xóa chủ hộ");
+                                alert1.showAndWait();
+                            }
+                            else {NhanKhauDao.getInstance().delete(person);
                             getData.getInstance().removeNhankhau(person);
+                            nhanKhaus.remove(person);
+                            Quanlynhankhau.setNhanKhauList();
+                            danhsachthanhvien();}
                         }
                     });
                  }
              }
          };
      });
-     chuho.setCellFactory(cell->{
-         return new TableCell<NhanKhau, Void>(){
-             @Override
-             protected void updateItem(Void item, boolean empty) {
-                 super.updateItem(item, empty);
 
-                 if (empty) {
-                     setGraphic(null);
-                 } else {
-                     NhanKhau person = getTableView().getItems().get(getIndex());
-                     CheckBox checkBox=new CheckBox();
-                    checkBox.setSelected(person.isChuHo());
-                     setGraphic(checkBox);
-                 }
-             }
-         };
-     });
+
      danhsachthanhvien.setItems(nhanKhauObservableList);
 
  }
     @FXML
     void dieuchinh(ActionEvent event) {
 
+        getData.getInstance().removeHokhau(hoKhaus);
+        NhanKhau q=danhsachthanhvien.getItems().get(0);
+            try{
+            nhanKhau.setChuHo(true);
+            NhanKhauDao.getInstance().update(nhanKhau);
+            q.setChuHo(false);
+            NhanKhauDao.getInstance().update(q);}
+            catch (Exception e){
+            nhanKhau=q;
+            }
+
+            hoKhaus.setId(Integer.parseInt(sophong.getText()));
+            hoKhaus.setSoTang(Integer.parseInt(sotang.getText()));
+            hoKhaus.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
+            hoKhaus.setTenchuho(nhanKhau.getTen());
+
+            HoKhauDao.getInstance().update(hoKhaus);
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setHeaderText("Thành công");
+            alert1.setContentText("Điều chỉnh hộ khẩu thành công");
+            alert1.showAndWait();
+            getData.getInstance().addHokhau(hoKhaus);
+            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            ag0r.close();
+
+
+
     }
+
 
     @FXML
     void xoahokhau(ActionEvent event) {
@@ -155,6 +198,7 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
                 getData.getInstance().removeNhankhau(nhanKhau);
             }
             HoKhauDao.getInstance().delete(hoKhaus);
+            getData.getInstance().removeHokhau(hoKhaus);
         }
         Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
         ag0r.close();

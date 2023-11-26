@@ -37,7 +37,7 @@
       </font>
    </TextField>
    <FontAwesomeIconView glyphName="SEARCH" layoutX="457.0" layoutY="36.0" size="17" />
-   <TableView fx:id="danhsachnhankhau" layoutX="229.0" layoutY="58.0" prefHeight="330.0" prefWidth="600.0">
+   <TableView fx:id="danhsachnhankhau" layoutX="229.0" layoutY="58.0" prefHeight="330.0" prefWidth="601.0">
      <columns>
        <TableColumn fx:id="sothutu" prefWidth="70.4000244140625" text="Số thứ tự" />
        <TableColumn fx:id="hovaten" prefWidth="130.39996337890625" text="Họ và tên" />
