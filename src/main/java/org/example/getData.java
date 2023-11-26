@@ -36,7 +36,7 @@ public class getData {
         nhanKhaus.remove(nhanKhau.getIdNguoiDan());
     }
     public void setNhankhau(NhanKhau nhanKhau){
-        nhanKhaus.put(nhanKhau.getIdNguoiDan(), nhanKhau);
+        nhanKhaus.replace(nhanKhau.getIdNguoiDan(), nhanKhau);
     }
 
     public List<HoKhau> getHoKhaus() {

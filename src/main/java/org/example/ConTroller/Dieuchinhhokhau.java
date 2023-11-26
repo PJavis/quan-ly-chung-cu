@@ -160,13 +160,14 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
         NhanKhau q=danhsachthanhvien.getItems().get(0);
             try{
             nhanKhau.setChuHo(true);
+            getData.getInstance().setNhankhau(nhanKhau);
             NhanKhauDao.getInstance().update(nhanKhau);
             q.setChuHo(false);
             NhanKhauDao.getInstance().update(q);}
             catch (Exception e){
             nhanKhau=q;
             }
-
+getData.getInstance().setNhankhau(q);
             hoKhaus.setId(Integer.parseInt(sophong.getText()));
             hoKhaus.setSoTang(Integer.parseInt(sotang.getText()));
             hoKhaus.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
