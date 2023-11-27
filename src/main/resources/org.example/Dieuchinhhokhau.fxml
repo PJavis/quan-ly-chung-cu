@@ -26,8 +26,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField fx:id="sophong" prefHeight="26.0" prefWidth="266.0" GridPane.columnIndex="1" />
-            <TextField fx:id="sotang" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="sophong" disable="true" prefHeight="26.0" prefWidth="266.0" GridPane.columnIndex="1" />
+            <TextField fx:id="sotang" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="dientichphong" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Số phòng:" />
             <Label text="Diện tích phòng:" GridPane.rowIndex="2" />
