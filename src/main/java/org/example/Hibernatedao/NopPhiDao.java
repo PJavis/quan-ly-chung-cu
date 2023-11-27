@@ -44,7 +44,7 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi> {
     }
 
     public NopPhi selectByTenKhoanPhiVaHoKhau(String tenKhoanPhi, HoKhau hoKhau) {
-        KhoanPhi khoanPhi = DanhSachKhoanPhiDao.getInstance().selectByName(tenKhoanPhi).get(0);
+        KhoanPhi khoanPhi = KhoanPhiDao.getInstance().selectByName(tenKhoanPhi).get(0);
         NopPhi nopPhi;
         try {
             session=Hibernate.getSession(sessionFactory);
