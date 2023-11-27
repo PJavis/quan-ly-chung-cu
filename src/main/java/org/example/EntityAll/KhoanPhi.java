@@ -6,7 +6,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "danh_sach_khoan_phi")
-public class DanhSachKhoanPhi {
+public class KhoanPhi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -31,7 +31,7 @@ public class DanhSachKhoanPhi {
     @Column(name="tong_so_tien")
     private double tongsotien;
 
-    public DanhSachKhoanPhi(String tenKhoanPhi, String loaiKhoanPhi, Date batDau, Date ketThuc, double giaTri,double tongsotien) {
+    public KhoanPhi(String tenKhoanPhi, String loaiKhoanPhi, Date batDau, Date ketThuc, double giaTri, double tongsotien) {
         this.tenKhoanPhi = tenKhoanPhi;
         this.loaiKhoanPhi = loaiKhoanPhi;
         this.batDau = batDau;
@@ -40,7 +40,7 @@ public class DanhSachKhoanPhi {
         this.tongsotien=tongsotien;
     }
 
-    public DanhSachKhoanPhi() {
+    public KhoanPhi() {
 
     }
 

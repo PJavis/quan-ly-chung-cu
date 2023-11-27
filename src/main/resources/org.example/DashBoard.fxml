@@ -55,7 +55,7 @@
       </Pane>
       <Pane layoutX="5.0" layoutY="318.0" prefHeight="54.0" prefWidth="215.0" styleClass="side_ankerpane">
          <children>
-              <Button layoutX="7.0" layoutY="5.0" mnemonicParsing="false" onAction="#thuphi" prefHeight="43.0" prefWidth="155.0" styleClass="buttontrai1" text="Thu phí ???" textFill="#efeaea">
+              <Button layoutX="7.0" layoutY="5.0" mnemonicParsing="false" onAction="#thuphi" prefHeight="43.0" prefWidth="155.0" styleClass="buttontrai1" text="Thu phí " textFill="#efeaea">
                      <graphic>
                         <FontAwesomeIconView fill="#f4f1f1" glyphName="MONEY" size="30" />
                      </graphic>

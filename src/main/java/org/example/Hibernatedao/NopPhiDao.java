@@ -1,6 +1,6 @@
 package org.example.Hibernatedao;
 
-import org.example.EntityAll.DanhSachKhoanPhi;
+import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NopPhi;
 import org.example.Function.Save;
@@ -9,7 +9,6 @@ import org.example.Function.Update;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi> {
@@ -45,12 +44,12 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi> {
     }
 
     public NopPhi selectByTenKhoanPhiVaHoKhau(String tenKhoanPhi, HoKhau hoKhau) {
-        DanhSachKhoanPhi danhSachKhoanPhi = DanhSachKhoanPhiDao.getInstance().selectByName(tenKhoanPhi).get(0);
+        KhoanPhi khoanPhi = DanhSachKhoanPhiDao.getInstance().selectByName(tenKhoanPhi).get(0);
         NopPhi nopPhi;
         try {
             session=Hibernate.getSession(sessionFactory);
             nopPhi = session.createQuery("FROM NopPhi n WHERE n.idKhoanPhi = :id AND n.hoKhau = :hoKhau", NopPhi.class)
-                    .setParameter("id", danhSachKhoanPhi.getId())
+                    .setParameter("id", khoanPhi.getId())
                     .setParameter("hoKhau", hoKhau.getId())
                     .uniqueResult();
             Hibernate.closeSession(session);

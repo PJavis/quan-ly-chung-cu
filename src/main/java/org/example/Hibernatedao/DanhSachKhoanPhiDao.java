@@ -1,20 +1,19 @@
 package org.example.Hibernatedao;
 
 import javafx.scene.control.Alert;
-import org.example.EntityAll.DanhSachKhoanPhi;
+import org.example.EntityAll.KhoanPhi;
 import org.example.Function.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, SelectAll, Update<DanhSachKhoanPhi>, SelectByName<DanhSachKhoanPhi> {
+public class KhoanPhiDao implements Save<KhoanPhi>, Delete, SelectAll, Update<KhoanPhi>, SelectByName<KhoanPhi> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session = null;
-    public static DanhSachKhoanPhiDao getInstance() {return new DanhSachKhoanPhiDao();}
+    public static KhoanPhiDao getInstance() {return new KhoanPhiDao();}
 
-    public DanhSachKhoanPhiDao() {
+    public KhoanPhiDao() {
         super();
     }
 
@@ -23,7 +22,7 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
         try {
 
             session = Hibernate.getSession(sessionFactory);
-            session.createQuery("DELETE FROM DanhSachKhoanPhi WHERE id = :id",DanhSachKhoanPhi.class).setParameter("id", id).executeUpdate();
+            session.createQuery("DELETE FROM DanhSachKhoanPhi WHERE id = :id", KhoanPhi.class).setParameter("id", id).executeUpdate();
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
@@ -32,11 +31,11 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
     }
 
     @Override
-    public void save(DanhSachKhoanPhi danhSachKhoanPhi) {
+    public void save(KhoanPhi khoanPhi) {
         try {
 
             session=Hibernate.getSession(sessionFactory);
-            session.save(danhSachKhoanPhi);
+            session.save(khoanPhi);
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
@@ -46,12 +45,12 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
     }
 
     @Override
-    public List<DanhSachKhoanPhi> selectAll() {
-        List<DanhSachKhoanPhi> danhSachKhoanPhis;
+    public List<KhoanPhi> selectAll() {
+        List<KhoanPhi> khoanPhis;
         try {
 
             session = Hibernate.getSession(sessionFactory);
-            danhSachKhoanPhis = session.createQuery("FROM DanhSachKhoanPhi", DanhSachKhoanPhi.class).getResultList();
+            khoanPhis = session.createQuery("FROM DanhSachKhoanPhi", KhoanPhi.class).getResultList();
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
@@ -60,15 +59,15 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
             alert1.showAndWait();
             throw new RuntimeException(e);
         }
-        return danhSachKhoanPhis;
+        return khoanPhis;
     }
 
     @Override
-    public void update(DanhSachKhoanPhi danhSachKhoanPhi) {
+    public void update(KhoanPhi khoanPhi) {
         try {
 
             session=Hibernate.getSession(sessionFactory);
-            session.update(danhSachKhoanPhi);
+            session.update(khoanPhi);
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
@@ -78,12 +77,12 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
     }
 
     @Override
-    public List<DanhSachKhoanPhi> selectByName(String name) {
-        List<DanhSachKhoanPhi> danhSachKhoanPhis;
+    public List<KhoanPhi> selectByName(String name) {
+        List<KhoanPhi> khoanPhis;
         try {
             session=Hibernate.getSession(sessionFactory);
-            danhSachKhoanPhis = session
-                    .createQuery("FROM DanhSachKhoanPhi d WHERE d.tenKhoanPhi = :name", DanhSachKhoanPhi.class)
+            khoanPhis = session
+                    .createQuery("FROM DanhSachKhoanPhi d WHERE d.tenKhoanPhi = :name", KhoanPhi.class)
                     .setParameter("name", name )
                     .getResultList();
             Hibernate.closeSession(session);
@@ -91,6 +90,6 @@ public class DanhSachKhoanPhiDao implements Save<DanhSachKhoanPhi>, Delete, Sele
 
             throw new RuntimeException(e);
         }
-        return danhSachKhoanPhis;
+        return khoanPhis;
     }
 }

@@ -22,7 +22,7 @@
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <!-- Mention annotated class -->
         <mapping class="org.example.EntityAll.HoKhau"/>
-        <mapping class="org.example.EntityAll.DanhSachKhoanPhi"/>
+        <mapping class="org.example.EntityAll.KhoanPhi"/>
         <mapping class="org.example.EntityAll.NopPhi"/>
         <mapping class="org.example.EntityAll.NhanKhau"/>
         <mapping class="org.example.EntityAll.QuanTriChungCu"/>
