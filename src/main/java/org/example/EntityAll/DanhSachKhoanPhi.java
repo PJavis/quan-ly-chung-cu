@@ -28,17 +28,28 @@ public class DanhSachKhoanPhi {
 
     @Column(name = "gia_tri")
     private double giaTri;
+    @Column(name="tong_so_tien")
+    private double tongsotien;
 
-    public DanhSachKhoanPhi(String tenKhoanPhi, String loaiKhoanPhi, Date batDau, Date ketThuc, double giaTri) {
+    public DanhSachKhoanPhi(String tenKhoanPhi, String loaiKhoanPhi, Date batDau, Date ketThuc, double giaTri,double tongsotien) {
         this.tenKhoanPhi = tenKhoanPhi;
         this.loaiKhoanPhi = loaiKhoanPhi;
         this.batDau = batDau;
         this.ketThuc = ketThuc;
         this.giaTri = giaTri;
+        this.tongsotien=tongsotien;
     }
 
     public DanhSachKhoanPhi() {
 
+    }
+
+    public double getTongsotien() {
+        return tongsotien;
+    }
+
+    public void setTongsotien(double tongsotien) {
+        this.tongsotien = tongsotien;
     }
 
     public int getId() {
