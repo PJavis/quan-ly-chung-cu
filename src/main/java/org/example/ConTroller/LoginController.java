@@ -36,7 +36,7 @@ public class LoginController {
     }
     @FXML
     public void vedashboard(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org.example/DashBoard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/org.example/Trangchu.fxml"));
         stage2 = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene2 = new Scene(root);
         stage2.setScene(scene2);

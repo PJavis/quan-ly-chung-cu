@@ -155,19 +155,51 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
  }
     @FXML
     void dieuchinh(ActionEvent event) {
-
-        getData.getInstance().removeHokhau(hoKhaus);
-        NhanKhau q=danhsachthanhvien.getItems().get(0);
+        HoKhau hoKhau=HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
+        if(hoKhau==null){
+            getData.getInstance().removeHokhau(hoKhaus);
+            NhanKhau q=danhsachthanhvien.getItems().get(0);
             try{
-            nhanKhau.setChuHo(true);
-            getData.getInstance().setNhankhau(nhanKhau);
-            NhanKhauDao.getInstance().update(nhanKhau);
-            q.setChuHo(false);
-            NhanKhauDao.getInstance().update(q);}
-            catch (Exception e){
-            nhanKhau=q;
+                nhanKhau.setChuHo(true);
+                q.setChuHo(false);
             }
-getData.getInstance().setNhankhau(q);
+            catch (Exception e){
+                nhanKhau=q;
+            }
+            for(NhanKhau nhanKhau1 : nhanKhaus){
+                nhanKhau1.setSophong(Integer.parseInt(sophong.getText()));
+                nhanKhau1.setSotang(Integer.parseInt(sotang.getText()));
+                getData.getInstance().setNhankhau(nhanKhau1);
+                NhanKhauDao.getInstance().update(nhanKhau1);
+            }
+            hoKhaus.setId(Integer.parseInt(sophong.getText()));
+            hoKhaus.setSoTang(Integer.parseInt(sotang.getText()));
+            hoKhaus.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
+            hoKhaus.setTenchuho(nhanKhau.getTen());
+            HoKhauDao.getInstance().update(hoKhaus);
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setHeaderText("Thành công");
+            alert1.setContentText("Điều chỉnh hộ khẩu thành công");
+            alert1.showAndWait();
+            getData.getInstance().addHokhau(hoKhaus);
+            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            ag0r.close();
+
+
+        }else if(hoKhau.getId()==hoKhaus.getId()&&hoKhau.getSoTang()==hoKhaus.getSoTang()){
+            getData.getInstance().removeHokhau(hoKhaus);
+            NhanKhau q=danhsachthanhvien.getItems().get(0);
+            try{
+                nhanKhau.setChuHo(true);
+                getData.getInstance().setNhankhau(nhanKhau);
+                NhanKhauDao.getInstance().update(nhanKhau);
+                q.setChuHo(false);
+                NhanKhauDao.getInstance().update(q);
+            }
+            catch (Exception e){
+                nhanKhau=q;
+            }
+            getData.getInstance().setNhankhau(q);
             hoKhaus.setId(Integer.parseInt(sophong.getText()));
             hoKhaus.setSoTang(Integer.parseInt(sotang.getText()));
             hoKhaus.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
@@ -182,6 +214,13 @@ getData.getInstance().setNhankhau(q);
             Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
             ag0r.close();
 
+        }
+        else{
+            Alert alert1 = new Alert(Alert.AlertType.ERROR);
+            alert1.setHeaderText("Thất bại");
+            alert1.setContentText("Số phòng đã tồn tại");
+            alert1.showAndWait();
+        }
 
 
     }

@@ -106,6 +106,7 @@ public class Quanlynhankhau implements Initializable {
                                 ag0r1.showAndWait();
                                 nhanKhauList=getData.getInstance().getNhanKhaus();
                                 danhsachnhankhau();
+                                timkiem();
                             } catch (Exception e) {
                                 System.out.println(e.getMessage());
                             }
@@ -131,6 +132,7 @@ public class Quanlynhankhau implements Initializable {
             ag0r1.showAndWait();
             nhanKhauList=getData.getInstance().getNhanKhaus();
             danhsachnhankhau();
+            timkiem();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -163,7 +165,6 @@ public class Quanlynhankhau implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         danhsachnhankhau();
         timkiem();
     }

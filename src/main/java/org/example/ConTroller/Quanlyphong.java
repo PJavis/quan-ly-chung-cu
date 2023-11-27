@@ -4,6 +4,8 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
+import org.example.EntityAll.NhanKhau;
 import org.example.getData;
 
 import java.net.URL;
@@ -96,6 +99,7 @@ public class Quanlyphong implements Initializable {
                                 ag0r1.showAndWait();
                                 hoKhauList=getData.getInstance().getHoKhaus();
                                 danhsachhokhau();
+                                timkiemhokhau();
                             } catch (Exception e) {
                                 System.out.println(e.getMessage());
                             }
@@ -105,6 +109,37 @@ public class Quanlyphong implements Initializable {
             };
         });
         danhsachhokhau.setItems(hoKhaus);
+    }
+    public void timkiemhokhau(){
+        FilteredList<HoKhau> filter = new FilteredList<>(hoKhaus, e -> true);
+
+        timkiem.textProperty().addListener((Observable, oldValue, newValue) -> {
+
+            filter.setPredicate(predicateEmployeeData -> {
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String searchKey = newValue.toLowerCase();
+                if(String.valueOf(predicateEmployeeData.getId()).contains(searchKey)){
+                    return  true;
+                } else if (String.valueOf(predicateEmployeeData.getSoTang()).contains(searchKey)) {
+                    return true;
+                }
+                else if(predicateEmployeeData.getTenchuho().toLowerCase().contains(searchKey)){
+                    return  true;
+                }
+
+               return false;
+
+            });
+        });
+
+        SortedList<HoKhau> sortList = new SortedList<>(filter);
+
+        sortList.comparatorProperty().bind(danhsachhokhau.comparatorProperty());
+        danhsachhokhau.setItems(sortList);
     }
 
     @FXML
@@ -121,6 +156,7 @@ public class Quanlyphong implements Initializable {
             ag0r1.showAndWait();
             hoKhauList=getData.getInstance().getHoKhaus();
             danhsachhokhau();
+            timkiemhokhau();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -129,5 +165,6 @@ public class Quanlyphong implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         danhsachhokhau();
+        timkiemhokhau();
     }
 }
