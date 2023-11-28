@@ -19,6 +19,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Dieuchinhnhankhau {
 
@@ -62,10 +64,17 @@ public class Dieuchinhnhankhau {
         quoctich.setText(nhanKhau.getQuocTich());
         chuho.setSelected(nhanKhau.isChuHo());
     }
+    private boolean isValidDateFormat(String date) {
+        // Biểu thức chính quy cho định dạng dd/mm/yyyy
+        String regex = "^\\d{2}/\\d{2}/\\d{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(date);
 
+        return matcher.matches();
+    }
     @FXML
         void dieuchinhnhankhau(ActionEvent event) {
-
+        if(isValidDateFormat(ngaysinh.getText())){
             nhanKhau.setTen(tennhankhau.getText());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String date= ngaysinh.getText();
@@ -94,6 +103,12 @@ public class Dieuchinhnhankhau {
             alert.setContentText("Không tìm thấy phòng");
             alert.showAndWait();
 
+        }}
+        else {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Thất bại");
+            alert.setContentText("Vui lòng điền ngày sinh theo dạng dd/mm/yyyy");
+            alert.showAndWait();
         }
 
         }

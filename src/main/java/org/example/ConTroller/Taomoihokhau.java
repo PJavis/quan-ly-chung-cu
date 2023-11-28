@@ -19,6 +19,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Taomoihokhau implements Initializable {
 
@@ -51,9 +53,17 @@ public class Taomoihokhau implements Initializable {
 Stage a=(Stage) tenchuho.getScene().getWindow();
 a.close();
         }
+        private boolean isValidDateFormat(String date) {
+                // Biểu thức chính quy cho định dạng dd/mm/yyyy
+                String regex = "^\\d{2}/\\d{2}/\\d{4}$";
+                Pattern pattern = Pattern.compile(regex);
+                Matcher matcher = pattern.matcher(date);
 
+                return matcher.matches();
+        }
         @FXML
         void taomoi(ActionEvent event) {
+                if(isValidDateFormat(ngaysinh.getText())){
                 HoKhau hoKhau=new HoKhau();
                 hoKhau.setId(Integer.parseInt(sophong.getText()));
                 hoKhau.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
@@ -91,6 +101,12 @@ a.close();
                         Alert alert=new Alert(Alert.AlertType.ERROR);
                         alert.setHeaderText("Thất bại");
                         alert.setContentText("Số phòng đã tồn tại");
+                        alert.showAndWait();
+                }}
+                else {
+                        Alert alert=new Alert(Alert.AlertType.ERROR);
+                        alert.setHeaderText("Thất bại");
+                        alert.setContentText("Vui lòng điền ngày sinh theo dạng dd/mm/yyyy");
                         alert.showAndWait();
                 }
         }

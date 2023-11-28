@@ -19,6 +19,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Taomoinhankhau implements Initializable {
     @FXML
@@ -40,45 +42,58 @@ public class Taomoinhankhau implements Initializable {
     private TextField tennhankhau;
     @FXML
     private TextField sotang;
+    private boolean isValidDateFormat(String date) {
+        // Biểu thức chính quy cho định dạng dd/mm/yyyy
+        String regex = "^\\d{2}/\\d{2}/\\d{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(date);
 
+        return matcher.matches();
+    }
 
     @FXML
     void taomoinhankhau(ActionEvent event) {
-        NhanKhau nhanKhau=new NhanKhau();
-        nhanKhau.setTen(tennhankhau.getText());
-        nhanKhau.setGioiTinh(gioitinh.getText());
-        nhanKhau.setQuocTich(quoctich.getText());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String date= ngaysinh.getText();
-        LocalDate datetime = LocalDate.parse(date, formatter);
-        nhanKhau.setNgaySinh(Date.valueOf(datetime));
-        nhanKhau.setChuHo(false);
-        HoKhau hoKhau=HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText()),Integer.parseInt(sotang.getText()));
-        try {
-            nhanKhau.setSophong(hoKhau.getId());
-            nhanKhau.setSotang(hoKhau.getSoTang());
-            nhanKhau.setTrangThai("Đang ở");
-            NhanKhauDao.getInstance().save(nhanKhau);
-            getData.getInstance().addNhankhau(nhanKhau);
-            Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setHeaderText("Thành công");
-            alert.setContentText("Tạo mới nhân khẩu thành công");
-            alert.showAndWait();
-            tennhankhau.clear();
-            gioitinh.clear();
-            quoctich.clear();
-            sotang.clear();
-            sophongtaonhankhau.clear();
-            ngaysinh.clear();
+        if(isValidDateFormat(ngaysinh.getText())) {
+            NhanKhau nhanKhau = new NhanKhau();
+            nhanKhau.setTen(tennhankhau.getText());
+            nhanKhau.setGioiTinh(gioitinh.getText());
+            nhanKhau.setQuocTich(quoctich.getText());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String date = ngaysinh.getText();
+            LocalDate datetime = LocalDate.parse(date, formatter);
+            nhanKhau.setNgaySinh(Date.valueOf(datetime));
+            nhanKhau.setChuHo(false);
+            HoKhau hoKhau = HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText()), Integer.parseInt(sotang.getText()));
+            try {
+                nhanKhau.setSophong(hoKhau.getId());
+                nhanKhau.setSotang(hoKhau.getSoTang());
+                nhanKhau.setTrangThai("Đang ở");
+                NhanKhauDao.getInstance().save(nhanKhau);
+                getData.getInstance().addNhankhau(nhanKhau);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setHeaderText("Thành công");
+                alert.setContentText("Tạo mới nhân khẩu thành công");
+                alert.showAndWait();
+                tennhankhau.clear();
+                gioitinh.clear();
+                quoctich.clear();
+                sotang.clear();
+                sophongtaonhankhau.clear();
+                ngaysinh.clear();
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Thất bại");
+                alert.setContentText("Không tìm thấy phòng");
+                alert.showAndWait();
+            }
+
         }
-        catch (Exception e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+        else {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Thất bại");
-            alert.setContentText("Không tìm thấy phòng");
+            alert.setContentText("Vui lòng điền ngày sinh theo dạng dd/mm/yyyy");
             alert.showAndWait();
         }
-
-
     }
     private void checkAllFieldsFilled(TextField[] textFields,Button buttontaomoi ) {
         boolean allFilled = true;
