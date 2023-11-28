@@ -8,12 +8,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlykhoanphi">
    <fx:include source="DashBoard.fxml" />
    <TableView layoutX="232.0" layoutY="36.0" prefHeight="454.0" prefWidth="600.0">
      <columns>
        <TableColumn fx:id="sothutu" prefWidth="75.0" text="Số thứ tự" />
-       <TableColumn fx:id="tenkhoanphi" prefWidth="148.79998779296875" text="Tên khoản phí" />
+       <TableColumn fx:id="tenkhoanphitable" prefWidth="148.79998779296875" text="Tên khoản phí" />
          <TableColumn fx:id="loaikhoanphitable" prefWidth="109.60003662109375" text="Loại khoản phí" />
          <TableColumn fx:id="hannoptable" prefWidth="87.99993896484375" text="Hạn nộp" />
          <TableColumn fx:id="sotiendanop" prefWidth="108.7999267578125" text="Số tiền đã nộp" />
@@ -25,7 +27,14 @@
    <TextField fx:id="tenkhoanphi" layoutX="330.0" layoutY="529.0" prefHeight="26.0" prefWidth="134.0" />
    <Label layoutX="239.0" layoutY="534.0" text="Tên khoản phí:" />
    <Label layoutX="238.0" layoutY="601.0" text="Loại khoản phí:" />
-   <ComboBox fx:id="loaikhoanphi" editable="true" layoutX="330.0" layoutY="596.0" prefHeight="26.0" prefWidth="134.0" promptText="Loại khoản phí" />
+   <ComboBox fx:id="loaikhoanphi" editable="true" layoutX="330.0" layoutY="596.0" prefHeight="26.0" prefWidth="134.0" promptText="Loại khoản phí">
+    <items>
+        <FXCollections fx:factory="observableArrayList">
+            <String fx:value="Bắt buộc" />
+            <String fx:value="Đóng góp" />
+        </FXCollections>
+    </items>
+    </ComboBox>
    <Label layoutX="577.0" layoutY="533.0" text="Hạn nộp:" />
    <TextField fx:id="hannop" layoutX="654.0" layoutY="529.0" prefHeight="26.0" prefWidth="134.0" />
    <Button layoutX="391.0" layoutY="670.0" mnemonicParsing="false" onAction="#dieuchinh" text="Điều chỉnh" />

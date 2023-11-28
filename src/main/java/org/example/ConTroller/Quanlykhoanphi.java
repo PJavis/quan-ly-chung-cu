@@ -1,13 +1,19 @@
 package org.example.ConTroller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import org.example.EntityAll.KhoanPhi;
 
-public class Quanlykhoanphi {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Quanlykhoanphi implements Initializable {
 
     @FXML
     private TableColumn<KhoanPhi, Void> chitiet;
@@ -48,4 +54,9 @@ public class Quanlykhoanphi {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+    }
 }
