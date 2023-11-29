@@ -29,8 +29,8 @@
    <Button layoutX="261.0" layoutY="696.0" mnemonicParsing="false" onAction="#taomoi" text="Tạo mới" />
    <TextField fx:id="tenkhoanphi" layoutX="330.0" layoutY="553.0" prefHeight="26.0" prefWidth="134.0" />
    <Label layoutX="239.0" layoutY="558.0" text="Tên khoản phí:" />
-   <Label layoutX="238.0" layoutY="640.0" text="Loại khoản phí:" />
-   <ComboBox fx:id="loaikhoanphi" editable="true" layoutX="330.0" layoutY="636.0" prefHeight="26.0" prefWidth="134.0" promptText="Loại khoản phí">
+   <Label layoutX="578.0" layoutY="557.0" text="Loại khoản phí:" />
+   <ComboBox fx:id="loaikhoanphi" editable="true" layoutX="666.0" layoutY="552.0" prefHeight="26.0" prefWidth="134.0" promptText="Loại khoản phí">
     <items>
         <FXCollections fx:factory="observableArrayList">
             <String fx:value="Bắt buộc" />
@@ -38,8 +38,8 @@
         </FXCollections>
     </items>
     </ComboBox>
-   <Label layoutX="584.0" layoutY="558.0" text="Hạn nộp:" />
-   <TextField fx:id="hannop" layoutX="658.0" layoutY="553.0" prefHeight="26.0" prefWidth="134.0" />
+   <Label layoutX="578.0" layoutY="640.0" text="Hạn nộp:" />
+   <TextField fx:id="hannop" layoutX="666.0" layoutY="636.0" prefHeight="26.0" prefWidth="134.0" />
    <Button layoutX="391.0" layoutY="696.0" mnemonicParsing="false" onAction="#dieuchinh" text="Điều chỉnh" />
    <Label layoutX="235.0" layoutY="14.0" text="Danh sách khoản phí" />
    <TextField fx:id="timkiem" layoutX="618.0" layoutY="5.0" prefHeight="34.0" prefWidth="206.0" promptText="Tìm kiếm">
@@ -54,5 +54,7 @@
       </font>
    </TextField>
    <FontAwesomeIconView glyphName="SEARCH" layoutX="624.0" layoutY="28.0" size="17" />
+   <Label layoutX="241.0" layoutY="640.0" text="Số tiền:" />
+   <TextField fx:id="sotien" layoutX="330.0" layoutY="636.0" prefHeight="26.0" prefWidth="134.0" />
   
 </AnchorPane>

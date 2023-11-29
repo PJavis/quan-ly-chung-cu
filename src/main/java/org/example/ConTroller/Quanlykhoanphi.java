@@ -10,8 +10,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import org.example.EntityAll.KhoanPhi;
+import org.example.Hibernatedao.KhoanPhiDao;
 
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,7 +29,7 @@ public class Quanlykhoanphi implements Initializable {
     private TextField hannop;
 
     @FXML
-    private ComboBox<?> loaikhoanphi;
+    private ComboBox<String> loaikhoanphi;
     @FXML
     private TableColumn<KhoanPhi, String> hannoptable;
     @FXML
@@ -33,6 +37,9 @@ public class Quanlykhoanphi implements Initializable {
 
     @FXML
     private TableColumn<KhoanPhi, Integer> sothutu;
+    @FXML
+    private TextField sotien;
+
 
     @FXML
     private TableColumn<KhoanPhi, Double> sotiendanop;
@@ -68,6 +75,27 @@ if(hannop.getText().isEmpty()||tenkhoanphi.getText().isEmpty()||loaikhoanphi.get
     alert.setHeaderText("Thất bại");
     alert.setContentText("Vui lòng điền hạn nộp theo dạng dd/mm/yyyy");
     alert.showAndWait();
+}else{
+    KhoanPhi khoanPhi=new KhoanPhi();
+    khoanPhi.setTenKhoanPhi(tenkhoanphi.getText());
+    khoanPhi.setTongsotien(0);
+    khoanPhi.setLoaiKhoanPhi(loaikhoanphi.getSelectionModel().getSelectedItem());
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    String date = hannop.getText();
+    LocalDate datetime = LocalDate.parse(date, formatter);
+    khoanPhi.setKetThuc(Date.valueOf(datetime));
+    khoanPhi.setGiaTri(Double.parseDouble(sotien.getText()));
+    LocalDate currentDate = LocalDate.now();
+    khoanPhi.setBatDau(Date.valueOf(currentDate));
+    KhoanPhiDao.getInstance().save(khoanPhi);
+    Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setHeaderText("Thành công");
+    alert.setContentText("Tạo khoản phí mới thành công");
+    alert.showAndWait();
+    tenkhoanphi.clear();
+    hannop.clear();
+    sotien.clear();
+    loaikhoanphi.getEditor().clear();
 }
     }
 
