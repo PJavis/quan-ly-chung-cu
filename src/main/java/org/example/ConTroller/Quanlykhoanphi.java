@@ -29,6 +29,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -75,6 +76,10 @@ public class Quanlykhoanphi implements Initializable {
     private ObservableList<KhoanPhi> khoanPhis;
     public void danhsachkhoanphi(){
         khoanPhis = FXCollections.observableArrayList(khoanPhiList);
+        khoanPhis.sort((date1, date2) ->
+                date2.getKetThuc().getYear() != date1.getKetThuc().getYear() ? Integer.compare(date2.getKetThuc().getYear(), date1.getKetThuc().getYear()) :
+                        date2.getKetThuc().getMonth() != date1.getKetThuc().getMonth() ? Integer.compare(date2.getKetThuc().getMonth(), date1.getKetThuc().getMonth()) :
+                                Integer.compare(date2.getKetThuc().getDay(), date1.getKetThuc().getDay()));
         sothutu.setCellValueFactory(cellData -> {
             int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
             return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
@@ -82,8 +87,8 @@ public class Quanlykhoanphi implements Initializable {
         tenkhoanphitable.setCellValueFactory(new PropertyValueFactory<>("tenKhoanPhi"));
         loaikhoanphitable.setCellValueFactory(new PropertyValueFactory<>("loaiKhoanPhi"));
         hannoptable.setCellValueFactory(new PropertyValueFactory<>("formattedDate"));
-        sotientable.setCellValueFactory(new PropertyValueFactory<>("giaTri"));
-        sotiendanop.setCellValueFactory(new PropertyValueFactory<>("tongsotien"));
+        sotientable.setCellValueFactory(new PropertyValueFactory<>("decimalFormatsotien"));
+        sotiendanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatsotiendanop"));
         chitiet.setCellFactory(cell->{
             return new TableCell<KhoanPhi,Void>(){
                 @Override
@@ -135,16 +140,10 @@ public class Quanlykhoanphi implements Initializable {
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Chitiet.fxml"));
                                 Parent root = loader.load();
                                 Scene scene = new Scene(root);
-                                Stage ag0r1=new Stage();
-                                ag0r1.setScene(scene);
-                                ag0r1.initModality(Modality.APPLICATION_MODAL);
-                                ag0r1.initOwner(ag0r);
+                                ag0r.setScene(scene);
                                 Chitiet chitietkhoanphi=loader.getController();
                                 chitietkhoanphi.setKhoanPhi(person);
-                                ag0r1.showAndWait();
-                                khoanPhiList=getData.getInstance().getKhoanPhis();
-                                danhsachkhoanphi();
-
+                                ag0r.show();
                             } catch (Exception e) {
                                 System.out.println(e.getMessage());
                             }

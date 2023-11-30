@@ -25,7 +25,7 @@
 
      </columns>
    </TableView>
-   <Button layoutX="261.0" layoutY="696.0" mnemonicParsing="false" onAction="#taomoi" text="Tạo mới" />
+   <Button layoutX="287.0" layoutY="696.0" mnemonicParsing="false" onAction="#taomoi" text="Tạo mới" />
    <TextField fx:id="tenkhoanphi" layoutX="330.0" layoutY="553.0" prefHeight="26.0" prefWidth="134.0" />
    <Label layoutX="239.0" layoutY="558.0" text="Tên khoản phí:" />
    <Label layoutX="578.0" layoutY="557.0" text="Loại khoản phí:" />

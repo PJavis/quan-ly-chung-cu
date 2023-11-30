@@ -86,11 +86,8 @@ public class DashBoardController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlykhoanphi.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-
             ag0r1.setScene(scene);
-
             ag0r1.show();
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

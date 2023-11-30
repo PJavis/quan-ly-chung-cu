@@ -3,6 +3,7 @@ package org.example.EntityAll;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 @Entity
@@ -99,5 +100,12 @@ public class KhoanPhi {
     public String getFormattedDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(ketThuc);
+    }
+    public  String getDecimalFormatsotien(){
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        return decimalFormat.format(giaTri);
+    }public  String getDecimalFormatsotiendanop(){
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        return decimalFormat.format(tongsotien);
     }
 }
