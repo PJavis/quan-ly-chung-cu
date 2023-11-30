@@ -48,6 +48,10 @@
     -fx-scale-y: 1.2;
     -fx-background-color: #716d6d;
 }
+.buttontrai:pressed
+{
+-fx-background-color : #1620A1;
+}
 .pane_1{
     -fx-background-color:#748CF1;
     -fx-border-width: 2px 2px 2px 2px;
@@ -86,6 +90,12 @@
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 16px;
     -fx-background-radius: 16px;
+     -fx-border-style: solid;
+    -fx-border-color: #353A56;
+}
+.panebentrai{
+     -fx-background-color:#353A56;
+    -fx-border-width: 2px 2px 2px 2px;
      -fx-border-style: solid;
     -fx-border-color: #353A56;
 }

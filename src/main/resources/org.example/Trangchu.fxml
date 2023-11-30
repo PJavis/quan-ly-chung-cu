@@ -1,71 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" stylesheets="@css/pinocchio.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" stylesheets="@css/pinocchio.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
        <fx:include source="DashBoard.fxml" />
       <Pane layoutX="222.0" layoutY="3.0" prefHeight="715.0" prefWidth="618.0">
          <children>
-            <Label layoutX="26.0" layoutY="139.0" prefHeight="18.0" prefWidth="422.0" text="Pinocchio LHP">
+            <Label layoutX="26.0" layoutY="84.0" prefHeight="36.0" prefWidth="359.0" text="Pinocchio LHP">
                <font>
-                  <Font name="Century Gothic Bold" size="51.0" />
+                  <Font name="Century Gothic Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="26.0" layoutY="88.0" text="It's time to begin, Isnt it?">
+            <Label layoutX="26.0" layoutY="49.0" text="It's time to begin, Isnt it?">
                <font>
-                  <Font name="Century Gothic Bold" size="33.0" />
+                  <Font name="Century Gothic Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="26.0" layoutY="41.0" prefHeight="47.0" prefWidth="520.0" text="Chào mừng các bạn đến với chung cư not HP">
+            <Label layoutX="26.0" layoutY="14.0" prefHeight="47.0" prefWidth="520.0" text="Chào mừng các bạn đến với chung cư not HP">
                <font>
-                  <Font name="Candara Bold" size="23.0" />
+                  <Font name="Candara Bold" size="14.0" />
                </font>
             </Label>
-            <Pane layoutX="31.0" layoutY="309.0" prefHeight="83.0" prefWidth="557.0" styleClass="pane_1" stylesheets="@css/pinocchio.css">
+            <Pane layoutX="36.0" layoutY="215.0" prefHeight="65.0" prefWidth="513.0" styleClass="pane_1" stylesheets="@css/pinocchio.css">
                <children>
-                  <Label layoutX="30.0" layoutY="27.0" prefHeight="17.0" prefWidth="231.0" text="Số người ở chung cư" textFill="#302e2e">
+                  <Label layoutX="19.0" layoutY="18.0" prefHeight="17.0" prefWidth="231.0" text="Số người ở chung cư" textFill="#302e2e">
                      <font>
                         <Font name="Candara Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="261.0" layoutY="15.0" text="1412">
+                  <Label layoutX="259.0" layoutY="17.0" text="1412">
                      <font>
                         <Font name="Century Gothic Bold" size="25.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="31.0" layoutY="206.0" prefHeight="83.0" prefWidth="557.0" styleClass="most_inner_pane">
+            <Pane layoutX="31.0" layoutY="134.0" prefHeight="65.0" prefWidth="520.0" styleClass="most_inner_pane">
                <children>
-                  <Label layoutX="23.0" layoutY="27.0" text="Tổng tiền đóng góp tháng này" textFill="#201f1f">
+                  <Label layoutX="14.0" layoutY="18.0" text="Tổng tiền đóng góp tháng này" textFill="#201f1f">
                      <font>
                         <Font name="Candara Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="349.0" layoutY="26.0" text="52013144444">
+                  <Label layoutX="340.0" layoutY="17.0" text="52013144444">
                      <font>
                         <Font name="Century Gothic Bold" size="25.0" />
                      </font>
                   </Label>
                </children></Pane>
-            <Pane layoutX="31.0" layoutY="407.0" prefHeight="83.0" prefWidth="557.0" styleClass="pane_111">
+            <Pane layoutX="31.0" layoutY="294.0" prefHeight="65.0" prefWidth="520.0" styleClass="pane_111">
                <children>
-                  <Label layoutX="28.0" layoutY="27.0" prefHeight="25.0" prefWidth="231.0" text="Số phòng còn trống" textFill="#2b2828">
+                  <Label layoutX="24.0" layoutY="18.0" prefHeight="25.0" prefWidth="231.0" text="Số phòng còn trống" textFill="#2b2828">
                      <font>
                         <Font name="Candara Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="259.0" layoutY="11.0" prefHeight="36.0" prefWidth="16.0" text="0" textFill="#2b2929">
+                  <Label layoutX="272.0" layoutY="15.0" prefHeight="36.0" prefWidth="16.0" text="0" textFill="#2b2929">
                      <font>
                         <Font name="Century Gothic Bold" size="25.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
+            <ScrollPane layoutX="39.0" layoutY="488.0" prefHeight="200.0" prefWidth="541.0">
+               <content>
+                  <VBox fx:id="cacitem" prefHeight="200.0" prefWidth="526.0" />
+               </content>
+            </ScrollPane>
+            <HBox layoutX="31.0" layoutY="423.0" prefHeight="55.0" prefWidth="557.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <Label text="Số phòng">
+                     <HBox.margin>
+                        <Insets left="30.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Tên chủ hộ">
+                     <HBox.margin>
+                        <Insets left="30.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Số người ở">
+                     <HBox.margin>
+                        <Insets left="30.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Tổng tiền đóng góp">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Diện tích phòng">
+                     <HBox.margin>
+                        <Insets left="30.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </Pane>
    </children>
