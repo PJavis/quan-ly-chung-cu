@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlykhoanphi">
    <fx:include source="DashBoard.fxml" />
-   <TableView fx:id="danhsachkhoanphi" layoutX="232.0" layoutY="45.0" prefHeight="489.0" prefWidth="600.0">
+   <TableView fx:id="danhsachkhoanphi" layoutX="232.0" layoutY="45.0" onMouseClicked="#predieuchinh" prefHeight="489.0" prefWidth="600.0">
      <columns>
        <TableColumn fx:id="sothutu" prefWidth="75.0" text="Số thứ tự" />
        <TableColumn fx:id="tenkhoanphitable" prefWidth="104.79998779296875" text="Tên khoản phí" />

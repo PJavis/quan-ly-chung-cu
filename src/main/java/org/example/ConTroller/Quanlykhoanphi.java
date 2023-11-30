@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.EntityAll.KhoanPhi;
@@ -120,6 +121,19 @@ public class Quanlykhoanphi implements Initializable {
             };
         });
         danhsachkhoanphi.setItems(khoanPhis);
+    }
+    @FXML
+    void predieuchinh(MouseEvent event) {
+        KhoanPhi khoanPhi=danhsachkhoanphi.getSelectionModel().getSelectedItem();
+        int num = danhsachkhoanphi.getSelectionModel().getSelectedIndex();
+
+        if ((num - 1) < -1) {
+            return;
+        }
+        tenkhoanphi.setText(khoanPhi.getTenKhoanPhi());
+        sotien.setText(String.valueOf(khoanPhi.getGiaTri()));
+        loaikhoanphi.setValue(khoanPhi.getLoaiKhoanPhi());
+        hannop.setText(String.valueOf(khoanPhi.getKetThuc()));
     }
 
     @FXML
