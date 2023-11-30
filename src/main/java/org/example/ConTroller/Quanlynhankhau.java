@@ -70,7 +70,7 @@ public class Quanlynhankhau implements Initializable {
             return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
         });
         hovaten.setCellValueFactory(new PropertyValueFactory<>("ten"));
-        ngaysinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
+        ngaysinh.setCellValueFactory(new PropertyValueFactory<>("formattedDate"));
         sophongdango.setCellValueFactory(new PropertyValueFactory<>("sophong"));
         trangthai.setCellValueFactory(new PropertyValueFactory<>("trangThai"));
         sotang.setCellValueFactory(new PropertyValueFactory<>("sotang"));

@@ -81,7 +81,7 @@ public class Quanlykhoanphi implements Initializable {
         });
         tenkhoanphitable.setCellValueFactory(new PropertyValueFactory<>("tenKhoanPhi"));
         loaikhoanphitable.setCellValueFactory(new PropertyValueFactory<>("loaiKhoanPhi"));
-        hannoptable.setCellValueFactory(new PropertyValueFactory<>("ketThuc"));
+        hannoptable.setCellValueFactory(new PropertyValueFactory<>("formattedDate"));
         sotientable.setCellValueFactory(new PropertyValueFactory<>("giaTri"));
         sotiendanop.setCellValueFactory(new PropertyValueFactory<>("tongsotien"));
         chitiet.setCellFactory(cell->{

@@ -3,6 +3,7 @@ package org.example.EntityAll;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 @Entity
 @Table(name = "danh_sach_khoan_phi")
@@ -94,5 +95,9 @@ public class KhoanPhi {
 
     public void setKetThuc(Date ketThuc) {
         this.ketThuc = ketThuc;
+    }
+    public String getFormattedDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dateFormat.format(ketThuc);
     }
 }

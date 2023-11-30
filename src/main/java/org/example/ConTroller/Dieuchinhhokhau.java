@@ -80,7 +80,7 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
          return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
      });
      tenthanhvien.setCellValueFactory(new PropertyValueFactory<>("ten"));
-     ngaysinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
+     ngaysinh.setCellValueFactory(new PropertyValueFactory<>("formattedDate"));
      trangthai.setCellValueFactory(new PropertyValueFactory<>("trangThai"));
      chuho.setCellFactory(cell->{
          return new TableCell<NhanKhau, Void>(){
