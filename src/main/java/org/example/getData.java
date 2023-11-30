@@ -1,8 +1,10 @@
 package org.example;
 
 import org.example.EntityAll.HoKhau;
+import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.NhanKhau;
 import org.example.Hibernatedao.HoKhauDao;
+import org.example.Hibernatedao.KhoanPhiDao;
 import org.example.Hibernatedao.NhanKhauDao;
 
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.Map;
 
 public class getData {
     private static getData instance;
+    private List<KhoanPhi> khoanPhis;
     private List<HoKhau> hoKhaus;
     private Map<Integer,NhanKhau> nhanKhaus;
 
@@ -17,6 +20,7 @@ public class getData {
         // Khởi tạo dữ liệu khi lớp được tạo ra
         reloadHokhau();
         reloadNhankhau();
+        reloadKhoanPhi();
     }
 
     public static getData getInstance() {
@@ -49,6 +53,12 @@ public class getData {
         hoKhaus.remove(hoKhau);
     }
 
+    public List<KhoanPhi> getKhoanPhis() {
+        return khoanPhis;
+    }
+    public void addKhoanphi(KhoanPhi khoanPhi){khoanPhis.add(khoanPhi);}
+    public void removeKhoanphi(KhoanPhi khoanPhi){khoanPhis.remove(khoanPhi);}
+
     public void reloadNhankhau() {
         // Làm mới dữ liệu từ HoKhauDao và NhanKhauDao
 
@@ -57,4 +67,5 @@ public class getData {
     public void reloadHokhau(){
         this.hoKhaus = HoKhauDao.getInstance().selectAll();
     }
+    public void reloadKhoanPhi(){this.khoanPhis= KhoanPhiDao.getInstance().selectAll();}
 }

@@ -50,7 +50,7 @@ public class KhoanPhiDao implements Save<KhoanPhi>, Delete, SelectAll, Update<Kh
         try {
 
             session = Hibernate.getSession(sessionFactory);
-            khoanPhis = session.createQuery("FROM DanhSachKhoanPhi", KhoanPhi.class).getResultList();
+            khoanPhis = session.createQuery("FROM KhoanPhi", KhoanPhi.class).getResultList();
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
