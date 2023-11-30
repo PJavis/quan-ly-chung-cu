@@ -104,7 +104,8 @@ public class KhoanPhi {
     public  String getDecimalFormatsotien(){
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
         return decimalFormat.format(giaTri);
-    }public  String getDecimalFormatsotiendanop(){
+    }
+    public  String getDecimalFormatsotiendanop(){
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
         return decimalFormat.format(tongsotien);
     }

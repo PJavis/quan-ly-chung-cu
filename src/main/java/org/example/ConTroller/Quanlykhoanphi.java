@@ -2,6 +2,8 @@ package org.example.ConTroller;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,8 +26,11 @@ import org.example.EntityAll.NhanKhau;
 import org.example.Hibernatedao.KhoanPhiDao;
 import org.example.getData;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Date;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -60,10 +65,10 @@ public class Quanlykhoanphi implements Initializable {
     @FXML
     private TextField sotien;
     @FXML
-    private TableColumn<KhoanPhi, Double> sotientable;
+    private TableColumn<KhoanPhi, String> sotientable;
 
     @FXML
-    private TableColumn<KhoanPhi, Double> sotiendanop;
+    private TableColumn<KhoanPhi, String> sotiendanop;
 
     @FXML
     private TextField tenkhoanphi;
