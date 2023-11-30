@@ -1,19 +1,18 @@
 package org.example.Hibernatedao;
 
 import org.example.EntityAll.NhanKhau;
-import org.example.Function.Save;
-import org.example.Function.SelectAll;
-import org.example.Function.SelectByName;
-import org.example.Function.Update;
+import org.example.Function.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<NhanKhau>, Update<NhanKhau> {
+public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<NhanKhau>, Update<NhanKhau>, StatisticsTime<NhanKhau> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session;
     public static NhanKhauDao getInstance() {return new NhanKhauDao(); }
@@ -46,6 +45,17 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<Nhan
         return nhanKhaus;
     }
 
+    @Override
+    public Map<Integer, Long> calculateTimeDistribution(List<NhanKhau> in) {
+        Map<Integer, Long> ageDistribution = new HashMap<>();
+
+        for (NhanKhau temp : in) {
+            int age = Period.between(temp.getNgaySinh().toLocalDate(), LocalDate.now()).getYears();
+            ageDistribution.put(age, ageDistribution.getOrDefault(age, 0L) + 1);
+        }
+
+        return ageDistribution;
+    }
 
     public void delete(NhanKhau nhanKhau) {
         try {
@@ -60,7 +70,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<Nhan
     }
 
     public Map<Integer, NhanKhau> selectReturnMap() {
-        Map<Integer, NhanKhau> result = new HashMap<>();
+        Map<Integer, NhanKhau> result;
         try {
             session = Hibernate.getSession(sessionFactory);
             List<NhanKhau> nhanKhaus = session.createQuery("FROM NhanKhau", NhanKhau.class)
@@ -109,7 +119,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<Nhan
 
 
     public List<NhanKhau> selectNhanKhauById(int sophong,int sotang) {
-        List<NhanKhau> nhanKhau = null;
+        List<NhanKhau> nhanKhau;
         try {
 
             session = Hibernate.getSession(sessionFactory);

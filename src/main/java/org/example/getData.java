@@ -61,7 +61,6 @@ public class getData {
 
     public void reloadNhankhau() {
         // Làm mới dữ liệu từ HoKhauDao và NhanKhauDao
-
         this.nhanKhaus = NhanKhauDao.getInstance().selectReturnMap();
     }
     public void reloadHokhau(){
