@@ -1,6 +1,8 @@
 package org.example.ConTroller;
 
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -110,7 +112,10 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
                  if (empty) {
                      setGraphic(null);
                  } else {
-                    Button button=new Button("Xóa nhân khẩu");
+                    Button button=new Button();
+                     FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                     iconView.setSize("16px");
+                     button.setGraphic(iconView);
                     setGraphic(button);
                     button.setOnAction(event -> {
                         Alert alert=new Alert(Alert.AlertType.WARNING);

@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class KhoanPhiDao implements Save<KhoanPhi>, Delete, SelectAll, Update<KhoanPhi>, SelectByName<KhoanPhi> {
+public class KhoanPhiDao implements Save<KhoanPhi>, SelectAll, Update<KhoanPhi>, SelectByName<KhoanPhi> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session = null;
     public static KhoanPhiDao getInstance() {return new KhoanPhiDao();}
@@ -17,12 +17,12 @@ public class KhoanPhiDao implements Save<KhoanPhi>, Delete, SelectAll, Update<Kh
         super();
     }
 
-    @Override
-    public void delete(int id) {
+
+    public void delete(KhoanPhi khoanPhi) {
         try {
 
             session = Hibernate.getSession(sessionFactory);
-            session.createQuery("DELETE FROM DanhSachKhoanPhi WHERE id = :id", KhoanPhi.class).setParameter("id", id).executeUpdate();
+            session.delete(khoanPhi);
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
@@ -82,7 +82,7 @@ public class KhoanPhiDao implements Save<KhoanPhi>, Delete, SelectAll, Update<Kh
         try {
             session=Hibernate.getSession(sessionFactory);
             khoanPhis = session
-                    .createQuery("FROM DanhSachKhoanPhi d WHERE d.tenKhoanPhi = :name", KhoanPhi.class)
+                    .createQuery("FROM KhoanPhi d WHERE d.tenKhoanPhi = :name", KhoanPhi.class)
                     .setParameter("name", name )
                     .getResultList();
             Hibernate.closeSession(session);
