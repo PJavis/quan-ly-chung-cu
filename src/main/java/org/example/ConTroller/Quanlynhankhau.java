@@ -12,11 +12,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.EntityAll.NhanKhau;
+import org.example.Hibernatedao.NhanKhauDao;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 
@@ -26,6 +29,9 @@ import java.net.URL;
 import java.util.*;
 
 public class Quanlynhankhau implements Initializable {
+
+    @FXML
+    private BarChart<String, Number> thongkechart;
     @FXML
     private TextField timkiem;
     @FXML
@@ -162,10 +168,38 @@ public class Quanlynhankhau implements Initializable {
         sortList.comparatorProperty().bind(danhsachnhankhau.comparatorProperty());
         danhsachnhankhau.setItems(sortList);
     }
+    public void chart() {
+        try {
+            NhanKhauDao nhanKhauDao = NhanKhauDao.getInstance();
 
+            // lay mot chut data ha
+            List<NhanKhau> nhanKhauList = nhanKhauDao.selectAll();
+
+           // tinh distribution
+            Map<Integer, Long> ageDistribution = nhanKhauDao.calculateTimeDistribution(nhanKhauList);
+
+           //cap nhat bieu do
+            updateChart(ageDistribution);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateChart(Map<Integer, Long> ageDistribution) {
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+        for (Map.Entry<Integer, Long> entry : ageDistribution.entrySet()) {
+            series.getData().add(new XYChart.Data<>(String.valueOf(entry.getKey()), entry.getValue()));
+        }
+
+        thongkechart.getData().clear();
+        thongkechart.getData().add(series);
+    }
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL location, ResourceBundle resources) {
         danhsachnhankhau();
         timkiem();
+        chart();
     }
+
 }
