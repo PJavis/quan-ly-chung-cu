@@ -4,6 +4,8 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.example.EntityAll.KhoanPhi;
+import org.example.EntityAll.NhanKhau;
 import org.example.Hibernatedao.KhoanPhiDao;
 import org.example.getData;
 
@@ -119,6 +122,7 @@ public class Quanlykhoanphi implements Initializable {
                                 getData.getInstance().removeKhoanphi(person);
                                 khoanPhiList=getData.getInstance().getKhoanPhis();
                                 danhsachkhoanphi();
+                                timkiem();
                         }});
                         Button button = new Button();
                         FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
@@ -157,9 +161,8 @@ public class Quanlykhoanphi implements Initializable {
             return;
         }
         tenkhoanphi.setText(khoanPhi1.getTenKhoanPhi());
-        sotien.setText(String.valueOf(khoanPhi1.getGiaTri()));
+        sotien.setText(khoanPhi1.getDecimalFormatsotien());
         loaikhoanphi.setValue(khoanPhi1.getLoaiKhoanPhi());
-
         hannop.setText(khoanPhi1.getFormattedDate());
     }
 
@@ -196,7 +199,7 @@ if(hannop.getText().isEmpty()||tenkhoanphi.getText().isEmpty()||loaikhoanphi.get
     String date = hannop.getText();
     LocalDate datetime = LocalDate.parse(date, formatter);
     khoanPhi.setKetThuc(Date.valueOf(datetime));
-    khoanPhi.setGiaTri(Double.parseDouble(sotien.getText()));
+    khoanPhi.setGiaTri(Double.parseDouble(sotien.getText().replace(",","")));
     LocalDate currentDate = LocalDate.now();
     khoanPhi.setBatDau(Date.valueOf(currentDate));
     KhoanPhiDao.getInstance().save(khoanPhi);
@@ -211,14 +214,42 @@ if(hannop.getText().isEmpty()||tenkhoanphi.getText().isEmpty()||loaikhoanphi.get
 getData.getInstance().addKhoanphi(khoanPhi);
 khoanPhiList=getData.getInstance().getKhoanPhis();
 danhsachkhoanphi();
+timkiem();
 }
     }
+ public void timkiem(){
+     FilteredList<KhoanPhi> filter = new FilteredList<>(khoanPhis, e -> true);
 
+     timkiem.textProperty().addListener((Observable, oldValue, newValue) -> {
+
+         filter.setPredicate(predicateEmployeeData -> {
+
+             if (newValue == null || newValue.isEmpty()) {
+                 return true;
+             }
+
+           if(predicateEmployeeData.getTenKhoanPhi().toLowerCase().contains(newValue.toLowerCase())){
+               return true;
+           }else if(predicateEmployeeData.getLoaiKhoanPhi().toLowerCase().contains(newValue.toLowerCase())){
+               return true;
+           }else if(predicateEmployeeData.getFormattedDate().contains(newValue)){
+               return  true;
+           }
+
+             return false;
+         });
+     });
+
+     SortedList<KhoanPhi> sortList = new SortedList<>(filter);
+
+     sortList.comparatorProperty().bind(danhsachkhoanphi.comparatorProperty());
+     danhsachkhoanphi.setItems(sortList);
+ }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loaikhoanphi.getItems().addAll("Bắt buộc", "Đóng góp");
         danhsachkhoanphi();
-
+        timkiem();
     }
 }
