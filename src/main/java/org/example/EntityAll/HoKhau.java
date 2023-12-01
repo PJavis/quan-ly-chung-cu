@@ -2,6 +2,7 @@ package org.example.EntityAll;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
 
 
 @Embeddable
@@ -30,6 +31,8 @@ public class HoKhau {
     private double dienTichPhong;
     @Column(name="ten_chu-ho")
     private String tenchuho;
+    @Column(name="ngay_tao_ho_khau")
+    private Date ngaytaohokhau;
 
 
     // Default constructor required by Hibernate
@@ -37,11 +40,12 @@ public class HoKhau {
     }
 
     // Parameterized constructor
-    public HoKhau(int id, int soTang, double dienTichPhong,String tenchuho) {
+    public HoKhau(int id, int soTang, double dienTichPhong,String tenchuho,Date ngaytaohokhau) {
         this.id = id;
         this.soTang = soTang;
         this.dienTichPhong = dienTichPhong;
         this.tenchuho=tenchuho;
+        this.ngaytaohokhau=ngaytaohokhau;
 
     }
 
@@ -80,5 +84,13 @@ public class HoKhau {
     public void setTenchuho(String tenchuho) {
         this.tenchuho = tenchuho;
 
+    }
+
+    public Date getNgaytaohokhau() {
+        return ngaytaohokhau;
+    }
+
+    public void setNgaytaohokhau(Date ngaytaohokhau) {
+        this.ngaytaohokhau = ngaytaohokhau;
     }
 }

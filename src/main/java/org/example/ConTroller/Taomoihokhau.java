@@ -70,7 +70,10 @@ a.close();
                 hoKhau.setSoTang(Integer.parseInt(sotang.getText()));
                 hoKhau.setTenchuho(tenchuho.getText());
 
-                try {HoKhauDao.getInstance().save(hoKhau);
+                try {
+                        LocalDate currentDate = LocalDate.now();
+                        hoKhau.setNgaytaohokhau(Date.valueOf(currentDate));
+                        HoKhauDao.getInstance().save(hoKhau);
                         getData.getInstance().addHokhau(hoKhau);
                 NhanKhau nhanKhau=new NhanKhau();
                 nhanKhau.setTen(tenchuho.getText());
