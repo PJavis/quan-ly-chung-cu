@@ -102,11 +102,13 @@ public class KhoanPhi {
         return dateFormat.format(ketThuc);
     }
     public  String getDecimalFormatsotien(){
-        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        String pattern = "#,##0" + (getGiaTri() % 1 == 0 ? "" : ".00");
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
         return decimalFormat.format(giaTri);
     }
     public  String getDecimalFormatsotiendanop(){
-        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        String pattern = "#,##0" + (getTongsotien() % 1 == 0 ? "" : ".00");
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
         return decimalFormat.format(tongsotien);
     }
 }

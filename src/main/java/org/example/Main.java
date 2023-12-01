@@ -23,8 +23,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Hibernate.getSessionFactory();
-        getData.getInstance().reloadNhankhau();
-        getData.getInstance().reloadHokhau();
+        getData.getInstance();
         launch(args);
         Hibernate.closeSessionFactory(Hibernate.getSessionFactory());
     }

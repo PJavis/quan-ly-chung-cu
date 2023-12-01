@@ -2,15 +2,12 @@ package org.example.ConTroller;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,23 +15,15 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.EntityAll.KhoanPhi;
-import org.example.EntityAll.NhanKhau;
 import org.example.Hibernatedao.KhoanPhiDao;
 import org.example.getData;
 
-import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Date;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -146,7 +135,7 @@ public class Quanlykhoanphi implements Initializable {
                                 Parent root = loader.load();
                                 Scene scene = new Scene(root);
                                 ag0r.setScene(scene);
-                                Chitiet chitietkhoanphi=loader.getController();
+                                Chitietkhoanphi chitietkhoanphi=loader.getController();
                                 chitietkhoanphi.setKhoanPhi(person);
                                 ag0r.show();
                             } catch (Exception e) {
@@ -170,9 +159,8 @@ public class Quanlykhoanphi implements Initializable {
         tenkhoanphi.setText(khoanPhi1.getTenKhoanPhi());
         sotien.setText(String.valueOf(khoanPhi1.getGiaTri()));
         loaikhoanphi.setValue(khoanPhi1.getLoaiKhoanPhi());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String formattedDate = dateFormat.format(khoanPhi1.getKetThuc());
-        hannop.setText(formattedDate);
+
+        hannop.setText(khoanPhi1.getFormattedDate());
     }
 
     @FXML

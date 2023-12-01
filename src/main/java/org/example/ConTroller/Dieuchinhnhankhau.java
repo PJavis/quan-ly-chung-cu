@@ -55,8 +55,7 @@ public class Dieuchinhnhankhau {
     public void setNhanKhau(NhanKhau nhanKhau) {
         this.nhanKhau = nhanKhau;
         tennhankhau.setText(nhanKhau.getTen());
-        SimpleDateFormat newDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        ngaysinh.setText(newDateFormat.format(nhanKhau.getNgaySinh()));
+        ngaysinh.setText(nhanKhau.getFormattedDate());
         gioitinh.setText(nhanKhau.getGioiTinh());
         sophong.setText(String.valueOf(nhanKhau.getSophong()));
         sotang.setText(String.valueOf(nhanKhau.getSotang()));

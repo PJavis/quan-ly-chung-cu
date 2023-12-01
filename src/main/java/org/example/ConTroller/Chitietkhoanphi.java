@@ -16,16 +16,15 @@ import org.example.EntityAll.KhoanPhi;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
-public class Chitiet {
+public class Chitietkhoanphi {
     private KhoanPhi khoanPhi;
 
     public void setKhoanPhi(KhoanPhi khoanPhi) {
         this.khoanPhi = khoanPhi;
         tenkhoanphi.setText(khoanPhi.getTenKhoanPhi());
         loaikhoanphi.setText(khoanPhi.getLoaiKhoanPhi());
-        DecimalFormat decimalFormat = new DecimalFormat("###,###");
-        sotien.setText(decimalFormat.format(khoanPhi.getGiaTri()));
-        sotiendanop.setText(decimalFormat.format(khoanPhi.getTongsotien()));
+        sotien.setText(khoanPhi.getDecimalFormatsotien());
+        sotiendanop.setText(khoanPhi.getDecimalFormatsotiendanop());
         SimpleDateFormat newDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         ngaytao.setText(newDateFormat.format(khoanPhi.getBatDau()));
         hannop.setText(newDateFormat.format(khoanPhi.getKetThuc()));
