@@ -12,11 +12,12 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlynhankhau">
     <fx:include source="DashBoard.fxml" />
-   <ComboBox editable="true" layoutX="669.0" layoutY="398.0" prefHeight="34.0" prefWidth="148.0" promptText="Thống kê" />
+   <ComboBox fx:id="boxluachon" editable="true" layoutX="669.0" layoutY="398.0" prefHeight="34.0" prefWidth="148.0" promptText="Thống kê" />
    <TextField fx:id="timkiem" layoutX="453.0" layoutY="13.0" prefHeight="34.0" prefWidth="206.0" promptText="Tìm kiếm">
       <opaqueInsets>
          <Insets />
@@ -52,14 +53,18 @@
    </Label>
    <Label layoutX="229.0" layoutY="407.0" text="Tổng số nhân khẩu: " />
    <Label fx:id="tongsonhankhau" layoutX="343.0" layoutY="407.0" text="Label" />
-   <BarChart fx:id="thongkechart" layoutX="262.0" layoutY="440.0" prefHeight="274.0" prefWidth="547.0">
-     <xAxis>
-       <CategoryAxis side="BOTTOM" />
-     </xAxis>
-     <yAxis>
-       <NumberAxis side="LEFT" />
-     </yAxis>
-   </BarChart>
+   <Pane fx:id="panethongke" layoutX="244.0" layoutY="432.0" prefHeight="262.0" prefWidth="570.0">
+      <children>
+         <BarChart fx:id="thongkechart" layoutY="16.0" prefHeight="230.0" prefWidth="540.0">
+           <xAxis>
+             <CategoryAxis side="BOTTOM" />
+           </xAxis>
+           <yAxis>
+             <NumberAxis side="LEFT" />
+           </yAxis>
+         </BarChart>
+      </children>
+   </Pane>
     <children>
       
    </children>

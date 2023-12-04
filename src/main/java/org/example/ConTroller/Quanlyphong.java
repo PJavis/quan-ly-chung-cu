@@ -13,17 +13,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
+import org.example.Hibernatedao.NhanKhauDao;
 import org.example.getData;
 
 import java.net.URL;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class Quanlyphong implements Initializable {
@@ -55,6 +62,13 @@ public class Quanlyphong implements Initializable {
 
     private List<HoKhau> hoKhauList=getData.getInstance().getHoKhaus();
     private ObservableList<HoKhau> hoKhaus;
+    @FXML
+    private BarChart<String,Number> hokhauchart;
+
+    @FXML
+    private Pane panehokhau;
+    @FXML
+    private ComboBox<String> boxphong;
     public void danhsachhokhau(){
         tongsohokhau.setText(String.valueOf(hoKhauList.size()));
         hoKhaus= FXCollections.observableArrayList(hoKhauList);
@@ -162,9 +176,51 @@ public class Quanlyphong implements Initializable {
         }
     }
 
+    public void chart() {
+        try {
+            NhanKhauDao nhanKhauDao = NhanKhauDao.getInstance();
+
+            // lay mot chut data ha
+            List<NhanKhau> nhanKhauList = nhanKhauDao.selectAll();
+
+            // tinh distribution
+            Map<Integer, Long> ageDistribution = nhanKhauDao.calculateTimeDistribution(nhanKhauList);
+
+            //cap nhat bieu do
+            updateChart(ageDistribution);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateChart(Map<Integer, Long> ageDistribution) {
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
+        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+        for (Map.Entry<Integer, Long> entry : ageDistribution.entrySet()) {
+            series.getData().add(new XYChart.Data<>(String.valueOf(entry.getKey()), entry.getValue()));
+        }
+
+        barChart.getData().clear();
+        barChart.getData().add(series);
+
+        panehokhau.getChildren().clear();
+        panehokhau.getChildren().add(barChart);
+    }
+    private String listchoice[] = {"Thống kê theo năm","Thống kê theo quý","Thống kê theo tháng"};
+
+    public void setBoxphong() {
+        ObservableList<String>list = FXCollections.observableArrayList(listchoice);
+        this.boxphong.setItems(list);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         danhsachhokhau();
         timkiemhokhau();
+        chart();
+        setBoxphong();
     }
 }

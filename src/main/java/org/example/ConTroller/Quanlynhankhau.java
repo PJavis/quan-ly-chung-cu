@@ -13,9 +13,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.EntityAll.NhanKhau;
@@ -58,8 +61,14 @@ public class Quanlynhankhau implements Initializable {
 
 
     private ObservableList<NhanKhau> nhanKhaus;
+
+    @FXML
+    private ComboBox<String> boxluachon;
     @FXML
     private Label tongsonhankhau;
+
+    @FXML
+    private Pane panethongke;
     public void danhsachnhankhau(){
         tongsonhankhau.setText(String.valueOf(nhanKhauList.size()));
        nhanKhaus= FXCollections.observableArrayList(nhanKhauList.values());
@@ -185,21 +194,35 @@ public class Quanlynhankhau implements Initializable {
         }
     }
 
-    private void updateChart(Map<Integer, Long> ageDistribution) {
+    public void updateChart(Map<Integer, Long> ageDistribution) {
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
+        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
         XYChart.Series<String, Number> series = new XYChart.Series<>();
 
         for (Map.Entry<Integer, Long> entry : ageDistribution.entrySet()) {
             series.getData().add(new XYChart.Data<>(String.valueOf(entry.getKey()), entry.getValue()));
         }
 
-        thongkechart.getData().clear();
-        thongkechart.getData().add(series);
+        barChart.getData().clear();
+        barChart.getData().add(series);
+
+        panethongke.getChildren().clear();
+        panethongke.getChildren().add(barChart);
     }
+    private  String luachon[] = {"Thống kê theo số nhân khẩu","Thống kê theo ngày đăng kí","Thống kê theo bla bla"};
+
+    public void setBoxluachon( ) {
+        ObservableList<String>boxbox = FXCollections.observableArrayList(luachon);
+        boxluachon.setItems(boxbox);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         danhsachnhankhau();
         timkiem();
         chart();
+        setBoxluachon();
     }
 
 }

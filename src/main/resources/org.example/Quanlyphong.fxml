@@ -12,6 +12,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlyphong">
@@ -43,17 +44,21 @@
          <TableColumn fx:id="dieuchinh" prefWidth="109.5999755859375" text="Điều chỉnh" />
      </columns>
    </TableView>
-   <ComboBox editable="true" layoutX="665.0" layoutY="420.0" prefWidth="150.0" promptText="Thống kê" />
-   <BarChart layoutX="229.0" layoutY="448.0" prefHeight="302.0" prefWidth="598.0">
-     <xAxis>
-       <CategoryAxis side="BOTTOM" />
-     </xAxis>
-     <yAxis>
-       <NumberAxis side="LEFT" />
-     </yAxis>
-   </BarChart>
+   <ComboBox fx:id="boxphong" editable="true" layoutX="665.0" layoutY="420.0" prefWidth="150.0" promptText="Thống kê" />
    <Label layoutX="248.0" layoutY="424.0" text="Tổng số hộ khẩu:" />
    <Label fx:id="tongsohokhau" layoutX="351.0" layoutY="424.0" text="Label" />
+   <Pane fx:id="panehokhau" layoutX="251.0" layoutY="461.0" prefHeight="270.0" prefWidth="546.0">
+      <children>
+         <BarChart fx:id="hokhauchart" layoutX="-9.0" prefHeight="248.0" prefWidth="539.0">
+           <xAxis>
+             <CategoryAxis side="BOTTOM" />
+           </xAxis>
+           <yAxis>
+             <NumberAxis side="LEFT" />
+           </yAxis>
+         </BarChart>
+      </children>
+   </Pane>
     <children>
      
    </children>
