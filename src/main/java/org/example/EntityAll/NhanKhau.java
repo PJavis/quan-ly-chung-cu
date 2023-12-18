@@ -36,6 +36,12 @@ public class NhanKhau {
     @Column(name = "chu_ho")
     private boolean chuHo;
 
+    @Column(name = "CCCD")
+    private String CCCD;
+
+    @Column(name = "So_dien_thoai")
+    private String soDienThoai;
+
     public NhanKhau() {
         // Default constructor required by Hibernate
     }
@@ -128,5 +134,21 @@ public class NhanKhau {
     public String getFormattedDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(ngaySinh);
+    }
+
+    public String getCCCD() {
+        return CCCD;
+    }
+
+    public void setCCCD(String CCCD) {
+        this.CCCD = CCCD;
+    }
+
+    public String getSoDienThoai() {
+        return soDienThoai;
+    }
+
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
     }
 }

@@ -20,7 +20,8 @@ public class KhoanPhi {
     @Column(name = "loai_khoan_phi")
     private String loaiKhoanPhi;
 
-
+    @Column(name = "chu_ki")
+    private String chuKi;
 
     @Column(name = "bat_dau")
     private Date batDau;
@@ -44,6 +45,14 @@ public class KhoanPhi {
 
     public KhoanPhi() {
 
+    }
+
+    public String getChuKi() {
+        return chuKi;
+    }
+
+    public void setChuKi(String chuKi) {
+        this.chuKi = chuKi;
     }
 
     public double getTongsotien() {

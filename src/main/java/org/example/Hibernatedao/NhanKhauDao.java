@@ -56,7 +56,6 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<Nhan
 
         return ageDistribution;
     }
-
     public void delete(NhanKhau nhanKhau) {
         try {
 
