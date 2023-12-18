@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" stylesheets="@css/pinocchio.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.TrangchuController" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" stylesheets="@css/pinocchio.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.TrangchuController">
    <children>
        <fx:include source="DashBoard.fxml" />
       <Pane layoutX="222.0" layoutY="3.0" prefHeight="715.0" prefWidth="618.0">
@@ -36,7 +36,7 @@
                         <Font name="Candara Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="259.0" layoutY="17.0" text="1412">
+                  <Label fx:id="tongsonguoio" layoutX="259.0" layoutY="17.0" text="1412">
                      <font>
                         <Font name="Century Gothic Bold" size="25.0" />
                      </font>
@@ -50,7 +50,7 @@
                         <Font name="Candara Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="340.0" layoutY="17.0" text="52013144444">
+                  <Label fx:id="tongsotienthuduoc" layoutX="340.0" layoutY="17.0" text="52013144444">
                      <font>
                         <Font name="Century Gothic Bold" size="25.0" />
                      </font>
@@ -63,7 +63,7 @@
                         <Font name="Candara Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="272.0" layoutY="15.0" prefHeight="36.0" prefWidth="16.0" text="0" textFill="#2b2929">
+                  <Label fx:id="sophongcontrong" layoutX="272.0" layoutY="15.0" prefHeight="36.0" prefWidth="70.0" text="0" textFill="#2b2929">
                      <font>
                         <Font name="Century Gothic Bold" size="25.0" />
                      </font>

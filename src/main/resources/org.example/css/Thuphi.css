@@ -1,4 +1,4 @@
-/*.root {
+.root {
     -fx-background-color: lightgray;
 }
 
@@ -7,11 +7,13 @@
 }
 
 .label {
-    -fx-font-size: 18px;
+    -fx-font-size: 14px;
 }
 
 .button {
-    -fx-background-color: #00cc00;
+    -fx-background-color: #748CF1;
+    -fx-border-radius: 5px;
+    -fx-border-color: none;
 }
 
-/* Add more styles as needed */
+
