@@ -9,12 +9,15 @@ import org.example.Hibernatedao.NhanKhauDao;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class getData {
     private static getData instance;
     private List<KhoanPhi> khoanPhis;
     private List<HoKhau> hoKhaus;
     private Map<Integer,NhanKhau> nhanKhaus;
+
+    private List<NhanKhau> nhanKhauList;
 
     private getData() {
         // Khởi tạo dữ liệu khi lớp được tạo ra
@@ -61,7 +64,8 @@ public class getData {
 
     public void reloadNhankhau() {
         // Làm mới dữ liệu từ HoKhauDao và NhanKhauDao
-        this.nhanKhaus = NhanKhauDao.getInstance().selectReturnMap();
+        this.nhanKhauList = NhanKhauDao.getInstance().selectAll();
+        this.nhanKhaus = this.nhanKhauList.stream().collect(Collectors.toMap(NhanKhau::getIdNguoiDan, nhanKhau -> nhanKhau));
     }
     public void reloadHokhau(){
         this.hoKhaus = HoKhauDao.getInstance().selectAll();

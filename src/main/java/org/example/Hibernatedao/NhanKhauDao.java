@@ -10,7 +10,6 @@ import java.time.Period;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<NhanKhau>, Update<NhanKhau>, StatisticsTime<NhanKhau> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
@@ -68,22 +67,6 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<Nhan
         }
     }
 
-    public Map<Integer, NhanKhau> selectReturnMap() {
-        Map<Integer, NhanKhau> result;
-        try {
-            session = Hibernate.getSession(sessionFactory);
-            List<NhanKhau> nhanKhaus = session.createQuery("FROM NhanKhau", NhanKhau.class)
-                    .getResultList();
-            Hibernate.closeSession(session);
-
-            result = nhanKhaus.stream()
-                    .collect(Collectors.toMap(NhanKhau::getIdNguoiDan, nhanKhau -> nhanKhau));
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return result;
-    }
     @Override
     public List<NhanKhau> selectByName(String name) {
         List<NhanKhau> nhanKhaus;

@@ -1,8 +1,9 @@
 package org.example.ConTroller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
@@ -23,13 +24,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.EntityAll.NhanKhau;
 import org.example.Hibernatedao.NhanKhauDao;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-
-
 import org.example.getData;
+
 import java.net.URL;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 public class Quanlynhankhau implements Initializable {
 
