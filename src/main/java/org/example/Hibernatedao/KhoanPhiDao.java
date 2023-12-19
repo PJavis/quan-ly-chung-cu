@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class KhoanPhiDao implements Save<KhoanPhi>, SelectAll, Update<KhoanPhi>, SelectByName<KhoanPhi> {
+public class KhoanPhiDao implements Save<KhoanPhi>, SelectAll, Update<KhoanPhi> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session = null;
     public static KhoanPhiDao getInstance() {return new KhoanPhiDao();}
@@ -76,15 +76,15 @@ public class KhoanPhiDao implements Save<KhoanPhi>, SelectAll, Update<KhoanPhi>,
         }
     }
 
-    @Override
-    public List<KhoanPhi> selectByName(String name) {
-        List<KhoanPhi> khoanPhis;
+
+    public KhoanPhi selectByName(String name) {
+        KhoanPhi khoanPhis;
         try {
             session=Hibernate.getSession(sessionFactory);
             khoanPhis = session
-                    .createQuery("FROM KhoanPhi d WHERE d.tenKhoanPhi = :name", KhoanPhi.class)
+                    .createQuery("SELECT * FROM KhoanPhi d WHERE d.tenKhoanPhi = :name", KhoanPhi.class)
                     .setParameter("name", name )
-                    .getResultList();
+                    .uniqueResult();
             Hibernate.closeSession(session);
         } catch (Exception e) {
 

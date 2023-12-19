@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -15,9 +14,7 @@
            <Button layoutX="385.0" layoutY="701.0" mnemonicParsing="false" onAction="#nopphi" prefHeight="37.0" prefWidth="157.0" style="-fx-background-color: #353A56; -fx-background-radius: 15px;" text="Nộp" textFill="WHITE" />
            <TextField fx:id="sophong" layoutX="123.0" layoutY="378.0" prefHeight="37.0" prefWidth="126.0" style="-fx-border-color: #353A56; -fx-background-color: #ffffff; -fx-border-radius: 15px;" />
            <Label fx:id="loaikhoanphi" layoutX="136.0" layoutY="116.0" />
-      <Button layoutX="266.0" layoutY="378.0" mnemonicParsing="false" onAction="#timphong" prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: #353A56; -fx-background-radius: 15px;" text="Tìm" textFill="WHITE" />
-      <ListView fx:id="listviewtenphi" layoutX="136.0" layoutY="72.0" onMouseClicked="#listviewtenphi" prefHeight="97.0" prefWidth="184.0" visible="false" />
-      <ListView fx:id="listviewtenphong" layoutX="136.0" layoutY="232.0" onMouseClicked="#listviewtenphong" prefHeight="97.0" prefWidth="184.0" visible="false" />
+      <Button layoutX="493.0" layoutY="378.0" mnemonicParsing="false" onAction="#timphong" prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: #353A56; -fx-background-radius: 15px;" text="Tìm" textFill="WHITE" />
       <Pane layoutX="118.0" layoutY="427.0" prefHeight="249.0" prefWidth="427.0" style="-fx-background-color: #ffffff; -fx-border-radius: 25px; -fx-border-color: #353A56;">
          <children>
             <Label layoutX="52.0" layoutY="90.0" prefHeight="17.0" prefWidth="113.0" text="Tổng tiền đã nộp:" textFill="#353a56" />
@@ -54,6 +51,8 @@
             <Font name="Candara Bold" size="29.0" />
          </font>
       </Label>
+      <TextField fx:id="sotang" layoutX="356.0" layoutY="378.0" prefHeight="37.0" prefWidth="126.0" style="-fx-border-color: #353A56; -fx-background-color: #ffffff; -fx-border-radius: 15px;" />
+      <Label layoutX="274.0" layoutY="387.0" prefHeight="20.0" prefWidth="116.0" text="Số tầng :" />
    </Pane>
    <AnchorPane prefHeight="200.0" prefWidth="200.0">
       <children>

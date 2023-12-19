@@ -1,23 +1,35 @@
 package org.example.ConTroller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.EntityAll.KhoanPhi;
+import org.example.EntityAll.NopPhi;
+import org.example.Hibernatedao.NopPhiDao;
 
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class Chitietkhoanphi {
+public class Chitietkhoanphi implements Initializable {
     private KhoanPhi khoanPhi;
+    private List<NopPhi> nopPhiList;
 
     public void setKhoanPhi(KhoanPhi khoanPhi) {
         this.khoanPhi = khoanPhi;
@@ -28,14 +40,15 @@ public class Chitietkhoanphi {
         SimpleDateFormat newDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         ngaytao.setText(newDateFormat.format(khoanPhi.getBatDau()));
         hannop.setText(newDateFormat.format(khoanPhi.getKetThuc()));
-
+        nopPhiList= NopPhiDao.getInstance().selectById(khoanPhi.getId());
+        danhsachhokhau();
     }
 
     @FXML
     private TableColumn<?, ?> chitiet;
 
     @FXML
-    private TableView<?> danhsachhokhau;
+    private TableView<NopPhi> danhsachhokhau;
 
     @FXML
     private Label hannop;
@@ -47,35 +60,49 @@ public class Chitietkhoanphi {
     private Label ngaytao;
 
     @FXML
-    private TableColumn<?, ?> sophong;
+    private TableColumn<NopPhi, Integer> sophong;
 
     @FXML
-    private TableColumn<?, ?> sotang;
+    private TableColumn<NopPhi, Integer> sotang;
 
     @FXML
-    private TableColumn<?, ?> sothutu;
+    private TableColumn<NopPhi, Integer> sothutu;
 
     @FXML
     private Label sotien;
 
     @FXML
-    private TableColumn<?, ?> sotienchuanop;
+    private TableColumn<NopPhi, Double> sotienchuanop;
 
     @FXML
     private Label sotiendanop;
 
     @FXML
-    private TableColumn<?, ?> sotiendanoptable;
+    private TableColumn<NopPhi, Double> sotiendanoptable;
 
     @FXML
-    private TableColumn<?, ?> tenchuho;
+    private TableColumn<NopPhi, String> tenchuho;
 
     @FXML
     private Label tenkhoanphi;
 
     @FXML
     private TextField timkiem;
+    private ObservableList<NopPhi> nopPhis;
+    public void danhsachhokhau() {
+        nopPhis = FXCollections.observableArrayList(nopPhiList);
 
+        sothutu.setCellValueFactory(cellData -> {
+            int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
+            return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
+        });
+        sophong.setCellValueFactory(new PropertyValueFactory<>("soPhong"));
+        sotang.setCellValueFactory(new PropertyValueFactory<>("soTang"));
+        tenchuho.setCellValueFactory(new PropertyValueFactory<>("tenchuho"));
+        sotiendanoptable.setCellValueFactory(new PropertyValueFactory<>("soTienDaDong"));
+        sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("Sotienchuanop"));
+        danhsachhokhau.setItems(nopPhis);
+    }
     @FXML
     void quaylai(ActionEvent event) {
         try {
@@ -90,4 +117,8 @@ public class Chitietkhoanphi {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

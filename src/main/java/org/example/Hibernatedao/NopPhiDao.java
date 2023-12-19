@@ -44,7 +44,7 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>, Selec
         return nopPhis;
     }
 
-    public NopPhi selectByTenKhoanPhiVaHoKhau(String tenKhoanPhi, HoKhau hoKhau) {
+    /*public NopPhi selectByTenKhoanPhiVaHoKhau(String tenKhoanPhi, HoKhau hoKhau) {
         KhoanPhi khoanPhi = KhoanPhiDao.getInstance().selectByName(tenKhoanPhi).get(0);
         NopPhi nopPhi;
         try {
@@ -60,7 +60,7 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>, Selec
         }
 
         return nopPhi;
-    }
+    }*/
 
     @Override
     public void update(NopPhi in) {
