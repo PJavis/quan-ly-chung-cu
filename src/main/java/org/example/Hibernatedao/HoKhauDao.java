@@ -1,12 +1,12 @@
 package org.example.Hibernatedao;
 
 import org.example.EntityAll.HoKhau;
-import org.example.EntityAll.NhanKhau;
-import org.example.Function.*;
+import org.example.Function.Save;
+import org.example.Function.SelectAll;
+import org.example.Function.Update;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HoKhauDao implements Save<HoKhau>, SelectAll, Update<HoKhau>{
