@@ -18,9 +18,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.NhanKhau;
+import org.example.EntityAll.NopPhi;
 import org.example.Hibernatedao.KhoanPhiDao;
+import org.example.Hibernatedao.NopPhiDao;
 import org.example.getData;
 
 import java.net.URL;
@@ -28,6 +31,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -207,6 +211,20 @@ if(hannop.getText().isEmpty()||tenkhoanphi.getText().isEmpty()||loaikhoanphi.get
     alert.setHeaderText("Thành công");
     alert.setContentText("Tạo khoản phí mới thành công");
     alert.showAndWait();
+    if(Objects.equals(loaikhoanphi.getValue(), "Bắt buộc")){
+        List<HoKhau> hoKhaus=getData.getInstance().getHoKhaus();
+        for(HoKhau hoKhau : hoKhaus){
+            NopPhi nopPhi=new NopPhi();
+            nopPhi.setIdKhoanPhi(khoanPhi.getId());
+            nopPhi.setSoPhong(hoKhau.getId());
+            nopPhi.setSoTang(hoKhau.getSoTang());
+            nopPhi.setTenchuho(hoKhau.getTenchuho());
+            nopPhi.setDienTichPhong(hoKhau.getDienTichPhong());
+            nopPhi.setSoTienDaDong(0);
+            nopPhi.setGiaTri(khoanPhi.getGiaTri());
+            NopPhiDao.getInstance().save(nopPhi);
+        }
+    }
     tenkhoanphi.clear();
     hannop.clear();
     sotien.clear();

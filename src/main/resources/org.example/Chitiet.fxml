@@ -51,7 +51,6 @@
             <TableColumn fx:id="tenchuho" prefWidth="96.79998779296875" text="Tên chủ hộ" />
             <TableColumn fx:id="sotiendanoptable" prefWidth="109.60003662109375" text="Số tiền đã nộp" />
             <TableColumn fx:id="sotienchuanop" prefWidth="108.0" text="Số tiền chưa nộp" />
-            <TableColumn fx:id="chitiet" prefWidth="64.0001220703125" text="Chi tiết" />
         </columns>
       </TableView>
       <Label layoutX="235.0" layoutY="180.0" text="Danh sách hộ khẩu" />

@@ -12,12 +12,22 @@ public class NopPhi {
     @Column(name = "id")
     private int id;
 
+
     @Column(name = "id_khoan_phi", nullable = false)
     private int idKhoanPhi;
 
 
-    @Column(name = "ho_khau_id",nullable = false)
-    private int hoKhau;
+    @Column(name = "so_phong")
+    private int soPhong;
+    @Column(name = "gia_tri")
+    private double giaTri;
+
+    @Column(name = "so_tang")
+    private int soTang;
+    @Column(name = "dien_tich_phong", columnDefinition = "double precision")
+    private double dienTichPhong;
+    @Column(name="ten_chu-ho")
+    private String tenchuho;
 
     @Column(name = "trang_thai_dong_phi")
     private boolean trangThaiDongPhi;
@@ -33,17 +43,58 @@ public class NopPhi {
         // Default constructor required by Hibernate
     }
 
-    public NopPhi(int id, int idKhoanPhi, int hoKhau, boolean trangThaiDongPhi, Date ngayNopPhi, double soTienDaDong) {
+    public NopPhi(int id, int idKhoanPhi, int soPhong,int soTang, boolean trangThaiDongPhi, Date ngayNopPhi, double soTienDaDong) {
         this.id = id;
         this.idKhoanPhi = idKhoanPhi;
-        this.hoKhau = hoKhau;
+        this.soPhong = soPhong;
+        this.soTang=soTang;
         this.trangThaiDongPhi = trangThaiDongPhi;
         this.ngayNopPhi = ngayNopPhi;
         this.soTienDaDong = soTienDaDong;
     }
 
-    public int getId() {
-        return id;
+    public double getGiaTri() {
+        return giaTri;
+    }
+
+    public void setGiaTri(double giaTri) {
+        this.giaTri = giaTri;
+    }
+
+    public double getSotienchuanop(){
+        return dienTichPhong*giaTri-soTienDaDong;
+    }
+
+    public double getDienTichPhong() {
+        return dienTichPhong;
+    }
+
+    public void setDienTichPhong(double dienTichPhong) {
+        this.dienTichPhong = dienTichPhong;
+    }
+
+    public String getTenchuho() {
+        return tenchuho;
+    }
+
+    public void setTenchuho(String tenchuho) {
+        this.tenchuho = tenchuho;
+    }
+
+    public int getSoPhong() {
+        return soPhong;
+    }
+
+    public void setSoPhong(int soPhong) {
+        this.soPhong = soPhong;
+    }
+
+    public int getSoTang() {
+        return soTang;
+    }
+
+    public void setSoTang(int soTang) {
+        this.soTang = soTang;
     }
 
     public void setIdKhoanPhi(int idKhoanPhi) {
@@ -52,14 +103,6 @@ public class NopPhi {
 
     public int getIdKhoanPhi() {
         return idKhoanPhi;
-    }
-
-    public int getHoKhau() {
-        return hoKhau;
-    }
-
-    public void setHoKhau(int hoKhau) {
-        this.hoKhau = hoKhau;
     }
 
     public Date getNgayNopPhi() {

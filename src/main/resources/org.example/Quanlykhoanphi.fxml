@@ -50,5 +50,7 @@
    <FontAwesomeIconView glyphName="SEARCH" layoutX="624.0" layoutY="28.0" size="17" />
    <Label layoutX="241.0" layoutY="640.0" text="Số tiền:" />
    <TextField fx:id="sotien" layoutX="330.0" layoutY="636.0" prefHeight="26.0" prefWidth="134.0" />
+   <ComboBox fx:id="chuky" editable="true" layoutX="666.0" layoutY="684.0" prefWidth="150.0" />
+   <Label layoutX="578.0" layoutY="688.0" text="Chu kỳ:" />
   
 </AnchorPane>
