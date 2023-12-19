@@ -1,5 +1,7 @@
 package org.example.Function;
 
+import java.util.List;
+
 public interface SelectById<T> {
-    T selectById(int id);
+    List<T> selectById(int id);
 }

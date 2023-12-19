@@ -1,17 +1,18 @@
 package org.example.Hibernatedao;
 
-import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.HoKhau;
+import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.NopPhi;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
+import org.example.Function.SelectById;
 import org.example.Function.Update;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi> {
+public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>, SelectById<NopPhi> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session = null;
     public static NopPhiDao getInstance() {return  new NopPhiDao();}
@@ -73,5 +74,22 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi> {
 
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<NopPhi> selectById(int id) {
+        List<NopPhi> nopPhis;
+        try {
+
+            session = Hibernate.getSession(sessionFactory);
+            nopPhis = session.createQuery("FROM NopPhi  WHERE  id= :id", NopPhi.class)
+                    .setParameter("id", id)
+                    .getResultList();
+            Hibernate.closeSession(session);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return nopPhis;
     }
 }
