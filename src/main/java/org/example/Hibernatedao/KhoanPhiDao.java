@@ -82,7 +82,7 @@ public class KhoanPhiDao implements Save<KhoanPhi>, SelectAll, Update<KhoanPhi> 
         try {
             session=Hibernate.getSession(sessionFactory);
             khoanPhis = session
-                    .createQuery("SELECT * FROM KhoanPhi d WHERE d.tenKhoanPhi = :name", KhoanPhi.class)
+                    .createQuery("FROM KhoanPhi d WHERE d.tenKhoanPhi = :name", KhoanPhi.class)
                     .setParameter("name", name )
                     .uniqueResult();
             Hibernate.closeSession(session);
