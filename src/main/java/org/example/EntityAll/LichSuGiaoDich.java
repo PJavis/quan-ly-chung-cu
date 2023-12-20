@@ -28,6 +28,9 @@ public class LichSuGiaoDich {
 
     @Column(name = "gia_tri")
     private double giaTri;
+    public  LichSuGiaoDich(){
+
+    }
 
     public LichSuGiaoDich(String tenchuho, int sophong, int sotang, String tenKhoanPhi, Date thoigiangiaodich, double giaTri) {
         this.tenchuho = tenchuho;
