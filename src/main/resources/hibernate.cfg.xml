@@ -28,5 +28,6 @@
         <mapping class="org.example.EntityAll.QuanTriChungCu"/>
         <mapping class="org.example.EntityAll.TaiKhoanBQT"/>
         <mapping class="org.example.EntityAll.LichSuThayDoi"/>
+        <mapping class="org.example.EntityAll.LichSuGiaoDich"/>
     </session-factory>
 </hibernate-configuration>
