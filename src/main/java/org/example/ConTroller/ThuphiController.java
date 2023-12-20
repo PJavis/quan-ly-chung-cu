@@ -12,7 +12,7 @@ import org.example.Hibernatedao.NopPhiDao;
 
 public class ThuphiController {
     private  KhoanPhi khoanPhi;
-    private HoKhau hoKhau;
+
 
     @FXML
     private Label duno;
