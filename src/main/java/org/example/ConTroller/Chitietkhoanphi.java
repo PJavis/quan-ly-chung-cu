@@ -1,5 +1,7 @@
 package org.example.ConTroller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,10 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.EntityAll.KhoanPhi;
@@ -45,7 +44,7 @@ public class Chitietkhoanphi implements Initializable {
     }
 
     @FXML
-    private TableColumn<?, ?> chitiet;
+    private TableColumn<NopPhi, Void> lichsu;
 
     @FXML
     private TableView<NopPhi> danhsachhokhau;
@@ -101,6 +100,27 @@ public class Chitietkhoanphi implements Initializable {
         tenchuho.setCellValueFactory(new PropertyValueFactory<>("tenchuho"));
         sotiendanoptable.setCellValueFactory(new PropertyValueFactory<>("soTienDaDong"));
         sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("Sotienchuanop"));
+        lichsu.setCellFactory(cell-> {
+                    return new TableCell<NopPhi, Void>() {
+                        @Override
+                        protected void updateItem(Void item, boolean empty) {
+                            super.updateItem(item, empty);
+
+                            if (empty) {
+                                setGraphic(null);
+                            } else {
+                                Button button = new Button();
+                                FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
+                                iconView.setSize("16px");
+                                button.setGraphic(iconView);
+                                setGraphic(button);
+                                button.setOnAction(event -> {
+
+                                });
+                            }
+                        }
+                    };
+                });
         danhsachhokhau.setItems(nopPhis);
     }
     @FXML

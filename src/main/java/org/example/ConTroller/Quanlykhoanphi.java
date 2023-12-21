@@ -48,6 +48,8 @@ public class Quanlykhoanphi implements Initializable {
 
     @FXML
     private TextField hannop;
+    @FXML
+    private ComboBox<String> chuky;
 
     @FXML
     private ComboBox<String> loaikhoanphi;
@@ -266,6 +268,7 @@ timkiem();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        chuky.getItems().addAll("Theo tháng","Theo đợt");
         loaikhoanphi.getItems().addAll("Bắt buộc", "Đóng góp");
         danhsachkhoanphi();
         timkiem();

@@ -1,6 +1,7 @@
 package org.example.Hibernatedao;
 
 import org.example.EntityAll.LichSuGiaoDich;
+import org.example.EntityAll.NopPhi;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
 import org.example.Function.Update;
@@ -53,5 +54,18 @@ public class LichSuGiaoDichDao implements SelectAll, Save<LichSuGiaoDich>, Updat
             System.out.println("Luu lich su giao dich co loi");
             throw new RuntimeException(e);
         }
+    }
+    public List<LichSuGiaoDich> selectByCondition(int idkhoanphi, int sotang, int sophong) {
+        List<LichSuGiaoDich> lichSuGiaoDich;
+        try {
+            session = Hibernate.getSession(sessionFactory);
+            lichSuGiaoDich = session.createQuery("FROM NopPhi  WHERE  idKhoanPhi= :id AND soTang= :sotang AND soPhong= :sophong", LichSuGiaoDich.class)
+                    .setParameter("id", idkhoanphi).setParameter("sophong", sophong).setParameter("sotang", sotang)
+                    .getResultList();
+            Hibernate.closeSession(session);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return lichSuGiaoDich;
     }
 }
