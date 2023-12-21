@@ -35,6 +35,8 @@ public class ThuphiController {
 
     @FXML
     private Label sotiendanop;
+    @FXML
+    private TextField nguoinopphi;
 
     @FXML
     private TextField sotiennop;
@@ -51,6 +53,8 @@ NopPhiDao.getInstance().update(nopPhi);
         lichSuGiaoDich.setSophong(nopPhi.getSoPhong());
         lichSuGiaoDich.setSotang(nopPhi.getSoTang());
         lichSuGiaoDich.setTenKhoanPhi(khoanPhi.getTenKhoanPhi());
+        lichSuGiaoDich.setIdKhoanPhi(khoanPhi.getId());
+        lichSuGiaoDich.setTennguoinop(nguoinopphi.getText());
         lichSuGiaoDich.setGiaTri(Double.parseDouble(sotiennop.getText()));
         LocalDate today = LocalDate.now();
         Date date=Date.valueOf(today);

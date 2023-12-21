@@ -59,7 +59,7 @@ public class LichSuGiaoDichDao implements SelectAll, Save<LichSuGiaoDich>, Updat
         List<LichSuGiaoDich> lichSuGiaoDich;
         try {
             session = Hibernate.getSession(sessionFactory);
-            lichSuGiaoDich = session.createQuery("FROM NopPhi  WHERE  idKhoanPhi= :id AND soTang= :sotang AND soPhong= :sophong", LichSuGiaoDich.class)
+            lichSuGiaoDich = session.createQuery("FROM LichSuGiaoDich  WHERE  idKhoanPhi= :id AND soTang= :sotang AND soPhong= :sophong", LichSuGiaoDich.class)
                     .setParameter("id", idkhoanphi).setParameter("sophong", sophong).setParameter("sotang", sotang)
                     .getResultList();
             Hibernate.closeSession(session);

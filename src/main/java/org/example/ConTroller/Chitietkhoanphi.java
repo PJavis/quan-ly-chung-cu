@@ -14,10 +14,13 @@ import javafx.scene.Scene;
 
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.EntityAll.KhoanPhi;
+import org.example.EntityAll.LichSuGiaoDich;
 import org.example.EntityAll.NopPhi;
 import org.example.Hibernatedao.NopPhiDao;
+import org.example.getData;
 
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -115,7 +118,23 @@ public class Chitietkhoanphi implements Initializable {
                                 button.setGraphic(iconView);
                                 setGraphic(button);
                                 button.setOnAction(event -> {
+                                    NopPhi person = getTableView().getItems().get(getIndex());
+                                    try {
+                                        Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Lichsugiaodich.fxml"));
+                                        Parent root = loader.load();
+                                        Scene scene = new Scene(root);
+                                        Stage ag0r1=new Stage();
+                                        ag0r1.setScene(scene);
+                                        ag0r1.initModality(Modality.APPLICATION_MODAL);
+                                        ag0r1.initOwner(ag0r);
+                                        Lichsugiaodich lichsugiaodich=loader.getController();
+                                        lichsugiaodich.setNopPhi(person);
+                                        ag0r1.showAndWait();
 
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                    }
                                 });
                             }
                         }
