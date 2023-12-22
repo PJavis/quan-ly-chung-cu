@@ -69,12 +69,12 @@ public class LichSuGiaoDichDao implements SelectAll, Save<LichSuGiaoDich>, Updat
         return lichSuGiaoDich;
     }
 
-    public List<LichSuGiaoDich> selectInTime(Date t1, Date t2) {
+    public List<LichSuGiaoDich> selectInTime(Date t1, Date t2, int id) {
         List<LichSuGiaoDich> lichSuGiaoDiches;
         try {
             session = Hibernate.getSession(sessionFactory);
-            lichSuGiaoDiches = session.createQuery("FROM LichSuGiaoDich  WHERE  thoigiangiaodich BETWEEN :t1 AND :t2", LichSuGiaoDich.class)
-                    .setParameter("t1", t1).setParameter("t2", t2)
+            lichSuGiaoDiches = session.createQuery("FROM LichSuGiaoDich  WHERE idKhoanPhi= :id thoigiangiaodich BETWEEN :t1 AND :t2", LichSuGiaoDich.class)
+                    .setParameter("t1", t1).setParameter("t2", t2).setParameter("id", id)
                     .getResultList();
             Hibernate.closeSession(session);
         } catch (Exception e) {
