@@ -143,6 +143,23 @@ public class Chitietkhoanphi implements Initializable {
         danhsachhokhau.setItems(nopPhis);
     }
     @FXML
+    void tracuugiaodich(ActionEvent event) {
+        try {
+            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Tracuulichsugiaodich.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage ag0r1=new Stage();
+            ag0r1.setScene(scene);
+            ag0r1.initModality(Modality.APPLICATION_MODAL);
+            ag0r1.initOwner(ag0r);
+            ag0r1.showAndWait();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    @FXML
     void quaylai(ActionEvent event) {
         try {
             Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();

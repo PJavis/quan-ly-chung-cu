@@ -3,6 +3,7 @@ package org.example.EntityAll;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 @Entity
@@ -102,5 +103,10 @@ public class LichSuGiaoDich {
     public String getFormattedDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(thoigiangiaodich);
+    }
+    public  String getDecimalFormatsotiennop(){
+        String pattern = "#,##0" + (getGiaTri() % 1 == 0 ? "" : "..#########");
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        return decimalFormat.format(giaTri);
     }
 }

@@ -72,5 +72,6 @@
          <FontAwesomeIconView glyphName="LONG_ARROW_LEFT" size="20" />
       </graphic>
    </Button>
+   <Button layoutX="452.0" layoutY="171.0" mnemonicParsing="false" onAction="#tracuugiaodich" prefHeight="34.0" prefWidth="122.0" text="Tra cứu giao dịch" />
   
 </AnchorPane>

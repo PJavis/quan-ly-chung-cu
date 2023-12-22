@@ -50,7 +50,7 @@ public class Lichsugiaodich {
             return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
         });
         nguoinoptien.setCellValueFactory(new PropertyValueFactory<>("tennguoinop"));
-        sotiennop.setCellValueFactory(new PropertyValueFactory<>("giaTri"));
+        sotiennop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatsotiennop"));
         thoigiannop.setCellValueFactory(new PropertyValueFactory<>("formattedDate"));
         danhsachgiaodich.setItems(lichSuGiaoDichObservableList);
     }
