@@ -1,13 +1,13 @@
 package org.example.Hibernatedao;
 
 import org.example.EntityAll.LichSuGiaoDich;
-import org.example.EntityAll.NopPhi;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
 import org.example.Function.Update;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.sql.Date;
 import java.util.List;
 
 public class LichSuGiaoDichDao implements SelectAll, Save<LichSuGiaoDich>, Update<LichSuGiaoDich> {
@@ -67,5 +67,19 @@ public class LichSuGiaoDichDao implements SelectAll, Save<LichSuGiaoDich>, Updat
             throw new RuntimeException(e);
         }
         return lichSuGiaoDich;
+    }
+
+    public List<LichSuGiaoDich> selectInTime(Date t1, Date t2) {
+        List<LichSuGiaoDich> lichSuGiaoDiches;
+        try {
+            session = Hibernate.getSession(sessionFactory);
+            lichSuGiaoDiches = session.createQuery("FROM LichSuGiaoDich  WHERE  thoigiangiaodich BETWEEN :t1 AND :t2", LichSuGiaoDich.class)
+                    .setParameter("t1", t1).setParameter("t2", t2)
+                    .getResultList();
+            Hibernate.closeSession(session);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return lichSuGiaoDiches;
     }
 }
