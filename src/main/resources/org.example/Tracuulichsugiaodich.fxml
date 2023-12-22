@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Tracuulichsugiaodich">
+   <children>
+      <DatePicker fx:id="tu" layoutX="90.0" layoutY="14.0" />
+      <DatePicker fx:id="den" layoutX="310.0" layoutY="14.0" />
+      <Label layoutX="52.0" layoutY="18.0" text="Từ:" />
+      <Label layoutX="275.0" layoutY="18.0" text="Đến:" />
+      <TableView fx:id="danhsachgiaodich" layoutX="52.0" layoutY="94.0" prefHeight="277.0" prefWidth="516.0">
+         <columns>
+            <TableColumn fx:id="sothutu" prefWidth="75.0" text="Số thự tự" />
+            <TableColumn fx:id="nguoinoptien" prefWidth="163.20001220703125" text="Người nộp tiền" />
+            <TableColumn fx:id="sotiennop" prefWidth="144.0" text="Số tiền nộp" />
+            <TableColumn fx:id="thoigiannop" prefWidth="129.5999755859375" text="Thời gian nộp" />
+         </columns>
+      </TableView>
+      <Button fx:id="tim" layoutX="501.0" layoutY="14.0" mnemonicParsing="false" text="Tìm" />
+   </children>
+</AnchorPane>
