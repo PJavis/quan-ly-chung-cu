@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.Lighting;
@@ -29,6 +30,9 @@ public class Lichsugiaodich {
     private TableColumn<LichSuGiaoDich, String> thoigiannop;
 
     @FXML
+    private TableView<LichSuGiaoDich> danhsachgiaodich;
+
+    @FXML
     private TextField timkiem;
 
 
@@ -45,8 +49,9 @@ public class Lichsugiaodich {
             int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
             return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
         });
-        nguoinoptien.setCellValueFactory(new PropertyValueFactory<>("tenchuho"));
+        nguoinoptien.setCellValueFactory(new PropertyValueFactory<>("tennguoinop"));
         sotiennop.setCellValueFactory(new PropertyValueFactory<>("giaTri"));
         thoigiannop.setCellValueFactory(new PropertyValueFactory<>("formattedDate"));
+        danhsachgiaodich.setItems(lichSuGiaoDichObservableList);
     }
 }

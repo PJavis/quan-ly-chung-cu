@@ -9,10 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Lichsugiaodich">
    <children>
-      <TableView layoutX="42.0" layoutY="84.0" prefHeight="277.0" prefWidth="516.0">
+      <TableView fx:id="danhsachgiaodich" layoutX="42.0" layoutY="84.0" prefHeight="277.0" prefWidth="516.0">
         <columns>
           <TableColumn fx:id="sothutu" prefWidth="75.0" text="Số thự tự" />
           <TableColumn fx:id="nguoinoptien" prefWidth="163.20001220703125" text="Người nộp tiền" />
