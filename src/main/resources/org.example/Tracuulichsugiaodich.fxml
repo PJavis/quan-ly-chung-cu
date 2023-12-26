@@ -7,19 +7,20 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Tracuulichsugiaodich">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Tracuulichsugiaodich">
    <children>
       <DatePicker fx:id="tu" layoutX="90.0" layoutY="14.0" />
       <DatePicker fx:id="den" layoutX="310.0" layoutY="14.0" />
       <Label layoutX="52.0" layoutY="18.0" text="Từ:" />
       <Label layoutX="275.0" layoutY="18.0" text="Đến:" />
-      <TableView fx:id="danhsachgiaodich" layoutX="52.0" layoutY="94.0" prefHeight="277.0" prefWidth="516.0">
+      <TableView fx:id="danhsachgiaodich" layoutX="32.0" layoutY="94.0" prefHeight="278.0" prefWidth="570.0">
          <columns>
             <TableColumn fx:id="sothutu" prefWidth="75.0" text="Số thự tự" />
-            <TableColumn fx:id="nguoinoptien" prefWidth="163.20001220703125" text="Người nộp tiền" />
-            <TableColumn fx:id="sotiennop" prefWidth="144.0" text="Số tiền nộp" />
-            <TableColumn fx:id="thoigiannop" prefWidth="129.5999755859375" text="Thời gian nộp" />
+            <TableColumn fx:id="sophong" prefWidth="75.0" text="Số phòng" />
+            <TableColumn fx:id="sotang" prefWidth="75.0" text="Số tầng" />
+            <TableColumn fx:id="nguoinoptien" prefWidth="123.20001220703125" text="Người nộp tiền" />
+            <TableColumn fx:id="sotiennop" prefWidth="104.00006103515625" text="Số tiền nộp" />
+            <TableColumn fx:id="thoigiannop" prefWidth="111.20004272460938" text="Thời gian nộp" />
          </columns>
       </TableView>
       <Button layoutX="501.0" layoutY="14.0" mnemonicParsing="false" onAction="#tim" text="Tìm" />

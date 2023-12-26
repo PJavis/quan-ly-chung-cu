@@ -4,6 +4,8 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +27,7 @@ import org.example.getData;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -44,6 +47,7 @@ public class Chitietkhoanphi implements Initializable {
         hannop.setText(newDateFormat.format(khoanPhi.getKetThuc()));
         nopPhiList= NopPhiDao.getInstance().selectById(khoanPhi.getId());
         danhsachhokhau();
+        timkiem();
     }
 
     @FXML
@@ -93,7 +97,7 @@ public class Chitietkhoanphi implements Initializable {
     private ObservableList<NopPhi> nopPhis;
     public void danhsachhokhau() {
         nopPhis = FXCollections.observableArrayList(nopPhiList);
-
+        FXCollections.sort(nopPhis, Comparator.comparing(NopPhi::getSoTang).thenComparing(NopPhi::getSoPhong));
         sothutu.setCellValueFactory(cellData -> {
             int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
             return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
@@ -131,7 +135,7 @@ public class Chitietkhoanphi implements Initializable {
                                         Lichsugiaodich lichsugiaodich=loader.getController();
                                         lichsugiaodich.setNopPhi(person);
                                         ag0r1.showAndWait();
-
+                                        timkiem();
                                     } catch (Exception e) {
                                         System.out.println(e.getMessage());
                                     }
@@ -141,6 +145,33 @@ public class Chitietkhoanphi implements Initializable {
                     };
                 });
         danhsachhokhau.setItems(nopPhis);
+    }
+    public void timkiem(){
+        FilteredList<NopPhi> filter = new FilteredList<>(nopPhis, e -> true);
+
+        timkiem.textProperty().addListener((Observable, oldValue, newValue) -> {
+
+            filter.setPredicate(predicateEmployeeData -> {
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                if(predicateEmployeeData.getTenchuho().toLowerCase().contains(newValue.toLowerCase()))
+                    return true;
+                else if(String.valueOf(predicateEmployeeData.getSoPhong()).contains(newValue)){
+                    return  true;
+                } else if (String.valueOf(predicateEmployeeData.getSoTang()).contains(newValue)) {
+                    return true;
+                }
+                return false;
+
+            });
+        });
+
+        SortedList<NopPhi> sortList = new SortedList<>(filter);
+
+        sortList.comparatorProperty().bind(danhsachhokhau.comparatorProperty());
+        danhsachhokhau.setItems(sortList);
     }
     @FXML
     void tracuugiaodich(ActionEvent event) {
@@ -153,8 +184,10 @@ public class Chitietkhoanphi implements Initializable {
             ag0r1.setScene(scene);
             ag0r1.initModality(Modality.APPLICATION_MODAL);
             ag0r1.initOwner(ag0r);
+            Tracuulichsugiaodich tracuulichsugiaodich=loader.getController();
+            tracuulichsugiaodich.setKhoanPhi(khoanPhi);
             ag0r1.showAndWait();
-
+            timkiem();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
