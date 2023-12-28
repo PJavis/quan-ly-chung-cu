@@ -69,19 +69,13 @@ public class getData {
         }
     }
     public boolean addKhoanphi(KhoanPhi khoanPhi) {
-        Iterator<KhoanPhi> iterator = khoanPhis.iterator();
-        while(iterator.hasNext()) {
-            KhoanPhi k = iterator.next();
+        for (KhoanPhi k : khoanPhis) {
             if (k.getTenKhoanPhi().equals(khoanPhi.getTenKhoanPhi())) {
                 LocalDate currentTime = LocalDate.now();
                 if (currentTime.isAfter(khoanPhi.getBatDau().toLocalDate()) && currentTime.isBefore(khoanPhi.getKetThuc().toLocalDate())) {
                     return false;
-                } else {
-                    iterator.remove();
-                    break;
                 }
             }
-
         }
         khoanPhis.add(khoanPhi);
         return true;
