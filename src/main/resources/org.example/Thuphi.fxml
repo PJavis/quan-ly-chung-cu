@@ -19,7 +19,7 @@
          <children>
             <Label layoutX="52.0" layoutY="90.0" prefHeight="17.0" prefWidth="113.0" text="Tổng tiền đã nộp:" textFill="#353a56" />
                  <Label layoutX="119.0" layoutY="141.0" text="Dư nợ :" textFill="#353a56" />
-                 <Label fx:id="duno" layoutX="214.0" layoutY="133.0" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: #ffffff;" />
+                 <Label fx:id="duno" layoutX="214.0" layoutY="133.0" prefHeight="37.0" prefWidth="211.0" style="-fx-background-color: #ffffff;" />
                  <Label layoutX="69.0" layoutY="183.0" prefHeight="17.0" prefWidth="113.0" text="Người nộp phí :" textFill="#353a56" />
                  <Label layoutX="87.0" layoutY="43.0" text="Số tiền nộp :" textFill="#353a56">
                <font>
@@ -43,7 +43,7 @@
             <Label layoutX="35.0" layoutY="85.0" text="Số tiền:" textFill="#353a56" />
             <Label fx:id="sotien" layoutX="148.0" layoutY="77.0" prefHeight="37.0" prefWidth="184.0" style="-fx-background-color: #ffffff; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
             <ComboBox fx:id="tenphi" layoutX="148.0" layoutY="27.0" prefHeight="30.0" prefWidth="184.0" />
-            <Label fx:id="chitiet" layoutX="168.0" layoutY="146.0" text="chitiet" />
+            <Label fx:id="chitiet" layoutX="168.0" layoutY="146.0" />
          </children>
       </Pane>
       <Label layoutX="22.0" layoutY="52.0" prefHeight="20.0" prefWidth="163.0" text="Thông tin Thu phí :">

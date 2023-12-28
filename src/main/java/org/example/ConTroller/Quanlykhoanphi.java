@@ -48,8 +48,6 @@ public class Quanlykhoanphi implements Initializable {
 
     @FXML
     private TextField hannop;
-    @FXML
-    private ComboBox<String> chuky;
 
     @FXML
     private ComboBox<String> loaikhoanphi;
@@ -203,6 +201,8 @@ if(hannop.getText().isEmpty()||tenkhoanphi.getText().isEmpty()||loaikhoanphi.get
     KhoanPhi khoanPhi=new KhoanPhi();
     khoanPhi.setTenKhoanPhi(tenkhoanphi.getText());
     khoanPhi.setTongsotien(0);
+    if(Objects.equals(tenkhoanphi.getText(), "Phí dịch vụ chung cư")||Objects.equals(tenkhoanphi.getText(), "Phí quản lý chung cư")) khoanPhi.setPhidichvuchungcu(1);
+    else khoanPhi.setPhidichvuchungcu(0);
     khoanPhi.setLoaiKhoanPhi(loaikhoanphi.getSelectionModel().getSelectedItem());
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     String date = hannop.getText();
@@ -271,7 +271,6 @@ timkiem();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        chuky.getItems().addAll("Theo tháng","Theo đợt");
         loaikhoanphi.getItems().addAll("Bắt buộc", "Đóng góp");
         danhsachkhoanphi();
         timkiem();

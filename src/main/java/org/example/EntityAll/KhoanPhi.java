@@ -20,8 +20,6 @@ public class KhoanPhi {
     @Column(name = "loai_khoan_phi")
     private String loaiKhoanPhi;
 
-    @Column(name = "chu_ki")
-    private String chuKi;
 
     @Column(name = "bat_dau")
     private Date batDau;
@@ -31,6 +29,8 @@ public class KhoanPhi {
 
     @Column(name = "gia_tri")
     private double giaTri;
+    @Column(name="phi_dich_vu_chung_cu")
+    private int phidichvuchungcu;
     @Column(name="tong_so_tien")
     private double tongsotien;
 
@@ -47,12 +47,12 @@ public class KhoanPhi {
 
     }
 
-    public String getChuKi() {
-        return chuKi;
+    public int getPhidichvuchungcu() {
+        return phidichvuchungcu;
     }
 
-    public void setChuKi(String chuKi) {
-        this.chuKi = chuKi;
+    public void setPhidichvuchungcu(int phidichvuchungcu) {
+        this.phidichvuchungcu = phidichvuchungcu;
     }
 
     public double getTongsotien() {
