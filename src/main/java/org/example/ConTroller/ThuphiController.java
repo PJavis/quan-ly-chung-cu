@@ -56,6 +56,7 @@ public class ThuphiController implements Initializable {
 
     @FXML
     void nopphi(ActionEvent event) {
+        try{
 nopPhi.setSoTienDaDong(nopPhi.getSoTienDaDong()+Double.parseDouble(sotiennop.getText()));
 NopPhiDao.getInstance().update(nopPhi);
 khoanPhi.setTongsotien(khoanPhi.getTongsotien()+Double.parseDouble(sotiennop.getText()));
@@ -75,11 +76,19 @@ KhoanPhiDao.getInstance().update(khoanPhi);
         sophong.clear();
         sotang.clear();
         sotiennop.clear();
+        duno.setText("");
         sotiendanop.setText("");
+        nguoinopphi.clear();
         Alert alert1=new Alert(Alert.AlertType.CONFIRMATION);
         alert1.setHeaderText("Thành công");
         alert1.setContentText("Nộp phí thành công");
-        alert1.showAndWait();
+        alert1.showAndWait();}
+        catch (Exception e){
+            Alert alert1=new Alert(Alert.AlertType.ERROR);
+            alert1.setHeaderText("Thất bại");
+            alert1.setContentText("Không tìm thấy khoản phí hoặc hộ khẩu");
+            alert1.showAndWait();
+        }
     }
 
     @FXML
@@ -90,11 +99,22 @@ KhoanPhiDao.getInstance().update(khoanPhi);
         DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
 
         // Sử dụng phương thức format để định dạng số
+        try {
+            sotiendanop.setText(decimalFormat.format(nopPhi.getSoTienDaDong()));
+            if(khoanPhi.getPhidichvuchungcu()==1)
+                duno.setText(decimalFormat.format(khoanPhi.getGiaTri()*nopPhi.getDienTichPhong()-nopPhi.getSoTienDaDong())+"     ("+decimalFormat.format(khoanPhi.getGiaTri())+"đồng/m2)");
+            else duno.setText(decimalFormat.format(khoanPhi.getGiaTri()));
+        }catch (Exception e){
+            sotiennop.clear();
+            sotiendanop.setText("");
+            nguoinopphi.clear();
+            duno.setText("");
+            Alert alert1=new Alert(Alert.AlertType.ERROR);
+            alert1.setHeaderText("Lỗi");
+            alert1.setContentText("Không tìm thấy hộ khẩu");
+            alert1.showAndWait();
+        }
 
-        sotiendanop.setText(decimalFormat.format(nopPhi.getSoTienDaDong()));
-        if(khoanPhi.getPhidichvuchungcu()==1)
-        duno.setText(decimalFormat.format(khoanPhi.getGiaTri()*nopPhi.getDienTichPhong()-nopPhi.getSoTienDaDong())+"     ("+decimalFormat.format(khoanPhi.getGiaTri())+"đồng/m2)");
-        else duno.setText(decimalFormat.format(khoanPhi.getGiaTri()));
     }
    private List<KhoanPhi> khoanPhis=getData.getInstance().getKhoanPhis();
     @FXML
