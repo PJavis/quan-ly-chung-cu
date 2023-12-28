@@ -13,15 +13,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlykhoanphi">
    <fx:include source="DashBoard.fxml" />
-   <TableView fx:id="danhsachkhoanphi" layoutX="235.0" layoutY="39.0" onMouseClicked="#predieuchinh" prefHeight="490.0" prefWidth="678.0">
+   <TableView fx:id="danhsachkhoanphi" layoutX="235.0" layoutY="39.0" onMouseClicked="#predieuchinh" prefHeight="490.0" prefWidth="659.0">
      <columns>
        <TableColumn fx:id="sothutu" prefWidth="68.0" text="Số thứ tự" />
-       <TableColumn fx:id="tenkhoanphitable" prefWidth="112.0" text="Tên khoản phí" />
-         <TableColumn fx:id="loaikhoanphitable" prefWidth="119.99996948242188" text="Loại khoản phí" />
-         <TableColumn fx:id="hannoptable" prefWidth="108.79998779296875" text="Hạn nộp" />
-         <TableColumn fx:id="sotientable" prefWidth="87.199951171875" text="Số tiền" />
-         <TableColumn fx:id="sotiendanop" prefWidth="110.4000244140625" text="Số tiền đã nộp" />
-         <TableColumn fx:id="chitiet" prefWidth="65.60009765625" text="Chi tiết" />
+       <TableColumn fx:id="tenkhoanphitable" prefWidth="100.0" text="Tên khoản phí" />
+         <TableColumn fx:id="loaikhoanphitable" prefWidth="94.39996337890625" text="Loại khoản phí" />
+         <TableColumn fx:id="ngaybatdau" prefWidth="83.99996948242188" text="Ngày bắt đầu" />
+         <TableColumn fx:id="hannoptable" prefWidth="76.0" text="Hạn nộp" />
+         <TableColumn fx:id="sotientable" prefWidth="61.5999755859375" text="Số tiền" />
+         <TableColumn fx:id="sotiendanop" prefWidth="95.99993896484375" text="Số tiền đã nộp" />
+         <TableColumn fx:id="chitiet" prefWidth="73.5999755859375" text="Chi tiết" />
 
      </columns>
    </TableView>

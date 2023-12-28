@@ -110,6 +110,10 @@ public class KhoanPhi {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(ketThuc);
     }
+    public String getFormattedDatebatdau(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dateFormat.format(batDau);
+    }
     public  String getDecimalFormatsotien(){
         String pattern = "#,##0" + (getGiaTri() % 1 == 0 ? "" : ".#########");
         DecimalFormat decimalFormat = new DecimalFormat(pattern);

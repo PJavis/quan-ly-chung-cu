@@ -59,6 +59,13 @@ public class getData {
     public List<KhoanPhi> getKhoanPhis() {
         return khoanPhis;
     }
+    public void updateKhoanphi(KhoanPhi khoanPhi){
+        for(KhoanPhi khoanPhi1 : khoanPhis){
+            if(khoanPhi1.getId()== khoanPhi.getId()){
+                khoanPhi1.setTongsotien(khoanPhi.getTongsotien());
+            }
+        }
+    }
     public void addKhoanphi(KhoanPhi khoanPhi){khoanPhis.add(khoanPhi);}
     public void removeKhoanphi(KhoanPhi khoanPhi){khoanPhis.remove(khoanPhi);}
 

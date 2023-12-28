@@ -53,7 +53,7 @@
                   <RadioButton fx:id="nu" mnemonicParsing="false" text="Nữ" toggleGroup="$gioitinh" />
                </children>
                <padding>
-                  <Insets left="10.0" top="23.0" />
+                  <Insets left="10.0" top="13.0" />
                </padding>
                <opaqueInsets>
                   <Insets />

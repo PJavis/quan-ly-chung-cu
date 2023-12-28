@@ -73,6 +73,8 @@ public class Quanlykhoanphi implements Initializable {
     @FXML
     private TableColumn<KhoanPhi, String> tenkhoanphitable;
     @FXML
+    private TableColumn<KhoanPhi, String> ngaybatdau;
+    @FXML
     private TextField timkiem;
     private List<KhoanPhi> khoanPhiList= getData.getInstance().getKhoanPhis();
  private KhoanPhi khoanPhi1;
@@ -92,6 +94,7 @@ public class Quanlykhoanphi implements Initializable {
         hannoptable.setCellValueFactory(new PropertyValueFactory<>("formattedDate"));
         sotientable.setCellValueFactory(new PropertyValueFactory<>("decimalFormatsotien"));
         sotiendanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatsotiendanop"));
+        ngaybatdau.setCellValueFactory(new PropertyValueFactory<>("FormattedDatebatdau"));
         chitiet.setCellFactory(cell->{
             return new TableCell<KhoanPhi,Void>(){
                 @Override
