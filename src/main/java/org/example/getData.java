@@ -72,7 +72,7 @@ public class getData {
         for (KhoanPhi k : khoanPhis) {
             if (k.getTenKhoanPhi().equals(khoanPhi.getTenKhoanPhi())) {
                 LocalDate currentTime = LocalDate.now();
-                if (currentTime.isAfter(khoanPhi.getBatDau().toLocalDate()) && currentTime.isBefore(khoanPhi.getKetThuc().toLocalDate())) {
+                if ( currentTime.isBefore(khoanPhi.getKetThuc().toLocalDate())) {
                     return false;
                 }
             }

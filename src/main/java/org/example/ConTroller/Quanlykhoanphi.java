@@ -211,33 +211,43 @@ if(hannop.getText().isEmpty()||tenkhoanphi.getText().isEmpty()||loaikhoanphi.get
     khoanPhi.setGiaTri(Double.parseDouble(sotien.getText().replace(",","")));
     LocalDate currentDate = LocalDate.now();
     khoanPhi.setBatDau(Date.valueOf(currentDate));
-    KhoanPhiDao.getInstance().save(khoanPhi);
-    Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-    alert.setHeaderText("Thành công");
-    alert.setContentText("Tạo khoản phí mới thành công");
-    alert.showAndWait();
-    if(Objects.equals(loaikhoanphi.getValue(), "Bắt buộc")){
-        List<HoKhau> hoKhaus=getData.getInstance().getHoKhaus();
-        for(HoKhau hoKhau : hoKhaus){
-            NopPhi nopPhi=new NopPhi();
-            nopPhi.setIdKhoanPhi(khoanPhi.getId());
-            nopPhi.setSoPhong(hoKhau.getId());
-            nopPhi.setSoTang(hoKhau.getSoTang());
-            nopPhi.setTenchuho(hoKhau.getTenchuho());
-            nopPhi.setDienTichPhong(hoKhau.getDienTichPhong());
-            nopPhi.setSoTienDaDong(0);
-            nopPhi.setGiaTri(khoanPhi.getGiaTri());
-            NopPhiDao.getInstance().save(nopPhi);
+    if(getData.getInstance().addKhoanphi(khoanPhi)){
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Thành công");
+        alert.setContentText("Tạo khoản phí mới thành công");
+        alert.showAndWait();
+        KhoanPhiDao.getInstance().save(khoanPhi);
+
+        if(Objects.equals(loaikhoanphi.getValue(), "Bắt buộc")){
+            List<HoKhau> hoKhaus=getData.getInstance().getHoKhaus();
+            for(HoKhau hoKhau : hoKhaus){
+                NopPhi nopPhi=new NopPhi();
+                nopPhi.setIdKhoanPhi(khoanPhi.getId());
+                nopPhi.setSoPhong(hoKhau.getId());
+                nopPhi.setSoTang(hoKhau.getSoTang());
+                nopPhi.setTenchuho(hoKhau.getTenchuho());
+                nopPhi.setDienTichPhong(hoKhau.getDienTichPhong());
+                nopPhi.setSoTienDaDong(0);
+                nopPhi.setGiaTri(khoanPhi.getGiaTri());
+                NopPhiDao.getInstance().save(nopPhi);
+            }
         }
+        tenkhoanphi.clear();
+        hannop.clear();
+        sotien.clear();
+        loaikhoanphi.getEditor().clear();
+
+        khoanPhiList=getData.getInstance().getKhoanPhis();
+        danhsachkhoanphi();
+        timkiem();
     }
-    tenkhoanphi.clear();
-    hannop.clear();
-    sotien.clear();
-    loaikhoanphi.getEditor().clear();
-getData.getInstance().addKhoanphi(khoanPhi);
-khoanPhiList=getData.getInstance().getKhoanPhis();
-danhsachkhoanphi();
-timkiem();
+    else {
+        Alert alert=new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Thất bại");
+        alert.setContentText("Đã có khoản phí được tạo trước đó vẫn còn hiệu lực");
+        alert.showAndWait();
+    }
+
 }
     }
  public void timkiem(){
