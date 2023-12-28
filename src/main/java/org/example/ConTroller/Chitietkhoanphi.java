@@ -22,6 +22,7 @@ import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.LichSuGiaoDich;
 import org.example.EntityAll.NopPhi;
 import org.example.Hibernatedao.NopPhiDao;
+
 import org.example.getData;
 
 import java.net.URL;
@@ -97,7 +98,41 @@ public class Chitietkhoanphi implements Initializable {
     private ObservableList<NopPhi> nopPhis;
     public void danhsachhokhau() {
         nopPhis = FXCollections.observableArrayList(nopPhiList);
-        FXCollections.sort(nopPhis, Comparator.comparing(NopPhi::getSoTang).thenComparing(NopPhi::getSoPhong));
+        nopPhis.sort((o1, o2) -> {
+        double a=o1.getGiaTri()*o1.getDienTichPhong()-o1.getSoTienDaDong();
+        double a1=o2.getGiaTri()*o2.getDienTichPhong()-o2.getSoTienDaDong();
+        if(a>0&&a1>0){
+            if(a>a1)return 1;
+            else return 0;
+        }else if(a==0&&a1>0)return 0;
+        else if (a>0&&a1==0) return 1;
+        else {
+            if(o1.getSoTang()>o2.getSoTang())return 1;
+            else if (o1.getSoTang()==o2.getSoTang()) {
+                if(o1.getSoPhong()> o2.getSoPhong())return 1;
+                else return 0;
+            }else return 0;
+        }
+        });
+        danhsachhokhau.setRowFactory(tv -> {
+            return new javafx.scene.control.TableRow<NopPhi>() {
+                @Override
+                protected void updateItem(NopPhi nopPhi, boolean empty) {
+                    super.updateItem(nopPhi, empty);
+
+                    if (nopPhi == null || empty) {
+                        setStyle("");
+                    } else {
+                        // Kiểm tra điều kiện và thiết lập màu cho hàng
+                        if (nopPhi.getSoTienDaDong() < nopPhi.getSotienchuanop()) {
+                            setStyle("-fx-background-color: lightcoral;");
+                        } else {
+                            setStyle("");
+                        }
+                    }
+                }
+            };
+        });
         sothutu.setCellValueFactory(cellData -> {
             int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
             return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
