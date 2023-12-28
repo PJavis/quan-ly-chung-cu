@@ -1,0 +1,12 @@
+.root {
+    --white-color: #fff;
+    --black-color: #000;
+    --main-color: #3c9e47;
+    --main-color-bold: #1c6a1e;
+    --text-color: #6e6b6b;
+    --border-color: #dbdbdb;
+}
+
+.header_text {
+    color: var(--black-color);
+}

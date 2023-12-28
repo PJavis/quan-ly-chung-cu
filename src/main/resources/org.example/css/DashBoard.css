@@ -1,0 +1,18 @@
+/*.root {
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-background-color: unset;
+    -fx-border-color: none;
+}
+
+.label {
+    -fx-padding-bottom: 15px;
+    -fx-text-alignment: center;
+}
+
+.header {
+    -fx-background-color: #2dca3a;
+}
+*/
