@@ -78,6 +78,7 @@ public class getData {
                     return false;
                 } else {
                     iterator.remove();
+                    break;
                 }
             }
 
