@@ -11,17 +11,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlykhoanphi">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlykhoanphi">
    <fx:include source="DashBoard.fxml" />
-   <TableView fx:id="danhsachkhoanphi" layoutX="228.0" layoutY="45.0" onMouseClicked="#predieuchinh" prefHeight="490.0" prefWidth="603.0">
+   <TableView fx:id="danhsachkhoanphi" layoutX="235.0" layoutY="39.0" onMouseClicked="#predieuchinh" prefHeight="490.0" prefWidth="678.0">
      <columns>
        <TableColumn fx:id="sothutu" prefWidth="68.0" text="Số thứ tự" />
-       <TableColumn fx:id="tenkhoanphitable" prefWidth="100.79998779296875" text="Tên khoản phí" />
-         <TableColumn fx:id="loaikhoanphitable" prefWidth="100.0" text="Loại khoản phí" />
-         <TableColumn fx:id="hannoptable" prefWidth="68.00006103515625" text="Hạn nộp" />
-         <TableColumn fx:id="sotientable" prefWidth="68.79998779296875" text="Số tiền" />
-         <TableColumn fx:id="sotiendanop" prefWidth="120.0" text="Số tiền đã nộp" />
-         <TableColumn fx:id="chitiet" prefWidth="75.2000732421875" text="Chi tiết" />
+       <TableColumn fx:id="tenkhoanphitable" prefWidth="112.0" text="Tên khoản phí" />
+         <TableColumn fx:id="loaikhoanphitable" prefWidth="119.99996948242188" text="Loại khoản phí" />
+         <TableColumn fx:id="hannoptable" prefWidth="108.79998779296875" text="Hạn nộp" />
+         <TableColumn fx:id="sotientable" prefWidth="87.199951171875" text="Số tiền" />
+         <TableColumn fx:id="sotiendanop" prefWidth="110.4000244140625" text="Số tiền đã nộp" />
+         <TableColumn fx:id="chitiet" prefWidth="65.60009765625" text="Chi tiết" />
 
      </columns>
    </TableView>
@@ -36,7 +36,7 @@
    <TextField fx:id="hannop" layoutX="666.0" layoutY="636.0" prefHeight="26.0" prefWidth="134.0" />
    <Button layoutX="391.0" layoutY="696.0" mnemonicParsing="false" onAction="#dieuchinh" text="Điều chỉnh" />
    <Label layoutX="235.0" layoutY="14.0" text="Danh sách khoản phí" />
-   <TextField fx:id="timkiem" layoutX="618.0" layoutY="5.0" prefHeight="34.0" prefWidth="206.0" promptText="Tìm kiếm">
+   <TextField fx:id="timkiem" layoutX="689.0" layoutY="4.0" prefHeight="34.0" prefWidth="206.0" promptText="Tìm kiếm">
       <opaqueInsets>
          <Insets />
       </opaqueInsets>
@@ -47,7 +47,7 @@
          <Font size="14.0" />
       </font>
    </TextField>
-   <FontAwesomeIconView glyphName="SEARCH" layoutX="624.0" layoutY="28.0" size="17" />
+   <FontAwesomeIconView glyphName="SEARCH" layoutX="695.0" layoutY="28.0" size="17" />
    <Label layoutX="241.0" layoutY="640.0" text="Số tiền:" />
    <TextField fx:id="sotien" layoutX="330.0" layoutY="636.0" prefHeight="26.0" prefWidth="134.0" />
    <ComboBox fx:id="chuky" editable="true" layoutX="666.0" layoutY="684.0" prefWidth="150.0" />

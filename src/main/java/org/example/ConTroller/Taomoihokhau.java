@@ -4,9 +4,7 @@ package org.example.ConTroller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
@@ -30,9 +28,18 @@ public class Taomoihokhau implements Initializable {
         @FXML
         private TextField dientichphong;
 
-        @FXML
-        private TextField gioitinh;
 
+        @FXML
+        private TextField cancuoccongdan;
+        @FXML
+        private ToggleGroup gioitinh;
+
+        @FXML
+        private RadioButton nam;
+        @FXML
+        private RadioButton nu;
+        @FXML
+        private TextField sodienthoai;
         @FXML
         private TextField ngaysinh;
 
@@ -69,7 +76,7 @@ a.close();
                 hoKhau.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
                 hoKhau.setSoTang(Integer.parseInt(sotang.getText()));
                 hoKhau.setTenchuho(tenchuho.getText());
-
+                hoKhau.setSoDienThoai(sodienthoai.getText());
                 try {
                         LocalDate currentDate = LocalDate.now();
                         hoKhau.setNgaytaohokhau(Date.valueOf(currentDate));
@@ -77,7 +84,11 @@ a.close();
                         getData.getInstance().addHokhau(hoKhau);
                 NhanKhau nhanKhau=new NhanKhau();
                 nhanKhau.setTen(tenchuho.getText());
-                nhanKhau.setGioiTinh(gioitinh.getText());
+                if(nam.isSelected())
+                nhanKhau.setGioiTinh(1);
+                else nhanKhau.setGioiTinh(0);
+                nhanKhau.setSoDienThoai(sodienthoai.getText());
+                nhanKhau.setCCCD(cancuoccongdan.getText());
                 nhanKhau.setQuocTich(quoctich.getText());
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 String date= ngaysinh.getText();
@@ -97,8 +108,10 @@ a.close();
                 sotang.clear();
                 dientichphong.clear();
                 tenchuho.clear();
+                sodienthoai.clear();
+                cancuoccongdan.clear();
                 ngaysinh.clear();
-                gioitinh.clear();
+                gioitinh.selectToggle(null);
                 quoctich.clear();}
                 catch (Exception e){
                         Alert alert=new Alert(Alert.AlertType.ERROR);
@@ -127,7 +140,7 @@ a.close();
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-                TextField[] textFields2={sophong,dientichphong,tenchuho,gioitinh,quoctich,ngaysinh,sotang};
+                TextField[] textFields2={sophong,dientichphong,tenchuho,cancuoccongdan,sodienthoai,quoctich,ngaysinh,sotang};
                 for (TextField textField : textFields2) {
                         textField.textProperty().addListener((observable, oldValue, newValue) -> checkAllFieldsFilled(textFields2,buttontaomoihokhau));
                 }

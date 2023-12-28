@@ -34,7 +34,8 @@ public class HoKhau {
     @Column(name="ngay_tao_ho_khau")
     private Date ngaytaohokhau;
 
-
+    @Column(name = "So_dien_thoai")
+    private String soDienThoai;
     // Default constructor required by Hibernate
     public HoKhau() {
     }
@@ -47,6 +48,14 @@ public class HoKhau {
         this.tenchuho=tenchuho;
         this.ngaytaohokhau=ngaytaohokhau;
 
+    }
+
+    public String getSoDienThoai() {
+        return soDienThoai;
+    }
+
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
     }
 
     // Getters and setters

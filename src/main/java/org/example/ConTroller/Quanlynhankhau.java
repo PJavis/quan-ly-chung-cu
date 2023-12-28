@@ -27,6 +27,7 @@ import org.example.Hibernatedao.NhanKhauDao;
 import org.example.getData;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -35,6 +36,8 @@ public class Quanlynhankhau implements Initializable {
 
     @FXML
     private BarChart<String, Number> thongkechart;
+    @FXML
+    private TableColumn<NhanKhau, String> sodienthoai;
     @FXML
     private TextField timkiem;
     @FXML
@@ -89,6 +92,7 @@ public class Quanlynhankhau implements Initializable {
         sophongdango.setCellValueFactory(new PropertyValueFactory<>("sophong"));
         trangthai.setCellValueFactory(new PropertyValueFactory<>("trangThai"));
         sotang.setCellValueFactory(new PropertyValueFactory<>("sotang"));
+        sodienthoai.setCellValueFactory(new PropertyValueFactory<>("soDienThoai"));
         dieuchinh.setCellFactory(cell->{
             return new TableCell<NhanKhau,Void>(){
                 @Override
@@ -179,14 +183,12 @@ public class Quanlynhankhau implements Initializable {
     }
     public void chart() {
         try {
-            NhanKhauDao nhanKhauDao = NhanKhauDao.getInstance();
+
 
             // lay mot chut data ha
-            List<NhanKhau> nhanKhauList = nhanKhauDao.selectAll();
-
+            List<NhanKhau> nhanKhauList1 = new ArrayList<>(nhanKhauList.values());
            // tinh distribution
-            Map<Integer, Long> ageDistribution = nhanKhauDao.calculateTimeDistribution(nhanKhauList);
-
+            Map<Integer, Long> ageDistribution = NhanKhauDao.getInstance().calculateTimeDistribution(nhanKhauList1);
            //cap nhat bieu do
             updateChart(ageDistribution);
         } catch (Exception e) {

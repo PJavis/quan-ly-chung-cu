@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlynhankhau">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlynhankhau">
     <fx:include source="DashBoard.fxml" />
-   <ComboBox fx:id="boxluachon" editable="true" layoutX="669.0" layoutY="398.0" prefHeight="34.0" prefWidth="148.0" promptText="Thống kê" />
+   <ComboBox fx:id="boxluachon" editable="true" layoutX="743.0" layoutY="398.0" prefHeight="34.0" prefWidth="148.0" promptText="Thống kê" />
    <TextField fx:id="timkiem" layoutX="453.0" layoutY="13.0" prefHeight="34.0" prefWidth="206.0" promptText="Tìm kiếm">
       <opaqueInsets>
          <Insets />
@@ -30,12 +30,13 @@
       </font>
    </TextField>
    <FontAwesomeIconView glyphName="SEARCH" layoutX="457.0" layoutY="36.0" size="17" />
-   <TableView fx:id="danhsachnhankhau" layoutX="229.0" layoutY="58.0" prefHeight="330.0" prefWidth="601.0">
+   <TableView fx:id="danhsachnhankhau" layoutX="229.0" layoutY="58.0" prefHeight="330.0" prefWidth="682.0">
      <columns>
        <TableColumn fx:id="sothutu" prefWidth="70.4000244140625" text="Số thứ tự" />
        <TableColumn fx:id="hovaten" prefWidth="130.39996337890625" text="Họ và tên" />
-         <TableColumn fx:id="ngaysinh" prefWidth="87.20001220703125" text="Ngày sinh" />
-         <TableColumn fx:id="sophongdango" minWidth="0.0" prefWidth="78.39996337890625" text="Số phòng" />
+         <TableColumn fx:id="sodienthoai" prefWidth="88.00006103515625" text="Số điện thoại" />
+         <TableColumn fx:id="ngaysinh" prefWidth="81.60003662109375" text="Ngày sinh" />
+         <TableColumn fx:id="sophongdango" minWidth="0.0" prefWidth="71.99993896484375" text="Số phòng" />
          <TableColumn fx:id="sotang" prefWidth="81.60003662109375" text="Số tầng" />
          <TableColumn fx:id="trangthai" minWidth="6.4000244140625" prefWidth="72.7999267578125" text="Trạng thái" />
          <TableColumn fx:id="dieuchinh" prefWidth="76.7999267578125" text="Điều chỉnh" />
@@ -53,9 +54,9 @@
    </Label>
    <Label layoutX="229.0" layoutY="407.0" text="Tổng số nhân khẩu: " />
    <Label fx:id="tongsonhankhau" layoutX="343.0" layoutY="407.0" text="Label" />
-   <Pane fx:id="panethongke" layoutX="244.0" layoutY="432.0" prefHeight="262.0" prefWidth="570.0">
+   <Pane fx:id="panethongke" layoutX="263.0" layoutY="432.0" prefHeight="262.0" prefWidth="650.0">
       <children>
-         <BarChart fx:id="thongkechart" layoutY="16.0" prefHeight="230.0" prefWidth="540.0">
+         <BarChart fx:id="thongkechart" layoutY="32.0" prefHeight="230.0" prefWidth="458.0">
            <xAxis>
              <CategoryAxis side="BOTTOM" />
            </xAxis>

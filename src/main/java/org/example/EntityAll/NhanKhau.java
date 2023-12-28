@@ -21,7 +21,7 @@ public class NhanKhau {
     private Date ngaySinh;
 
     @Column(name = "gioi_tinh", nullable = false, length = 10)
-    private String gioiTinh;
+    private int gioiTinh;
     @Column(name = "quoc_tich", length = 50)
     private String quocTich;
 
@@ -48,7 +48,7 @@ public class NhanKhau {
 
     // Constructors, getters, setters, and other methods as needed
 
-    public NhanKhau(int idNguoiDan, String ten, Date ngaySinh, String gioiTinh, String quocTich, int sophong,int sotang, String trangThai, boolean chuHo) {
+    public NhanKhau(int idNguoiDan, String ten, Date ngaySinh, int gioiTinh, String quocTich, int sophong,int sotang, String trangThai, boolean chuHo) {
         this.idNguoiDan = idNguoiDan;
         this.ten = ten;
         this.ngaySinh = ngaySinh;
@@ -92,11 +92,11 @@ public class NhanKhau {
         this.ngaySinh = ngaySinh;
     }
 
-    public String getGioiTinh() {
+    public int getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(String gioiTinh) {
+    public void setGioiTinh(int gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 

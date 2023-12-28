@@ -56,6 +56,9 @@ public class Quanlyphong implements Initializable {
     private TableColumn<HoKhau, String> tenchuho;
 
     @FXML
+    private TableColumn<HoKhau, String> sodienthoai;
+
+    @FXML
     private TextField timkiem;
     @FXML
     private Label tongsohokhau;
@@ -80,7 +83,7 @@ public class Quanlyphong implements Initializable {
         sophong.setCellValueFactory(new PropertyValueFactory<>("id"));
         sotang.setCellValueFactory(new PropertyValueFactory<>("soTang"));
         tenchuho.setCellValueFactory(new PropertyValueFactory<>("tenchuho"));
-
+        sodienthoai.setCellValueFactory(new PropertyValueFactory<>("soDienThoai"));
         dieuchinh.setCellFactory(cell->{
             return new TableCell<HoKhau,Void>(){
                 @Override

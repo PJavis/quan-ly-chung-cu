@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlyphong">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlyphong">
     <fx:include source="DashBoard.fxml" />
    <Label layoutX="234.0" layoutY="14.0" text="Danh sách hộ khẩu" />
    <TextField fx:id="timkiem" layoutX="459.0" layoutY="14.0" prefHeight="34.0" prefWidth="206.0" promptText="Tìm kiếm">
@@ -35,12 +35,13 @@
          <FontAwesomeIconView glyphName="PLUS" size="20" />
       </graphic>
    </Button>
-   <TableView fx:id="danhsachhokhau" layoutX="234.0" layoutY="60.0" prefHeight="358.0" prefWidth="598.0">
+   <TableView fx:id="danhsachhokhau" layoutX="234.0" layoutY="60.0" prefHeight="358.0" prefWidth="679.0">
      <columns>
        <TableColumn fx:id="sothutu" prefWidth="75.0" text="Số thứ tự" />
        <TableColumn fx:id="sophong" prefWidth="121.5999755859375" text="Số phòng" />
          <TableColumn fx:id="sotang" prefWidth="97.60006713867188" text="Số tầng" />
-         <TableColumn fx:id="tenchuho" prefWidth="190.39990234375" text="Tên chủ hộ" />
+         <TableColumn fx:id="tenchuho" prefWidth="152.00006103515625" text="Tên chủ hộ" />
+         <TableColumn fx:id="sodienthoai" prefWidth="113.5999755859375" text="Số điện thoại" />
          <TableColumn fx:id="dieuchinh" prefWidth="109.5999755859375" text="Điều chỉnh" />
      </columns>
    </TableView>

@@ -3,10 +3,7 @@ package org.example.ConTroller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
@@ -27,9 +24,6 @@ public class Taomoinhankhau implements Initializable {
     private Button buttontaomoinhankhau;
 
     @FXML
-    private TextField gioitinh;
-
-    @FXML
     private TextField ngaysinh;
 
     @FXML
@@ -42,6 +36,18 @@ public class Taomoinhankhau implements Initializable {
     private TextField tennhankhau;
     @FXML
     private TextField sotang;
+    @FXML
+    private TextField cancuoccongdan;
+
+    @FXML
+    private ToggleGroup gioitinh;
+
+    @FXML
+    private RadioButton nam;
+    @FXML
+    private TextField sodienthoai;
+    @FXML
+    private RadioButton nu;
     private boolean isValidDateFormat(String date) {
         // Biểu thức chính quy cho định dạng dd/mm/yyyy
         String regex = "^\\d{2}/\\d{2}/\\d{4}$";
@@ -56,7 +62,10 @@ public class Taomoinhankhau implements Initializable {
         if(isValidDateFormat(ngaysinh.getText())) {
             NhanKhau nhanKhau = new NhanKhau();
             nhanKhau.setTen(tennhankhau.getText());
-            nhanKhau.setGioiTinh(gioitinh.getText());
+            if(nam.isSelected())nhanKhau.setGioiTinh(1);
+            else nhanKhau.setGioiTinh(0);
+            nhanKhau.setSoDienThoai(sodienthoai.getText());
+            nhanKhau.setCCCD(cancuoccongdan.getText());
             nhanKhau.setQuocTich(quoctich.getText());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String date = ngaysinh.getText();
@@ -75,9 +84,11 @@ public class Taomoinhankhau implements Initializable {
                 alert.setContentText("Tạo mới nhân khẩu thành công");
                 alert.showAndWait();
                 tennhankhau.clear();
-                gioitinh.clear();
+                gioitinh.selectToggle(null);
                 quoctich.clear();
                 sotang.clear();
+                sodienthoai.clear();
+                cancuoccongdan.clear();
                 sophongtaonhankhau.clear();
                 ngaysinh.clear();
             } catch (Exception e) {
@@ -114,7 +125,7 @@ public class Taomoinhankhau implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TextField[] textFields1={tennhankhau,sophongtaonhankhau,quoctich,ngaysinh,gioitinh};
+        TextField[] textFields1={sotang,tennhankhau,sophongtaonhankhau,quoctich,ngaysinh,sodienthoai,cancuoccongdan};
         for (TextField textField : textFields1) {
             textField.textProperty().addListener((observable, oldValue, newValue) -> checkAllFieldsFilled(textFields1,buttontaomoinhankhau));
         }

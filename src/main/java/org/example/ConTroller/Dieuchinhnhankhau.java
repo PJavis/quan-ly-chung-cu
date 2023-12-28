@@ -3,10 +3,7 @@ package org.example.ConTroller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
@@ -29,9 +26,18 @@ public class Dieuchinhnhankhau {
     private CheckBox chuho;
 
 
-        @FXML
-        private TextField gioitinh;
+    @FXML
+    private TextField cancuoccongdan;
 
+    @FXML
+    private ToggleGroup gioitinh;
+
+    @FXML
+    private RadioButton nam;
+    @FXML
+    private RadioButton nu;
+    @FXML
+    private TextField sodienthoai;
         @FXML
         private TextField ngaysinh;
 
@@ -56,7 +62,11 @@ public class Dieuchinhnhankhau {
         this.nhanKhau = nhanKhau;
         tennhankhau.setText(nhanKhau.getTen());
         ngaysinh.setText(nhanKhau.getFormattedDate());
-        gioitinh.setText(nhanKhau.getGioiTinh());
+        cancuoccongdan.setText(nhanKhau.getCCCD());
+        sodienthoai.setText(nhanKhau.getSoDienThoai());
+        if(nhanKhau.getGioiTinh()==1){
+            nam.setSelected(true);
+        }else nu.setSelected(true);
         sophong.setText(String.valueOf(nhanKhau.getSophong()));
         sotang.setText(String.valueOf(nhanKhau.getSotang()));
         trangthai.setText(nhanKhau.getTrangThai());
@@ -79,7 +89,8 @@ public class Dieuchinhnhankhau {
             String date= ngaysinh.getText();
             LocalDate datetime = LocalDate.parse(date, formatter);
             nhanKhau.setNgaySinh(Date.valueOf(datetime));
-            nhanKhau.setGioiTinh(gioitinh.getText());
+            if(nam.isSelected())nhanKhau.setGioiTinh(1);
+            else nhanKhau.setGioiTinh(0);
             HoKhau hoKhau1=HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
 
         try {
