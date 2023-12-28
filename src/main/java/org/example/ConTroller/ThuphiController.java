@@ -20,6 +20,7 @@ import org.example.getData;
 
 import java.net.URL;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -71,15 +72,29 @@ KhoanPhiDao.getInstance().update(khoanPhi);
         Date date=Date.valueOf(today);
         lichSuGiaoDich.setThoigiangiaodich(date);
         LichSuGiaoDichDao.getInstance().save(lichSuGiaoDich);
+        sophong.clear();
+        sotang.clear();
+        sotiennop.clear();
+        sotiendanop.setText("");
         Alert alert1=new Alert(Alert.AlertType.CONFIRMATION);
         alert1.setHeaderText("Thành công");
         alert1.setContentText("Nộp phí thành công");
         alert1.showAndWait();
     }
+
     @FXML
     void timphong(ActionEvent event) {
         nopPhi= NopPhiDao.getInstance().selectByCondition(khoanPhi.getId(),Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
-        sotiendanop.setText(String.valueOf(nopPhi.getSoTienDaDong()));
+
+
+        DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
+
+        // Sử dụng phương thức format để định dạng số
+
+        sotiendanop.setText(decimalFormat.format(nopPhi.getSoTienDaDong()));
+        if(khoanPhi.getPhidichvuchungcu()==1)
+        duno.setText(decimalFormat.format(khoanPhi.getGiaTri()*nopPhi.getDienTichPhong()-nopPhi.getSoTienDaDong())+"     ("+decimalFormat.format(khoanPhi.getGiaTri())+"đồng/m2)");
+        else duno.setText(decimalFormat.format(khoanPhi.getGiaTri()));
     }
    private List<KhoanPhi> khoanPhis=getData.getInstance().getKhoanPhis();
     @FXML
