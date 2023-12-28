@@ -7,6 +7,8 @@ import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.KhoanPhiDao;
 import org.example.Hibernatedao.NhanKhauDao;
 
+import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -66,7 +68,23 @@ public class getData {
             }
         }
     }
-    public void addKhoanphi(KhoanPhi khoanPhi){khoanPhis.add(khoanPhi);}
+    public boolean addKhoanphi(KhoanPhi khoanPhi) {
+        Iterator<KhoanPhi> iterator = khoanPhis.iterator();
+        while(iterator.hasNext()) {
+            KhoanPhi k = iterator.next();
+            if (k.getTenKhoanPhi().equals(khoanPhi.getTenKhoanPhi())) {
+                LocalDate currentTime = LocalDate.now();
+                if (currentTime.isAfter(khoanPhi.getBatDau().toLocalDate()) && currentTime.isBefore(khoanPhi.getKetThuc().toLocalDate())) {
+                    return false;
+                } else {
+                    iterator.remove();
+                }
+            }
+
+        }
+        khoanPhis.add(khoanPhi);
+        return true;
+    }
     public void removeKhoanphi(KhoanPhi khoanPhi){khoanPhis.remove(khoanPhi);}
 
     public void reloadNhankhau() {
