@@ -23,6 +23,7 @@ import java.sql.Date;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ThuphiController implements Initializable {
@@ -56,7 +57,38 @@ public class ThuphiController implements Initializable {
 
     @FXML
     void nopphi(ActionEvent event) {
+        if(tenphi.getValue()==null||sophong.getText().isEmpty()||sotang.getText().isEmpty()){
+            Alert alert1=new Alert(Alert.AlertType.ERROR);
+            alert1.setHeaderText("Thất bại");
+            alert1.setContentText("Không tìm thấy khoản phí hoặc hộ khẩu");
+            alert1.showAndWait();
+            return;
+        }
         try{
+        double d = Double.parseDouble(sotiennop.getText());}
+        catch (NumberFormatException e){
+            Alert alert1=new Alert(Alert.AlertType.ERROR);
+            alert1.setHeaderText("Thất bại");
+            alert1.setContentText("Hãy nhập số tiền bạn muốn nộp vào số tiền nộp");
+            alert1.showAndWait();
+            return;
+        }
+
+        if(Double.parseDouble(sotiennop.getText())>duNo){
+            Alert alert1=new Alert(Alert.AlertType.ERROR);
+            alert1.setHeaderText("Thất bại");
+            alert1.setContentText("Bạn không thể nộp số tiền vượt quá số tiền phải đóng");
+            alert1.showAndWait();
+            sotiennop.setText("");
+            return;
+        }
+        if(nguoinopphi.getText().isEmpty()){
+            Alert alert1=new Alert(Alert.AlertType.ERROR);
+            alert1.setHeaderText("Thất bại");
+            alert1.setContentText("Hãy nhập tên người nôp;");
+            alert1.showAndWait();
+            return;
+        }
         nopPhi.setSoTienDaDong(nopPhi.getSoTienDaDong()+Double.parseDouble(sotiennop.getText()));
         NopPhiDao.getInstance().update(nopPhi);
         khoanPhi.setTongsotien(khoanPhi.getTongsotien()+Double.parseDouble(sotiennop.getText()));
@@ -83,19 +115,13 @@ public class ThuphiController implements Initializable {
         Alert alert1=new Alert(Alert.AlertType.CONFIRMATION);
         alert1.setHeaderText("Thành công");
         alert1.setContentText("Nộp phí thành công");
-        alert1.showAndWait();}
-        catch (Exception e){
-            Alert alert1=new Alert(Alert.AlertType.ERROR);
-            alert1.setHeaderText("Thất bại");
-            alert1.setContentText("Không tìm thấy khoản phí hoặc hộ khẩu");
-            alert1.showAndWait();
-        }
+        alert1.showAndWait();
+
+
     }
+    private double duNo=0;
     private void updateduno() {
         DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
-
-        double duNo;
-
         if (khoanPhi.getPhidichvuchungcu() == 1) {
             // Tính toán dư nợ cho phí dịch vụ chung cư
             duNo = khoanPhi.getGiaTri() * nopPhi.getDienTichPhong() - nopPhi.getSoTienDaDong();
@@ -109,21 +135,16 @@ public class ThuphiController implements Initializable {
     @FXML
     void timphong(ActionEvent event) {
         nopPhi= NopPhiDao.getInstance().selectByCondition(khoanPhi.getId(),Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
-
-
         DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
-
-        // Sử dụng phương thức format để định dạng số
         try {
             sotiendanop.setText(decimalFormat.format(nopPhi.getSoTienDaDong()));
-            double duno1;
             if(khoanPhi.getPhidichvuchungcu()==1)
                 duno.setText(decimalFormat.format(khoanPhi.getGiaTri()*nopPhi.getDienTichPhong()-nopPhi.getSoTienDaDong())+"     ("+decimalFormat.format(khoanPhi.getGiaTri())+"đồng/m2)");
             else {
 //                duno1 = khoanPhi.getGiaTri() - nopPhi.getSoTienDaDong();
 //                double updatedDuNo = duno1 - Double.parseDouble(sotiendanop.getText());
 //                duno.setText(decimalFormat.format(updatedDuNo));
-                duno.setText(decimalFormat.format(khoanPhi.getGiaTri()));
+                duno.setText(decimalFormat.format(khoanPhi.getGiaTri()-nopPhi.getSoTienDaDong()));
             }
         }catch (Exception e){
             sotiennop.clear();
@@ -135,6 +156,7 @@ public class ThuphiController implements Initializable {
             alert1.setContentText("Không tìm thấy hộ khẩu");
             alert1.showAndWait();
         }
+
 
     }
    private List<KhoanPhi> khoanPhis=getData.getInstance().getKhoanPhis();
@@ -151,6 +173,11 @@ public class ThuphiController implements Initializable {
             khoanPhi= KhoanPhiDao.getInstance().selectByName(tenphi.getValue());
             sotien.setText(khoanPhi.getDecimalFormatsotien());
             chitiet.setText(khoanPhi.getLoaiKhoanPhi());
+            sophong.clear();
+            sotang.clear();
+            sotiendanop.setText("");
+            sotiennop.clear();
+            duno.setText("");
         });
     }
 }
