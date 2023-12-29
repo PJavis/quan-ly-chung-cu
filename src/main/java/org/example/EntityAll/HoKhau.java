@@ -29,7 +29,7 @@ public class HoKhau {
 
     @Column(name = "dien_tich_phong", columnDefinition = "double precision")
     private double dienTichPhong;
-    @Column(name="ten_chu-ho")
+    @Column(name="ten_chu_ho")
     private String tenchuho;
     @Column(name="ngay_tao_ho_khau")
     private Date ngaytaohokhau;

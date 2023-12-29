@@ -224,13 +224,14 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.ge
             }
             HoKhauDao.getInstance().delete(hoKhaus);
             getData.getInstance().removeHokhau(hoKhaus);
+            Alert alert1=new Alert(Alert.AlertType.CONFIRMATION);
+            alert1.setHeaderText("Thành công");
+            alert1.setContentText("Xóa hộ khẩu thành công");
+            alert1.showAndWait();
+            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            ag0r.close();
         }
-        Alert alert1=new Alert(Alert.AlertType.CONFIRMATION);
-        alert1.setHeaderText("Thành công");
-        alert1.setContentText("Xóa hộ khẩu thành công");
-        alert1.showAndWait();
-        Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ag0r.close();
+
     }
     @FXML
     private TableView<NopPhi> danhsachkhoanphi;
