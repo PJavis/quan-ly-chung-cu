@@ -75,7 +75,7 @@ public class Quanlynhankhau implements Initializable {
     private Pane panethongke;
     public void danhsachnhankhau(){
         tongsonhankhau.setText(String.valueOf(nhanKhauList.size()));
-       nhanKhaus= FXCollections.observableArrayList(nhanKhauList.values());
+        nhanKhaus= FXCollections.observableArrayList(nhanKhauList.values());
         nhanKhaus.sort((o1, o2) -> {
             String[] words1 = o1.getTen().split(" ");
             String[] words2 = o2.getTen().split(" ");
