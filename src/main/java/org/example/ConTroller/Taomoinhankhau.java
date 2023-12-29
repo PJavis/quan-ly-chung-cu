@@ -74,6 +74,8 @@ public class Taomoinhankhau implements Initializable {
             nhanKhau.setChuHo(false);
             HoKhau hoKhau = HoKhauDao.getInstance().selectById(Integer.parseInt(sophongtaonhankhau.getText()), Integer.parseInt(sotang.getText()));
             try {
+                hoKhau.setSoNhanKhau(hoKhau.getSoNhanKhau()+1);
+                HoKhauDao.getInstance().update(hoKhau);
                 nhanKhau.setSophong(hoKhau.getId());
                 nhanKhau.setSotang(hoKhau.getSoTang());
                 nhanKhau.setTrangThai("Đang ở");
@@ -92,6 +94,7 @@ public class Taomoinhankhau implements Initializable {
                 sophongtaonhankhau.clear();
                 ngaysinh.clear();
             } catch (Exception e) {
+                System.out.println(e.getMessage());
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Thất bại");
                 alert.setContentText("Không tìm thấy phòng");

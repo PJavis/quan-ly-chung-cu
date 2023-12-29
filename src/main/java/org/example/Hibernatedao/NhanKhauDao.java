@@ -132,7 +132,7 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<Nhan
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
-            System.out.println("Luu ho khau co loi");
+            System.out.println("Luu nhan khau co loi");
             throw new RuntimeException(e);
         }
     }

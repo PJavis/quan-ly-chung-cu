@@ -77,6 +77,7 @@ a.close();
                 hoKhau.setSoTang(Integer.parseInt(sotang.getText()));
                 hoKhau.setTenchuho(tenchuho.getText());
                 hoKhau.setSoDienThoai(sodienthoai.getText());
+                hoKhau.setSoNhanKhau(1);
                 try {
                         LocalDate currentDate = LocalDate.now();
                         hoKhau.setNgaytaohokhau(Date.valueOf(currentDate));
