@@ -146,8 +146,11 @@ public class Dieuchinhnhankhau {
                 alert2.setHeaderText("Thành công");
                 alert2.setContentText("Xóa nhân khẩu thành công");
                 alert2.showAndWait();
+                HoKhau hoKhau = HoKhauDao.getInstance().selectById(nhanKhau.getSophong(), nhanKhau.getSotang());
+                hoKhau.setSoNhanKhau(hoKhau.getSoNhanKhau()-1);
+                HoKhauDao.getInstance().update(hoKhau);
                 NhanKhauDao.getInstance().delete(nhanKhau);
-            getData.getInstance().removeNhankhau(nhanKhau);
+                getData.getInstance().removeNhankhau(nhanKhau);
                 Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 ag0r.close();}
         }
