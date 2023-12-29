@@ -102,7 +102,6 @@ public class Chitietkhoanphi implements Initializable {
     public void danhsachhokhau() {
 
         if(batbuoc) {
-
             nopPhis = FXCollections.observableArrayList(nopPhiList);
             danhsachhokhau.setRowFactory(tv -> {
                 return new javafx.scene.control.TableRow<NopPhi>() {
@@ -123,47 +122,25 @@ public class Chitietkhoanphi implements Initializable {
                     }
                 };
             });
-            if(khoanPhi.getPhidichvuchungcu()==1){
-            sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotienchuanop"));
             nopPhis.sort((o1, o2) -> {
-                double a=o1.getGiaTri()*o1.getDienTichPhong()-o1.getSoTienDaDong();
-                double a1=o2.getGiaTri()*o2.getDienTichPhong()-o2.getSoTienDaDong();
+                double a=o1.getGiaTri()-o1.getSoTienDaDong();
+                double a1=o2.getGiaTri()-o2.getSoTienDaDong();
                 if(a>0&&a1>0){
-                    if(a>a1)return 1;
+                    if(a<a1)return 1;
                     else return 0;
-                }else if(a==0&&a1>0)return 0;
-                else if (a>0&&a1==0) return 1;
+                }else if(a==0&&a1>0)return 1;
+                else if (a>0&&a1==0) return 0;
                 else {
-                    if(o1.getSoTang()>o2.getSoTang())return 1;
+                    if(o1.getSoTang()>o2.getSoTang())return 0;
                     else if (o1.getSoTang()==o2.getSoTang()) {
-                        if(o1.getSoPhong()> o2.getSoPhong())return 1;
-                        else return 0;
-                    }else return 0;
+                        if(o1.getSoPhong()> o2.getSoPhong())return 0;
+                        else return 1;
+                    }else return 1;
                 }
             });
-            }
-            else{
-                sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotienchuanopdonggop"));
-                nopPhis.sort((o1, o2) -> {
-                    double a=o1.getGiaTri()-o1.getSoTienDaDong();
-                    double a1=o2.getGiaTri()-o2.getSoTienDaDong();
-                    if(a>0&&a1>0){
-                        if(a>a1)return 1;
-                        else return 0;
-                    }else if(a==0&&a1>0)return 0;
-                    else if (a>0&&a1==0) return 1;
-                    else {
-                        if(o1.getSoTang()>o2.getSoTang())return 1;
-                        else if (o1.getSoTang()==o2.getSoTang()) {
-                            if(o1.getSoPhong()> o2.getSoPhong())return 1;
-                            else return 0;
-                        }else return 0;
-                    }
-                });
-            }
+
         }
         else {
-            sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotienchuanopdonggop"));
             for(NopPhi nopPhi:nopPhiList){
                 if(nopPhi.getSoTienDaDong()>0){
                     nopPhis.add(nopPhi);
@@ -171,6 +148,7 @@ public class Chitietkhoanphi implements Initializable {
             }
             nopPhis.sort(Comparator.comparing(NopPhi::getSoTang).thenComparing(NopPhi::getSoPhong));
         }
+        sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotien"));
         sothutu.setCellValueFactory(cellData -> {
             int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
             return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
@@ -281,11 +259,20 @@ public class Chitietkhoanphi implements Initializable {
     @FXML
     void dieuchinh(ActionEvent event) {
     double d=Double.parseDouble(sotien.getText().replace(",",""));
-    khoanPhi.setGiaTri(d);
+    if(khoanPhi.getPhidichvuchungcu()==1){
     for(NopPhi nopPhi :nopPhiList){
-        nopPhi.setGiaTri(d);
+        double d1=nopPhi.getGiaTri();
+        double dientich=d1/ khoanPhi.getGiaTri();
+        nopPhi.setGiaTri(d*dientich);
         NopPhiDao.getInstance().update(nopPhi);
     }
+    }else {
+        for(NopPhi nopPhi :nopPhiList){
+            nopPhi.setGiaTri(d);
+            NopPhiDao.getInstance().update(nopPhi);
+        }
+    }
+        khoanPhi.setGiaTri(d);
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     String date = hannop.getText();
     LocalDate datetime = LocalDate.parse(date, formatter);

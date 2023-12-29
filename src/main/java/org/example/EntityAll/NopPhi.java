@@ -26,8 +26,7 @@ public class NopPhi {
 
     @Column(name = "so_tang")
     private int soTang;
-    @Column(name = "dien_tich_phong", columnDefinition = "double precision")
-    private double dienTichPhong;
+
     @Column(name="ten_chu-ho")
     private String tenchuho;
 
@@ -65,13 +64,7 @@ public class NopPhi {
 
 
 
-    public double getDienTichPhong() {
-        return dienTichPhong;
-    }
 
-    public void setDienTichPhong(double dienTichPhong) {
-        this.dienTichPhong = dienTichPhong;
-    }
 
     public String getTenchuho() {
         return tenchuho;
@@ -129,20 +122,15 @@ public class NopPhi {
         this.soTienDaDong = soTienDaDong;
     }
     public double getSotienchuanop(){
-        return dienTichPhong*giaTri-soTienDaDong;
+        return giaTri-soTienDaDong;
     }
-    public  String getDecimalFormatSotienchuanop(){
-        double duno=dienTichPhong*giaTri-soTienDaDong;
-        String pattern = "#,##0" + (duno % 1 == 0 ? "" : ".#########");
-        DecimalFormat decimalFormat = new DecimalFormat(pattern);
-        return decimalFormat.format(duno);
-    }
-    public  String getDecimalFormatSotienchuanopdonggop(){
+    public  String getDecimalFormatSotien(){
         double duno=giaTri-soTienDaDong;
         String pattern = "#,##0" + (duno % 1 == 0 ? "" : ".#########");
         DecimalFormat decimalFormat = new DecimalFormat(pattern);
         return decimalFormat.format(duno);
     }
+
     public  String getDecimalFormatSotiendanop(){
 
         String pattern = "#,##0" + (soTienDaDong % 1 == 0 ? "" : ".#########");

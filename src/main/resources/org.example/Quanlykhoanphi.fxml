@@ -35,7 +35,6 @@
     </ComboBox>
    <Label layoutX="578.0" layoutY="640.0" text="Hạn nộp:" />
    <TextField fx:id="hannop" layoutX="666.0" layoutY="636.0" prefHeight="26.0" prefWidth="134.0" />
-   <Button layoutX="391.0" layoutY="696.0" mnemonicParsing="false" onAction="#dieuchinh" text="Điều chỉnh" />
    <Label layoutX="235.0" layoutY="14.0" text="Danh sách khoản phí" />
    <TextField fx:id="timkiem" layoutX="689.0" layoutY="4.0" prefHeight="34.0" prefWidth="206.0" promptText="Tìm kiếm">
       <opaqueInsets>
