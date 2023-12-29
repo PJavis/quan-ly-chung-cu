@@ -25,6 +25,8 @@ public class DashBoardController {
 
 
     @FXML
+    private Button thongtintk;
+    @FXML
     void thuphi(ActionEvent event) {
         try {
             Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -104,6 +106,19 @@ public class DashBoardController {
 
             ag0r1.show();
 
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    @FXML
+    void thongtintaikhoan(ActionEvent event) {
+        try {
+            Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/thongtin.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            ag0r1.setScene(scene);
+            ag0r1.show();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

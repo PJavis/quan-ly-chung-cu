@@ -43,7 +43,46 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<Nhan
         }
         return nhanKhaus;
     }
+     //cai nay de thong ke theo nam sinh
+    public Map<Integer, Long> tinhnamsinh() {
+        Map<Integer, Long> yearDistribution = new HashMap<>();
 
+        try {
+            session = Hibernate.getSession(sessionFactory);
+            List<NhanKhau> nhanKhaus = session.createQuery("FROM NhanKhau", NhanKhau.class).getResultList();
+            Hibernate.closeSession(session);
+
+            for (NhanKhau temp : nhanKhaus) {
+                LocalDate createDate = temp.getNgaySinh().toLocalDate();
+                if (createDate != null) {
+                    int year = createDate.getYear();
+                    yearDistribution.put(year, yearDistribution.getOrDefault(year, 0L) + 1);
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return yearDistribution;
+    }
+    public Map<String, Long> tinhtilenamnu() {
+        Map<String, Long> genderDistribution = new HashMap<>();
+
+        try {
+            session = Hibernate.getSession(sessionFactory);
+            List<NhanKhau> nhanKhaus = session.createQuery("FROM NhanKhau", NhanKhau.class).getResultList();
+            Hibernate.closeSession(session);
+
+            for (NhanKhau temp : nhanKhaus) {
+                String gender = temp.getGioiTinh() == 1 ? "Nam" : "Nữ";
+                genderDistribution.put(gender, genderDistribution.getOrDefault(gender, 0L) + 1);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return genderDistribution;
+    }
     @Override
     public Map<Integer, Long> calculateTimeDistribution(List<NhanKhau> in) {
         Map<Integer, Long> ageDistribution = new HashMap<>();

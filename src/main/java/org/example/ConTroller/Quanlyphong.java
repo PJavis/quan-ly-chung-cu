@@ -211,6 +211,7 @@ public class Quanlyphong implements Initializable {
 
         panehokhau.getChildren().clear();
         panehokhau.getChildren().add(barChart);
+        barChart.setPrefSize(panehokhau.getPrefWidth(), panehokhau.getPrefHeight());
     }
     private String listchoice[] = {"Thống kê theo năm","Thống kê theo quý","Thống kê theo tháng"};
 
@@ -223,7 +224,21 @@ public class Quanlyphong implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         danhsachhokhau();
         timkiemhokhau();
-        chart();
+        //chart();
         setBoxphong();
+        boxphong.setOnAction(event -> {
+            String selectedOption = boxphong.getSelectionModel().getSelectedItem();
+            if (selectedOption != null) {
+                switch (selectedOption) {
+                    case "Thống kê theo năm":
+                        chart();
+                        break;
+                    case "Thống kê theo quý":
+                        break;
+                    case "Thống kê theo tháng":
+                        break;
+                }
+            }
+        });
     }
 }

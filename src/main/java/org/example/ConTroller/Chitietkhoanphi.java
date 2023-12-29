@@ -28,10 +28,7 @@ import org.example.getData;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Chitietkhoanphi implements Initializable {
     private KhoanPhi khoanPhi;
@@ -47,7 +44,8 @@ public class Chitietkhoanphi implements Initializable {
         ngaytao.setText(newDateFormat.format(khoanPhi.getBatDau()));
         hannop.setText(newDateFormat.format(khoanPhi.getKetThuc()));
         nopPhiList= NopPhiDao.getInstance().selectById(khoanPhi.getId());
-        danhsachhokhau();
+        if(Objects.equals(khoanPhi.getLoaiKhoanPhi(), "Bắt buộc")) danhsachhokhau();
+
         timkiem();
     }
 

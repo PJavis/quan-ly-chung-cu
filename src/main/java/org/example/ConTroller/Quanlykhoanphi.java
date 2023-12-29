@@ -218,7 +218,7 @@ if(hannop.getText().isEmpty()||tenkhoanphi.getText().isEmpty()||loaikhoanphi.get
         alert.showAndWait();
         KhoanPhiDao.getInstance().save(khoanPhi);
 
-        if(Objects.equals(loaikhoanphi.getValue(), "Bắt buộc")){
+
             List<HoKhau> hoKhaus=getData.getInstance().getHoKhaus();
             for(HoKhau hoKhau : hoKhaus){
                 NopPhi nopPhi=new NopPhi();
@@ -231,7 +231,7 @@ if(hannop.getText().isEmpty()||tenkhoanphi.getText().isEmpty()||loaikhoanphi.get
                 nopPhi.setGiaTri(khoanPhi.getGiaTri());
                 NopPhiDao.getInstance().save(nopPhi);
             }
-        }
+
         tenkhoanphi.clear();
         hannop.clear();
         sotien.clear();
