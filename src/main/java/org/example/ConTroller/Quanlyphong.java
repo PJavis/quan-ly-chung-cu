@@ -71,6 +71,8 @@ public class Quanlyphong implements Initializable {
     @FXML
     private Pane panehokhau;
     @FXML
+    private TableColumn<HoKhau, Integer> sonhankhau;
+    @FXML
     private ComboBox<String> boxphong;
     public void danhsachhokhau(){
         tongsohokhau.setText(String.valueOf(hoKhauList.size()));
@@ -84,6 +86,7 @@ public class Quanlyphong implements Initializable {
         sotang.setCellValueFactory(new PropertyValueFactory<>("soTang"));
         tenchuho.setCellValueFactory(new PropertyValueFactory<>("tenchuho"));
         sodienthoai.setCellValueFactory(new PropertyValueFactory<>("soDienThoai"));
+        sonhankhau.setCellValueFactory(new  PropertyValueFactory<>("soNhanKhau"));
         dieuchinh.setCellFactory(cell->{
             return new TableCell<HoKhau,Void>(){
                 @Override
@@ -102,6 +105,7 @@ public class Quanlyphong implements Initializable {
                         // Xử lý sự kiện khi nút được nhấp
                         button.setOnAction(event -> {
                             HoKhau person = getTableView().getItems().get(getIndex());
+
                             try {
                                 Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Dieuchinhhokhau.fxml"));
@@ -166,11 +170,8 @@ public class Quanlyphong implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Taomoihokhau.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            Stage ag0r1=new Stage();
-            ag0r1.setScene(scene);
-            ag0r1.initModality(Modality.APPLICATION_MODAL);
-            ag0r1.initOwner(ag0r);
-            ag0r1.showAndWait();
+            ag0r.setScene(scene);
+            ag0r.show();
             hoKhauList=getData.getInstance().getHoKhaus();
             danhsachhokhau();
             timkiemhokhau();

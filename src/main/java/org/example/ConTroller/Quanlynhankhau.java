@@ -145,11 +145,8 @@ public class Quanlynhankhau implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Taomoinhankhau.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            Stage ag0r1=new Stage();
-            ag0r1.setScene(scene);
-            ag0r1.initModality(Modality.APPLICATION_MODAL);
-            ag0r1.initOwner(ag0r);
-            ag0r1.showAndWait();
+            ag0r.setScene(scene);
+            ag0r.show();
             nhanKhauList=getData.getInstance().getNhanKhaus();
             danhsachnhankhau();
             timkiem();

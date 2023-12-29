@@ -35,11 +35,12 @@
    <TableView fx:id="danhsachhokhau" layoutX="234.0" layoutY="60.0" prefHeight="358.0" prefWidth="679.0">
      <columns>
        <TableColumn fx:id="sothutu" prefWidth="75.0" text="Số thứ tự" />
-       <TableColumn fx:id="sophong" prefWidth="121.5999755859375" text="Số phòng" />
-         <TableColumn fx:id="sotang" prefWidth="97.60006713867188" text="Số tầng" />
-         <TableColumn fx:id="tenchuho" prefWidth="152.00006103515625" text="Tên chủ hộ" />
-         <TableColumn fx:id="sodienthoai" prefWidth="113.5999755859375" text="Số điện thoại" />
-         <TableColumn fx:id="dieuchinh" prefWidth="109.5999755859375" text="Điều chỉnh" />
+       <TableColumn fx:id="sophong" prefWidth="76.0" text="Số phòng" />
+         <TableColumn fx:id="sotang" prefWidth="107.199951171875" text="Số tầng" />
+         <TableColumn fx:id="tenchuho" prefWidth="103.19998168945312" text="Tên chủ hộ" />
+         <TableColumn fx:id="sodienthoai" prefWidth="126.40008544921875" text="Số điện thoại" />
+         <TableColumn fx:id="sonhankhau" prefWidth="103.9998779296875" text="Số nhân khẩu" />
+         <TableColumn fx:id="dieuchinh" prefWidth="80.800048828125" text="Điều chỉnh" />
      </columns>
    </TableView>
    <ComboBox fx:id="boxphong" editable="true" layoutX="665.0" layoutY="420.0" prefWidth="150.0" promptText="Thống kê" />
