@@ -254,7 +254,11 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.ge
     private List<NopPhi> nopPhiList;
     private ObservableList<NopPhi> nopPhis=FXCollections.observableArrayList();
     public void danhsachkhoanphi(){
-        nopPhis=FXCollections.observableArrayList(nopPhiList);
+        for (NopPhi nopPhi : nopPhiList){
+            if(!(nopPhi.getSotienchuanop()==0)){
+                nopPhis.add(nopPhi);
+            }
+        }
         sothutu1.setCellValueFactory(cellData -> {
             int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
             return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
