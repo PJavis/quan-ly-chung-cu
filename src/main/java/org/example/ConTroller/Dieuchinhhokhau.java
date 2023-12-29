@@ -262,7 +262,7 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.ge
         tenkhoanphi.setCellValueFactory(new PropertyValueFactory<>("tenKhoanPhi"));
         loaikhoanphi.setCellValueFactory(new PropertyValueFactory<>("loaiKhoanPhi"));
         sotiendanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotiendanop"));
-
+        sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotien"));
         lichsugiaodich.setCellFactory(cell-> {
             return new TableCell<NopPhi, Void>() {
                 @Override

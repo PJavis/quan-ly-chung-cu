@@ -105,7 +105,7 @@ public class LichSuGiaoDich {
         return dateFormat.format(thoigiangiaodich);
     }
     public  String getDecimalFormatsotiennop(){
-        String pattern = "#,##0" + (getGiaTri() % 1 == 0 ? "" : "..#########");
+        String pattern = "#,##0" + (getGiaTri() % 1 == 0 ? "" : ".#########");
         DecimalFormat decimalFormat = new DecimalFormat(pattern);
         return decimalFormat.format(giaTri);
     }
