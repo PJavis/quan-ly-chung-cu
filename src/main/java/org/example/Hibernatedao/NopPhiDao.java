@@ -1,7 +1,5 @@
 package org.example.Hibernatedao;
 
-import org.example.EntityAll.HoKhau;
-import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.NopPhi;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
@@ -102,6 +100,19 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>, Selec
             Hibernate.closeSession(session);
         } catch (Exception e) {
         throw new RuntimeException(e);
+        }
+        return nopPhi;
+    }
+    public List<NopPhi> selectByHoKhau(int sotang, int sophong) {
+        List<NopPhi> nopPhi;
+        try {
+            session = Hibernate.getSession(sessionFactory);
+            nopPhi = session.createQuery("FROM NopPhi  WHERE soTang= :sotang AND soPhong= :sophong", NopPhi.class)
+                    .setParameter("sophong", sophong).setParameter("sotang", sotang)
+                    .getResultList();
+            Hibernate.closeSession(session);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
         return nopPhi;
     }
