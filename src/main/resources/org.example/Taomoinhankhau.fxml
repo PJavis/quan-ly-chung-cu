@@ -30,23 +30,23 @@
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-               <TextField fx:id="tennhankhau" layoutX="133.0" layoutY="38.0" prefHeight="35.0" prefWidth="468.0" style="-fx-border-color: #353A56; -fx-border-radius: 15px; -fx-background-radius: 15px15px;" text="Tên" GridPane.columnIndex="1" />
-               <TextField fx:id="ngaysinh" layoutX="132.0" layoutY="244.0" prefHeight="35.0" prefWidth="190.0" style="-fx-background-radius: 15px; -fx-border-radius: 15px15px; -fx-border-color: #353A56;" text="ngày sinh" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               <TextField fx:id="tennhankhau" layoutX="133.0" layoutY="38.0" prefHeight="35.0" prefWidth="468.0" style="-fx-border-color: #353A56; -fx-border-radius: 15px; -fx-background-radius: 15px15px;" promptText="Họ và Tên" GridPane.columnIndex="1" />
+               <TextField fx:id="ngaysinh" layoutX="132.0" layoutY="244.0" prefHeight="35.0" prefWidth="190.0" style="-fx-background-radius: 15px; -fx-border-radius: 15px15px; -fx-border-color: #353A56;" promptText="Ngày sinh" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                <Label layoutX="339.0" layoutY="329.0" text="Số phòng: " GridPane.rowIndex="5">
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-               <TextField fx:id="sophongtaonhankhau" layoutX="419.0" layoutY="321.0" prefHeight="35.0" prefWidth="178.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" text="số phòng" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+               <TextField fx:id="sophongtaonhankhau" layoutX="419.0" layoutY="321.0" prefHeight="35.0" prefWidth="178.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" promptText="số phòng" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                <Label layoutX="54.0" layoutY="183.0" text="Quốc tịch: " GridPane.rowIndex="7">
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-               <TextField fx:id="quoctich" layoutX="134.0" layoutY="175.0" prefHeight="35.0" prefWidth="190.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" text="quốc tịch" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+               <TextField fx:id="quoctich" layoutX="134.0" layoutY="175.0" prefHeight="35.0" prefWidth="190.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" promptText="quốc tịch" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                <Label layoutX="63.0" layoutY="329.0" text="Số tầng:" GridPane.rowIndex="6">
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-               <TextField fx:id="sotang" layoutX="134.0" layoutY="321.0" prefHeight="35.0" prefWidth="190.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" text="số tầng" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+               <TextField fx:id="sotang" layoutX="134.0" layoutY="321.0" prefHeight="35.0" prefWidth="190.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" promptText="số tầng" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                <HBox layoutX="415.0" layoutY="238.0" prefHeight="46.0" prefWidth="149.0" spacing="18.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                   <padding>
                      <Insets left="10.0" top="13.0" />
@@ -73,8 +73,8 @@
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-               <TextField fx:id="sodienthoai" layoutX="419.0" layoutY="109.0" prefHeight="35.0" prefWidth="178.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" text="số điện thoại" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-               <TextField fx:id="cancuoccongdan" layoutX="132.0" layoutY="109.0" prefHeight="35.0" prefWidth="190.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" text="Số căn cước công dân" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               <TextField fx:id="sodienthoai" layoutX="419.0" layoutY="109.0" prefHeight="35.0" prefWidth="178.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" promptText="số điện thoại" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               <TextField fx:id="cancuoccongdan" layoutX="132.0" layoutY="109.0" prefHeight="35.0" prefWidth="190.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" promptText="Số căn cước công dân" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                <Label layoutX="330.0" layoutY="118.0" text="Số điện thoại:">
                   <font>
                      <Font size="14.0" />
