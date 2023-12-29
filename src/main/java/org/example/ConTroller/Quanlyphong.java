@@ -172,9 +172,7 @@ public class Quanlyphong implements Initializable {
             Scene scene = new Scene(root);
             ag0r.setScene(scene);
             ag0r.show();
-            hoKhauList=getData.getInstance().getHoKhaus();
-            danhsachhokhau();
-            timkiemhokhau();
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

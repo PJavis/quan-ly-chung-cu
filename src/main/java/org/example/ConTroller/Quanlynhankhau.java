@@ -117,16 +117,10 @@ public class Quanlynhankhau implements Initializable {
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Dieuchinhnhankhau.fxml"));
                                 Parent root = loader.load();
                                 Scene scene = new Scene(root);
-                                Stage ag0r1=new Stage();
-                                ag0r1.setScene(scene);
-                                ag0r1.initModality(Modality.APPLICATION_MODAL);
-                                ag0r1.initOwner(ag0r);
+                                ag0r.setScene(scene);
                                 Dieuchinhnhankhau dieuchinhnhankhau=loader.getController();
                                 dieuchinhnhankhau.setNhanKhau(person);
-                                ag0r1.showAndWait();
-                                nhanKhauList=getData.getInstance().getNhanKhaus();
-                                danhsachnhankhau();
-                                timkiem();
+                                ag0r.show();
                             } catch (Exception e) {
                                 System.out.println(e.getMessage());
                             }
@@ -147,9 +141,6 @@ public class Quanlynhankhau implements Initializable {
             Scene scene = new Scene(root);
             ag0r.setScene(scene);
             ag0r.show();
-            nhanKhauList=getData.getInstance().getNhanKhaus();
-            danhsachnhankhau();
-            timkiem();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
