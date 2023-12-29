@@ -92,4 +92,19 @@ public class KhoanPhiDao implements Save<KhoanPhi>, SelectAll, Update<KhoanPhi> 
         }
         return khoanPhis;
     }
+    public KhoanPhi selectByid(int name) {
+        KhoanPhi khoanPhis;
+        try {
+            session=Hibernate.getSession(sessionFactory);
+            khoanPhis = session
+                    .createQuery("FROM KhoanPhi d WHERE d.id = :name", KhoanPhi.class)
+                    .setParameter("name", name )
+                    .uniqueResult();
+            Hibernate.closeSession(session);
+        } catch (Exception e) {
+
+            throw new RuntimeException(e);
+        }
+        return khoanPhis;
+    }
 }

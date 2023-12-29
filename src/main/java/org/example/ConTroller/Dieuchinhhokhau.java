@@ -8,22 +8,30 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
+import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.NhanKhau;
+import org.example.EntityAll.NopPhi;
 import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.NhanKhauDao;
+import org.example.Hibernatedao.NopPhiDao;
 import org.example.getData;
 
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Dieuchinhhokhau implements Initializable {
@@ -44,10 +52,14 @@ public class Dieuchinhhokhau implements Initializable {
     private TableColumn<NhanKhau, String> ngaysinh;
 
     @FXML
-    private TextField sophong;
+    private Label sophong;
 
     @FXML
-    private TextField sotang;
+    private Label sotang;
+
+    @FXML
+    private Label sothanhvien;
+
 
     @FXML
     private TableColumn<NhanKhau, Integer> sothutu;
@@ -67,8 +79,11 @@ public class Dieuchinhhokhau implements Initializable {
 sophong.setText(String.valueOf(hoKhau.getId()));
 sotang.setText(String.valueOf(hoKhau.getSoTang()));
 dientichphong.setText(String.valueOf(hoKhau.getDienTichPhong()));
+sothanhvien.setText(String.valueOf(hoKhau.getSoNhanKhau()));
 nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.getSoTang());
+nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.getId());
         danhsachthanhvien();
+        danhsachkhoanphi();
     }
  public void danhsachthanhvien(){
 
@@ -217,7 +232,74 @@ nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.g
         Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
         ag0r.close();
     }
+    @FXML
+    private TableView<NopPhi> danhsachkhoanphi;
+    @FXML
+    private TableColumn<NopPhi, Void> lichsugiaodich;
 
+    @FXML
+    private TableColumn<NopPhi, String> loaikhoanphi;
+    @FXML
+    private TableColumn<NopPhi, Integer> sothutu1;
+
+    @FXML
+    private TableColumn<NopPhi, String> sotienchuanop;
+
+    @FXML
+    private TableColumn<NopPhi, Double> sotiendanop;
+
+    @FXML
+    private TableColumn<NopPhi, String> tenkhoanphi;
+    private List<NopPhi> nopPhiList;
+    private ObservableList<NopPhi> nopPhis=FXCollections.observableArrayList();
+    public void danhsachkhoanphi(){
+        nopPhis=FXCollections.observableArrayList(nopPhiList);
+        sothutu1.setCellValueFactory(cellData -> {
+            int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
+            return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
+        });
+        tenkhoanphi.setCellValueFactory(new PropertyValueFactory<>("tenKhoanPhi"));
+        loaikhoanphi.setCellValueFactory(new PropertyValueFactory<>("loaiKhoanPhi"));
+        sotiendanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotiendanop"));
+
+        lichsugiaodich.setCellFactory(cell-> {
+            return new TableCell<NopPhi, Void>() {
+                @Override
+                protected void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        Button button = new Button();
+                        FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
+                        iconView.setSize("16px");
+                        button.setGraphic(iconView);
+                        setGraphic(button);
+                        button.setOnAction(event -> {
+                            NopPhi person = getTableView().getItems().get(getIndex());
+                            try {
+                                Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Lichsugiaodich.fxml"));
+                                Parent root = loader.load();
+                                Scene scene = new Scene(root);
+                                Stage ag0r1=new Stage();
+                                ag0r1.setScene(scene);
+                                ag0r1.initModality(Modality.APPLICATION_MODAL);
+                                ag0r1.initOwner(ag0r);
+                                Lichsugiaodich lichsugiaodich=loader.getController();
+                                lichsugiaodich.setNopPhi(person);
+                                ag0r1.showAndWait();
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
+                            }
+                        });
+                    }
+                }
+            };
+        });
+        danhsachkhoanphi.setItems(nopPhis);
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

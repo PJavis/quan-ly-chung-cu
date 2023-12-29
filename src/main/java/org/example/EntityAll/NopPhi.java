@@ -1,6 +1,7 @@
 package org.example.EntityAll;
 
 import jakarta.persistence.*;
+import org.example.Hibernatedao.KhoanPhiDao;
 
 import java.sql.Date;
 import java.text.DecimalFormat;
@@ -147,6 +148,15 @@ public class NopPhi {
         String pattern = "#,##0" + (soTienDaDong % 1 == 0 ? "" : ".#########");
         DecimalFormat decimalFormat = new DecimalFormat(pattern);
         return decimalFormat.format(soTienDaDong);
+    }
+    public String getTenKhoanPhi(){
+        return KhoanPhiDao.getInstance().selectByid(idKhoanPhi).getTenKhoanPhi();
+    }
+    public String getLoaiKhoanPhi(){
+        return KhoanPhiDao.getInstance().selectByid(idKhoanPhi).getLoaiKhoanPhi();
+    }
+    public KhoanPhi getKhoanphi(){
+        return KhoanPhiDao.getInstance().selectByid(idKhoanPhi);
     }
 
 }

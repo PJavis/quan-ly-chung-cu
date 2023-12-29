@@ -16,7 +16,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Chitietkhoanphi">
     <fx:include source="DashBoard.fxml" />
 
-      <GridPane layoutX="235.0" layoutY="54.0" prefHeight="112.0" prefWidth="590.0">
+      <GridPane layoutX="235.0" layoutY="54.0" prefHeight="112.0" prefWidth="470.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -30,17 +30,17 @@
         </rowConstraints>
          <children>
             <Label text="Tên khoản phí: " />
-            <Label text="Ngày tạo:" GridPane.rowIndex="1" />
             <Label text="Loại khoản phí:" GridPane.columnIndex="2" />
-            <Label text="Hạn nộp:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label fx:id="tenkhoanphi" text="Label" GridPane.columnIndex="1" />
-            <Label fx:id="ngaytao" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Hạn nộp:" GridPane.rowIndex="1" />
+            <Label fx:id="tenkhoanphi" GridPane.columnIndex="1" />
             <Label fx:id="loaikhoanphi" text="Label" GridPane.columnIndex="3" />
-            <Label fx:id="hannop" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="hannop" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Số tiền:" GridPane.rowIndex="2" />
-            <Label fx:id="sotien" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="sotien" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Số tiền đã nộp:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label fx:id="sotiendanop" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label text="Ngày tạo:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="ngaytao" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <TableView fx:id="danhsachhokhau" layoutX="227.0" layoutY="216.0" prefHeight="522.0" prefWidth="602.0">
@@ -73,5 +73,6 @@
       </graphic>
    </Button>
    <Button layoutX="452.0" layoutY="171.0" mnemonicParsing="false" onAction="#tracuugiaodich" prefHeight="34.0" prefWidth="122.0" text="Tra cứu giao dịch" />
+   <Button layoutX="716.0" layoutY="54.0" mnemonicParsing="false" onAction="#dieuchinh" text="Điều chỉnh" />
   
 </AnchorPane>
