@@ -33,6 +33,7 @@ import java.util.*;
 public class Chitietkhoanphi implements Initializable {
     private KhoanPhi khoanPhi;
     private List<NopPhi> nopPhiList;
+    private boolean batbuoc=true;
 
     public void setKhoanPhi(KhoanPhi khoanPhi) {
         this.khoanPhi = khoanPhi;
@@ -44,8 +45,8 @@ public class Chitietkhoanphi implements Initializable {
         ngaytao.setText(newDateFormat.format(khoanPhi.getBatDau()));
         hannop.setText(newDateFormat.format(khoanPhi.getKetThuc()));
         nopPhiList= NopPhiDao.getInstance().selectById(khoanPhi.getId());
-        if(Objects.equals(khoanPhi.getLoaiKhoanPhi(), "Bắt buộc")) danhsachhokhau();
-
+        if(!Objects.equals(khoanPhi.getLoaiKhoanPhi(), "Bắt buộc")) batbuoc=false;
+        danhsachhokhau();
         timkiem();
     }
 
@@ -93,44 +94,57 @@ public class Chitietkhoanphi implements Initializable {
 
     @FXML
     private TextField timkiem;
-    private ObservableList<NopPhi> nopPhis;
+    private ObservableList<NopPhi> nopPhis=FXCollections.observableArrayList();
     public void danhsachhokhau() {
-        nopPhis = FXCollections.observableArrayList(nopPhiList);
-        nopPhis.sort((o1, o2) -> {
-        double a=o1.getGiaTri()*o1.getDienTichPhong()-o1.getSoTienDaDong();
-        double a1=o2.getGiaTri()*o2.getDienTichPhong()-o2.getSoTienDaDong();
-        if(a>0&&a1>0){
-            if(a>a1)return 1;
-            else return 0;
-        }else if(a==0&&a1>0)return 0;
-        else if (a>0&&a1==0) return 1;
-        else {
-            if(o1.getSoTang()>o2.getSoTang())return 1;
-            else if (o1.getSoTang()==o2.getSoTang()) {
-                if(o1.getSoPhong()> o2.getSoPhong())return 1;
-                else return 0;
-            }else return 0;
-        }
-        });
-        danhsachhokhau.setRowFactory(tv -> {
-            return new javafx.scene.control.TableRow<NopPhi>() {
-                @Override
-                protected void updateItem(NopPhi nopPhi, boolean empty) {
-                    super.updateItem(nopPhi, empty);
 
-                    if (nopPhi == null || empty) {
-                        setStyle("");
-                    } else {
-                        // Kiểm tra điều kiện và thiết lập màu cho hàng
-                        if (nopPhi.getSoTienDaDong() < nopPhi.getSotienchuanop()) {
-                            setStyle("-fx-background-color: lightcoral;");
-                        } else {
+        if(batbuoc) {
+            nopPhis = FXCollections.observableArrayList(nopPhiList);
+            danhsachhokhau.setRowFactory(tv -> {
+                return new javafx.scene.control.TableRow<NopPhi>() {
+                    @Override
+                    protected void updateItem(NopPhi nopPhi, boolean empty) {
+                        super.updateItem(nopPhi, empty);
+
+                        if (nopPhi == null || empty) {
                             setStyle("");
+                        } else {
+                            // Kiểm tra điều kiện và thiết lập màu cho hàng
+                            if (nopPhi.getSotienchuanop() > 0) {
+                                setStyle("-fx-background-color: lightcoral;");
+                            } else {
+                                setStyle("");
+                            }
                         }
                     }
+                };
+            });
+            sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotienchuanop"));
+            nopPhis.sort((o1, o2) -> {
+                double a=o1.getGiaTri()*o1.getDienTichPhong()-o1.getSoTienDaDong();
+                double a1=o2.getGiaTri()*o2.getDienTichPhong()-o2.getSoTienDaDong();
+                if(a>0&&a1>0){
+                    if(a>a1)return 1;
+                    else return 0;
+                }else if(a==0&&a1>0)return 0;
+                else if (a>0&&a1==0) return 1;
+                else {
+                    if(o1.getSoTang()>o2.getSoTang())return 1;
+                    else if (o1.getSoTang()==o2.getSoTang()) {
+                        if(o1.getSoPhong()> o2.getSoPhong())return 1;
+                        else return 0;
+                    }else return 0;
                 }
-            };
-        });
+            });
+        }
+        else {
+            sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotienchuanopdonggop"));
+            for(NopPhi nopPhi:nopPhiList){
+                if(nopPhi.getSoTienDaDong()>0){
+                    nopPhis.add(nopPhi);
+                }
+            }
+            nopPhis.sort(Comparator.comparing(NopPhi::getSoTang).thenComparing(NopPhi::getSoPhong));
+        }
         sothutu.setCellValueFactory(cellData -> {
             int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
             return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
@@ -138,8 +152,8 @@ public class Chitietkhoanphi implements Initializable {
         sophong.setCellValueFactory(new PropertyValueFactory<>("soPhong"));
         sotang.setCellValueFactory(new PropertyValueFactory<>("soTang"));
         tenchuho.setCellValueFactory(new PropertyValueFactory<>("tenchuho"));
-        sotiendanoptable.setCellValueFactory(new PropertyValueFactory<>("soTienDaDong"));
-        sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("Sotienchuanop"));
+        sotiendanoptable.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotiendanop"));
+
         lichsu.setCellFactory(cell-> {
                     return new TableCell<NopPhi, Void>() {
                         @Override

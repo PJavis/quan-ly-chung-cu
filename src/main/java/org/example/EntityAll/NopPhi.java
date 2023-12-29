@@ -3,6 +3,7 @@ package org.example.EntityAll;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.text.DecimalFormat;
 
 @Entity
 @Table(name = "nop_phi")
@@ -61,9 +62,7 @@ public class NopPhi {
         this.giaTri = giaTri;
     }
 
-    public double getSotienchuanop(){
-        return dienTichPhong*giaTri-soTienDaDong;
-    }
+
 
     public double getDienTichPhong() {
         return dienTichPhong;
@@ -128,4 +127,26 @@ public class NopPhi {
     public void setSoTienDaDong(double soTienDaDong) {
         this.soTienDaDong = soTienDaDong;
     }
+    public double getSotienchuanop(){
+        return dienTichPhong*giaTri-soTienDaDong;
+    }
+    public  String getDecimalFormatSotienchuanop(){
+        double duno=dienTichPhong*giaTri-soTienDaDong;
+        String pattern = "#,##0" + (duno % 1 == 0 ? "" : ".#########");
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        return decimalFormat.format(duno);
+    }
+    public  String getDecimalFormatSotienchuanopdonggop(){
+        double duno=giaTri-soTienDaDong;
+        String pattern = "#,##0" + (duno % 1 == 0 ? "" : ".#########");
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        return decimalFormat.format(duno);
+    }
+    public  String getDecimalFormatSotiendanop(){
+
+        String pattern = "#,##0" + (soTienDaDong % 1 == 0 ? "" : ".#########");
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        return decimalFormat.format(soTienDaDong);
+    }
+
 }

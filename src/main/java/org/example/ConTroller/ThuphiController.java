@@ -138,13 +138,16 @@ public class ThuphiController implements Initializable {
         DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
         try {
             sotiendanop.setText(decimalFormat.format(nopPhi.getSoTienDaDong()));
-            if(khoanPhi.getPhidichvuchungcu()==1)
-                duno.setText(decimalFormat.format(khoanPhi.getGiaTri()*nopPhi.getDienTichPhong()-nopPhi.getSoTienDaDong())+"     ("+decimalFormat.format(khoanPhi.getGiaTri())+"đồng/m2)");
+            if(khoanPhi.getPhidichvuchungcu()==1) {
+                duNo = khoanPhi.getGiaTri() * nopPhi.getDienTichPhong() - nopPhi.getSoTienDaDong();
+                duno.setText(decimalFormat.format(duNo)+ "     (" + decimalFormat.format(khoanPhi.getGiaTri()) + "đồng/m2)");
+            }
             else {
 //                duno1 = khoanPhi.getGiaTri() - nopPhi.getSoTienDaDong();
 //                double updatedDuNo = duno1 - Double.parseDouble(sotiendanop.getText());
 //                duno.setText(decimalFormat.format(updatedDuNo));
-                duno.setText(decimalFormat.format(khoanPhi.getGiaTri()-nopPhi.getSoTienDaDong()));
+                duNo = khoanPhi.getGiaTri() - nopPhi.getSoTienDaDong();
+                duno.setText(decimalFormat.format(duNo)+"đồng");
             }
         }catch (Exception e){
             sotiennop.clear();
