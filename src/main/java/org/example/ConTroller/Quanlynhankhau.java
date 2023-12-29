@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class Quanlynhankhau implements Initializable {
 
@@ -181,20 +182,57 @@ public class Quanlynhankhau implements Initializable {
         sortList.comparatorProperty().bind(danhsachnhankhau.comparatorProperty());
         danhsachnhankhau.setItems(sortList);
     }
-    public void chart() {
+    public void charttuoi() {
         try {
-
-
             // lay mot chut data ha
             List<NhanKhau> nhanKhauList1 = new ArrayList<>(nhanKhauList.values());
-           // tinh distribution
+            // tinh distribution
             Map<Integer, Long> ageDistribution = NhanKhauDao.getInstance().calculateTimeDistribution(nhanKhauList1);
-           //cap nhat bieu do
+            // cap nhat bieu do
             updateChart(ageDistribution);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    public void chartnamnu() {
+        try {
+            Map<String, Long> genderDistribution = NhanKhauDao.getInstance().tinhtilenamnu();
+            updateGenderChart(genderDistribution);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void chartnamsinh() {
+        try {
+            // Thực hiện thống kê theo năm
+            Map<Integer, Long> yearDistribution = NhanKhauDao.getInstance().tinhnamsinh();
+
+            // Cập nhật biểu đồ
+            updateChart(yearDistribution);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateGenderChart(Map<String, Long> genderDistribution) {
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
+        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+        for (Map.Entry<String, Long> entry : genderDistribution.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+        }
+
+        barChart.getData().clear();
+        barChart.getData().add(series);
+
+        panethongke.getChildren().clear();
+        panethongke.getChildren().add(barChart);
+
+        barChart.setPrefSize(panethongke.getPrefWidth(), panethongke.getPrefHeight());
+    }
+
 
     public void updateChart(Map<Integer, Long> ageDistribution) {
         CategoryAxis xAxis = new CategoryAxis();
@@ -211,8 +249,14 @@ public class Quanlynhankhau implements Initializable {
 
         panethongke.getChildren().clear();
         panethongke.getChildren().add(barChart);
+
+        barChart.setPrefSize(panethongke.getPrefWidth(), panethongke.getPrefHeight());
     }
-    private  String luachon[] = {"Thống kê theo số nhân khẩu","Thống kê theo ngày đăng kí","Thống kê theo bla bla"};
+
+
+
+
+    private  String luachon[] = {"Thống kê nam nữ","Thống kê theo năm sinh","Thống kê theo tuổi"};
 
     public void setBoxluachon( ) {
         ObservableList<String>boxbox = FXCollections.observableArrayList(luachon);
@@ -223,8 +267,24 @@ public class Quanlynhankhau implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         danhsachnhankhau();
         timkiem();
-        chart();
+//        chart();
         setBoxluachon();
+        boxluachon.setOnAction(event -> {
+            String selectedOption = boxluachon.getSelectionModel().getSelectedItem();
+            if (selectedOption != null) {
+                switch (selectedOption) {
+                    case "Thống kê nam nữ":
+                        chartnamnu();
+                        break;
+                    case "Thống kê theo năm sinh":
+                        chartnamsinh();
+                        break;
+                    case "Thống kê theo tuổi":
+                        charttuoi();
+                        break;
+                }
+            }
+        });
     }
 
 }

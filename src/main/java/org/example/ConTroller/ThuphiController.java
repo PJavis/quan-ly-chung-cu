@@ -57,11 +57,12 @@ public class ThuphiController implements Initializable {
     @FXML
     void nopphi(ActionEvent event) {
         try{
-nopPhi.setSoTienDaDong(nopPhi.getSoTienDaDong()+Double.parseDouble(sotiennop.getText()));
-NopPhiDao.getInstance().update(nopPhi);
-khoanPhi.setTongsotien(khoanPhi.getTongsotien()+Double.parseDouble(sotiennop.getText()));
+        nopPhi.setSoTienDaDong(nopPhi.getSoTienDaDong()+Double.parseDouble(sotiennop.getText()));
+        NopPhiDao.getInstance().update(nopPhi);
+        khoanPhi.setTongsotien(khoanPhi.getTongsotien()+Double.parseDouble(sotiennop.getText()));
         getData.getInstance().updateKhoanphi(khoanPhi);
-KhoanPhiDao.getInstance().update(khoanPhi);
+        KhoanPhiDao.getInstance().update(khoanPhi);
+        updateduno();
         LichSuGiaoDich lichSuGiaoDich=new LichSuGiaoDich();
         lichSuGiaoDich.setSophong(nopPhi.getSoPhong());
         lichSuGiaoDich.setSotang(nopPhi.getSoTang());
@@ -90,7 +91,21 @@ KhoanPhiDao.getInstance().update(khoanPhi);
             alert1.showAndWait();
         }
     }
+    private void updateduno() {
+        DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
 
+        double duNo;
+
+        if (khoanPhi.getPhidichvuchungcu() == 1) {
+            // Tính toán dư nợ cho phí dịch vụ chung cư
+            duNo = khoanPhi.getGiaTri() * nopPhi.getDienTichPhong() - nopPhi.getSoTienDaDong();
+            duno.setText(decimalFormat.format(duNo) + "     (" + decimalFormat.format(khoanPhi.getGiaTri()) + "đồng/m2)");
+        } else {
+            // Tính toán dư nợ cho các loại phí khác
+            duNo = khoanPhi.getGiaTri() - nopPhi.getSoTienDaDong();
+            duno.setText(decimalFormat.format(duNo));
+        }
+    }
     @FXML
     void timphong(ActionEvent event) {
         nopPhi= NopPhiDao.getInstance().selectByCondition(khoanPhi.getId(),Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
@@ -101,9 +116,15 @@ KhoanPhiDao.getInstance().update(khoanPhi);
         // Sử dụng phương thức format để định dạng số
         try {
             sotiendanop.setText(decimalFormat.format(nopPhi.getSoTienDaDong()));
+            double duno1;
             if(khoanPhi.getPhidichvuchungcu()==1)
                 duno.setText(decimalFormat.format(khoanPhi.getGiaTri()*nopPhi.getDienTichPhong()-nopPhi.getSoTienDaDong())+"     ("+decimalFormat.format(khoanPhi.getGiaTri())+"đồng/m2)");
-            else duno.setText(decimalFormat.format(khoanPhi.getGiaTri()));
+            else {
+//                duno1 = khoanPhi.getGiaTri() - nopPhi.getSoTienDaDong();
+//                double updatedDuNo = duno1 - Double.parseDouble(sotiendanop.getText());
+//                duno.setText(decimalFormat.format(updatedDuNo));
+                duno.setText(decimalFormat.format(khoanPhi.getGiaTri()));
+            }
         }catch (Exception e){
             sotiennop.clear();
             sotiendanop.setText("");

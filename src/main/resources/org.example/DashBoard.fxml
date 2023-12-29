@@ -74,7 +74,7 @@
             </Button>
          </children>
       </Pane>
-            <Button layoutX="21.0" layoutY="581.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="183.0" styleClass="buttontrai1" text="Thông tin tài khoản" textFill="#f7f2f2">
+            <Button fx:id="thongtintk" layoutX="21.0" layoutY="581.0" mnemonicParsing="false" onAction="#thongtintaikhoan" prefHeight="50.0" prefWidth="183.0" styleClass="buttontrai1" text="Thông tin tài khoản" textFill="#f7f2f2">
                <graphic>
                   <FontAwesomeIconView fill="#eae5e5" glyphName="ADDRESS_BOOK_ALT" size="2em" />
                </graphic>
