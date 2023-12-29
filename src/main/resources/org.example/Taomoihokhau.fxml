@@ -130,18 +130,20 @@
                <Font name="Arial Bold" size="14.0" />
             </font>
          </Label>
-         <TextField fx:id="sophong" layoutX="76.0" layoutY="164.0" prefHeight="40.0" prefWidth="149.0" promptText="Số phòng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
-         <TextField fx:id="sotang" layoutX="279.0" layoutY="164.0" prefHeight="40.0" prefWidth="149.0" promptText="Số tầng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
-         <TextField fx:id="dientichphong" layoutX="489.0" layoutY="164.0" prefHeight="40.0" prefWidth="149.0" promptText="Diện tích" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         <Label layoutX="489.0" layoutY="133.0" text="Diện tích phòng:" GridPane.rowIndex="2">
-            <font>
-               <Font name="Arial Bold" size="14.0" />
-            </font></Label>
          <Label layoutX="279.0" layoutY="133.0" text="Số tầng:">
             <font>
                <Font name="Arial Bold" size="14.0" />
             </font>
          </Label>
+         <Label layoutX="489.0" layoutY="133.0" text="Diện tích phòng:" GridPane.rowIndex="2">
+            <font>
+               <Font name="Arial Bold" size="14.0" />
+            </font>
+         </Label>
+         <TextField fx:id="sophong" layoutX="76.0" layoutY="164.0" prefHeight="40.0" prefWidth="149.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" promptText="Số phòng" />
+         <TextField fx:id="sotang" layoutX="279.0" layoutY="164.0" prefHeight="40.0" prefWidth="149.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" promptText="Số tầng" />
+         <TextField fx:id="dientichphong" layoutX="489.0" layoutY="164.0" prefHeight="40.0" prefWidth="149.0" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" promptText="Diện tích" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
          <Pane layoutX="40.0" layoutY="294.0" prefHeight="52.0" prefWidth="233.0" style="-fx-background-color: #a7a7b7; -fx-background-radius: 25px;">
             <children>
 
