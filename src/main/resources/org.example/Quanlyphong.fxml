@@ -39,7 +39,7 @@
          <TableColumn fx:id="sotang" prefWidth="107.199951171875" text="Số tầng" />
          <TableColumn fx:id="tenchuho" prefWidth="103.19998168945312" text="Tên chủ hộ" />
          <TableColumn fx:id="sodienthoai" prefWidth="126.40008544921875" text="Số điện thoại" />
-         <TableColumn fx:id="sonhankhau" prefWidth="103.9998779296875" text="Số nhân khẩu" />
+         <TableColumn fx:id="sonhankhau" prefWidth="103.9998779296875" text="Số thành viên" />
          <TableColumn fx:id="dieuchinh" prefWidth="80.800048828125" text="Điều chỉnh" />
      </columns>
    </TableView>

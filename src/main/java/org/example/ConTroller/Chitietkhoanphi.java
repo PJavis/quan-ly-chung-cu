@@ -21,13 +21,17 @@ import javafx.stage.Stage;
 import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.LichSuGiaoDich;
 import org.example.EntityAll.NopPhi;
+import org.example.Hibernatedao.KhoanPhiDao;
 import org.example.Hibernatedao.NopPhiDao;
 
 import org.example.getData;
 
 import java.net.URL;
+import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Chitietkhoanphi implements Initializable {
@@ -57,7 +61,7 @@ public class Chitietkhoanphi implements Initializable {
     private TableView<NopPhi> danhsachhokhau;
 
     @FXML
-    private Label hannop;
+    private TextField hannop;
 
     @FXML
     private Label loaikhoanphi;
@@ -75,7 +79,7 @@ public class Chitietkhoanphi implements Initializable {
     private TableColumn<NopPhi, Integer> sothutu;
 
     @FXML
-    private Label sotien;
+    private TextField sotien;
 
     @FXML
     private TableColumn<NopPhi, Double> sotienchuanop;
@@ -98,6 +102,7 @@ public class Chitietkhoanphi implements Initializable {
     public void danhsachhokhau() {
 
         if(batbuoc) {
+
             nopPhis = FXCollections.observableArrayList(nopPhiList);
             danhsachhokhau.setRowFactory(tv -> {
                 return new javafx.scene.control.TableRow<NopPhi>() {
@@ -118,6 +123,7 @@ public class Chitietkhoanphi implements Initializable {
                     }
                 };
             });
+            if(khoanPhi.getPhidichvuchungcu()==1){
             sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotienchuanop"));
             nopPhis.sort((o1, o2) -> {
                 double a=o1.getGiaTri()*o1.getDienTichPhong()-o1.getSoTienDaDong();
@@ -135,6 +141,26 @@ public class Chitietkhoanphi implements Initializable {
                     }else return 0;
                 }
             });
+            }
+            else{
+                sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotienchuanopdonggop"));
+                nopPhis.sort((o1, o2) -> {
+                    double a=o1.getGiaTri()-o1.getSoTienDaDong();
+                    double a1=o2.getGiaTri()-o2.getSoTienDaDong();
+                    if(a>0&&a1>0){
+                        if(a>a1)return 1;
+                        else return 0;
+                    }else if(a==0&&a1>0)return 0;
+                    else if (a>0&&a1==0) return 1;
+                    else {
+                        if(o1.getSoTang()>o2.getSoTang())return 1;
+                        else if (o1.getSoTang()==o2.getSoTang()) {
+                            if(o1.getSoPhong()> o2.getSoPhong())return 1;
+                            else return 0;
+                        }else return 0;
+                    }
+                });
+            }
         }
         else {
             sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotienchuanopdonggop"));
@@ -252,7 +278,26 @@ public class Chitietkhoanphi implements Initializable {
             System.out.println(e.getMessage());
         }
     }
-
+    @FXML
+    void dieuchinh(ActionEvent event) {
+    double d=Double.parseDouble(sotien.getText().replace(",",""));
+    khoanPhi.setGiaTri(d);
+    for(NopPhi nopPhi :nopPhiList){
+        nopPhi.setGiaTri(d);
+        NopPhiDao.getInstance().update(nopPhi);
+    }
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    String date = hannop.getText();
+    LocalDate datetime = LocalDate.parse(date, formatter);
+    khoanPhi.setKetThuc(Date.valueOf(datetime));
+        KhoanPhiDao.getInstance().update(khoanPhi);
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Thành công");
+        alert.setContentText("Điều chỉnh khoản phí thành công");
+        alert.showAndWait();
+        timkiem();
+        danhsachhokhau();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

@@ -2,7 +2,10 @@ package org.example.ConTroller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
@@ -104,8 +107,16 @@ public class Dieuchinhnhankhau {
             alert1.setHeaderText("Thành công");
             alert1.setContentText("Điều chỉnh nhân khẩu thành công");
             alert1.showAndWait();
-            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            ag0r.close();
+            try {
+                Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlynhankhau.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                ag0r1.setScene(scene);
+                ag0r1.show();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
         catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -151,10 +162,31 @@ public class Dieuchinhnhankhau {
                 HoKhauDao.getInstance().update(hoKhau);
                 NhanKhauDao.getInstance().delete(nhanKhau);
                 getData.getInstance().removeNhankhau(nhanKhau);
-                Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                ag0r.close();}
+                try {
+                    Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlynhankhau.fxml"));
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+                    ag0r1.setScene(scene);
+                    ag0r1.show();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+                }
         }
 
     }
-
+    @FXML
+    void quaylai(ActionEvent event) {
+        try {
+            Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlynhankhau.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            ag0r1.setScene(scene);
+            ag0r1.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
     }
