@@ -120,7 +120,7 @@ public class KhoanPhi {
         return decimalFormat.format(giaTri);
     }
     public  String getDecimalFormatsotiendanop(){
-        String pattern = "#,##0" + (getTongsotien() % 1 == 0 ? "" : "..#########");
+        String pattern = "#,##0" + (getTongsotien() % 1 == 0 ? "" : ".#########");
         DecimalFormat decimalFormat = new DecimalFormat(pattern);
         return decimalFormat.format(tongsotien);
     }

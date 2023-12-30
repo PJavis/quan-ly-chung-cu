@@ -94,7 +94,6 @@ public class ThuphiController implements Initializable {
         khoanPhi.setTongsotien(khoanPhi.getTongsotien()+Double.parseDouble(sotiennop.getText()));
         getData.getInstance().updateKhoanphi(khoanPhi);
         KhoanPhiDao.getInstance().update(khoanPhi);
-        updateduno();
         LichSuGiaoDich lichSuGiaoDich=new LichSuGiaoDich();
         lichSuGiaoDich.setSophong(nopPhi.getSoPhong());
         lichSuGiaoDich.setSotang(nopPhi.getSoTang());
@@ -120,18 +119,7 @@ public class ThuphiController implements Initializable {
 
     }
     private double duNo=0;
-    private void updateduno() {
-        DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
-        if (khoanPhi.getPhidichvuchungcu() == 1) {
-            // Tính toán dư nợ cho phí dịch vụ chung cư
-            duNo = khoanPhi.getGiaTri() * nopPhi.getDienTichPhong() - nopPhi.getSoTienDaDong();
-            duno.setText(decimalFormat.format(duNo) + "     (" + decimalFormat.format(khoanPhi.getGiaTri()) + "đồng/m2)");
-        } else {
-            // Tính toán dư nợ cho các loại phí khác
-            duNo = khoanPhi.getGiaTri() - nopPhi.getSoTienDaDong();
-            duno.setText(decimalFormat.format(duNo));
-        }
-    }
+
     @FXML
     void timphong(ActionEvent event) {
         nopPhi= NopPhiDao.getInstance().selectByCondition(khoanPhi.getId(),Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
@@ -139,14 +127,14 @@ public class ThuphiController implements Initializable {
         try {
             sotiendanop.setText(decimalFormat.format(nopPhi.getSoTienDaDong()));
             if(khoanPhi.getPhidichvuchungcu()==1) {
-                duNo = khoanPhi.getGiaTri() * nopPhi.getDienTichPhong() - nopPhi.getSoTienDaDong();
+                duNo = nopPhi.getGiaTri() - nopPhi.getSoTienDaDong();
                 duno.setText(decimalFormat.format(duNo)+ "     (" + decimalFormat.format(khoanPhi.getGiaTri()) + "đồng/m2)");
             }
             else {
 //                duno1 = khoanPhi.getGiaTri() - nopPhi.getSoTienDaDong();
 //                double updatedDuNo = duno1 - Double.parseDouble(sotiendanop.getText());
 //                duno.setText(decimalFormat.format(updatedDuNo));
-                duNo = khoanPhi.getGiaTri() - nopPhi.getSoTienDaDong();
+                duNo = nopPhi.getGiaTri() - nopPhi.getSoTienDaDong();
                 duno.setText(decimalFormat.format(duNo)+"đồng");
             }
         }catch (Exception e){

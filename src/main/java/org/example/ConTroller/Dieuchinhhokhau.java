@@ -224,13 +224,14 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.ge
             }
             HoKhauDao.getInstance().delete(hoKhaus);
             getData.getInstance().removeHokhau(hoKhaus);
+            Alert alert1=new Alert(Alert.AlertType.CONFIRMATION);
+            alert1.setHeaderText("Thành công");
+            alert1.setContentText("Xóa hộ khẩu thành công");
+            alert1.showAndWait();
+            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            ag0r.close();
         }
-        Alert alert1=new Alert(Alert.AlertType.CONFIRMATION);
-        alert1.setHeaderText("Thành công");
-        alert1.setContentText("Xóa hộ khẩu thành công");
-        alert1.showAndWait();
-        Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ag0r.close();
+
     }
     @FXML
     private TableView<NopPhi> danhsachkhoanphi;
@@ -253,7 +254,11 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.ge
     private List<NopPhi> nopPhiList;
     private ObservableList<NopPhi> nopPhis=FXCollections.observableArrayList();
     public void danhsachkhoanphi(){
-        nopPhis=FXCollections.observableArrayList(nopPhiList);
+        for (NopPhi nopPhi : nopPhiList){
+            if(!(nopPhi.getSotienchuanop()==0)){
+                nopPhis.add(nopPhi);
+            }
+        }
         sothutu1.setCellValueFactory(cellData -> {
             int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
             return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
@@ -261,7 +266,7 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.ge
         tenkhoanphi.setCellValueFactory(new PropertyValueFactory<>("tenKhoanPhi"));
         loaikhoanphi.setCellValueFactory(new PropertyValueFactory<>("loaiKhoanPhi"));
         sotiendanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotiendanop"));
-
+        sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotien"));
         lichsugiaodich.setCellFactory(cell-> {
             return new TableCell<NopPhi, Void>() {
                 @Override

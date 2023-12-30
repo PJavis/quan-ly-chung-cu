@@ -173,10 +173,6 @@ public class Quanlykhoanphi implements Initializable {
         hannop.setText(khoanPhi1.getFormattedDate());
     }
 
-    @FXML
-    void dieuchinh(ActionEvent event) {
-
-    }
     private boolean isValidDateFormat(String date) {
         // Biểu thức chính quy cho định dạng dd/mm/yyyy
         String regex = "^\\d{2}/\\d{2}/\\d{4}$";
@@ -226,9 +222,10 @@ if(hannop.getText().isEmpty()||tenkhoanphi.getText().isEmpty()||loaikhoanphi.get
                 nopPhi.setSoPhong(hoKhau.getId());
                 nopPhi.setSoTang(hoKhau.getSoTang());
                 nopPhi.setTenchuho(hoKhau.getTenchuho());
-                nopPhi.setDienTichPhong(hoKhau.getDienTichPhong());
                 nopPhi.setSoTienDaDong(0);
-                nopPhi.setGiaTri(khoanPhi.getGiaTri());
+                if(khoanPhi.getPhidichvuchungcu()==1)
+                nopPhi.setGiaTri(khoanPhi.getGiaTri()*hoKhau.getDienTichPhong());
+                else nopPhi.setGiaTri(khoanPhi.getGiaTri());
                 NopPhiDao.getInstance().save(nopPhi);
             }
 

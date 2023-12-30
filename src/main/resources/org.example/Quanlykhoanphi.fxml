@@ -1,69 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlykhoanphi">
-    <fx:include source="DashBoard.fxml" />
-    <TableView fx:id="danhsachkhoanphi" layoutX="247.0" layoutY="110.0" onMouseClicked="#predieuchinh" prefHeight="322.0" prefWidth="648.0">
-        <columns>
-            <TableColumn fx:id="sothutu" prefWidth="64.00001525878906" text="Số thứ tự" />
-            <TableColumn fx:id="tenkhoanphitable" prefWidth="103.60000610351562" text="Tên khoản phí" />
-            <TableColumn fx:id="loaikhoanphitable" prefWidth="105.20001220703125" text="Loại khoản phí" />
-            <TableColumn fx:id="ngaybatdau" prefWidth="87.19998168945312" text="Ngày bắt đầu" />
-            <TableColumn fx:id="hannoptable" prefWidth="71.0" text="Hạn nộp" />
-            <TableColumn fx:id="sotientable" prefWidth="57.5999755859375" text="Số tiền" />
-            <TableColumn fx:id="sotiendanop" prefWidth="90.0" text="Số tiền đã nộp" />
-            <TableColumn fx:id="chitiet" prefWidth="66.39996337890625" text="Chi tiết" />
-        </columns>
-    </TableView>
-    <Button layoutX="287.0" layoutY="696.0" mnemonicParsing="false" onAction="#taomoi" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="TẠO MỚI" textFill="WHITE" />
-    <Button layoutX="391.0" layoutY="696.0" mnemonicParsing="false" onAction="#dieuchinh" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="ĐIỀU CHỈNH" textFill="WHITE" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlykhoanphi">
+   <fx:include source="DashBoard.fxml" />
+   <TableView fx:id="danhsachkhoanphi" layoutX="235.0" layoutY="39.0" onMouseClicked="#predieuchinh" prefHeight="490.0" prefWidth="674.0">
+     <columns>
+       <TableColumn fx:id="sothutu" prefWidth="68.0" text="Số thứ tự" />
+       <TableColumn fx:id="tenkhoanphitable" prefWidth="108.79998779296875" text="Tên khoản phí" />
+         <TableColumn fx:id="loaikhoanphitable" prefWidth="94.4000244140625" text="Loại khoản phí" />
+         <TableColumn fx:id="ngaybatdau" prefWidth="87.19998168945312" text="Ngày bắt đầu" />
+         <TableColumn fx:id="hannoptable" prefWidth="76.0" text="Hạn nộp" />
+         <TableColumn fx:id="sotientable" prefWidth="63.2000732421875" text="Số tiền" />
+         <TableColumn fx:id="sotiendanop" prefWidth="99.20001220703125" text="Số tiền đã nộp" />
+         <TableColumn fx:id="chitiet" prefWidth="73.60009765625" text="Chi tiết" />
 
-    <Label layoutX="255.0" layoutY="536.0" text="Tên khoản phí:">
-        <font>
-            <Font name="Arial Bold" size="14.0" />
-        </font></Label>
-    <TextField fx:id="tenkhoanphi" layoutX="376.0" layoutY="527.0" prefHeight="34.0" prefWidth="292.0" promptText="Tên khoản phí" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
+     </columns>
+   </TableView>
+   <Button layoutX="287.0" layoutY="696.0" mnemonicParsing="false" onAction="#taomoi" text="Tạo mới" />
+   <TextField fx:id="tenkhoanphi" layoutX="330.0" layoutY="553.0" prefHeight="26.0" prefWidth="134.0" />
+   <Label layoutX="239.0" layoutY="558.0" text="Tên khoản phí:" />
+   <Label layoutX="578.0" layoutY="557.0" text="Loại khoản phí:" />
+   <ComboBox fx:id="loaikhoanphi" editable="true" layoutX="666.0" layoutY="552.0" prefHeight="26.0" prefWidth="134.0" promptText="Loại khoản phí">
 
-    <Label layoutX="255.0" layoutY="475.0" text="Loại khoản phí:">
-        <font>
-            <Font name="Arial Bold" size="14.0" />
-        </font></Label>
-    <ComboBox fx:id="loaikhoanphi" editable="true" layoutX="376.0" layoutY="466.0" prefHeight="34.0" prefWidth="292.0" promptText="Loại khoản phí" style=" -fx-border-color: #353A56; " />
-
-    <Label layoutX="616.0" layoutY="599.0" text="Hạn nộp:">
-        <font>
-            <Font name="Arial Bold" size="14.0" />
-        </font></Label>
-    <TextField fx:id="hannop" layoutX="703.0" layoutY="594.0" prefHeight="34.0" prefWidth="196.0" promptText="Hạn nộp" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
-
-    <Label layoutX="255.0" layoutY="595.0" text="Số tiền:">
-        <font>
-            <Font name="Arial Bold" size="14.0" />
-        </font></Label>
-    <TextField fx:id="sotien" layoutX="376.0" layoutY="590.0" prefHeight="34.0" prefWidth="196.0" promptText="Số tiền" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
-
-    <Label layoutX="235.0" layoutY="14.0" text="Danh sách khoản phí">
-        <font>
-            <Font name="Arial Bold" size="14.0" />
-        </font></Label>
-    <TextField fx:id="timkiem" layoutX="689.0" layoutY="4.0" prefHeight="34.0" prefWidth="206.0" promptText="Tìm kiếm">
-        <opaqueInsets>
-             <Insets />
-        </opaqueInsets>
-        <padding>
-             <Insets left="20.0" />
-        </padding>
-        <font>
-             <Font size="14.0" />
-        </font>
-       </TextField>
-
-    <FontAwesomeIconView glyphName="SEARCH" layoutX="695.0" layoutY="28.0" size="17" />
-
+    </ComboBox>
+   <Label layoutX="578.0" layoutY="640.0" text="Hạn nộp:" />
+   <TextField fx:id="hannop" layoutX="666.0" layoutY="636.0" prefHeight="26.0" prefWidth="134.0" />
+   <Label layoutX="235.0" layoutY="14.0" text="Danh sách khoản phí" />
+   <TextField fx:id="timkiem" layoutX="689.0" layoutY="4.0" prefHeight="34.0" prefWidth="206.0" promptText="Tìm kiếm">
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <padding>
+         <Insets left="20.0" />
+      </padding>
+      <font>
+         <Font size="14.0" />
+      </font>
+   </TextField>
+   <FontAwesomeIconView glyphName="SEARCH" layoutX="695.0" layoutY="28.0" size="17" />
+   <Label layoutX="241.0" layoutY="640.0" text="Số tiền:" />
+   <TextField fx:id="sotien" layoutX="330.0" layoutY="636.0" prefHeight="26.0" prefWidth="134.0" />
   
 </AnchorPane>
