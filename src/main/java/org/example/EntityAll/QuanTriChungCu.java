@@ -34,6 +34,10 @@ public class QuanTriChungCu {
     @Column(name = "mo_ta", columnDefinition = "TEXT")
     private String moTa;
 
+    @Lob
+    @Column(name = "avatar")
+    private byte[] avt;
+
     public QuanTriChungCu() {
         // Default constructor required by Hibernate
     }
