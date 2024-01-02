@@ -1,16 +1,13 @@
 package org.example.Hibernatedao;
 
 import org.example.EntityAll.PhuongTien;
-import org.example.Function.Save;
-import org.example.Function.SelectAll;
-import org.example.Function.SelectByHoKhau;
-import org.example.Function.Update;
+import org.example.Function.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class PhuongTienDao implements Save<PhuongTien>, SelectAll, Update<PhuongTien>, SelectByHoKhau<PhuongTien> {
+public class PhuongTienDao implements Save<PhuongTien>, SelectByName<PhuongTien>, SelectAll, Update<PhuongTien>, SelectByHoKhau<PhuongTien>{
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session = null;
 
@@ -58,6 +55,20 @@ public class PhuongTienDao implements Save<PhuongTien>, SelectAll, Update<Phuong
         return phuongTiens;
     }
 
+    @Override
+    public List<PhuongTien> selectByName(String name) {
+        List<PhuongTien> phuongTiens;
+        try {
+            session = Hibernate.getSession(sessionFactory);
+            phuongTiens = session.createQuery("FROM PhuongTien WHERE bienSoXe LIKE :name", PhuongTien.class)
+                    .setParameter("name", "%" + name + "%")
+                    .getResultList();
+            Hibernate.closeSession(session);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return phuongTiens;
+    }
 
     @Override
     public void update(PhuongTien in) {

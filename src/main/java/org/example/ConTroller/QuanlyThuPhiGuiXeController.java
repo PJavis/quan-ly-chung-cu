@@ -10,8 +10,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.EntityAll.PhuongTien;
+import org.example.Hibernatedao.PhuongTienDao;
 import org.example.getData;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class QuanlyThuPhiGuiXeController {
@@ -40,12 +42,20 @@ public class QuanlyThuPhiGuiXeController {
     @FXML
     private TableColumn<PhuongTien, Integer> sophongColumn;
 
+    private  ObservableList<PhuongTien> phuongTiens;
+
     private List<PhuongTien> phuongTienList = getData.getInstance().getPhuongTiens();
 
     public void initialize() {
         // Khởi tạo cột và cài đặt dữ liệu cho TableView
+        phuongTiens = FXCollections.observableArrayList(phuongTienList);
+        phuongTienList.sort(
+                Comparator.comparingInt(PhuongTien::getSoTang)
+                        .thenComparingInt(PhuongTien::getSoPhong)
+        );
+
         biensoxeColumn.setCellValueFactory(new PropertyValueFactory<>("bienSoXe"));
-        loaixeColumn.setCellValueFactory(new PropertyValueFactory<>("loaiXe"));
+        loaixeColumn.setCellValueFactory(new PropertyValueFactory<>("loaiPhuongTien"));
         sotangColumn.setCellValueFactory(new PropertyValueFactory<>("soTang"));
         sophongColumn.setCellValueFactory(new PropertyValueFactory<>("soPhong"));
 
@@ -55,24 +65,32 @@ public class QuanlyThuPhiGuiXeController {
 
     @FXML
     private void searchButtonClicked(ActionEvent event) {
-        String searchTerm = searchTextField.getText();
-        int sotang = Integer.parseInt(sotangField.getText());
-        int sophong = Integer.parseInt(sophongField.getText());
+        String bienso = searchTextField.getText();
 
-        updateTableView(searchTerm);
+        String sotangtemp = sotangField.getText();
+        String sophongtemp = sophongField.getText();
+
+        int sotang = (sotangtemp.isEmpty()) ? 0 : Integer.parseInt(sotangtemp);
+        int sophong = (sophongtemp.isEmpty()) ? 0 : Integer.parseInt(sotangtemp);
+
+        updateTableView(bienso, sotang, sophong);
     }
 
-    private void updateTableView(String searchTerm) {
+    private void updateTableView(String bienso, int sotang, int sophong) {
         // Giả sử có một danh sách xe tìm kiếm
-        ObservableList<PhuongTien> searchResult = getSearchResult(searchTerm);
+        ObservableList<PhuongTien> searchResult = null;
+        if (sotang == 0) {
+            searchResult = getSearchResultOnLicensePlate(bienso);
+        }
+        else {
+            searchResult = FXCollections.observableArrayList(PhuongTienDao.getInstance().selectByHoKhau(sotang,sophong));
+        }
         vehicleTableView.setItems(searchResult);
     }
 
-    private ObservableList<PhuongTien> getSearchResult(String searchTerm) {
-        // Thực hiện tìm kiếm trong cơ sở dữ liệu hoặc danh sách xe
-        // và trả về danh sách kết quả
-        // Đây là một ví dụ đơn giản, bạn cần thay thế bằng logic thực tế
-        ObservableList<PhuongTien> searchResult = FXCollections.observableArrayList();
+    private ObservableList<PhuongTien> getSearchResultOnLicensePlate(String searchTerm) {
+
+        ObservableList<PhuongTien> searchResult = FXCollections.observableArrayList(PhuongTienDao.getInstance().selectByName(searchTerm));
         return searchResult;
     }
 

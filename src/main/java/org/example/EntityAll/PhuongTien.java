@@ -29,10 +29,28 @@ public class PhuongTien {
     public PhuongTien() {
     }
 
-    public PhuongTien(String loaiPhuongTien, String bienSoXe, double phiGuiXe) {
+    public PhuongTien(String loaiPhuongTien, String bienSoXe, double phiGuiXe, int soTang, int soPhong) {
         this.loaiPhuongTien = loaiPhuongTien;
         this.bienSoXe = bienSoXe;
         this.phiGuiXe = phiGuiXe;
+        this.soTang = soTang;
+        this.soPhong = soPhong;
+    }
+
+    public int getSoTang() {
+        return soTang;
+    }
+
+    public void setSoTang(int soTang) {
+        this.soTang = soTang;
+    }
+
+    public int getSoPhong() {
+        return soPhong;
+    }
+
+    public void setSoPhong(int soPhong) {
+        this.soPhong = soPhong;
     }
 
     public String getLoaiPhuongTien() {
