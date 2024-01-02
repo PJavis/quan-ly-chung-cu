@@ -13,6 +13,7 @@ import org.example.getData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class QuanlyThuPhiGuiXeController {
     @FXML
@@ -82,14 +83,31 @@ public class QuanlyThuPhiGuiXeController {
                 } else {
                     Button deleteButton = new Button("Xoá");
                     deleteButton.setOnAction(event -> {
-                        PhuongTien phuongTien = getTableView().getItems().get(getIndex());
 
-                        // Thực hiện logic xoá tại đây
-                        getData.getInstance().removePhuongTien(phuongTien);
-                        PhuongTienDao.getInstance().delete(phuongTien);
-                        phuongTiens = FXCollections.observableArrayList(phuongTienList);
-                        vehicleTableView.setItems(phuongTiens);
+                        Alert alert=new Alert(Alert.AlertType.WARNING);
+                        alert.setHeaderText("Bạn chắc chắn muốn xóa phương tiện?");
+                        alert.setContentText("Khi đó thông tin về phương tiện sẽ không còn");
 
+                        ButtonType buttonTypeOK = new ButtonType("OK", ButtonType.OK.getButtonData());
+                        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonType.CANCEL.getButtonData());
+
+                        alert.getButtonTypes().setAll(buttonTypeOK, buttonTypeCancel);
+
+                        Optional<ButtonType> result = alert.showAndWait();
+                        if (result.isPresent() && result.get() == buttonTypeOK) {
+                            PhuongTien phuongTien = getTableView().getItems().get(getIndex());
+                            // Thực hiện logic xoá tại đây
+                            getData.getInstance().removePhuongTien(phuongTien);
+                            PhuongTienDao.getInstance().delete(phuongTien);
+
+                            Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert1.setHeaderText("Thành công");
+                            alert1.setContentText("Xóa phương tiện thành công");
+                            alert1.showAndWait();
+
+                            phuongTiens = FXCollections.observableArrayList(phuongTienList);
+                            vehicleTableView.setItems(phuongTiens);
+                        }
                     });
                     setGraphic(deleteButton);
                 }
@@ -187,11 +205,11 @@ public class QuanlyThuPhiGuiXeController {
                 alert.setTitle("Thành công");
                 alert.setContentText("Đăng ký phương tiện mới thành công.");
                 alert.showAndWait();
+                phuongTiens = FXCollections.observableArrayList(phuongTienList);
             } else {
                 // Hiển thị thông báo khi biển số xe đã tồn tại
                 showAlert("Lỗi", "Biển số xe đã tồn tại trong danh sách.");
             }
-
             vehicleTableView.setItems(phuongTiens);
 
             // (Optional) Clear các trường nhập liệu sau khi thêm mới
