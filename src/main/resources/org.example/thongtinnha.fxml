@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="567.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.thongtinnhaController">
+   <children>
+      <Label fx:id="sophong" prefHeight="24.0" prefWidth="65.0" text="Số phòng">
+         <HBox.margin>
+            <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
+         </HBox.margin>
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="sotang" layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="65.0" text="Số tầng">
+         <HBox.margin>
+            <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
+         </HBox.margin>
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="tenchuho" layoutX="38.0" layoutY="10.0" prefHeight="24.0" prefWidth="65.0" text="Tên chủ hộ">
+         <HBox.margin>
+            <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
+         </HBox.margin>
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="sonhankhau" layoutX="66.0" layoutY="10.0" prefHeight="24.0" prefWidth="65.0" text="Số người ở">
+         <HBox.margin>
+            <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
+         </HBox.margin>
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="tienthue" layoutX="94.0" layoutY="10.0" prefHeight="24.0" prefWidth="65.0" text="Tiền nhà">
+         <HBox.margin>
+            <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
+         </HBox.margin>
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="dientich" prefHeight="24.0" prefWidth="87.0" text="Diện tích phòng">
+         <HBox.margin>
+            <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
+         </HBox.margin>
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+   </children>
+</HBox>
