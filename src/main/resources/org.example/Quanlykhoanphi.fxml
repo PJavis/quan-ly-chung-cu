@@ -12,7 +12,6 @@
     <fx:include source="DashBoard.fxml" />
     <Pane layoutX="222.0" layoutY="-5.0" prefHeight="759.0" prefWidth="697.0" styleClass="pane_11">
         <children>
-
             <Label layoutX="410.0" layoutY="21.0" prefHeight="61.0" prefWidth="295.0" text="Danh sách khoản phí">
                 <font>
                     <Font name="Arial Bold" size="26.0" />
