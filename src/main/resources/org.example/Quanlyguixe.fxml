@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.QuanlyThuPhiGuiXeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.QuanlyThuPhiGuiXeController">
 
     <TextField fx:id="searchTextField" promptText="Nhập biển số xe" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
     <Button onAction="#searchButtonClicked" text="Tìm Kiếm" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="10.0" />
 
     <TableView fx:id="vehicleTableView" prefHeight="456.0" prefWidth="655.0" AnchorPane.bottomAnchor="231.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
         <columns>
-            <TableColumn fx:id="biensoxeColumn" prefWidth="186.40000569820404" text="Biển số xe" />
-            <TableColumn fx:id="loaixeColumn" prefWidth="138.4000244140625" text="Loại xe" />
-            <TableColumn fx:id="sotangColumn" prefWidth="164.79998779296875" text="Số tầng" />
-            <TableColumn fx:id="sophongColumn" prefWidth="148.7999267578125" text="Số phòng" />
+            <TableColumn fx:id="biensoxeColumn" prefWidth="209.9999942779541" text="Biển số xe" />
+            <TableColumn fx:id="loaixeColumn" prefWidth="105.19998168945312" text="Loại xe" />
+            <TableColumn fx:id="sotangColumn" prefWidth="134.79998779296875" text="Số tầng" />
+            <TableColumn fx:id="sophongColumn" prefWidth="140.39999389648438" text="Số phòng" />
+            <TableColumn fx:id="deleteColumn" prefWidth="53.4000244140625" text="Xoá" />
             <!-- Thêm các cột khác nếu cần -->
         </columns>
     </TableView>

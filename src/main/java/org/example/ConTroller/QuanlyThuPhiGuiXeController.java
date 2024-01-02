@@ -15,7 +15,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class QuanlyThuPhiGuiXeController {
-
     @FXML
     private TextField searchTextField;
 
@@ -35,9 +34,6 @@ public class QuanlyThuPhiGuiXeController {
     private TextField sophong;
 
     @FXML
-    private Button taomoiButton;
-
-    @FXML
     private TextField biensoxe;
 
     @FXML
@@ -55,6 +51,9 @@ public class QuanlyThuPhiGuiXeController {
     @FXML
     private TableColumn<PhuongTien, Integer> sophongColumn;
 
+    @FXML
+    public TableColumn<PhuongTien, Void> deleteColumn;
+
     private  ObservableList<PhuongTien> phuongTiens;
 
     private List<PhuongTien> phuongTienList = getData.getInstance().getPhuongTiens();
@@ -64,7 +63,7 @@ public class QuanlyThuPhiGuiXeController {
     public void initialize() {
         // Khởi tạo cột và cài đặt dữ liệu cho TableView
         phuongTiens = FXCollections.observableArrayList(phuongTienList);
-        phuongTienList.sort(
+        phuongTiens.sort(
                 Comparator.comparingInt(PhuongTien::getSoTang)
                         .thenComparingInt(PhuongTien::getSoPhong)
         );
@@ -74,9 +73,32 @@ public class QuanlyThuPhiGuiXeController {
         sotangColumn.setCellValueFactory(new PropertyValueFactory<>("soTang"));
         sophongColumn.setCellValueFactory(new PropertyValueFactory<>("soPhong"));
         loaiphuongtien.setItems(FXCollections.observableArrayList("Xe Máy", "Ô Tô", "Xe Đạp"));
+        deleteColumn.setCellFactory(param -> new TableCell<PhuongTien, Void>() {
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    Button deleteButton = new Button("Xoá");
+                    deleteButton.setOnAction(event -> {
+                        PhuongTien phuongTien = getTableView().getItems().get(getIndex());
+
+                        // Thực hiện logic xoá tại đây
+                        getData.getInstance().removePhuongTien(phuongTien);
+                        PhuongTienDao.getInstance().delete(phuongTien);
+                        phuongTiens = FXCollections.observableArrayList(phuongTienList);
+                        vehicleTableView.setItems(phuongTiens);
+
+                    });
+                    setGraphic(deleteButton);
+                }
+            }
+        });
 
         // Thiết lập chính sách tự động resize cho TableView
         vehicleTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        vehicleTableView.setItems(phuongTiens);
     }
 
     private void showAlert(String title, String content) {
@@ -139,12 +161,37 @@ public class QuanlyThuPhiGuiXeController {
             int soPhong1 = Integer.parseInt(sophongTemp);
 
             // Tạo mới một đối tượng PhuongTien
-            PhuongTien newPhuongTien = new PhuongTien(loaiPhuongTien, bienSoXe, 0, soTang1, soPhong1);
+            double phiguixe = 0;
+            switch (loaiPhuongTien.toLowerCase()) {
+                case "xe may":
+                    phiguixe = 700;
+                    break;
+                case "oto":
+                    phiguixe = 1200;
+                    break;
+                // Thêm các trường hợp khác nếu cần
+                default:
+                    phiguixe = 500;
+                    break;
+            }
+            PhuongTien newPhuongTien = new PhuongTien(loaiPhuongTien, bienSoXe, phiguixe, soTang1, soPhong1);
 
             // Thêm mới vào danh sách và cập nhật TableView
-            phuongTiens.add(newPhuongTien);
-            PhuongTienDao.getInstance().save(newPhuongTien);
-            showAlert("Thành công", "Đăng ký phương tiện mới thành công.");
+            boolean isAdded = getData.getInstance().addPhuongTien(newPhuongTien);
+
+            if (isAdded) {
+                // Hiển thị thông báo khi thêm thành công
+                PhuongTienDao.getInstance().save(newPhuongTien);
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Thành công");
+                alert.setContentText("Đăng ký phương tiện mới thành công.");
+                alert.showAndWait();
+            } else {
+                // Hiển thị thông báo khi biển số xe đã tồn tại
+                showAlert("Lỗi", "Biển số xe đã tồn tại trong danh sách.");
+            }
+
             vehicleTableView.setItems(phuongTiens);
 
             // (Optional) Clear các trường nhập liệu sau khi thêm mới

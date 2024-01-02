@@ -88,13 +88,13 @@ public class getData {
 
     public List<PhuongTien> getPhuongTiens(){return phuongTiens;}
     public boolean addPhuongTien(PhuongTien phuongTien) {
-        for (PhuongTien p : phuongTiens) {
-            if (p.getBienSoXe().equals(phuongTien.getBienSoXe())) {
-                return false;
-            }
+        boolean isDuplicate = phuongTiens.stream()
+                .anyMatch(p -> p.getBienSoXe().equals(phuongTien.getBienSoXe()));
+
+        if (!isDuplicate) {
+            phuongTiens.add(phuongTien);
         }
-        phuongTiens.add(phuongTien);
-        return true;
+        return !isDuplicate;
     }
 
     public void removePhuongTien(PhuongTien phuongTien){phuongTiens.remove(phuongTien);}

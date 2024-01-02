@@ -1,5 +1,6 @@
 package org.example.Hibernatedao;
 
+import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.PhuongTien;
 import org.example.Function.*;
 import org.hibernate.Session;
@@ -22,6 +23,18 @@ public class PhuongTienDao implements Save<PhuongTien>, SelectByName<PhuongTien>
             Hibernate.closeSession(session);
         } catch (Exception e) {
             System.out.println("Luu phuong tien co loi");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void delete(PhuongTien phuongTien) {
+        try {
+
+            session = Hibernate.getSession(sessionFactory);
+            session.delete(phuongTien);
+            Hibernate.closeSession(session);
+
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
