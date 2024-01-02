@@ -3,14 +3,14 @@ package org.example.ConTroller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.example.EntityAll.HoKhau;
 import org.example.getData;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class TrangchuController implements Initializable {
@@ -40,6 +40,18 @@ public class TrangchuController implements Initializable {
         setTongsonguoio();
         setSophongcontrong();
         setTongsotienthuduoc();
+        for (HoKhau hoKhau : getData.getInstance().getHoKhaus()) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/thongtinnha.fxml"));
+                HBox hbox = loader.load();
+                thongtinnhaController thongtinnhaController = loader.getController();
+                thongtinnhaController.laydata(hoKhau);
+
+                cacitem.getChildren().add(hbox);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 //    public  String getDecimalFormatsotien(){
 //        int giatri = getData.getInstance().getHoKhaus().size()*10000000;
