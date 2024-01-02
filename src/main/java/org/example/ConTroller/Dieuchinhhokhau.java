@@ -198,8 +198,7 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.ge
             alert1.setContentText("Điều chỉnh hộ khẩu thành công");
             alert1.showAndWait();
             getData.getInstance().addHokhau(hoKhaus);
-            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            ag0r.close();
+
 
 
     }
@@ -228,8 +227,7 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.ge
             alert1.setHeaderText("Thành công");
             alert1.setContentText("Xóa hộ khẩu thành công");
             alert1.showAndWait();
-            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            ag0r.close();
+            quaylai(event);
         }
 
     }
@@ -304,6 +302,20 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.ge
             };
         });
         danhsachkhoanphi.setItems(nopPhis);
+    }
+
+    @FXML
+    void quaylai(ActionEvent event) {
+        try {
+            Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlyphong.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            ag0r1.setScene(scene);
+            ag0r1.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
