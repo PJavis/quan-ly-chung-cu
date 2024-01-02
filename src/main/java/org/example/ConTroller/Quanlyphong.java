@@ -111,16 +111,11 @@ public class Quanlyphong implements Initializable {
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Dieuchinhhokhau.fxml"));
                                 Parent root = loader.load();
                                 Scene scene = new Scene(root);
-                                Stage ag0r1=new Stage();
-                                ag0r1.setScene(scene);
-                                ag0r1.initModality(Modality.APPLICATION_MODAL);
-                                ag0r1.initOwner(ag0r);
+                                ag0r.setScene(scene);
                                 Dieuchinhhokhau dieuchinhhokhau=loader.getController();
                                 dieuchinhhokhau.setHokhau(person);
-                                ag0r1.showAndWait();
-                                hoKhauList=getData.getInstance().getHoKhaus();
-                                danhsachhokhau();
-                                timkiemhokhau();
+                                ag0r.show();
+
                             } catch (Exception e) {
                                 System.out.println(e.getMessage());
                             }

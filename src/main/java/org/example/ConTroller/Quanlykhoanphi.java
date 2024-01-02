@@ -227,7 +227,7 @@ public class Quanlykhoanphi implements Initializable {
                         nopPhi.setGiaTri(khoanPhi.getGiaTri()*hoKhau.getDienTichPhong());
                         else nopPhi.setGiaTri(khoanPhi.getGiaTri());
                         NopPhiDao.getInstance().save(nopPhi);
-                }
+                    }
 
             tenkhoanphi.clear();
             hannop.clear();
