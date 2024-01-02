@@ -16,10 +16,10 @@
 
     <TableView fx:id="vehicleTableView" prefHeight="456.0" prefWidth="655.0" AnchorPane.bottomAnchor="231.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
         <columns>
-            <TableColumn fx:id="biensoxeColumn" text="Biển số xe" />
-            <TableColumn fx:id="loaixeColumn" text="Loại xe" />
-            <TableColumn fx:id="sotangColumn" text="Số tầng" />
-            <TableColumn fx:id="sophongColumn" text="Số phòng" />
+            <TableColumn fx:id="biensoxeColumn" prefWidth="186.40000569820404" text="Biển số xe" />
+            <TableColumn fx:id="loaixeColumn" prefWidth="138.4000244140625" text="Loại xe" />
+            <TableColumn fx:id="sotangColumn" prefWidth="164.79998779296875" text="Số tầng" />
+            <TableColumn fx:id="sophongColumn" prefWidth="148.7999267578125" text="Số phòng" />
             <!-- Thêm các cột khác nếu cần -->
         </columns>
     </TableView>
@@ -40,13 +40,13 @@
         <font>
             <Font name="Arial Bold" size="14.0" />
         </font></Label>
-    <ComboBox fx:id="loaiphuongtien" editable="true" layoutX="153.0" layoutY="545.0" prefHeight="34.0" prefWidth="231.0" promptText="Loại phương tiện" style="-fx-border-color: #353A56;" />
+    <ComboBox fx:id="loaiphuongtien" editable="true" layoutX="150.0" layoutY="545.0" prefHeight="34.0" prefWidth="231.0" promptText="Loại phương tiện" style="-fx-border-color: #353A56;" />
 
     <Label layoutX="22.0" layoutY="660.0" text="Số tầng:">
         <font>
             <Font name="Arial Bold" size="14.0" />
         </font></Label>
-    <TextField fx:id="sotang" layoutX="141.0" layoutY="651.0" prefHeight="34.0" prefWidth="150.0" promptText="Số tầng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
+    <TextField fx:id="sotang" layoutX="150.0" layoutY="651.0" prefHeight="34.0" prefWidth="150.0" promptText="Số tầng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
 
     <Label layoutX="352.0" layoutY="660.0" text="Số phòng:">
         <font>

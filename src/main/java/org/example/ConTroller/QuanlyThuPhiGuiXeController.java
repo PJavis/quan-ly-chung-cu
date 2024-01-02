@@ -8,7 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.EntityAll.PhuongTien;
+import org.example.getData;
+
+import java.util.List;
 
 public class QuanlyThuPhiGuiXeController {
 
@@ -36,7 +40,18 @@ public class QuanlyThuPhiGuiXeController {
     @FXML
     private TableColumn<PhuongTien, Integer> sophongColumn;
 
-    // Các cài đặt và phương thức khác
+    private List<PhuongTien> phuongTienList = getData.getInstance().getPhuongTiens();
+
+    public void initialize() {
+        // Khởi tạo cột và cài đặt dữ liệu cho TableView
+        biensoxeColumn.setCellValueFactory(new PropertyValueFactory<>("bienSoXe"));
+        loaixeColumn.setCellValueFactory(new PropertyValueFactory<>("loaiXe"));
+        sotangColumn.setCellValueFactory(new PropertyValueFactory<>("soTang"));
+        sophongColumn.setCellValueFactory(new PropertyValueFactory<>("soPhong"));
+
+        // Thiết lập chính sách tự động resize cho TableView
+        vehicleTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    }
 
     @FXML
     private void searchButtonClicked(ActionEvent event) {

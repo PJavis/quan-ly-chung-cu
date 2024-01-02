@@ -30,7 +30,7 @@ public class PhuongTienDao implements Save<PhuongTien>, SelectAll, Update<Phuong
     }
 
     @Override
-    public List<?> selectAll() {
+    public List<PhuongTien> selectAll() {
         List<PhuongTien> phuongTiens ;
         try {
             session = Hibernate.getSession(sessionFactory);
