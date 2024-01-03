@@ -181,10 +181,10 @@ public class QuanlyThuPhiGuiXeController {
             // Tạo mới một đối tượng PhuongTien
             double phiguixe = 0;
             switch (loaiPhuongTien.toLowerCase()) {
-                case "xe may":
+                case "xe máy":
                     phiguixe = 700;
                     break;
-                case "oto":
+                case "ô tô":
                     phiguixe = 1200;
                     break;
                 // Thêm các trường hợp khác nếu cần
