@@ -12,7 +12,7 @@
             <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
          </HBox.margin>
          <font>
-            <Font name="System Bold" size="10.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <Label fx:id="sotang" layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="65.0" text="Số tầng">
@@ -20,7 +20,7 @@
             <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
          </HBox.margin>
          <font>
-            <Font name="System Bold" size="10.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <Label fx:id="tenchuho" layoutX="38.0" layoutY="10.0" prefHeight="24.0" prefWidth="65.0" text="Tên chủ hộ">
@@ -28,7 +28,7 @@
             <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
          </HBox.margin>
          <font>
-            <Font name="System Bold" size="10.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <Label fx:id="sonhankhau" layoutX="66.0" layoutY="10.0" prefHeight="24.0" prefWidth="65.0" text="Số người ở">
@@ -36,7 +36,7 @@
             <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
          </HBox.margin>
          <font>
-            <Font name="System Bold" size="10.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <Label fx:id="tienthue" layoutX="94.0" layoutY="10.0" prefHeight="24.0" prefWidth="65.0" text="Tiền nhà">
@@ -44,7 +44,7 @@
             <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
          </HBox.margin>
          <font>
-            <Font name="System Bold" size="10.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <Label fx:id="dientich" prefHeight="24.0" prefWidth="87.0" text="Diện tích phòng">
@@ -52,7 +52,7 @@
             <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
          </HBox.margin>
          <font>
-            <Font name="System Bold" size="10.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
          <opaqueInsets>
             <Insets />

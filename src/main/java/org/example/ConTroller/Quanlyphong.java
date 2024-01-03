@@ -28,10 +28,7 @@ import org.example.Hibernatedao.NhanKhauDao;
 import org.example.getData;
 
 import java.net.URL;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Quanlyphong implements Initializable {
 
@@ -67,6 +64,7 @@ public class Quanlyphong implements Initializable {
     private ObservableList<HoKhau> hoKhaus;
     @FXML
     private BarChart<String,Number> hokhauchart;
+    private  Map<Integer,NhanKhau> nhanKhauList=getData.getInstance().getNhanKhaus();
 
     @FXML
     private Pane panehokhau;
@@ -172,23 +170,57 @@ public class Quanlyphong implements Initializable {
             System.out.println(e.getMessage());
         }
     }
-
-    public void chart() {
+    public void charttuoi() {
         try {
-            NhanKhauDao nhanKhauDao = NhanKhauDao.getInstance();
-
             // lay mot chut data ha
-            List<NhanKhau> nhanKhauList = nhanKhauDao.selectAll();
-
+            List<NhanKhau> nhanKhauList1 = new ArrayList<>(nhanKhauList.values());
             // tinh distribution
-            Map<Integer, Long> ageDistribution = nhanKhauDao.calculateTimeDistribution(nhanKhauList);
-
-            //cap nhat bieu do
+            Map<Integer, Long> ageDistribution = NhanKhauDao.getInstance().calculateTimeDistribution(nhanKhauList1);
+            // cap nhat bieu do
             updateChart(ageDistribution);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    public void chartnamnu() {
+        try {
+            Map<String, Long> genderDistribution = NhanKhauDao.getInstance().tinhtilenamnu();
+            updateGenderChart(genderDistribution);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void chartnamsinh() {
+        try {
+            // Thực hiện thống kê theo năm
+            Map<Integer, Long> yearDistribution = NhanKhauDao.getInstance().tinhnamsinh();
+
+            // Cập nhật biểu đồ
+            updateChart(yearDistribution);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateGenderChart(Map<String, Long> genderDistribution) {
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
+        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+        for (Map.Entry<String, Long> entry : genderDistribution.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+        }
+
+        barChart.getData().clear();
+        barChart.getData().add(series);
+
+        panehokhau.getChildren().clear();
+        panehokhau.getChildren().add(barChart);
+
+        barChart.setPrefSize(panehokhau.getPrefWidth(), panehokhau.getPrefHeight());
+    }
+
 
     public void updateChart(Map<Integer, Long> ageDistribution) {
         CategoryAxis xAxis = new CategoryAxis();
@@ -205,31 +237,38 @@ public class Quanlyphong implements Initializable {
 
         panehokhau.getChildren().clear();
         panehokhau.getChildren().add(barChart);
+
         barChart.setPrefSize(panehokhau.getPrefWidth(), panehokhau.getPrefHeight());
     }
-    private String listchoice[] = {"Thống kê theo năm","Thống kê theo quý","Thống kê theo tháng"};
 
-    public void setBoxphong() {
-        ObservableList<String>list = FXCollections.observableArrayList(listchoice);
-        this.boxphong.setItems(list);
+
+
+
+    private  String luachon[] = {"Thống kê nam nữ","Thống kê theo năm sinh","Thống kê theo tuổi"};
+
+    public void setBoxluachon( ) {
+        ObservableList<String>boxbox = FXCollections.observableArrayList(luachon);
+        boxphong.setItems(boxbox);
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL location, ResourceBundle resources) {
         danhsachhokhau();
         timkiemhokhau();
-        //chart();
-        setBoxphong();
+//        chart();
+        setBoxluachon();
         boxphong.setOnAction(event -> {
             String selectedOption = boxphong.getSelectionModel().getSelectedItem();
             if (selectedOption != null) {
                 switch (selectedOption) {
-                    case "Thống kê theo năm":
-                        chart();
+                    case "Thống kê nam nữ":
+                        chartnamnu();
                         break;
-                    case "Thống kê theo quý":
+                    case "Thống kê theo năm sinh":
+                        chartnamsinh();
                         break;
-                    case "Thống kê theo tháng":
+                    case "Thống kê theo tuổi":
+                        charttuoi();
                         break;
                 }
             }
