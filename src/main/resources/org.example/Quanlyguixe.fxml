@@ -8,8 +8,8 @@
     <fx:include source="DashBoard.fxml" />
     <Pane layoutX="222.0" layoutY="6.0" prefHeight="759.0" prefWidth="697.0" styleClass="pane_11">
         <children>
-            <TextField fx:id="searchTextField" layoutX="6.0" layoutY="13.0" promptText="Nhập biển số xe" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="13.0" />
-            <Button layoutX="159.0" layoutY="13.0" onAction="#searchButtonClicked" text="Tìm Kiếm" AnchorPane.leftAnchor="159.0" AnchorPane.topAnchor="13.0" />
+            <TextField fx:id="searchTextField" layoutX="11.0" layoutY="13.0" promptText="Nhập biển số xe" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="13.0" />
+            <Button layoutX="164.0" layoutY="13.0" onAction="#searchButtonClicked" text="Tìm Kiếm" AnchorPane.leftAnchor="164.0" AnchorPane.topAnchor="13.0" />
 
             <TableView fx:id="vehicleTableView" layoutX="11.0" layoutY="67.0" prefHeight="456.0" prefWidth="655.0" AnchorPane.bottomAnchor="236.20000000000005" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="31.600000000000023" AnchorPane.topAnchor="67.0">
                 <columns>

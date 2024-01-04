@@ -40,7 +40,7 @@
       </Pane>
       <Pane layoutX="5.0" layoutY="264.0" prefHeight="54.0" prefWidth="215.0" styleClass="side_ankerpane">
          <children>
-            <Button layoutX="16.0" layoutY="5.0" mnemonicParsing="false" onAction="#quanlyphongo" prefHeight="44.0" prefWidth="183.0" styleClass="buttontrai1" text="Quản lý phòng ở" textFill="#f4e8e8">
+            <Button layoutX="16.0" layoutY="5.0" mnemonicParsing="false" onAction="#quanlyphongo" prefHeight="44.0" prefWidth="183.0" styleClass="buttontrai1" text="Quản lý hộ khẩu" textFill="#f4e8e8">
                <font>
                   <Font name="Candara Bold" size="13.0" />
                </font>
@@ -65,7 +65,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="3.0" layoutY="426.0" prefHeight="54.0" prefWidth="215.0" styleClass="side_ankerpane">
+      <Pane layoutX="5.0" layoutY="426.0" prefHeight="54.0" prefWidth="215.0" styleClass="side_ankerpane">
          <children>
             <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#quanlycackhoanphi" prefHeight="44.0" prefWidth="183.0" styleClass="buttontrai1" text="Quản lý các khoản phí" textFill="#f4f1f1">
                <font>
@@ -74,9 +74,9 @@
             </Button>
          </children>
       </Pane>
-        <Pane layoutX="5.0" layoutY="372.0" prefHeight="54.0" prefWidth="215.0" styleClass="side_ankerpane">
+        <Pane layoutX="5.0" layoutY="480.0" prefHeight="54.0" prefWidth="215.0" styleClass="side_ankerpane">
             <children>
-                <Button layoutX="16.0" layoutY="5.0" mnemonicParsing="false" onAction="#quanlythuphiguixe" prefHeight="44.0" prefWidth="183.0" styleClass="buttontrai1" text="Quản lý thu phí gửi xe" textFill="#ece8e8">
+                <Button layoutX="16.0" layoutY="5.0" mnemonicParsing="false" onAction="#quanlythuphiguixe" prefHeight="44.0" prefWidth="183.0" styleClass="buttontrai1" text="Quản lý gửi xe" textFill="#ece8e8">
                     <font>
                         <Font name="Candara Bold" size="13.0" />
                     </font>
