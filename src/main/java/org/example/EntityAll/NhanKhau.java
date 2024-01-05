@@ -30,7 +30,7 @@ public class NhanKhau {
     @Column(name ="so_tang")
     private int sotang;
 
-    @Column(name = "trang_thai", length = 1000)
+    @Column(name = "trang_thai", length = 100)
     private String trangThai;
 
     @Column(name = "chu_ho")
