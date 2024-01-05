@@ -36,10 +36,10 @@ public class NhanKhau {
     @Column(name = "chu_ho")
     private boolean chuHo;
 
-    @Column(name = "CCCD")
+    @Column(name = "CCCD", length = 20)
     private String CCCD;
 
-    @Column(name = "So_dien_thoai")
+    @Column(name = "So_dien_thoai", length = 20)
     private String soDienThoai;
 
     public NhanKhau() {
