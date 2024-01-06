@@ -30,16 +30,16 @@ public class NhanKhau {
     @Column(name ="so_tang")
     private int sotang;
 
-    @Column(name = "trang_thai", length = 1000)
+    @Column(name = "trang_thai", length = 100)
     private String trangThai;
 
     @Column(name = "chu_ho")
     private boolean chuHo;
 
-    @Column(name = "CCCD")
+    @Column(name = "CCCD", length = 20)
     private String CCCD;
 
-    @Column(name = "So_dien_thoai")
+    @Column(name = "So_dien_thoai", length = 20)
     private String soDienThoai;
 
     public NhanKhau() {
