@@ -108,8 +108,7 @@ public class Taomoihokhau implements Initializable {
                 LocalDate datetime = LocalDate.parse(date, formatter);
                 nhanKhau.setNgaySinh(Date.valueOf(datetime));
                 nhanKhau.setChuHo(true);
-                nhanKhau.setSophong(hoKhau.getId());
-                nhanKhau.setSotang(hoKhau.getSoTang());
+                nhanKhau.setHoKhau(hoKhau);
                 nhanKhau.setTrangThai("Đang ở");
                 NhanKhauDao.getInstance().save(nhanKhau);
                 getData.getInstance().addNhankhau(nhanKhau);

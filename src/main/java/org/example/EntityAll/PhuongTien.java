@@ -20,11 +20,12 @@ public class PhuongTien {
     @Column(name = "phi_gui_xe")
     private double phiGuiXe;
 
-    @Column(name = "so_tang")
-    private int soTang;
-
-    @Column(name = "so_phong")
-    private int soPhong;
+    @ManyToOne
+    @JoinColumns({
+            @JoinColumn(name = "so_tang", referencedColumnName = "so_tang"),
+            @JoinColumn(name = "so_phong", referencedColumnName = "id")
+    })
+    private HoKhau hoKhau;
 
     @Column(name = "ten_chu_xe")
     private String tenChuXe;
@@ -32,13 +33,20 @@ public class PhuongTien {
     public PhuongTien() {
     }
 
-    public PhuongTien(String loaiPhuongTien, String bienSoXe, double phiGuiXe, int soTang, int soPhong, String tenChuXe) {
+    public PhuongTien(String loaiPhuongTien, String bienSoXe, double phiGuiXe, HoKhau hoKhau, String tenChuXe) {
         this.loaiPhuongTien = loaiPhuongTien;
         this.bienSoXe = bienSoXe;
         this.phiGuiXe = phiGuiXe;
-        this.soTang = soTang;
-        this.soPhong = soPhong;
+        this.hoKhau = hoKhau;
         this.tenChuXe = tenChuXe;
+    }
+
+    public HoKhau getHoKhau() {
+        return hoKhau;
+    }
+
+    public void setHoKhau(HoKhau hoKhau) {
+        this.hoKhau = hoKhau;
     }
 
     public String getTenChuXe() {
@@ -50,19 +58,11 @@ public class PhuongTien {
     }
 
     public int getSoTang() {
-        return soTang;
-    }
-
-    public void setSoTang(int soTang) {
-        this.soTang = soTang;
+        return this.getHoKhau().getSoTang();
     }
 
     public int getSoPhong() {
-        return soPhong;
-    }
-
-    public void setSoPhong(int soPhong) {
-        this.soPhong = soPhong;
+        return this.getHoKhau().getId();
     }
 
     public String getLoaiPhuongTien() {

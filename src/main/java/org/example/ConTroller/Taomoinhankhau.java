@@ -80,8 +80,7 @@ public class Taomoinhankhau implements Initializable {
             try {
                 hoKhau.setSoNhanKhau(hoKhau.getSoNhanKhau()+1);
                 HoKhauDao.getInstance().update(hoKhau);
-                nhanKhau.setSophong(hoKhau.getId());
-                nhanKhau.setSotang(hoKhau.getSoTang());
+                nhanKhau.setHoKhau(hoKhau);
                 nhanKhau.setTrangThai("Đang ở");
                 NhanKhauDao.getInstance().save(nhanKhau);
                 getData.getInstance().addNhankhau(nhanKhau);

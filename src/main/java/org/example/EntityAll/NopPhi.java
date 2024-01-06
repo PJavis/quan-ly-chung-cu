@@ -15,17 +15,19 @@ public class NopPhi {
     private int id;
 
 
-    @Column(name = "id_khoan_phi", nullable = false)
-    private int idKhoanPhi;
+    @ManyToOne
+    @JoinColumn(name = "id_khoan_phi", nullable = false)
+    private KhoanPhi khoanPhi;
 
-
-    @Column(name = "so_phong")
-    private int soPhong;
     @Column(name = "gia_tri")
     private double giaTri;
 
-    @Column(name = "so_tang")
-    private int soTang;
+    @ManyToOne
+    @JoinColumns({
+            @JoinColumn(name = "so_phong", referencedColumnName = "id"),
+            @JoinColumn(name = "so_tang", referencedColumnName = "so_tang")
+    })
+    private HoKhau hoKhau;
 
     @Column(name="ten_chu-ho")
     private String tenchuho;
@@ -44,14 +46,30 @@ public class NopPhi {
         // Default constructor required by Hibernate
     }
 
-    public NopPhi(int id, int idKhoanPhi, int soPhong,int soTang, boolean trangThaiDongPhi, Date ngayNopPhi, double soTienDaDong) {
-        this.id = id;
-        this.idKhoanPhi = idKhoanPhi;
-        this.soPhong = soPhong;
-        this.soTang=soTang;
+    public NopPhi(KhoanPhi khoanPhi, double giaTri, HoKhau hoKhau, String tenchuho, boolean trangThaiDongPhi, Date ngayNopPhi, double soTienDaDong) {
+        this.khoanPhi = khoanPhi;
+        this.giaTri = giaTri;
+        this.hoKhau = hoKhau;
+        this.tenchuho = tenchuho;
         this.trangThaiDongPhi = trangThaiDongPhi;
         this.ngayNopPhi = ngayNopPhi;
         this.soTienDaDong = soTienDaDong;
+    }
+
+    public KhoanPhi getKhoanPhi() {
+        return khoanPhi;
+    }
+
+    public void setKhoanPhi(KhoanPhi khoanPhi) {
+        this.khoanPhi = khoanPhi;
+    }
+
+    public HoKhau getHoKhau() {
+        return hoKhau;
+    }
+
+    public void setHoKhau(HoKhau hoKhau) {
+        this.hoKhau = hoKhau;
     }
 
     public double getGiaTri() {
@@ -74,28 +92,9 @@ public class NopPhi {
         this.tenchuho = tenchuho;
     }
 
-    public int getSoPhong() {
-        return soPhong;
-    }
-
-    public void setSoPhong(int soPhong) {
-        this.soPhong = soPhong;
-    }
-
-    public int getSoTang() {
-        return soTang;
-    }
-
-    public void setSoTang(int soTang) {
-        this.soTang = soTang;
-    }
-
-    public void setIdKhoanPhi(int idKhoanPhi) {
-        this.idKhoanPhi = idKhoanPhi;
-    }
 
     public int getIdKhoanPhi() {
-        return idKhoanPhi;
+        return this.khoanPhi.getId();
     }
 
     public Date getNgayNopPhi() {
@@ -138,13 +137,17 @@ public class NopPhi {
         return decimalFormat.format(soTienDaDong);
     }
     public String getTenKhoanPhi(){
-        return KhoanPhiDao.getInstance().selectByid(idKhoanPhi).getTenKhoanPhi();
+        return KhoanPhiDao.getInstance().selectByid(this.khoanPhi.getId()).getTenKhoanPhi();
     }
     public String getLoaiKhoanPhi(){
-        return KhoanPhiDao.getInstance().selectByid(idKhoanPhi).getLoaiKhoanPhi();
+        return KhoanPhiDao.getInstance().selectByid(this.khoanPhi.getId()).getLoaiKhoanPhi();
     }
-    public KhoanPhi getKhoanphi(){
-        return KhoanPhiDao.getInstance().selectByid(idKhoanPhi);
+    public int getSoTang() {
+        return this.getHoKhau().getSoTang();
+
     }
 
+    public int getSoPhong() {
+        return this.getHoKhau().getId();
+    }
 }

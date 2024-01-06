@@ -25,11 +25,12 @@ public class NhanKhau {
     @Column(name = "quoc_tich", length = 50)
     private String quocTich;
 
-    @Column(name = "so_phong")
-    private int sophong;
-    @Column(name ="so_tang")
-    private int sotang;
-
+    @ManyToOne
+    @JoinColumns({
+            @JoinColumn(name = "so_tang", referencedColumnName = "so_tang"),
+            @JoinColumn(name = "so_phong", referencedColumnName = "id")
+    })
+    private HoKhau hoKhau;
     @Column(name = "trang_thai", length = 100)
     private String trangThai;
 
@@ -48,16 +49,24 @@ public class NhanKhau {
 
     // Constructors, getters, setters, and other methods as needed
 
-    public NhanKhau(int idNguoiDan, String ten, Date ngaySinh, int gioiTinh, String quocTich, int sophong,int sotang, String trangThai, boolean chuHo) {
-        this.idNguoiDan = idNguoiDan;
+
+    public NhanKhau(String ten, Date ngaySinh, int gioiTinh, String quocTich, HoKhau hoKhau, String trangThai, boolean chuHo, String CCCD, String soDienThoai) {
         this.ten = ten;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
         this.quocTich = quocTich;
-        this.sophong = sophong;
-        this.sotang=sotang;
+        this.hoKhau = hoKhau;
         this.trangThai = trangThai;
         this.chuHo = chuHo;
+        this.CCCD = CCCD;
+        this.soDienThoai = soDienThoai;
+    }
+
+    public HoKhau getHoKhau() {
+        return hoKhau;
+    }
+    public void setHoKhau(HoKhau hoKhau) {
+        this.hoKhau = hoKhau;
     }
 
     public int getIdNguoiDan() {
@@ -108,21 +117,6 @@ public class NhanKhau {
         this.quocTich = quocTich;
     }
 
-    public int getSophong() {
-        return sophong;
-    }
-
-    public void setSophong(int sophong) {
-        this.sophong = sophong;
-    }
-
-    public int getSotang() {
-        return sotang;
-    }
-
-    public void setSotang(int sotang) {
-        this.sotang = sotang;
-    }
 
     public String getTrangThai() {
         return trangThai;
