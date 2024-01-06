@@ -86,7 +86,7 @@ public class Dieuchinhnhankhau {
     }
     @FXML
         void dieuchinhnhankhau(ActionEvent event) {
-        if(isValidDateFormat(ngaysinh.getText())){
+        if(isValidDateFormat(ngaysinh.getText())&&!tennhankhau.getText().isEmpty()){
             nhanKhau.setTen(tennhankhau.getText());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String date= ngaysinh.getText();
@@ -128,7 +128,7 @@ public class Dieuchinhnhankhau {
         else {
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Thất bại");
-            alert.setContentText("Vui lòng điền ngày sinh theo dạng dd/mm/yyyy");
+            alert.setContentText("Vui lòng điền ngày sinh theo dạng dd/mm/yyyy và đầy đủ thông tin");
             alert.showAndWait();
         }
 
