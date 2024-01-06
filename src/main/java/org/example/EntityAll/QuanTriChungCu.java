@@ -32,7 +32,7 @@ public class QuanTriChungCu {
 
     @Lob
     @Column(name = "avatar")
-    private byte[] avt;
+    private String imagelink;
 
     public QuanTriChungCu() {
         // Default constructor required by Hibernate
@@ -41,12 +41,12 @@ public class QuanTriChungCu {
     // Constructors, getters, setters, and other methods as needed
 
 
-    public QuanTriChungCu(String tenNguoiQuanTri, String email, String soDienThoai, String diaChi, String moTa) {
+    public QuanTriChungCu(String tenNguoiQuanTri, String email, String soDienThoai, String diaChi, String moTa,String imagelink) {
         this.tenNguoiQuanTri = tenNguoiQuanTri;
         this.email = email;
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
-
+        this.imagelink = imagelink;
         this.moTa = moTa;
     }
 
@@ -93,4 +93,12 @@ public class QuanTriChungCu {
     public void setMoTa(String moTa) {
         this.moTa = moTa;
     }
+    public String laylinhanh() {
+        return imagelink;
+    }
+
+    public void setImagelink(String imagelink1){
+        this.imagelink = imagelink1;
+    }
+
 }

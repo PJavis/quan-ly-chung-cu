@@ -24,6 +24,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
+import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.NhanKhauDao;
 import org.example.getData;
 
@@ -201,6 +202,52 @@ public class Quanlyphong implements Initializable {
             e.printStackTrace();
         }
     }
+    public void chartthang(int year) {
+        try {
+            HoKhauDao hokhauDao = HoKhauDao.getInstance();
+            Map<Integer, Long> monthlyStatistics = hokhauDao.thongketheothang(year);
+            updatecharthang(monthlyStatistics);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void updatecharthang(Map<Integer, Long> monthlyStatistics) {
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
+        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+        for (Map.Entry<Integer, Long> entry : monthlyStatistics.entrySet()) {
+            String monthLabel = laytenthang(entry.getKey());
+            series.getData().add(new XYChart.Data<>(monthLabel, entry.getValue()));
+        }
+
+        barChart.getData().clear();
+        barChart.getData().add(series);
+
+        panehokhau.getChildren().clear();
+        panehokhau.getChildren().add(barChart);
+
+        barChart.setPrefSize(panehokhau.getPrefWidth(), panehokhau.getPrefHeight());
+    }
+    private String laytenthang(int month) {
+        switch (month) {
+            case 1: return "January";
+            case 2: return "February";
+            case 3: return "March";
+            case 4: return "April";
+            case 5: return "May";
+            case 6: return "June";
+            case 7: return "July";
+            case 8: return "August";
+            case 9: return "September";
+            case 10: return "October";
+            case 11: return "November";
+            case 12: return "December";
+            default: return "Unknown";
+        }
+    }
+
 
     public void updateGenderChart(Map<String, Long> genderDistribution) {
         CategoryAxis xAxis = new CategoryAxis();
@@ -244,7 +291,7 @@ public class Quanlyphong implements Initializable {
 
 
 
-    private  String luachon[] = {"Thống kê nam nữ","Thống kê theo năm sinh","Thống kê theo tuổi"};
+    private  String luachon[] = {"Thống kê theo tháng","Thống kê theo năm sinh","Thống kê nam nữ"};
 
     public void setBoxluachon( ) {
         ObservableList<String>boxbox = FXCollections.observableArrayList(luachon);
@@ -261,14 +308,14 @@ public class Quanlyphong implements Initializable {
             String selectedOption = boxphong.getSelectionModel().getSelectedItem();
             if (selectedOption != null) {
                 switch (selectedOption) {
-                    case "Thống kê nam nữ":
-                        chartnamnu();
+                    case "Thống kê theo tháng":
+                        chartthang(2024);
                         break;
                     case "Thống kê theo năm sinh":
                         chartnamsinh();
                         break;
-                    case "Thống kê theo tuổi":
-                        charttuoi();
+                    case "Thống kê theo nam nữ":
+                        chartnamnu();
                         break;
                 }
             }

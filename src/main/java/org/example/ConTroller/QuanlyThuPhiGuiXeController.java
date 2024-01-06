@@ -17,6 +17,9 @@ import java.util.Optional;
 
 public class QuanlyThuPhiGuiXeController {
     @FXML
+    private TextField tenchuxe;
+
+    @FXML
     private TextField searchTextField;
 
     @FXML
@@ -42,6 +45,10 @@ public class QuanlyThuPhiGuiXeController {
 
     @FXML
     private TableColumn<PhuongTien, String> biensoxeColumn;
+
+    @FXML
+    private TableColumn<PhuongTien, String> chuxeColumn;
+
 
     @FXML
     private TableColumn<PhuongTien, String> loaixeColumn;
@@ -74,6 +81,7 @@ public class QuanlyThuPhiGuiXeController {
         sotangColumn.setCellValueFactory(new PropertyValueFactory<>("soTang"));
         sophongColumn.setCellValueFactory(new PropertyValueFactory<>("soPhong"));
         loaiphuongtien.setItems(FXCollections.observableArrayList("Xe Máy", "Ô Tô", "Xe Đạp"));
+        chuxeColumn.setCellValueFactory(new PropertyValueFactory<>("tenChuXe"));
         deleteColumn.setCellFactory(param -> new TableCell<PhuongTien, Void>() {
             @Override
             protected void updateItem(Void item, boolean empty) {
@@ -166,10 +174,13 @@ public class QuanlyThuPhiGuiXeController {
         String loaiPhuongTien = loaiphuongtien.getValue();
         String sotangTemp = sotang.getText();
         String sophongTemp = sophong.getText();
+        String chuxe = tenchuxe.getText();
 
         try {
             // Kiểm tra xem các trường thông tin có được nhập hay không
-            if (bienSoXe.isEmpty() || loaiPhuongTien == null || sotangTemp.isEmpty() || sophongTemp.isEmpty()) {
+            if (bienSoXe.isEmpty() || loaiPhuongTien == null
+                    || sotangTemp.isEmpty() || sophongTemp.isEmpty()
+                    || chuxe.isEmpty()) {
                 showAlert("Lỗi", "Vui lòng nhập đầy đủ thông tin.");
                 return;
             }
@@ -192,7 +203,7 @@ public class QuanlyThuPhiGuiXeController {
                     phiguixe = 500;
                     break;
             }
-            PhuongTien newPhuongTien = new PhuongTien(loaiPhuongTien, bienSoXe, phiguixe, soTang1, soPhong1);
+            PhuongTien newPhuongTien = new PhuongTien(loaiPhuongTien, bienSoXe, phiguixe, soTang1, soPhong1, chuxe);
 
             // Thêm mới vào danh sách và cập nhật TableView
             boolean isAdded = getData.getInstance().addPhuongTien(newPhuongTien);

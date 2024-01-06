@@ -8,6 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.example.EntityAll.TaiKhoanBQT;
+import org.example.Hibernatedao.TaiKhoanBQTDao;
+
+import java.io.IOException;
 
 public class DashBoardController {
     @FXML
@@ -16,6 +20,8 @@ public class DashBoardController {
 
     @FXML
     private Button thongtintk;
+    private TaiKhoanBQT pino;
+
     @FXML
     void thuphi(ActionEvent event) {
         try {
@@ -101,17 +107,14 @@ public class DashBoardController {
         }
     }
     @FXML
-    void thongtintaikhoan(ActionEvent event) {
-        try {
-            Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/thongtin.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            ag0r1.setScene(scene);
-            ag0r1.show();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public void thongtintaikhoan(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Thongtin.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void quanlythuphiguixe(ActionEvent actionEvent) {

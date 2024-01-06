@@ -7,7 +7,9 @@ import org.example.Function.Update;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HoKhauDao implements Save<HoKhau>, SelectAll, Update<HoKhau>{
  private SessionFactory sessionFactory = Hibernate.getSessionFactory();
@@ -82,6 +84,33 @@ public class HoKhauDao implements Save<HoKhau>, SelectAll, Update<HoKhau>{
             System.out.println("Luu ho khau co loi");
             throw new RuntimeException(e);
         }
+    }
+    public Map<Integer, Long> thongketheothang(int year) {
+        Map<Integer, Long> monthlyStatistics = new HashMap<>();
+
+        try {
+            session = Hibernate.getSession(sessionFactory);
+
+            List<Object[]> results = session.createQuery(
+                            "SELECT MONTH(h.ngaytaohokhau), COUNT(h.id) " +
+                                    "FROM HoKhau h " +
+                                    "WHERE YEAR(h.ngaytaohokhau) = :year " +
+                                    "GROUP BY MONTH(h.ngaytaohokhau)", Object[].class)
+                    .setParameter("year", year)
+                    .getResultList();
+
+            for (Object[] result : results) {
+                int month = (int) result[0];
+                long count = (long) result[1];
+                monthlyStatistics.put(month, count);
+            }
+
+            Hibernate.closeSession(session);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return monthlyStatistics;
     }
 
 
