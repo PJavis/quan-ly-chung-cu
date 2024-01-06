@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="567.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.thongtinnhaController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="608.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.thongtinnhaController">
    <children>
       <Label fx:id="sophong" prefHeight="24.0" prefWidth="65.0" text="Số phòng">
          <HBox.margin>
@@ -31,7 +31,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="sonhankhau" layoutX="66.0" layoutY="10.0" prefHeight="24.0" prefWidth="65.0" text="Số người ở">
+      <Label fx:id="sonhankhau" layoutX="66.0" layoutY="10.0" prefHeight="24.0" prefWidth="76.0" text="Số người ở">
          <HBox.margin>
             <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
          </HBox.margin>
@@ -47,7 +47,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="dientich" prefHeight="24.0" prefWidth="87.0" text="Diện tích phòng">
+      <Label fx:id="dientich" prefHeight="24.0" prefWidth="97.0" text="Diện tích phòng">
          <HBox.margin>
             <Insets bottom="20.0" left="15.0" right="15.0" top="33.0" />
          </HBox.margin>

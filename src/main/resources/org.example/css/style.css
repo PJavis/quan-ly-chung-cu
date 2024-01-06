@@ -1,0 +1,19 @@
+.table-view .column-header {
+    -fx-background-color: #ffffff; /* Màu nền */
+    -fx-text-fill: black; /* Màu chữ */
+    -fx-font-weight: bold; /* Độ đậm của chữ */
+    -fx-font-size: 12px; /* Kích thước chữ */
+}
+
+.table-view .column-header .label {
+    -fx-alignment: CENTER; /* Căn giữa nội dung chữ */
+}
+
+.table-view {
+    -fx-border-color: #ffffff;
+    -fx-background-color: #ffffff;
+}
+
+.pane_11 {
+    -fx-background-color: #ffffff;
+}
