@@ -7,7 +7,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.PhuongTien;
+import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.PhuongTienDao;
 import org.example.getData;
 
@@ -184,10 +186,22 @@ public class QuanlyThuPhiGuiXeController {
                 showAlert("Lỗi", "Vui lòng nhập đầy đủ thông tin.");
                 return;
             }
-
+            HoKhau hoKhau = null;
             // Chuyển đổi số tầng và số phòng từ chuỗi sang số
-            int soTang1 = Integer.parseInt(sotangTemp);
-            int soPhong1 = Integer.parseInt(sophongTemp);
+            try {
+                int soTang1 = Integer.parseInt(sotangTemp);
+                int soPhong1 = Integer.parseInt(sophongTemp);
+
+                // Nếu chuyển đổi thành công, tiếp tục xử lý
+                hoKhau = HoKhauDao.getInstance().selectById(soPhong1, soTang1);
+
+                // Tiếp tục thực hiện các thao tác khác với hoKhau nếu cần
+            } catch (NumberFormatException e) {
+                // Xử lý khi chuyển đổi không thành công
+                showAlert("Lỗi", "Xin hãy nhập số tầng và số phòng là số nguyên dương.");
+            }
+
+
 
             // Tạo mới một đối tượng PhuongTien
             double phiguixe = 0;
@@ -203,7 +217,7 @@ public class QuanlyThuPhiGuiXeController {
                     phiguixe = 500;
                     break;
             }
-            PhuongTien newPhuongTien = new PhuongTien(loaiPhuongTien, bienSoXe, phiguixe, soTang1, soPhong1, chuxe);
+            PhuongTien newPhuongTien = new PhuongTien(loaiPhuongTien, bienSoXe, phiguixe, hoKhau, chuxe);
 
             // Thêm mới vào danh sách và cập nhật TableView
             boolean isAdded = getData.getInstance().addPhuongTien(newPhuongTien);

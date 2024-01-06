@@ -20,7 +20,7 @@ public class TaiKhoanBQT {
     @Column(name = "id_nguoi_quan_tri", nullable = false)
     private int idNguoiQuanTri;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_nguoi_quan_tri", referencedColumnName = "id", insertable = false, updatable = false)
     private QuanTriChungCu quanTriChungCu;
 

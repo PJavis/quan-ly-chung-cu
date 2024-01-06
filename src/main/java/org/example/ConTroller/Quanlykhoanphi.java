@@ -20,7 +20,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.KhoanPhi;
-import org.example.EntityAll.NhanKhau;
 import org.example.EntityAll.NopPhi;
 import org.example.Hibernatedao.KhoanPhiDao;
 import org.example.Hibernatedao.NopPhiDao;
@@ -225,9 +224,8 @@ public class Quanlykhoanphi implements Initializable {
                     List<HoKhau> hoKhaus=getData.getInstance().getHoKhaus();
                     for(HoKhau hoKhau : hoKhaus){
                         NopPhi nopPhi=new NopPhi();
-                        nopPhi.setIdKhoanPhi(khoanPhi.getId());
-                        nopPhi.setSoPhong(hoKhau.getId());
-                        nopPhi.setSoTang(hoKhau.getSoTang());
+                        nopPhi.setKhoanPhi(khoanPhi);
+                        nopPhi.setHoKhau(hoKhau);
                         nopPhi.setTenchuho(hoKhau.getTenchuho());
                         nopPhi.setSoTienDaDong(0);
                         if(Objects.equals(donvi1, "Số(kWh)")) nopPhi.setGiaTri(0);

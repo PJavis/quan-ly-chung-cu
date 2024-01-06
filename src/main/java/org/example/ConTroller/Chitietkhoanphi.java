@@ -13,28 +13,27 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.EntityAll.KhoanPhi;
-import org.example.EntityAll.LichSuGiaoDich;
 import org.example.EntityAll.NopPhi;
 import org.example.Hibernatedao.KhoanPhiDao;
 import org.example.Hibernatedao.NopPhiDao;
 
-import org.example.getData;
-
 import java.net.URL;
 import java.sql.Date;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class Chitietkhoanphi implements Initializable {
     private KhoanPhi khoanPhi;
@@ -107,24 +106,22 @@ public class Chitietkhoanphi implements Initializable {
 
         if(batbuoc) {
             nopPhis = FXCollections.observableArrayList(nopPhiList);
-            danhsachhokhau.setRowFactory(tv -> {
-                return new javafx.scene.control.TableRow<NopPhi>() {
-                    @Override
-                    protected void updateItem(NopPhi nopPhi, boolean empty) {
-                        super.updateItem(nopPhi, empty);
+            danhsachhokhau.setRowFactory(tv -> new TableRow<>() {
+                @Override
+                protected void updateItem(NopPhi nopPhi, boolean empty) {
+                    super.updateItem(nopPhi, empty);
 
-                        if (nopPhi == null || empty) {
-                            setStyle("");
+                    if (nopPhi == null || empty) {
+                        setStyle("");
+                    } else {
+                        // Kiểm tra điều kiện và thiết lập màu cho hàng
+                        if (nopPhi.getSotienchuanop() > 0) {
+                            setStyle("-fx-background-color: lightcoral;");
                         } else {
-                            // Kiểm tra điều kiện và thiết lập màu cho hàng
-                            if (nopPhi.getSotienchuanop() > 0) {
-                                setStyle("-fx-background-color: lightcoral;");
-                            } else {
-                                setStyle("");
-                            }
+                            setStyle("");
                         }
                     }
-                };
+                }
             });
             nopPhis.sort((o1, o2) -> {
                 double a=o1.getGiaTri()-o1.getSoTienDaDong();
@@ -135,9 +132,9 @@ public class Chitietkhoanphi implements Initializable {
                 }else if(a==0&&a1>0)return 1;
                 else if (a>0&&a1==0) return 0;
                 else {
-                    if(o1.getSoTang()>o2.getSoTang())return 0;
-                    else if (o1.getSoTang()==o2.getSoTang()) {
-                        if(o1.getSoPhong()> o2.getSoPhong())return 0;
+                    if(o1.getHoKhau().getSoTang()>o2.getHoKhau().getSoTang())return 0;
+                    else if (o1.getHoKhau().getSoTang()==o2.getHoKhau().getSoTang()) {
+                        if(o1.getHoKhau().getSoTang()> o2.getHoKhau().getSoTang())return 0;
                         else return 1;
                     }else return 1;
                 }
@@ -151,6 +148,7 @@ public class Chitietkhoanphi implements Initializable {
                 }
             }
             nopPhis.sort(Comparator.comparing(NopPhi::getSoTang).thenComparing(NopPhi::getSoPhong));
+
         }
         sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotien"));
         sothutu.setCellValueFactory(cellData -> {
@@ -162,66 +160,58 @@ public class Chitietkhoanphi implements Initializable {
         tenchuho.setCellValueFactory(new PropertyValueFactory<>("tenchuho"));
         sotiendanoptable.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotiendanop"));
 
-        lichsu.setCellFactory(cell-> {
-                    return new TableCell<NopPhi, Void>() {
-                        @Override
-                        protected void updateItem(Void item, boolean empty) {
-                            super.updateItem(item, empty);
+        lichsu.setCellFactory(cell-> new TableCell<>() {
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
 
-                            if (empty) {
-                                setGraphic(null);
-                            } else {
-                                Button button = new Button();
-                                FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
-                                iconView.setSize("16px");
-                                button.setGraphic(iconView);
-                                setGraphic(button);
-                                button.setOnAction(event -> {
-                                    NopPhi person = getTableView().getItems().get(getIndex());
-                                    try {
-                                        Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Lichsugiaodich.fxml"));
-                                        Parent root = loader.load();
-                                        Scene scene = new Scene(root);
-                                        Stage ag0r1=new Stage();
-                                        ag0r1.setScene(scene);
-                                        ag0r1.initModality(Modality.APPLICATION_MODAL);
-                                        ag0r1.initOwner(ag0r);
-                                        Lichsugiaodich lichsugiaodich=loader.getController();
-                                        lichsugiaodich.setNopPhi(person);
-                                        ag0r1.showAndWait();
-                                        timkiem();
-                                    } catch (Exception e) {
-                                        System.out.println(e.getMessage());
-                                    }
-                                });
-                            }
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    Button button = new Button();
+                    FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
+                    iconView.setSize("16px");
+                    button.setGraphic(iconView);
+                    setGraphic(button);
+                    button.setOnAction(event -> {
+                        NopPhi person = getTableView().getItems().get(getIndex());
+                        try {
+                            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Lichsugiaodich.fxml"));
+                            Parent root = loader.load();
+                            Scene scene = new Scene(root);
+                            Stage ag0r1 = new Stage();
+                            ag0r1.setScene(scene);
+                            ag0r1.initModality(Modality.APPLICATION_MODAL);
+                            ag0r1.initOwner(ag0r);
+                            Lichsugiaodich lichsugiaodich = loader.getController();
+                            lichsugiaodich.setNopPhi(person);
+                            ag0r1.showAndWait();
+                            timkiem();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
                         }
-                    };
-                });
+                    });
+                }
+            }
+        });
         danhsachhokhau.setItems(nopPhis);
     }
     public void timkiem(){
         FilteredList<NopPhi> filter = new FilteredList<>(nopPhis, e -> true);
 
-        timkiem.textProperty().addListener((Observable, oldValue, newValue) -> {
+        timkiem.textProperty().addListener((Observable, oldValue, newValue) -> filter.setPredicate(predicateEmployeeData -> {
 
-            filter.setPredicate(predicateEmployeeData -> {
+            if (newValue == null || newValue.isEmpty()) {
+                return true;
+            }
+            if(predicateEmployeeData.getTenchuho().toLowerCase().contains(newValue.toLowerCase()))
+                return true;
+            else if(String.valueOf(predicateEmployeeData.getHoKhau().getId()).contains(newValue)){
+                return  true;
+            } else return String.valueOf(predicateEmployeeData.getHoKhau().getSoTang()).contains(newValue);
 
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                if(predicateEmployeeData.getTenchuho().toLowerCase().contains(newValue.toLowerCase()))
-                    return true;
-                else if(String.valueOf(predicateEmployeeData.getSoPhong()).contains(newValue)){
-                    return  true;
-                } else if (String.valueOf(predicateEmployeeData.getSoTang()).contains(newValue)) {
-                    return true;
-                }
-                return false;
-
-            });
-        });
+        }));
 
         SortedList<NopPhi> sortList = new SortedList<>(filter);
 
@@ -260,61 +250,27 @@ public class Chitietkhoanphi implements Initializable {
             System.out.println(e.getMessage());
         }
     }
-    public boolean isAfter(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate inputDate = LocalDate.parse(hannop.getText(), formatter);
-
-        // Lấy ngày tháng năm hiện tại
-        LocalDate currentDate = LocalDate.now();
-        if (inputDate.isAfter(currentDate)) {
-            return false;
-        } else if (inputDate.isEqual(currentDate)) {
-            return true;
-        } else {
-            return true;
-        }
-    }
-    private boolean isValidDateFormat(String date) {
-        // Biểu thức chính quy cho định dạng dd/mm/yyyy
-        String regex = "^\\d{2}/\\d{2}/\\d{4}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(date);
-
-        return matcher.matches();
-    }
     @FXML
     void dieuchinh(ActionEvent event) {
-        if (!isValidDateFormat(hannop.getText())) {
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Thất bại");
-            alert.setContentText("Vui lòng điền hạn nộp theo dạng dd/mm/yyyy");
-            alert.showAndWait();
-        }else if(isAfter()){
-        Alert alert=new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText("Thất bại");
-        alert.setContentText("Vui lòng điền hạn nộp lớn hơn ngày hiện tại");
-        alert.showAndWait();
-    } else{
-        double d=Double.parseDouble(sotien.getText().replace(",",""));
-        if(Objects.equals(khoanPhi.getDonVi(), "Đồng")){
-            for(NopPhi nopPhi :nopPhiList){
-                nopPhi.setGiaTri(d);
-                NopPhiDao.getInstance().update(nopPhi);
-            }
-
-        }else {
-            for(NopPhi nopPhi :nopPhiList) {
-                double d1 = nopPhi.getGiaTri();
-                double d2 = d1 / khoanPhi.getGiaTri();
-                nopPhi.setGiaTri(d * d2);
-                NopPhiDao.getInstance().update(nopPhi);
-            }
+    double d=Double.parseDouble(sotien.getText().replace(",",""));
+    if(khoanPhi.getPhidichvuchungcu()==1){
+    for(NopPhi nopPhi :nopPhiList){
+        double d1=nopPhi.getGiaTri();
+        double dientich=d1/ khoanPhi.getGiaTri();
+        nopPhi.setGiaTri(d*dientich);
+        NopPhiDao.getInstance().update(nopPhi);
+    }
+    }else {
+        for(NopPhi nopPhi :nopPhiList){
+            nopPhi.setGiaTri(d);
+            NopPhiDao.getInstance().update(nopPhi);
         }
+    }
         khoanPhi.setGiaTri(d);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String date = hannop.getText();
-        LocalDate datetime = LocalDate.parse(date, formatter);
-        khoanPhi.setKetThuc(Date.valueOf(datetime));
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    String date = hannop.getText();
+    LocalDate datetime = LocalDate.parse(date, formatter);
+    khoanPhi.setKetThuc(Date.valueOf(datetime));
         KhoanPhiDao.getInstance().update(khoanPhi);
         Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Thành công");
@@ -322,8 +278,6 @@ public class Chitietkhoanphi implements Initializable {
         alert.showAndWait();
         timkiem();
         danhsachhokhau();
-    }
-
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -99,8 +99,7 @@ public class ThuphiController implements Initializable {
         getData.getInstance().updateKhoanphi(khoanPhi);
         KhoanPhiDao.getInstance().update(khoanPhi);
         LichSuGiaoDich lichSuGiaoDich=new LichSuGiaoDich();
-        lichSuGiaoDich.setSophong(nopPhi.getSoPhong());
-        lichSuGiaoDich.setSotang(nopPhi.getSoTang());
+        lichSuGiaoDich.setHoKhau(nopPhi.getHoKhau());
         lichSuGiaoDich.setTenKhoanPhi(khoanPhi.getTenKhoanPhi());
         lichSuGiaoDich.setIdKhoanPhi(khoanPhi.getId());
         lichSuGiaoDich.setTennguoinop(nguoinopphi.getText());
