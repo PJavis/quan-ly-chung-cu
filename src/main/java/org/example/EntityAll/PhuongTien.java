@@ -26,15 +26,27 @@ public class PhuongTien {
     @Column(name = "so_phong")
     private int soPhong;
 
+    @Column(name = "ten_chu_xe")
+    private String tenChuXe;
+
     public PhuongTien() {
     }
 
-    public PhuongTien(String loaiPhuongTien, String bienSoXe, double phiGuiXe, int soTang, int soPhong) {
+    public PhuongTien(String loaiPhuongTien, String bienSoXe, double phiGuiXe, int soTang, int soPhong, String tenChuXe) {
         this.loaiPhuongTien = loaiPhuongTien;
         this.bienSoXe = bienSoXe;
         this.phiGuiXe = phiGuiXe;
         this.soTang = soTang;
         this.soPhong = soPhong;
+        this.tenChuXe = tenChuXe;
+    }
+
+    public String getTenChuXe() {
+        return tenChuXe;
+    }
+
+    public void setTenChuXe(String tenChuXe) {
+        this.tenChuXe = tenChuXe;
     }
 
     public int getSoTang() {
