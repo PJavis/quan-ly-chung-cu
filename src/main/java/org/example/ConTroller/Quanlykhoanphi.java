@@ -40,12 +40,14 @@ import java.util.regex.Pattern;
 public class Quanlykhoanphi implements Initializable {
     @FXML
     private TableColumn< KhoanPhi, Void> chitiet;
-
+    @FXML
+    private TableColumn<KhoanPhi, String> donvitable;
 
     @FXML
     private TableView<KhoanPhi> danhsachkhoanphi;
 
-
+    @FXML
+    private ComboBox<String> donvi;
     @FXML
     private TextField hannop;
 
@@ -90,6 +92,7 @@ public class Quanlykhoanphi implements Initializable {
         tenkhoanphitable.setCellValueFactory(new PropertyValueFactory<>("tenKhoanPhi"));
         loaikhoanphitable.setCellValueFactory(new PropertyValueFactory<>("loaiKhoanPhi"));
         hannoptable.setCellValueFactory(new PropertyValueFactory<>("formattedDate"));
+        donvitable.setCellValueFactory(new  PropertyValueFactory<>("donVi"));
         sotientable.setCellValueFactory(new PropertyValueFactory<>("decimalFormatsotien"));
         sotiendanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatsotiendanop"));
         ngaybatdau.setCellValueFactory(new PropertyValueFactory<>("FormattedDatebatdau"));
@@ -159,19 +162,6 @@ public class Quanlykhoanphi implements Initializable {
         });
         danhsachkhoanphi.setItems(khoanPhis);
     }
-    @FXML
-    void predieuchinh(MouseEvent event) {
-        khoanPhi1=danhsachkhoanphi.getSelectionModel().getSelectedItem();
-        int num = danhsachkhoanphi.getSelectionModel().getSelectedIndex();
-
-        if ((num - 1) < -1) {
-            return;
-        }
-        tenkhoanphi.setText(khoanPhi1.getTenKhoanPhi());
-        sotien.setText(khoanPhi1.getDecimalFormatsotien());
-        loaikhoanphi.setValue(khoanPhi1.getLoaiKhoanPhi());
-        hannop.setText(khoanPhi1.getFormattedDate());
-    }
 
     private boolean isValidDateFormat(String date) {
         // Biểu thức chính quy cho định dạng dd/mm/yyyy
@@ -181,9 +171,23 @@ public class Quanlykhoanphi implements Initializable {
 
         return matcher.matches();
     }
+    public boolean isAfter(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate inputDate = LocalDate.parse(hannop.getText(), formatter);
+
+        // Lấy ngày tháng năm hiện tại
+        LocalDate currentDate = LocalDate.now();
+        if (inputDate.isAfter(currentDate)) {
+            return false;
+        } else if (inputDate.isEqual(currentDate)) {
+          return true;
+        } else {
+           return true;
+        }
+    }
     @FXML
     void taomoi(ActionEvent event) {
-        if(hannop.getText().isEmpty()||tenkhoanphi.getText().isEmpty()||loaikhoanphi.getSelectionModel().isEmpty()){
+        if(hannop.getText().isEmpty()||tenkhoanphi.getText().isEmpty()||loaikhoanphi.getSelectionModel().isEmpty()||sotien.getText().isEmpty()||donvi.getSelectionModel().isEmpty()){
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Thất bại");
             alert.setContentText("Vui lòng điền đầy đủ thông tin");
@@ -193,12 +197,17 @@ public class Quanlykhoanphi implements Initializable {
             alert.setHeaderText("Thất bại");
             alert.setContentText("Vui lòng điền hạn nộp theo dạng dd/mm/yyyy");
             alert.showAndWait();
-        }else{
+        } else if (isAfter()) {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Thất bại");
+            alert.setContentText("Vui lòng điền hạn nộp lớn hơn ngày hiện tại");
+            alert.showAndWait();
+        } else{
             KhoanPhi khoanPhi=new KhoanPhi();
             khoanPhi.setTenKhoanPhi(tenkhoanphi.getText());
             khoanPhi.setTongsotien(0);
-            if(Objects.equals(tenkhoanphi.getText(), "Phí dịch vụ chung cư")||Objects.equals(tenkhoanphi.getText(), "Phí quản lý chung cư")) khoanPhi.setPhidichvuchungcu(1);
-            else khoanPhi.setPhidichvuchungcu(0);
+            String donvi1=donvi.getSelectionModel().getSelectedItem();
+            khoanPhi.setDonVi(donvi1);
             khoanPhi.setLoaiKhoanPhi(loaikhoanphi.getSelectionModel().getSelectedItem());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String date = hannop.getText();
@@ -213,8 +222,6 @@ public class Quanlykhoanphi implements Initializable {
                     alert.setContentText("Tạo khoản phí mới thành công");
                     alert.showAndWait();
                     KhoanPhiDao.getInstance().save(khoanPhi);
-
-
                     List<HoKhau> hoKhaus=getData.getInstance().getHoKhaus();
                     for(HoKhau hoKhau : hoKhaus){
                         NopPhi nopPhi=new NopPhi();
@@ -223,17 +230,20 @@ public class Quanlykhoanphi implements Initializable {
                         nopPhi.setSoTang(hoKhau.getSoTang());
                         nopPhi.setTenchuho(hoKhau.getTenchuho());
                         nopPhi.setSoTienDaDong(0);
-                        if(khoanPhi.getPhidichvuchungcu()==1)
-                        nopPhi.setGiaTri(khoanPhi.getGiaTri()*hoKhau.getDienTichPhong());
-                        else nopPhi.setGiaTri(khoanPhi.getGiaTri());
+                        if(Objects.equals(donvi1, "Số(kWh)")) nopPhi.setGiaTri(0);
+                        else if (Objects.equals(donvi1, "Diện tích(m²)")) {
+                            nopPhi.setGiaTri(hoKhau.getDienTichPhong()* khoanPhi.getGiaTri());
+                        } else if (Objects.equals(donvi1, "Khối(m³)")) {nopPhi.setGiaTri(0);
+
+                        }else nopPhi.setGiaTri(khoanPhi.getGiaTri());
+
                         NopPhiDao.getInstance().save(nopPhi);
                     }
-
+            donvi.getEditor().clear();
             tenkhoanphi.clear();
             hannop.clear();
             sotien.clear();
             loaikhoanphi.getEditor().clear();
-
             khoanPhiList=getData.getInstance().getKhoanPhis();
             danhsachkhoanphi();
             timkiem();
@@ -278,6 +288,7 @@ public class Quanlykhoanphi implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loaikhoanphi.getItems().addAll("Bắt buộc", "Đóng góp");
+        donvi.getItems().addAll("Số(kWh)","Diện tích(m²)","Khối(m³)","Đồng");
         danhsachkhoanphi();
         timkiem();
     }

@@ -33,6 +33,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Chitietkhoanphi implements Initializable {
     private KhoanPhi khoanPhi;
@@ -49,11 +51,13 @@ public class Chitietkhoanphi implements Initializable {
         ngaytao.setText(newDateFormat.format(khoanPhi.getBatDau()));
         hannop.setText(newDateFormat.format(khoanPhi.getKetThuc()));
         nopPhiList= NopPhiDao.getInstance().selectById(khoanPhi.getId());
+        donvi.setText(khoanPhi.getDonVi());
         if(!Objects.equals(khoanPhi.getLoaiKhoanPhi(), "Bắt buộc")) batbuoc=false;
         danhsachhokhau();
         timkiem();
     }
-
+    @FXML
+    private Label donvi;
     @FXML
     private TableColumn<NopPhi, Void> lichsu;
 
@@ -256,27 +260,61 @@ public class Chitietkhoanphi implements Initializable {
             System.out.println(e.getMessage());
         }
     }
-    @FXML
-    void dieuchinh(ActionEvent event) {
-    double d=Double.parseDouble(sotien.getText().replace(",",""));
-    if(khoanPhi.getPhidichvuchungcu()==1){
-    for(NopPhi nopPhi :nopPhiList){
-        double d1=nopPhi.getGiaTri();
-        double dientich=d1/ khoanPhi.getGiaTri();
-        nopPhi.setGiaTri(d*dientich);
-        NopPhiDao.getInstance().update(nopPhi);
-    }
-    }else {
-        for(NopPhi nopPhi :nopPhiList){
-            nopPhi.setGiaTri(d);
-            NopPhiDao.getInstance().update(nopPhi);
+    public boolean isAfter(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate inputDate = LocalDate.parse(hannop.getText(), formatter);
+
+        // Lấy ngày tháng năm hiện tại
+        LocalDate currentDate = LocalDate.now();
+        if (inputDate.isAfter(currentDate)) {
+            return false;
+        } else if (inputDate.isEqual(currentDate)) {
+            return true;
+        } else {
+            return true;
         }
     }
+    private boolean isValidDateFormat(String date) {
+        // Biểu thức chính quy cho định dạng dd/mm/yyyy
+        String regex = "^\\d{2}/\\d{2}/\\d{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(date);
+
+        return matcher.matches();
+    }
+    @FXML
+    void dieuchinh(ActionEvent event) {
+        if (!isValidDateFormat(hannop.getText())) {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Thất bại");
+            alert.setContentText("Vui lòng điền hạn nộp theo dạng dd/mm/yyyy");
+            alert.showAndWait();
+        }else if(isAfter()){
+        Alert alert=new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Thất bại");
+        alert.setContentText("Vui lòng điền hạn nộp lớn hơn ngày hiện tại");
+        alert.showAndWait();
+    } else{
+        double d=Double.parseDouble(sotien.getText().replace(",",""));
+        if(Objects.equals(khoanPhi.getDonVi(), "Đồng")){
+            for(NopPhi nopPhi :nopPhiList){
+                nopPhi.setGiaTri(d);
+                NopPhiDao.getInstance().update(nopPhi);
+            }
+
+        }else {
+            for(NopPhi nopPhi :nopPhiList) {
+                double d1 = nopPhi.getGiaTri();
+                double d2 = d1 / khoanPhi.getGiaTri();
+                nopPhi.setGiaTri(d * d2);
+                NopPhiDao.getInstance().update(nopPhi);
+            }
+        }
         khoanPhi.setGiaTri(d);
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    String date = hannop.getText();
-    LocalDate datetime = LocalDate.parse(date, formatter);
-    khoanPhi.setKetThuc(Date.valueOf(datetime));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String date = hannop.getText();
+        LocalDate datetime = LocalDate.parse(date, formatter);
+        khoanPhi.setKetThuc(Date.valueOf(datetime));
         KhoanPhiDao.getInstance().update(khoanPhi);
         Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Thành công");
@@ -284,6 +322,8 @@ public class Chitietkhoanphi implements Initializable {
         alert.showAndWait();
         timkiem();
         danhsachhokhau();
+    }
+
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -29,11 +29,11 @@ public class KhoanPhi {
 
     @Column(name = "gia_tri")
     private double giaTri;
-    @Column(name="phi_dich_vu_chung_cu")
-    private int phidichvuchungcu;
+
     @Column(name="tong_so_tien")
     private double tongsotien;
-
+    @Column(name="don_vi")
+    private String donVi;
     public KhoanPhi(String tenKhoanPhi, String loaiKhoanPhi, Date batDau, Date ketThuc, double giaTri, double tongsotien) {
         this.tenKhoanPhi = tenKhoanPhi;
         this.loaiKhoanPhi = loaiKhoanPhi;
@@ -47,12 +47,13 @@ public class KhoanPhi {
 
     }
 
-    public int getPhidichvuchungcu() {
-        return phidichvuchungcu;
+
+    public String getDonVi() {
+        return donVi;
     }
 
-    public void setPhidichvuchungcu(int phidichvuchungcu) {
-        this.phidichvuchungcu = phidichvuchungcu;
+    public void setDonVi(String donVi) {
+        this.donVi = donVi;
     }
 
     public double getTongsotien() {

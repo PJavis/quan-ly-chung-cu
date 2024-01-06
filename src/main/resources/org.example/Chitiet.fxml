@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Chitietkhoanphi">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Chitietkhoanphi">
     <fx:include source="DashBoard.fxml" />
 
-      <GridPane layoutX="235.0" layoutY="54.0" prefHeight="112.0" prefWidth="470.0">
+      <GridPane hgap="24.0" layoutX="235.0" layoutY="42.0" prefHeight="123.0" prefWidth="523.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.20001220703125" minWidth="10.0" prefWidth="90.60003662109375" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.79998779296875" minWidth="10.0" prefWidth="135.39996337890625" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -37,25 +37,25 @@
             <TextField fx:id="hannop" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Số tiền:" GridPane.rowIndex="2" />
             <TextField fx:id="sotien" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Số tiền đã nộp:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label fx:id="sotiendanop" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Label text="Ngày tạo:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label fx:id="ngaytao" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+         <Label text="Đơn vị:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+         <Label fx:id="donvi" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TableView fx:id="danhsachhokhau" layoutX="227.0" layoutY="216.0" prefHeight="522.0" prefWidth="602.0">
+      <TableView fx:id="danhsachhokhau" layoutX="231.0" layoutY="254.0" prefHeight="474.0" prefWidth="683.0">
         <columns>
           <TableColumn fx:id="sothutu" prefWidth="75.0" text="Số thứ tự" />
-          <TableColumn fx:id="sophong" prefWidth="66.39995574951172" text="Số phòng" />
-            <TableColumn fx:id="sotang" prefWidth="74.4000244140625" text="Số tầng" />
-            <TableColumn fx:id="tenchuho" prefWidth="96.79998779296875" text="Tên chủ hộ" />
-            <TableColumn fx:id="sotiendanoptable" prefWidth="109.60003662109375" text="Số tiền đã nộp" />
-            <TableColumn fx:id="sotienchuanop" prefWidth="108.0" text="Số tiền chưa nộp" />
-         <TableColumn fx:id="lichsu" prefWidth="66.39990234375" text="Lịch sử" />
+          <TableColumn fx:id="sophong" prefWidth="88.0" text="Số phòng" />
+            <TableColumn fx:id="sotang" prefWidth="84.79998779296875" text="Số tầng" />
+            <TableColumn fx:id="tenchuho" prefWidth="125.5999755859375" text="Tên chủ hộ" />
+            <TableColumn fx:id="sotiendanoptable" prefWidth="132.0" text="Số tiền đã nộp" />
+            <TableColumn fx:id="sotienchuanop" prefWidth="111.20001220703125" text="Số tiền chưa nộp" />
+         <TableColumn fx:id="lichsu" prefWidth="62.4000244140625" text="Lịch sử" />
         </columns>
       </TableView>
-      <Label layoutX="235.0" layoutY="180.0" text="Danh sách hộ khẩu" />
-   <TextField fx:id="timkiem" layoutX="604.0" layoutY="171.0" prefHeight="34.0" prefWidth="206.0" promptText="Tìm kiếm">
+      <Label layoutX="231.0" layoutY="216.0" text="Danh sách hộ khẩu" />
+   <TextField fx:id="timkiem" layoutX="699.0" layoutY="208.0" prefHeight="34.0" prefWidth="206.0" promptText="Tìm kiếm">
       <opaqueInsets>
          <Insets />
       </opaqueInsets>
@@ -66,13 +66,15 @@
          <Font size="14.0" />
       </font>
    </TextField>
-   <FontAwesomeIconView glyphName="SEARCH" layoutX="609.0" layoutY="193.0" size="17" />
+   <FontAwesomeIconView glyphName="SEARCH" layoutX="705.0" layoutY="231.0" size="17" />
    <Button layoutX="235.0" layoutY="14.0" mnemonicParsing="false" onAction="#quaylai">
       <graphic>
          <FontAwesomeIconView glyphName="LONG_ARROW_LEFT" size="20" />
       </graphic>
    </Button>
-   <Button layoutX="452.0" layoutY="171.0" mnemonicParsing="false" onAction="#tracuugiaodich" prefHeight="34.0" prefWidth="122.0" text="Tra cứu giao dịch" />
-   <Button layoutX="716.0" layoutY="54.0" mnemonicParsing="false" onAction="#dieuchinh" text="Điều chỉnh" />
+   <Button layoutX="770.0" layoutY="81.0" mnemonicParsing="false" onAction="#tracuugiaodich" prefHeight="34.0" prefWidth="122.0" text="Tra cứu giao dịch" />
+   <Button layoutX="769.0" layoutY="40.0" mnemonicParsing="false" onAction="#dieuchinh" prefHeight="34.0" prefWidth="122.0" text="Điều chỉnh" />
+      <Label layoutX="236.0" layoutY="172.0" text="Số tiền đã nộp:" />
+      <Label fx:id="sotiendanop" layoutX="357.0" layoutY="172.0" text="Label" />
   
 </AnchorPane>

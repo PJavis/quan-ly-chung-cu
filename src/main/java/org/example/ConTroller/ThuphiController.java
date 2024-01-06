@@ -56,6 +56,10 @@ public class ThuphiController implements Initializable {
     private NopPhi nopPhi;
 
     @FXML
+    private TextField sodiennuoc;
+
+
+    @FXML
     void nopphi(ActionEvent event) {
         if(tenphi.getValue()==null||sophong.getText().isEmpty()||sotang.getText().isEmpty()){
             Alert alert1=new Alert(Alert.AlertType.ERROR);
@@ -126,17 +130,9 @@ public class ThuphiController implements Initializable {
         DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
         try {
             sotiendanop.setText(decimalFormat.format(nopPhi.getSoTienDaDong()));
-            if(khoanPhi.getPhidichvuchungcu()==1) {
                 duNo = nopPhi.getGiaTri() - nopPhi.getSoTienDaDong();
-                duno.setText(decimalFormat.format(duNo)+ "     (" + decimalFormat.format(khoanPhi.getGiaTri()) + "đồng/m2)");
-            }
-            else {
-//                duno1 = khoanPhi.getGiaTri() - nopPhi.getSoTienDaDong();
-//                double updatedDuNo = duno1 - Double.parseDouble(sotiendanop.getText());
-//                duno.setText(decimalFormat.format(updatedDuNo));
-                duNo = nopPhi.getGiaTri() - nopPhi.getSoTienDaDong();
-                duno.setText(decimalFormat.format(duNo)+"đồng");
-            }
+                duno.setText(decimalFormat.format(duNo));
+
         }catch (Exception e){
             sotiennop.clear();
             sotiendanop.setText("");
