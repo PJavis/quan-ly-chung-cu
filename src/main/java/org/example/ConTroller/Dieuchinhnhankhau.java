@@ -70,8 +70,8 @@ public class Dieuchinhnhankhau {
         if(nhanKhau.getGioiTinh()==1){
             nam.setSelected(true);
         }else nu.setSelected(true);
-        sophong.setText(String.valueOf(nhanKhau.getSophong()));
-        sotang.setText(String.valueOf(nhanKhau.getSotang()));
+        sophong.setText(String.valueOf(nhanKhau.getHoKhau().getId()));
+        sotang.setText(String.valueOf(nhanKhau.getHoKhau().getSoTang()));
         trangthai.setText(nhanKhau.getTrangThai());
         quoctich.setText(nhanKhau.getQuocTich());
         chuho.setSelected(nhanKhau.isChuHo());
@@ -86,7 +86,7 @@ public class Dieuchinhnhankhau {
     }
     @FXML
         void dieuchinhnhankhau(ActionEvent event) {
-        if(isValidDateFormat(ngaysinh.getText())){
+        if(isValidDateFormat(ngaysinh.getText())&&!tennhankhau.getText().isEmpty()){
             nhanKhau.setTen(tennhankhau.getText());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String date= ngaysinh.getText();
@@ -97,8 +97,7 @@ public class Dieuchinhnhankhau {
             HoKhau hoKhau1=HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
 
         try {
-            nhanKhau.setSophong(hoKhau1.getId());
-            nhanKhau.setSotang(hoKhau1.getSoTang());
+            nhanKhau.setHoKhau(hoKhau1);
             nhanKhau.setTrangThai(trangthai.getText());
             nhanKhau.setQuocTich(quoctich.getText());
             NhanKhauDao.getInstance().update(nhanKhau);
@@ -128,7 +127,7 @@ public class Dieuchinhnhankhau {
         else {
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Thất bại");
-            alert.setContentText("Vui lòng điền ngày sinh theo dạng dd/mm/yyyy");
+            alert.setContentText("Vui lòng điền ngày sinh theo dạng dd/mm/yyyy và đầy đủ thông tin");
             alert.showAndWait();
         }
 
@@ -157,7 +156,7 @@ public class Dieuchinhnhankhau {
                 alert2.setHeaderText("Thành công");
                 alert2.setContentText("Xóa nhân khẩu thành công");
                 alert2.showAndWait();
-                HoKhau hoKhau = HoKhauDao.getInstance().selectById(nhanKhau.getSophong(), nhanKhau.getSotang());
+                HoKhau hoKhau = HoKhauDao.getInstance().selectById(nhanKhau.getHoKhau().getId(), nhanKhau.getHoKhau().getSoTang());
                 hoKhau.setSoNhanKhau(hoKhau.getSoNhanKhau()-1);
                 HoKhauDao.getInstance().update(hoKhau);
                 NhanKhauDao.getInstance().delete(nhanKhau);

@@ -17,10 +17,12 @@ public class LichSuGiaoDich {
     @Column(name="ten_nguoi_nop")
     private String tennguoinop;
 
-    @Column(name = "so_phong")
-    private int sophong;
-    @Column(name ="so_tang")
-    private int sotang;
+    @ManyToOne
+    @JoinColumns({
+            @JoinColumn(name = "so_tang", referencedColumnName = "so_tang"),
+            @JoinColumn(name = "so_phong", referencedColumnName = "id")
+    })
+    private HoKhau hoKhau;
 
     @Column(name = "ten_khoan_phi")
     private String tenKhoanPhi;
@@ -36,13 +38,21 @@ public class LichSuGiaoDich {
 
     }
 
-    public LichSuGiaoDich(String tennguoinop, int sophong, int sotang, String tenKhoanPhi, Date thoigiangiaodich, double giaTri) {
+    public LichSuGiaoDich(String tennguoinop, HoKhau hoKhau, String tenKhoanPhi, int idKhoanPhi, Date thoigiangiaodich, double giaTri) {
         this.tennguoinop = tennguoinop;
-        this.sophong = sophong;
-        this.sotang = sotang;
+        this.hoKhau = hoKhau;
         this.tenKhoanPhi = tenKhoanPhi;
+        this.idKhoanPhi = idKhoanPhi;
         this.thoigiangiaodich = thoigiangiaodich;
         this.giaTri = giaTri;
+    }
+
+    public HoKhau getHoKhau() {
+        return hoKhau;
+    }
+
+    public void setHoKhau(HoKhau hoKhau) {
+        this.hoKhau = hoKhau;
     }
 
     public int getIdKhoanPhi() {
@@ -62,20 +72,13 @@ public class LichSuGiaoDich {
     }
 
     public int getSophong() {
-        return sophong;
-    }
-
-    public void setSophong(int sophong) {
-        this.sophong = sophong;
+        return this.getHoKhau().getId();
     }
 
     public int getSotang() {
-        return sotang;
+        return  this.getHoKhau().getSoTang();
     }
 
-    public void setSotang(int sotang) {
-        this.sotang = sotang;
-    }
 
     public String getTenKhoanPhi() {
         return tenKhoanPhi;

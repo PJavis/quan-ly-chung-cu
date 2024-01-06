@@ -8,12 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import org.example.EntityAll.TaiKhoanBQT;
 import org.example.Hibernatedao.TaiKhoanBQTDao;
 
@@ -40,14 +37,14 @@ public class LoginController {
     @FXML
     private TextField tendangnhap;
 
-    @FXML
-    public void dangki (ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org.example/SignupScreen.fxml"));
-        stage1 = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene1 = new Scene(root);
-        stage1.setScene(scene1);
-        stage1.show();
-    }
+//    @FXML
+//    public void dangki (ActionEvent event) throws IOException {
+//        Parent root = FXMLLoader.load(getClass().getResource("/org.example/SignupScreen.fxml"));
+//        stage1 = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        scene1 = new Scene(root);
+//        stage1.setScene(scene1);
+//        stage1.show();
+//    }
     @FXML
     public void vedashboard(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/org.example/Trangchu.fxml"));

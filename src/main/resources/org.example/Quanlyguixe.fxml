@@ -7,52 +7,61 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.QuanlyThuPhiGuiXeController">
     <fx:include source="DashBoard.fxml" />
     <Pane layoutX="222.0" layoutY="6.0" prefHeight="759.0" prefWidth="697.0" styleClass="pane_11">
-        <children>
-            <TextField fx:id="searchTextField" layoutX="11.0" layoutY="13.0" promptText="Nhập biển số xe" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="13.0" />
-            <Button layoutX="164.0" layoutY="13.0" onAction="#searchButtonClicked" text="Tìm Kiếm" AnchorPane.leftAnchor="164.0" AnchorPane.topAnchor="13.0" />
+        <TextField fx:id="searchTextField" layoutX="11.0" layoutY="13.0" promptText="Nhập biển số xe" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="13.0" />
+        <Button layoutX="164.0" layoutY="13.0" onAction="#searchButtonClicked" text="Tìm Kiếm" AnchorPane.leftAnchor="164.0" AnchorPane.topAnchor="13.0" />
 
-            <TableView fx:id="vehicleTableView" layoutX="11.0" layoutY="67.0" prefHeight="456.0" prefWidth="655.0" AnchorPane.bottomAnchor="236.20000000000005" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="31.600000000000023" AnchorPane.topAnchor="67.0">
-                <columns>
-                    <TableColumn fx:id="biensoxeColumn" prefWidth="209.9999942779541" text="Biển số xe" />
-                    <TableColumn fx:id="loaixeColumn" prefWidth="105.19998168945312" text="Loại xe" />
-                    <TableColumn fx:id="sotangColumn" prefWidth="134.79998779296875" text="Số tầng" />
-                    <TableColumn fx:id="sophongColumn" prefWidth="140.39999389648438" text="Số phòng" />
-                    <TableColumn fx:id="deleteColumn" prefWidth="53.4000244140625" text="Xoá" />
-                    <!-- Thêm các cột khác nếu cần -->
-                </columns>
-            </TableView>
-            <TextField fx:id="sotangField" layoutX="338.0" layoutY="12.0" prefHeight="26.0" prefWidth="66.0" promptText="Số tầng" />
-            <TextField fx:id="sophongField" layoutX="415.0" layoutY="12.0" prefHeight="26.0" prefWidth="65.0" promptText="Số phòng" />
-            <Button layoutX="490.0" layoutY="13.0" mnemonicParsing="false" onAction="#searchButtonClicked" text="Tìm kiếm" />
+        <TableView fx:id="vehicleTableView" layoutX="11.0" layoutY="67.0" prefHeight="456.0" prefWidth="655.0" AnchorPane.bottomAnchor="236.20000000000005" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="31.600000000000023" AnchorPane.topAnchor="67.0">
+            <columns>
+                <TableColumn fx:id="biensoxeColumn" prefWidth="209.9999942779541" text="Biển số xe" />
+                <TableColumn fx:id="loaixeColumn" prefWidth="105.19998168945312" text="Loại xe" />
+                <TableColumn fx:id="sotangColumn" prefWidth="134.79998779296875" text="Số tầng" />
+                <TableColumn fx:id="sophongColumn" prefWidth="140.39999389648438" text="Số phòng" />
+                <TableColumn fx:id="chuxeColumn" prefWidth="140.39999389648438" text="Tên chủ xe" />
+                <TableColumn fx:id="deleteColumn" prefWidth="53.4000244140625" text="Xoá" />
+                <!-- Thêm các cột khác nếu cần -->
+            </columns>
+        </TableView>
+        <TextField fx:id="sotangField" layoutX="338.0" layoutY="12.0" prefHeight="26.0" prefWidth="66.0" promptText="Số tầng" />
+        <TextField fx:id="sophongField" layoutX="415.0" layoutY="12.0" prefHeight="26.0" prefWidth="65.0" promptText="Số phòng" />
+        <Button layoutX="490.0" layoutY="13.0" mnemonicParsing="false" onAction="#searchButtonClicked" text="Tìm kiếm" />
 
-            <Button layoutX="559.0" layoutY="702.0" mnemonicParsing="false" onAction="#taomoi" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #353A56; -fx-background-radius: 15px;" text="TẠO MỚI" textFill="WHITE" />
+        <Button layoutX="559.0" layoutY="702.0" mnemonicParsing="false" onAction="#taomoi" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #353A56; -fx-background-radius: 15px;" text="TẠO MỚI" textFill="WHITE" />
 
-            <Label layoutX="22.0" layoutY="607.0" text="Biển số xe:">
-                <font>
-                    <Font name="Arial Bold" size="14.0" />
-                </font></Label>
-            <TextField fx:id="biensoxe" layoutX="150.0" layoutY="598.0" prefHeight="34.0" prefWidth="231.0" promptText="Biển số xe" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
+        <Label layoutX="22.0" layoutY="607.0" text="Biển số xe:">
+            <font>
+                <Font name="Arial Bold" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="biensoxe" layoutX="150.0" layoutY="598.0" prefHeight="34.0" prefWidth="150.0" promptText="Biển số xe" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
 
-            <Label layoutX="20.0" layoutY="554.0" text="Loại phương tiện:">
+        <Label layoutX="20.0" layoutY="554.0" text="Loại phương tiện:">
 
-                <font>
-                    <Font name="Arial Bold" size="14.0" />
-                </font></Label>
-            <ComboBox fx:id="loaiphuongtien" editable="true" layoutX="150.0" layoutY="545.0" prefHeight="34.0" prefWidth="231.0" promptText="Loại phương tiện" style="-fx-border-color: #353A56;" />
+            <font>
+                <Font name="Arial Bold" size="14.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="loaiphuongtien" editable="true" layoutX="150.0" layoutY="545.0" prefHeight="34.0" prefWidth="231.0" promptText="Loại phương tiện" style="-fx-border-color: #353A56;" />
 
-            <Label layoutX="22.0" layoutY="660.0" text="Số tầng:">
-                <font>
-                    <Font name="Arial Bold" size="14.0" />
-                </font></Label>
-            <TextField fx:id="sotang" layoutX="150.0" layoutY="651.0" prefHeight="34.0" prefWidth="150.0" promptText="Số tầng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
+        <Label layoutX="22.0" layoutY="660.0" text="Số tầng:">
+            <font>
+                <Font name="Arial Bold" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="sotang" layoutX="150.0" layoutY="651.0" prefHeight="34.0" prefWidth="150.0" promptText="Số tầng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
 
-            <Label layoutX="352.0" layoutY="660.0" text="Số phòng:">
-                <font>
-                    <Font name="Arial Bold" size="14.0" />
-                </font></Label>
-            <TextField fx:id="sophong" layoutX="430.0" layoutY="651.0" prefHeight="34.0" prefWidth="150.0" promptText="Số phòng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
+        <Label layoutX="352.0" layoutY="660.0" text="Số phòng:">
+            <font>
+                <Font name="Arial Bold" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="sophong" layoutX="430.0" layoutY="651.0" prefHeight="34.0" prefWidth="150.0" promptText="Số phòng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
 
+        <Label layoutX="342.0" layoutY="607.0" text="Tên chủ xe:">
+            <font>
+                <Font name="Arial Bold" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="tenchuxe" layoutX="430.0" layoutY="598.0" prefHeight="34.0" prefWidth="150.0" promptText="Tên chủ xe" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
 
-        </children>
     </Pane>
 </AnchorPane>

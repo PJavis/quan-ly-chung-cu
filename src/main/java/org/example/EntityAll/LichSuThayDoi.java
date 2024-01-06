@@ -15,7 +15,7 @@ public class LichSuThayDoi {
     @Temporal(TemporalType.TIMESTAMP)
     private Date ngayThayDoi;
 
-    @Column(name = "thay_doi", length = 50)
+    @Column(name = "thay_doi", length = 255)
     private String thayDoi;
 
     @ManyToOne

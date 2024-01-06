@@ -22,11 +22,9 @@ public class HoKhau {
     @Id
     @Column(name = "id")
     private int id;
-
     @Id
     @Column(name = "so_tang")
     private int soTang;
-
     @Column(name = "dien_tich_phong", columnDefinition = "double precision")
     private double dienTichPhong;
     @Column(name="ten_chu_ho")

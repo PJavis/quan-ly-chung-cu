@@ -7,7 +7,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.PhuongTien;
+import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.PhuongTienDao;
 import org.example.getData;
 
@@ -16,6 +18,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class QuanlyThuPhiGuiXeController {
+    @FXML
+    private TextField tenchuxe;
+
     @FXML
     private TextField searchTextField;
 
@@ -42,6 +47,10 @@ public class QuanlyThuPhiGuiXeController {
 
     @FXML
     private TableColumn<PhuongTien, String> biensoxeColumn;
+
+    @FXML
+    private TableColumn<PhuongTien, String> chuxeColumn;
+
 
     @FXML
     private TableColumn<PhuongTien, String> loaixeColumn;
@@ -74,6 +83,7 @@ public class QuanlyThuPhiGuiXeController {
         sotangColumn.setCellValueFactory(new PropertyValueFactory<>("soTang"));
         sophongColumn.setCellValueFactory(new PropertyValueFactory<>("soPhong"));
         loaiphuongtien.setItems(FXCollections.observableArrayList("Xe Máy", "Ô Tô", "Xe Đạp"));
+        chuxeColumn.setCellValueFactory(new PropertyValueFactory<>("tenChuXe"));
         deleteColumn.setCellFactory(param -> new TableCell<PhuongTien, Void>() {
             @Override
             protected void updateItem(Void item, boolean empty) {
@@ -166,17 +176,32 @@ public class QuanlyThuPhiGuiXeController {
         String loaiPhuongTien = loaiphuongtien.getValue();
         String sotangTemp = sotang.getText();
         String sophongTemp = sophong.getText();
+        String chuxe = tenchuxe.getText();
 
         try {
             // Kiểm tra xem các trường thông tin có được nhập hay không
-            if (bienSoXe.isEmpty() || loaiPhuongTien == null || sotangTemp.isEmpty() || sophongTemp.isEmpty()) {
+            if (bienSoXe.isEmpty() || loaiPhuongTien == null
+                    || sotangTemp.isEmpty() || sophongTemp.isEmpty()
+                    || chuxe.isEmpty()) {
                 showAlert("Lỗi", "Vui lòng nhập đầy đủ thông tin.");
                 return;
             }
-
+            HoKhau hoKhau = null;
             // Chuyển đổi số tầng và số phòng từ chuỗi sang số
-            int soTang1 = Integer.parseInt(sotangTemp);
-            int soPhong1 = Integer.parseInt(sophongTemp);
+            try {
+                int soTang1 = Integer.parseInt(sotangTemp);
+                int soPhong1 = Integer.parseInt(sophongTemp);
+
+                // Nếu chuyển đổi thành công, tiếp tục xử lý
+                hoKhau = HoKhauDao.getInstance().selectById(soPhong1, soTang1);
+
+                // Tiếp tục thực hiện các thao tác khác với hoKhau nếu cần
+            } catch (NumberFormatException e) {
+                // Xử lý khi chuyển đổi không thành công
+                showAlert("Lỗi", "Xin hãy nhập số tầng và số phòng là số nguyên dương.");
+            }
+
+
 
             // Tạo mới một đối tượng PhuongTien
             double phiguixe = 0;
@@ -192,7 +217,7 @@ public class QuanlyThuPhiGuiXeController {
                     phiguixe = 500;
                     break;
             }
-            PhuongTien newPhuongTien = new PhuongTien(loaiPhuongTien, bienSoXe, phiguixe, soTang1, soPhong1);
+            PhuongTien newPhuongTien = new PhuongTien(loaiPhuongTien, bienSoXe, phiguixe, hoKhau, chuxe);
 
             // Thêm mới vào danh sách và cập nhật TableView
             boolean isAdded = getData.getInstance().addPhuongTien(newPhuongTien);
