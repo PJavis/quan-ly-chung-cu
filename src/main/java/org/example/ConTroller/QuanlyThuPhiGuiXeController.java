@@ -1,6 +1,7 @@
 // QuanlyThuPhiGuiXeController.java
 package org.example.ConTroller;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -80,8 +81,15 @@ public class QuanlyThuPhiGuiXeController {
 
         biensoxeColumn.setCellValueFactory(new PropertyValueFactory<>("bienSoXe"));
         loaixeColumn.setCellValueFactory(new PropertyValueFactory<>("loaiPhuongTien"));
-        sotangColumn.setCellValueFactory(new PropertyValueFactory<>("soTang"));
-        sophongColumn.setCellValueFactory(new PropertyValueFactory<>("soPhong"));
+        sophongColumn.setCellValueFactory(cellData -> {
+            HoKhau hoKhau = cellData.getValue().getHoKhau();
+            return hoKhau != null ? new SimpleIntegerProperty(hoKhau.getId()).asObject() : null;
+        });
+
+        sotangColumn.setCellValueFactory(cellData -> {
+            HoKhau hoKhau = cellData.getValue().getHoKhau();
+            return hoKhau != null ? new SimpleIntegerProperty(hoKhau.getSoTang()).asObject() : null;
+        });
         loaiphuongtien.setItems(FXCollections.observableArrayList("Xe Máy", "Ô Tô", "Xe Đạp"));
         chuxeColumn.setCellValueFactory(new PropertyValueFactory<>("tenChuXe"));
         deleteColumn.setCellFactory(param -> new TableCell<PhuongTien, Void>() {

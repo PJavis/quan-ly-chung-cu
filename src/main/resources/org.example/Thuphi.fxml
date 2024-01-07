@@ -13,57 +13,64 @@
                <Font name="Arial Bold" size="18.0" />
            </font>
        </Label>
-       <Pane layoutX="118.0" layoutY="86.0" prefHeight="209.0" prefWidth="467.0" style="-fx-background-color: #ffffff; -fx-border-radius: 15px; -fx-border-color: #353A56;">
-           <children>
-               <Label layoutX="115.0" layoutY="26.0" prefHeight="30.0" prefWidth="113.0" text="Tên phí :" textFill="#353a56">
-                   <font>
-                       <Font name="Arial Bold" size="14.0" />
-                   </font>
-               </Label>
-               <Label layoutX="40.0" layoutY="144.0" prefHeight="20.0" prefWidth="133.0" text="Chi tiết khoản phí :" textFill="#353a56">
-                   <font>
-                       <Font name="Arial Bold" size="14.0" />
-                   </font>
-               </Label>
-               <Label layoutX="115.0" layoutY="85.0" text="Số tiền:" textFill="#353a56">
-                   <font>
-                       <Font name="Arial Bold" size="14.0" />
-                   </font>
-               </Label>
-               <Label fx:id="sotien" layoutX="214.0" layoutY="77.0" prefHeight="37.0" prefWidth="184.0" style="-fx-background-color: #ffffff; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
-               <ComboBox fx:id="tenphi" layoutX="214.0" layoutY="20.0" prefHeight="37.0" prefWidth="184.0" style=" -fx-border-color: #353A56; -fx-border-radius: 15px; -fx-background-color: #ffffff;" />
-               <Label fx:id="chitiet" layoutX="214.0" layoutY="140.0" prefHeight="37.0" prefWidth="184.0" />
-           </children>
+       <Pane layoutX="118.0" layoutY="86.0" prefHeight="209.0" prefWidth="467.0"
+             style="-fx-background-color: #ffffff; -fx-border-radius: 15px; -fx-border-color: #353A56;">
+           <Label layoutX="115.0" layoutY="26.0" prefHeight="30.0" prefWidth="113.0" text="Tên phí :"
+                  textFill="#353a56">
+               <font>
+                   <Font name="Arial Bold" size="14.0"/>
+               </font>
+           </Label>
+           <Label layoutX="40.0" layoutY="144.0" prefHeight="20.0" prefWidth="133.0" text="Chi tiết khoản phí :"
+                  textFill="#353a56">
+               <font>
+                   <Font name="Arial Bold" size="14.0"/>
+               </font>
+           </Label>
+           <Label layoutX="115.0" layoutY="85.0" text="Số tiền:" textFill="#353a56">
+               <font>
+                   <Font name="Arial Bold" size="14.0"/>
+               </font>
+           </Label>
+           <Label fx:id="sotien" layoutX="214.0" layoutY="77.0" prefHeight="37.0" prefWidth="184.0"
+                  style="-fx-background-color: #ffffff; -fx-border-color: #353A56; -fx-border-radius: 15px;"/>
+           <ComboBox fx:id="tenphi" layoutX="214.0" layoutY="20.0" prefHeight="37.0" prefWidth="184.0"
+                     style=" -fx-border-color: #353A56; -fx-border-radius: 15px; -fx-background-color: #ffffff;"/>
+           <Label fx:id="chitiet" layoutX="214.0" layoutY="140.0" prefHeight="37.0" prefWidth="184.0"/>
        </Pane>
 
        <HBox layoutX="113.0" layoutY="353.0" prefHeight="100.0" prefWidth="561.0" spacing="30.0">
-           <children>
-               <Label layoutX="33.0" layoutY="386.0" prefHeight="20.0" prefWidth="96.0" text="Số phòng :">
-                   <HBox.margin>
-                      <Insets top="8.0" />
-                   </HBox.margin>
-                   <font>
-                       <Font name="Arial Bold" size="14.0" />
-                   </font>
-               </Label>
-               <TextField fx:id="sophong" layoutX="123.0" layoutY="378.0" prefHeight="37.0" prefWidth="126.0" promptText="số phòng" style="-fx-border-color: #353A56; -fx-background-color: #ffffff; -fx-border-radius: 15px;" />
+           <padding>
+               <Insets top="10.0"/>
+           </padding>
 
-               <Label layoutX="274.0" layoutY="387.0" prefHeight="20.0" prefWidth="78.0" text="Số tầng :">
-                   <HBox.margin>
-                      <Insets top="8.0" />
-                   </HBox.margin>
-                   <font>
-                       <Font name="Arial Bold" size="14.0" />
-                   </font>
-               </Label>
-               <TextField fx:id="sotang" layoutX="356.0" layoutY="378.0" prefHeight="37.0" prefWidth="126.0" promptText="số tầng" style="-fx-border-color: #353A56; -fx-background-color: #ffffff; -fx-border-radius: 15px;" />
+           <Label layoutX="33.0" layoutY="386.0" prefHeight="20.0" prefWidth="96.0" text="Số phòng :">
+               <HBox.margin>
+                   <Insets top="8.0"/>
+               </HBox.margin>
+               <font>
+                   <Font name="Arial Bold" size="14.0"/>
+               </font>
+           </Label>
+           <TextField fx:id="sophong" layoutX="123.0" layoutY="378.0" prefHeight="37.0" prefWidth="126.0"
+                      promptText="số phòng"
+                      style="-fx-border-color: #353A56; -fx-background-color: #ffffff; -fx-border-radius: 15px;"/>
 
-               <Button layoutX="493.0" layoutY="378.0" mnemonicParsing="false" onAction="#timphong" prefHeight="38.0" prefWidth="79.0" style="-fx-background-color: #353A56; -fx-background-radius: 15px;" text="Tìm" textFill="WHITE" />
+           <Label layoutX="274.0" layoutY="387.0" prefHeight="20.0" prefWidth="78.0" text="Số tầng :">
+               <HBox.margin>
+                   <Insets top="8.0"/>
+               </HBox.margin>
+               <font>
+                   <Font name="Arial Bold" size="14.0"/>
+               </font>
+           </Label>
+           <TextField fx:id="sotang" layoutX="356.0" layoutY="378.0" prefHeight="37.0" prefWidth="126.0"
+                      promptText="số tầng"
+                      style="-fx-border-color: #353A56; -fx-background-color: #ffffff; -fx-border-radius: 15px;"/>
 
-           </children>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
+           <Button layoutX="493.0" layoutY="378.0" mnemonicParsing="false" onAction="#timphong" prefHeight="38.0"
+                   prefWidth="79.0" style="-fx-background-color: #353A56; -fx-background-radius: 15px;" text="Tìm"
+                   textFill="WHITE"/>
 
        </HBox>
 
@@ -72,33 +79,40 @@
                <Font name="Arial Bold" size="18.0" />
            </font>
        </Label>
-       <Pane layoutX="118.0" layoutY="427.0" prefHeight="249.0" prefWidth="467.0" style="-fx-background-color: #ffffff; -fx-border-radius: 25px; -fx-border-color: #353A56;">
-            <children>
-                <Label layoutX="52.0" layoutY="90.0" prefHeight="17.0" prefWidth="144.0" text="Tổng tiền đã nộp:" textFill="#353a56">
-                    <font>
-                        <Font name="Arial Bold" size="14.0" />
-                    </font>
-                </Label>
-                <Label layoutX="119.0" layoutY="141.0" text="Dư nợ :" textFill="#353a56">
-                    <font>
-                        <Font name="Arial Bold" size="14.0" />
-                    </font>
-                </Label>
-                <Label layoutX="69.0" layoutY="183.0" prefHeight="17.0" prefWidth="113.0" text="Người nộp phí :" textFill="#353a56">
-                    <font>
-                        <Font name="Arial Bold" size="14.0" />
-                    </font>
-                </Label>
-                <Label layoutX="87.0" layoutY="43.0" text="Số tiền nộp :" textFill="#353a56">
-                    <font>
-                        <Font name="Arial Bold" size="14.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="sotiennop" layoutX="214.0" layoutY="35.0" prefHeight="37.0" prefWidth="190.0" promptText="số tiền nộp" style="-fx-background-color: #ffffff; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
-                <TextField fx:id="nguoinopphi" layoutX="214.0" layoutY="174.0" prefHeight="37.0" prefWidth="190.0" promptText="người nộp" style="-fx-background-color: #ffffff; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
-                <Label fx:id="sotiendanop" layoutX="214.0" layoutY="82.0" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: #ffffff; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
-                <Label fx:id="duno" layoutX="214.0" layoutY="128.0" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: #ffffff; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
-         </children>
+       <Pane layoutX="118.0" layoutY="427.0" prefHeight="249.0" prefWidth="467.0"
+             style="-fx-background-color: #ffffff; -fx-border-radius: 25px; -fx-border-color: #353A56;">
+           <Label layoutX="52.0" layoutY="90.0" prefHeight="17.0" prefWidth="144.0" text="Tổng tiền đã nộp:"
+                  textFill="#353a56">
+               <font>
+                   <Font name="Arial Bold" size="14.0"/>
+               </font>
+           </Label>
+           <Label layoutX="119.0" layoutY="141.0" text="Dư nợ :" textFill="#353a56">
+               <font>
+                   <Font name="Arial Bold" size="14.0"/>
+               </font>
+           </Label>
+           <Label layoutX="69.0" layoutY="183.0" prefHeight="17.0" prefWidth="113.0" text="Người nộp phí :"
+                  textFill="#353a56">
+               <font>
+                   <Font name="Arial Bold" size="14.0"/>
+               </font>
+           </Label>
+           <Label layoutX="87.0" layoutY="43.0" text="Số tiền nộp :" textFill="#353a56">
+               <font>
+                   <Font name="Arial Bold" size="14.0"/>
+               </font>
+           </Label>
+           <TextField fx:id="sotiennop" layoutX="214.0" layoutY="35.0" prefHeight="37.0" prefWidth="190.0"
+                      promptText="số tiền nộp"
+                      style="-fx-background-color: #ffffff; -fx-border-color: #353A56; -fx-border-radius: 15px;"/>
+           <TextField fx:id="nguoinopphi" layoutX="214.0" layoutY="174.0" prefHeight="37.0" prefWidth="190.0"
+                      promptText="người nộp"
+                      style="-fx-background-color: #ffffff; -fx-border-color: #353A56; -fx-border-radius: 15px;"/>
+           <Label fx:id="sotiendanop" layoutX="214.0" layoutY="82.0" prefHeight="37.0" prefWidth="190.0"
+                  style="-fx-background-color: #ffffff; -fx-border-color: #353A56; -fx-border-radius: 15px;"/>
+           <Label fx:id="duno" layoutX="214.0" layoutY="128.0" prefHeight="37.0" prefWidth="190.0"
+                  style="-fx-background-color: #ffffff; -fx-border-color: #353A56; -fx-border-radius: 15px;"/>
        </Pane>
 
        <Button layoutX="566.0" layoutY="701.0" mnemonicParsing="false" onAction="#nopphi" prefHeight="37.0" prefWidth="96.0" style="-fx-background-color: #353A56; -fx-background-radius: 15px;" text="Nộp" textFill="WHITE" />

@@ -2,6 +2,7 @@ package org.example.ConTroller;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -20,8 +21,8 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
 import org.example.Hibernatedao.NhanKhauDao;
 import org.example.getData;
@@ -31,7 +32,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class Quanlynhankhau implements Initializable {
 
@@ -90,44 +90,53 @@ public class Quanlynhankhau implements Initializable {
         });
         hovaten.setCellValueFactory(new PropertyValueFactory<>("ten"));
         ngaysinh.setCellValueFactory(new PropertyValueFactory<>("formattedDate"));
-        sophongdango.setCellValueFactory(new PropertyValueFactory<>("sophong"));
+
+        sophongdango.setCellValueFactory(cellData -> {
+            HoKhau hoKhau = cellData.getValue().getHoKhau();
+            return hoKhau != null ? new SimpleIntegerProperty(hoKhau.getId()).asObject() : null;
+        });
+
+        sotang.setCellValueFactory(cellData -> {
+            HoKhau hoKhau = cellData.getValue().getHoKhau();
+            return hoKhau != null ? new SimpleIntegerProperty(hoKhau.getSoTang()).asObject() : null;
+        });
+
+
+
         trangthai.setCellValueFactory(new PropertyValueFactory<>("trangThai"));
-        sotang.setCellValueFactory(new PropertyValueFactory<>("sotang"));
         sodienthoai.setCellValueFactory(new PropertyValueFactory<>("soDienThoai"));
-        dieuchinh.setCellFactory(cell->{
-            return new TableCell<NhanKhau,Void>(){
-                @Override
-                protected void updateItem(Void item, boolean empty) {
-                    super.updateItem(item, empty);
+        dieuchinh.setCellFactory(cell-> new TableCell<>() {
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
 
-                    if (empty) {
-                        setGraphic(null);
-                    } else {
-                        Button button = new Button();
-                        FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
-                        iconView.setSize("16px");
-                        setGraphic(button);
-                        button.setGraphic(iconView);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    Button button = new Button();
+                    FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
+                    iconView.setSize("16px");
+                    setGraphic(button);
+                    button.setGraphic(iconView);
 
-                        // Xử lý sự kiện khi nút được nhấp
-                        button.setOnAction(event -> {
-                           NhanKhau person = getTableView().getItems().get(getIndex());
-                            try {
-                                Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Dieuchinhnhankhau.fxml"));
-                                Parent root = loader.load();
-                                Scene scene = new Scene(root);
-                                ag0r.setScene(scene);
-                                Dieuchinhnhankhau dieuchinhnhankhau=loader.getController();
-                                dieuchinhnhankhau.setNhanKhau(person);
-                                ag0r.show();
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-                        });
-                    }
+                    // Xử lý sự kiện khi nút được nhấp
+                    button.setOnAction(event -> {
+                        NhanKhau person = getTableView().getItems().get(getIndex());
+                        try {
+                            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Dieuchinhnhankhau.fxml"));
+                            Parent root = loader.load();
+                            Scene scene = new Scene(root);
+                            ag0r.setScene(scene);
+                            Dieuchinhnhankhau dieuchinhnhankhau = loader.getController();
+                            dieuchinhnhankhau.setNhanKhau(person);
+                            ag0r.show();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                    });
                 }
-            };
+            }
         });
         danhsachnhankhau.setItems(nhanKhaus);
     }
@@ -149,21 +158,18 @@ public class Quanlynhankhau implements Initializable {
     public void timkiem(){
         FilteredList<NhanKhau> filter = new FilteredList<>(nhanKhaus, e -> true);
 
-        timkiem.textProperty().addListener((Observable, oldValue, newValue) -> {
+        timkiem.textProperty().addListener((Observable, oldValue, newValue) -> filter.setPredicate(predicateEmployeeData -> {
 
-            filter.setPredicate(predicateEmployeeData -> {
+            if (newValue == null || newValue.isEmpty()) {
+                return true;
+            }
 
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                String searchKey = newValue.toLowerCase();
+            String searchKey = newValue.toLowerCase();
 
 
-                return predicateEmployeeData.getTen().toLowerCase().contains(searchKey);
+            return predicateEmployeeData.getTen().toLowerCase().contains(searchKey);
 
-            });
-        });
+        }));
 
         SortedList<NhanKhau> sortList = new SortedList<>(filter);
 
@@ -244,7 +250,7 @@ public class Quanlynhankhau implements Initializable {
 
 
 
-    private  String luachon[] = {"Thống kê nam nữ","Thống kê theo năm sinh","Thống kê theo tuổi"};
+    private String[] luachon = {"Thống kê nam nữ","Thống kê theo năm sinh","Thống kê theo tuổi"};
 
     public void setBoxluachon( ) {
         ObservableList<String>boxbox = FXCollections.observableArrayList(luachon);

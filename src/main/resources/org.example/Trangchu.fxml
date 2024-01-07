@@ -9,113 +9,107 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="920.0" stylesheets="@css/pinocchio.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.TrangchuController">
-   <children>
-       <fx:include source="DashBoard.fxml" />
-      <Pane layoutX="222.0" layoutY="3.0" prefHeight="715.0" prefWidth="618.0">
-         <children>
-            <Label layoutX="26.0" layoutY="84.0" prefHeight="36.0" prefWidth="359.0" text="Pinocchio LHP">
-               <font>
-                  <Font name="Century Gothic Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label layoutX="26.0" layoutY="49.0" text="Love you, to the moon and back !">
-               <font>
-                  <Font name="Century Gothic Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="26.0" layoutY="14.0" prefHeight="47.0" prefWidth="520.0" text="Chào mừng các bạn đến với chung cư not HP">
-               <font>
-                  <Font name="Candara Bold" size="14.0" />
-               </font>
-            </Label>
-            <Pane layoutX="36.0" layoutY="215.0" prefHeight="65.0" prefWidth="513.0" styleClass="pane_1" stylesheets="@css/pinocchio.css">
-               <children>
-                  <Label layoutX="19.0" layoutY="18.0" prefHeight="17.0" prefWidth="231.0" text="Số người ở chung cư" textFill="#302e2e">
-                     <font>
-                        <Font name="Candara Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="tongsonguoio" layoutX="259.0" layoutY="17.0" text="1412">
-                     <font>
-                        <Font name="Century Gothic Bold" size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="31.0" layoutY="134.0" prefHeight="65.0" prefWidth="520.0" styleClass="most_inner_pane">
-               <children>
-                  <Label layoutX="14.0" layoutY="18.0" text="Tổng tiền đóng góp tháng này" textFill="#201f1f">
-                     <font>
-                        <Font name="Candara Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="tongsotienthuduoc" layoutX="340.0" layoutY="17.0" text="52013144444">
-                     <font>
-                        <Font name="Century Gothic Bold" size="25.0" />
-                     </font>
-                  </Label>
-               </children></Pane>
-            <Pane layoutX="31.0" layoutY="294.0" prefHeight="65.0" prefWidth="520.0" styleClass="pane_111">
-               <children>
-                  <Label layoutX="24.0" layoutY="18.0" prefHeight="25.0" prefWidth="231.0" text="Số phòng còn trống" textFill="#2b2828">
-                     <font>
-                        <Font name="Candara Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="sophongcontrong" layoutX="272.0" layoutY="15.0" prefHeight="36.0" prefWidth="70.0" text="0" textFill="#2b2929">
-                     <font>
-                        <Font name="Century Gothic Bold" size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <ScrollPane layoutX="39.0" layoutY="488.0" prefHeight="200.0" prefWidth="554.0">
-               <content>
-                  <VBox fx:id="cacitem" prefHeight="200.0" prefWidth="540.0" style="-fx-background-color: #F0F0F0;" />
-               </content>
-            </ScrollPane>
-            <HBox layoutX="31.0" layoutY="423.0" prefHeight="62.0" prefWidth="590.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <children>
-                  <Label text="Số phòng">
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label prefHeight="18.0" prefWidth="54.0" text="Số tầng">
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label text="Tên chủ hộ">
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label prefHeight="18.0" prefWidth="74.0" text="Số người ở">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label prefHeight="18.0" prefWidth="61.0" text="Tiền thuê">
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label text="Diện tích phòng">
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
-                     </HBox.margin>
-                  </Label>
-               </children>
-            </HBox>
-         </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0"
+            prefWidth="920.0" stylesheets="@css/pinocchio.css" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.TrangchuController">
+   <fx:include source="DashBoard.fxml"/>
+   <Pane layoutX="222.0" layoutY="3.0" prefHeight="715.0" prefWidth="618.0">
+      <Label layoutX="26.0" layoutY="84.0" prefHeight="36.0" prefWidth="359.0" text="Pinocchio LHP">
+         <font>
+            <Font name="Century Gothic Bold" size="30.0"/>
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="49.0" text="Love you, to the moon and back !">
+         <font>
+            <Font name="Century Gothic Bold" size="20.0"/>
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="14.0" prefHeight="47.0" prefWidth="520.0"
+             text="Chào mừng các bạn đến với chung cư not HP">
+         <font>
+            <Font name="Candara Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Pane layoutX="36.0" layoutY="215.0" prefHeight="65.0" prefWidth="513.0" styleClass="pane_1"
+            stylesheets="@css/pinocchio.css">
+         <Label layoutX="19.0" layoutY="18.0" prefHeight="17.0" prefWidth="231.0" text="Số người ở chung cư"
+                textFill="#302e2e">
+            <font>
+               <Font name="Candara Bold" size="24.0"/>
+            </font>
+         </Label>
+         <Label fx:id="tongsonguoio" layoutX="259.0" layoutY="17.0" text="1412">
+            <font>
+               <Font name="Century Gothic Bold" size="25.0"/>
+            </font>
+         </Label>
       </Pane>
-   </children>
+      <Pane layoutX="31.0" layoutY="134.0" prefHeight="65.0" prefWidth="520.0" styleClass="most_inner_pane">
+         <Label layoutX="14.0" layoutY="18.0" text="Tổng tiền đóng góp tháng này" textFill="#201f1f">
+            <font>
+               <Font name="Candara Bold" size="24.0"/>
+            </font>
+         </Label>
+         <Label fx:id="tongsotienthuduoc" layoutX="340.0" layoutY="17.0" text="52013144444">
+            <font>
+               <Font name="Century Gothic Bold" size="25.0"/>
+            </font>
+         </Label>
+      </Pane>
+      <Pane layoutX="31.0" layoutY="294.0" prefHeight="65.0" prefWidth="520.0" styleClass="pane_111">
+         <Label layoutX="24.0" layoutY="18.0" prefHeight="25.0" prefWidth="231.0" text="Số phòng còn trống"
+                textFill="#2b2828">
+            <font>
+               <Font name="Candara Bold" size="24.0"/>
+            </font>
+         </Label>
+         <Label fx:id="sophongcontrong" layoutX="272.0" layoutY="15.0" prefHeight="36.0" prefWidth="70.0" text="0"
+                textFill="#2b2929">
+            <font>
+               <Font name="Century Gothic Bold" size="25.0"/>
+            </font>
+         </Label>
+      </Pane>
+      <ScrollPane layoutX="39.0" layoutY="488.0" prefHeight="200.0" prefWidth="554.0">
+         <VBox fx:id="cacitem" prefHeight="200.0" prefWidth="540.0" style="-fx-background-color: #F0F0F0;"/>
+      </ScrollPane>
+      <HBox layoutX="31.0" layoutY="423.0" prefHeight="62.0" prefWidth="590.0">
+         <opaqueInsets>
+            <Insets/>
+         </opaqueInsets>
+         <Label text="Số phòng">
+            <HBox.margin>
+               <Insets bottom="20.0" left="15.0" right="15.0" top="25.0"/>
+            </HBox.margin>
+         </Label>
+         <Label prefHeight="18.0" prefWidth="54.0" text="Số tầng">
+            <HBox.margin>
+               <Insets bottom="20.0" left="15.0" right="15.0" top="25.0"/>
+            </HBox.margin>
+         </Label>
+         <Label text="Tên chủ hộ">
+            <HBox.margin>
+               <Insets bottom="20.0" left="15.0" right="15.0" top="25.0"/>
+            </HBox.margin>
+         </Label>
+         <Label prefHeight="18.0" prefWidth="74.0" text="Số người ở">
+            <opaqueInsets>
+               <Insets/>
+            </opaqueInsets>
+            <HBox.margin>
+               <Insets bottom="20.0" left="15.0" right="15.0" top="25.0"/>
+            </HBox.margin>
+         </Label>
+         <Label prefHeight="18.0" prefWidth="61.0" text="Tiền thuê">
+            <HBox.margin>
+               <Insets bottom="20.0" left="15.0" right="15.0" top="25.0"/>
+            </HBox.margin>
+         </Label>
+         <Label text="Diện tích phòng">
+            <HBox.margin>
+               <Insets bottom="20.0" left="15.0" right="15.0" top="25.0"/>
+            </HBox.margin>
+         </Label>
+      </HBox>
+   </Pane>
 </AnchorPane>
