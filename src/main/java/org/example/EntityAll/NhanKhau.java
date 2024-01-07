@@ -117,7 +117,6 @@ public class NhanKhau {
         this.quocTich = quocTich;
     }
 
-
     public String getTrangThai() {
         return trangThai;
     }
@@ -145,4 +144,7 @@ public class NhanKhau {
     public void setSoDienThoai(String soDienThoai) {
         this.soDienThoai = soDienThoai;
     }
+    public int getSophong(){return hoKhau.getId();}
+    public int getSotang(){return hoKhau.getSoTang();}
+
 }

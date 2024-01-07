@@ -70,7 +70,8 @@ public class Quanlynhankhau implements Initializable {
     private ComboBox<String> boxluachon;
     @FXML
     private Label tongsonhankhau;
-
+    @FXML
+    private TableColumn<NhanKhau, String> cancuoccongdan;
     @FXML
     private Pane panethongke;
     public void danhsachnhankhau(){
@@ -88,6 +89,7 @@ public class Quanlynhankhau implements Initializable {
             int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
             return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
         });
+        cancuoccongdan.setCellValueFactory(new PropertyValueFactory<>("CCCD"));
         hovaten.setCellValueFactory(new PropertyValueFactory<>("ten"));
         ngaysinh.setCellValueFactory(new PropertyValueFactory<>("formattedDate"));
 

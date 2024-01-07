@@ -39,8 +39,7 @@ public class NopPhi {
     @Column(name = "trang_thai_dong_phi")
     private boolean trangThaiDongPhi;
 
-    @Column(name = "ngay_nop_phi")
-    private Date ngayNopPhi;
+
 
     @Column(name = "so_tien_da_dong")
     private double soTienDaDong;
@@ -50,13 +49,13 @@ public class NopPhi {
         // Default constructor required by Hibernate
     }
 
-    public NopPhi(KhoanPhi khoanPhi, double giaTri, HoKhau hoKhau, String tenchuho, boolean trangThaiDongPhi, Date ngayNopPhi, double soTienDaDong) {
+    public NopPhi(KhoanPhi khoanPhi, double giaTri, HoKhau hoKhau, String tenchuho, boolean trangThaiDongPhi, double soTienDaDong) {
         this.khoanPhi = khoanPhi;
         this.giaTri = giaTri;
         this.hoKhau = hoKhau;
         this.tenchuho = tenchuho;
         this.trangThaiDongPhi = trangThaiDongPhi;
-        this.ngayNopPhi = ngayNopPhi;
+
         this.soTienDaDong = soTienDaDong;
     }
 
@@ -101,13 +100,6 @@ public class NopPhi {
         return this.khoanPhi.getId();
     }
 
-    public Date getNgayNopPhi() {
-        return ngayNopPhi;
-    }
-
-    public void setNgayNopPhi(Date ngayNopPhi) {
-        this.ngayNopPhi = ngayNopPhi;
-    }
 
     public boolean isTrangThaiDongPhi() {
         return trangThaiDongPhi;

@@ -3,6 +3,7 @@ package org.example.ConTroller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,16 +15,19 @@ import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.NhanKhauDao;
 import org.example.getData;
 
+import java.net.URL;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Dieuchinhnhankhau {
-
+public class Dieuchinhnhankhau implements Initializable {
+    @FXML
+    private Button buttoncapnhat;
 
     @FXML
     private CheckBox chuho;
@@ -95,8 +99,7 @@ public class Dieuchinhnhankhau {
             if(nam.isSelected())nhanKhau.setGioiTinh(1);
             else nhanKhau.setGioiTinh(0);
             HoKhau hoKhau1=HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
-
-        try {
+            if(!(hoKhau1 ==null)){
             nhanKhau.setHoKhau(hoKhau1);
             nhanKhau.setTrangThai(trangthai.getText());
             nhanKhau.setQuocTich(quoctich.getText());
@@ -117,7 +120,7 @@ public class Dieuchinhnhankhau {
                 System.out.println(e.getMessage());
             }
         }
-        catch (Exception e){
+        else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Thất bại");
             alert.setContentText("Không tìm thấy phòng");
@@ -188,4 +191,22 @@ public class Dieuchinhnhankhau {
             System.out.println(e.getMessage());
         }
     }
+    private void checkAllFieldsFilled(TextField[] textFields,Button buttontaomoi ) {
+        boolean allFilled = true;
+        for (TextField textField : textFields) {
+            if (textField.getText().isEmpty()) {
+                allFilled = false;
+                break;
+            }
+        }
+
+        buttontaomoi.setDisable(!allFilled);
     }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        TextField[] textFields1={sotang,tennhankhau,sophong,trangthai,quoctich,ngaysinh,sodienthoai,cancuoccongdan};
+        for (TextField textField : textFields1) {
+            textField.textProperty().addListener((observable, oldValue, newValue) -> checkAllFieldsFilled(textFields1,buttoncapnhat));
+        }
+    }
+}

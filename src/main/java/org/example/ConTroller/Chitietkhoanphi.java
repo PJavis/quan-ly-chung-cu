@@ -253,7 +253,7 @@ public class Chitietkhoanphi implements Initializable {
     @FXML
     void dieuchinh(ActionEvent event) {
     double d=Double.parseDouble(sotien.getText().replace(",",""));
-    if(khoanPhi.getPhidichvuchungcu()==1){
+    if(!Objects.equals(khoanPhi.getDonVi(), "Đồng")){
     for(NopPhi nopPhi :nopPhiList){
         double d1=nopPhi.getGiaTri();
         double dientich=d1/ khoanPhi.getGiaTri();
