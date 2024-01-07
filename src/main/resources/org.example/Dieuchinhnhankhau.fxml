@@ -181,7 +181,7 @@
 
       <HBox layoutX="442.0" layoutY="681.0" prefHeight="100.0" prefWidth="282.0" spacing="30.0">
          <Button mnemonicParsing="false" onAction="#xoanhankhau" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="XÓA NHÂN KHẨU" textFill="WHITE" />
-         <Button mnemonicParsing="false" onAction="#dieuchinhnhankhau" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="CẬP NHẬT" textFill="WHITE" />
+         <Button fx:id="buttoncapnhat" mnemonicParsing="false" onAction="#dieuchinhnhankhau" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="CẬP NHẬT" textFill="WHITE" />
       </HBox>
 
    </Pane>
