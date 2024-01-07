@@ -18,7 +18,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlyphong">
     <fx:include source="DashBoard.fxml" />
-    <Pane layoutX="222.0" layoutY="-5.0" prefHeight="759.0" prefWidth="777.0" styleClass="pane_11">
+    <Pane layoutX="222.0" prefHeight="750.0" prefWidth="777.0" styleClass="pane_11">
         <Label layoutX="25.0" layoutY="15.0" prefHeight="61.0" prefWidth="295.0" text="Danh sách hộ khẩu">
             <font>
                 <Font name="Arial Bold" size="26.0" />
