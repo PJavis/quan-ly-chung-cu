@@ -1,5 +1,6 @@
 package org.example.ConTroller;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.StringConverter;
+import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.LichSuGiaoDich;
 import org.example.EntityAll.NopPhi;
@@ -72,8 +74,15 @@ public class Tracuulichsugiaodich implements Initializable {
         nguoinoptien.setCellValueFactory(new PropertyValueFactory<>("tennguoinop"));
         sotiennop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatsotiennop"));
         thoigiannop.setCellValueFactory(new PropertyValueFactory<>("formattedDate"));
-        sophong.setCellValueFactory(new PropertyValueFactory<>("sophong"));
-        sotang.setCellValueFactory(new PropertyValueFactory<>("sotang"));
+        sophong.setCellValueFactory(cellData -> {
+            HoKhau hoKhau = cellData.getValue().getNopPhi().getHoKhau();
+            return hoKhau != null ? new SimpleIntegerProperty(hoKhau.getId()).asObject() : null;
+        });
+
+        sotang.setCellValueFactory(cellData -> {
+            HoKhau hoKhau = cellData.getValue().getNopPhi().getHoKhau();
+            return hoKhau != null ? new SimpleIntegerProperty(hoKhau.getSoTang()).asObject() : null;
+        });
         danhsachgiaodich.setItems(lichSuGiaoDichObservableList);
     }
 
