@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="750.0" prefWidth="1000.0" style="-fx-background-color: White;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.ThuphiController">
         <fx:include source="DashBoard.fxml" />
-   <Pane layoutX="223.0" prefHeight="750.0" prefWidth="777.0" styleClass="pane_11">
+   <Pane layoutX="222.0" prefHeight="750.0" prefWidth="777.0" styleClass="pane_11">
        <Label layoutX="22.0" layoutY="52.0" prefHeight="21.0" prefWidth="220.0" text="THÔNG TIN THU PHÍ:">
            <font>
                <Font name="Arial Bold" size="18.0" />

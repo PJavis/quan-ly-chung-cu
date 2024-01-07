@@ -42,7 +42,7 @@
                 </LinearGradient>
             </fill>
         </Line>
-        <TextField fx:id="timkiem" layoutX="382.0" layoutY="80.0" prefHeight="40.0" prefWidth="240.0" promptText="Tìm kiếm" style="-fx-background-radius: 25px; -fx-border-color: #353A56; -fx-border-radius: 25px;">
+        <TextField fx:id="timkiem" layoutX="419.0" layoutY="80.0" prefHeight="40.0" prefWidth="240.0" promptText="Tìm kiếm" style="-fx-background-radius: 25px; -fx-border-color: #353A56; -fx-border-radius: 25px;">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
@@ -54,28 +54,29 @@
             </font>
         </TextField>
 
-        <FontAwesomeIconView glyphName="SEARCH" layoutX="535.0" layoutY="106.0" size="17" text="" />
+        <FontAwesomeIconView glyphName="SEARCH" layoutX="638.0" layoutY="106.0" size="17" text="" />
 
-        <Button layoutX="631.0" layoutY="80.0" mnemonicParsing="false" onAction="#taomoinhankhau" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="TẠO MỚI" textFill="WHITE">
+        <Button layoutX="668.0" layoutY="80.0" mnemonicParsing="false" onAction="#taomoinhankhau" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="TẠO MỚI" textFill="WHITE">
             <graphic>
                 <FontAwesomeIconView glyphName="PLUS" size="20" />
             </graphic>
         </Button>
 
-        <TableView fx:id="danhsachnhankhau" layoutX="22.0" layoutY="135.0" prefHeight="320.0" prefWidth="709.0">
+        <TableView fx:id="danhsachnhankhau" layoutX="22.0" layoutY="135.0" prefHeight="320.0" prefWidth="751.0">
             <columns>
                 <TableColumn fx:id="sothutu" prefWidth="70.4000244140625" text="Số thứ tự" />
-                <TableColumn fx:id="hovaten" prefWidth="132.39999389648438" text="Họ và tên" />
-                <TableColumn fx:id="sodienthoai" prefWidth="86.79998779296875" text="Số điện thoại" />
+                <TableColumn fx:id="hovaten" prefWidth="95.199951171875" text="Họ và tên" />
+            <TableColumn fx:id="cancuoccongdan" prefWidth="114.4000244140625" text="Căn cước công dân" />
+                <TableColumn fx:id="sodienthoai" prefWidth="86.39996337890625" text="Số điện thoại" />
                 <TableColumn fx:id="ngaysinh" prefWidth="81.60003662109375" text="Ngày sinh" />
                 <TableColumn fx:id="sophongdango" minWidth="0.0" prefWidth="71.99993896484375" text="Số phòng" />
                 <TableColumn fx:id="sotang" prefWidth="73.20001220703125" text="Số tầng" />
-                <TableColumn fx:id="trangthai" minWidth="6.4000244140625" prefWidth="94.0" text="Trạng thái" />
-                <TableColumn fx:id="dieuchinh" prefWidth="94.60003662109375" text="Điều chỉnh" />
+                <TableColumn fx:id="trangthai" minWidth="6.4000244140625" prefWidth="79.9998779296875" text="Trạng thái" />
+                <TableColumn fx:id="dieuchinh" prefWidth="68.800048828125" text="Điều chỉnh" />
             </columns>
         </TableView>
 
-        <ComboBox fx:id="boxluachon" editable="true" layoutX="502.0" layoutY="470.0" prefHeight="34.0" prefWidth="229.0" promptText="Thống kê" style="-fx-border-color: #353A56;" />
+        <ComboBox fx:id="boxluachon" editable="true" layoutX="539.0" layoutY="470.0" prefHeight="34.0" prefWidth="229.0" promptText="Thống kê" style="-fx-border-color: #353A56;" />
         <Label layoutX="41.0" layoutY="479.0" text="Tổng số nhân khẩu:">
             <font>
                 <Font name="Arial Bold" size="14.0" />
@@ -83,7 +84,7 @@
         </Label>
         <Label fx:id="tongsonhankhau" layoutX="195.0" layoutY="478.0" text="Label" />
 
-        <Pane fx:id="panethongke" layoutX="22.0" layoutY="517.0" prefHeight="227.0" prefWidth="709.0" style="-fx-border-color: #353A56;" />
+        <Pane fx:id="panethongke" layoutX="22.0" layoutY="517.0" prefHeight="227.0" prefWidth="751.0" style="-fx-border-color: #353A56;" />
 
     </Pane>
 </AnchorPane>
