@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Set;
 
 @Entity
 @Table(name = "danh_sach_khoan_phi")
@@ -34,19 +35,29 @@ public class KhoanPhi {
     private double tongsotien;
     @Column(name="don_vi")
     private String donVi;
-    public KhoanPhi(String tenKhoanPhi, String loaiKhoanPhi, Date batDau, Date ketThuc, double giaTri, double tongsotien) {
+    @OneToMany(mappedBy = "khoanPhi", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<NopPhi> nopPhis ;
+    public KhoanPhi(String tenKhoanPhi, String loaiKhoanPhi, Date batDau, Date ketThuc, double giaTri, double tongsotien,Set<NopPhi> nopPhis) {
         this.tenKhoanPhi = tenKhoanPhi;
         this.loaiKhoanPhi = loaiKhoanPhi;
         this.batDau = batDau;
         this.ketThuc = ketThuc;
         this.giaTri = giaTri;
         this.tongsotien=tongsotien;
+        this.nopPhis=nopPhis;
     }
 
     public KhoanPhi() {
 
     }
 
+    public Set<NopPhi> getNopPhis() {
+        return nopPhis;
+    }
+
+    public void setNopPhis(Set<NopPhi> nopPhis) {
+        this.nopPhis = nopPhis;
+    }
 
     public String getDonVi() {
         return donVi;

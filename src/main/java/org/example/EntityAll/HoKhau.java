@@ -24,18 +24,14 @@ public class HoKhau {
     @Id
     @Column(name = "id")
     private int id;
-
     @Id
     @Column(name = "so_tang")
     private int soTang;
-
     @Column(name = "dien_tich_phong", columnDefinition = "double precision")
     private double dienTichPhong;
-
-    @Column(name = "ten_chu_ho")
+    @Column(name="ten_chu_ho")
     private String tenchuho;
-
-    @Column(name = "ngay_tao_ho_khau")
+    @Column(name="ngay_tao_ho_khau")
     private Date ngaytaohokhau;
 
     @Column(name = "So_dien_thoai")
@@ -44,16 +40,16 @@ public class HoKhau {
     @Column(name = "So_nhan_khau")
     private int soNhanKhau;
 
-    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY)
-    private Set<NopPhi> nopPhis = new HashSet<>();
+    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<NopPhi> nopPhis ;
 
-    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<NhanKhau> nhanKhaus = new HashSet<>();
 
-    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<PhuongTien> phuongTiens = new HashSet<>();
 
-    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<LichSuThayDoi> lichSuThayDois = new HashSet<>();
 
     // Default constructor required by Hibernate
@@ -62,19 +58,50 @@ public class HoKhau {
     }
 
     // Parameterized constructor
-    public HoKhau(int id, int soTang, double dienTichPhong, String tenchuho, Date ngaytaohokhau) {
+
+    public HoKhau(int id, int soTang, double dienTichPhong,String tenchuho,Date ngaytaohokhau,Set<NopPhi> nopPhis,Set<NhanKhau> nhanKhaus,Set<PhuongTien> phuongTiens,Set<LichSuThayDoi> lichSuThayDois) {
         this.id = id;
         this.soTang = soTang;
         this.dienTichPhong = dienTichPhong;
         this.tenchuho = tenchuho;
         this.ngaytaohokhau = (ngaytaohokhau != null) ? ngaytaohokhau : new Date(System.currentTimeMillis());
+        this.nopPhis=nopPhis;
+        this.nhanKhaus=nhanKhaus;
+        this.phuongTiens=phuongTiens;
+        this.lichSuThayDois=lichSuThayDois;
         // No need to set soNhanKhau here
     }
 
-    @PrePersist
-    public void prePersist() {
-        this.ngaytaohokhau = (ngaytaohokhau != null) ? ngaytaohokhau : new Date(System.currentTimeMillis());
-        this.soNhanKhau = (soNhanKhau > 0) ? soNhanKhau : 1; // Set a default value if not already set
+    public Set<NopPhi> getNopPhis() {
+        return nopPhis;
+    }
+
+    public void setNopPhis(Set<NopPhi> nopPhis) {
+        this.nopPhis = nopPhis;
+    }
+
+    public Set<NhanKhau> getNhanKhaus() {
+        return nhanKhaus;
+    }
+
+    public void setNhanKhaus(Set<NhanKhau> nhanKhaus) {
+        this.nhanKhaus = nhanKhaus;
+    }
+
+    public Set<PhuongTien> getPhuongTiens() {
+        return phuongTiens;
+    }
+
+    public void setPhuongTiens(Set<PhuongTien> phuongTiens) {
+        this.phuongTiens = phuongTiens;
+    }
+
+    public Set<LichSuThayDoi> getLichSuThayDois() {
+        return lichSuThayDois;
+    }
+
+    public void setLichSuThayDois(Set<LichSuThayDoi> lichSuThayDois) {
+        this.lichSuThayDois = lichSuThayDois;
     }
 
     public String getSoDienThoai() {
@@ -114,8 +141,12 @@ public class HoKhau {
         return tenchuho;
     }
 
+
+
+
     public void setTenchuho(String tenchuho) {
         this.tenchuho = tenchuho;
+
     }
 
     public Date getNgaytaohokhau() {

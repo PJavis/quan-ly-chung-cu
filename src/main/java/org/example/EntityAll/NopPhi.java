@@ -31,9 +31,9 @@ public class NopPhi {
     })
     private HoKhau hoKhau;
 
-    @OneToMany(mappedBy = "nopPhi", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "nopPhi", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<LichSuGiaoDich> lichSuGiaoDichs = new HashSet<>();
-    @Column(name="ten_chu-ho")
+    @Column(name="ten_chu_ho")
     private String tenchuho;
 
     @Column(name = "trang_thai_dong_phi")
@@ -49,13 +49,13 @@ public class NopPhi {
         // Default constructor required by Hibernate
     }
 
-    public NopPhi(KhoanPhi khoanPhi, double giaTri, HoKhau hoKhau, String tenchuho, boolean trangThaiDongPhi, double soTienDaDong) {
+    public NopPhi(KhoanPhi khoanPhi, double giaTri, HoKhau hoKhau, String tenchuho, boolean trangThaiDongPhi, double soTienDaDong, Set<LichSuGiaoDich> lichsugiaodiches) {
         this.khoanPhi = khoanPhi;
         this.giaTri = giaTri;
         this.hoKhau = hoKhau;
         this.tenchuho = tenchuho;
         this.trangThaiDongPhi = trangThaiDongPhi;
-
+        this.lichSuGiaoDichs=lichsugiaodiches;
         this.soTienDaDong = soTienDaDong;
     }
 
