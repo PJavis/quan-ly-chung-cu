@@ -28,7 +28,7 @@
             </font>
         </Label>
 
-        <Line endX="606.0" endY="-13.000015258789062" layoutX="136.0" layoutY="88.0" startX="-113.19999694824219" startY="-13.000015258789062" stroke="#a7a7b7">
+        <Line endX="632.4000244140625" endY="-13.000007629394531" layoutX="136.0" layoutY="88.0" startX="-113.19999694824219" startY="-13.000015258789062" stroke="#a7a7b7">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -47,7 +47,7 @@
             </fill>
         </Line>
 
-        <TextField fx:id="timkiem" layoutX="478.0" layoutY="99.0" prefHeight="34.0" prefWidth="240.0" promptText="Tìm kiếm" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;">
+        <TextField fx:id="timkiem" layoutX="530.0" layoutY="99.0" prefHeight="34.0" prefWidth="240.0" promptText="Tìm kiếm" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
@@ -59,19 +59,20 @@
             </font>
         </TextField>
 
-        <FontAwesomeIconView glyphName="SEARCH" layoutX="678.0" layoutY="122.0" size="17" />
+        <FontAwesomeIconView glyphName="SEARCH" layoutX="730.0" layoutY="122.0" size="17" />
 
 
-        <TableView fx:id="danhsachkhoanphi" layoutX="10.0" layoutY="158.0" prefHeight="361.0" prefWidth="736.0">
+        <TableView fx:id="danhsachkhoanphi" layoutX="10.0" layoutY="158.0" prefHeight="361.0" prefWidth="764.0">
             <columns>
                 <TableColumn fx:id="sothutu" prefWidth="66.0" text="Số thứ tự" />
-                <TableColumn fx:id="tenkhoanphitable" prefWidth="126.39999389648438" text="Tên khoản phí" />
-                <TableColumn fx:id="loaikhoanphitable" prefWidth="98.99996948242188" text="Loại khoản phí" />
-                <TableColumn fx:id="ngaybatdau" prefWidth="97.60003662109375" text="Ngày bắt đầu" />
-                <TableColumn fx:id="hannoptable" prefWidth="82.79998779296875" text="Hạn nộp" />
-                <TableColumn fx:id="sotientable" prefWidth="72.199951171875" text="Số tiền" />
-                <TableColumn fx:id="sotiendanop" prefWidth="89.4000244140625" text="Số tiền đã nộp" />
-                <TableColumn fx:id="chitiet" prefWidth="102.0" text="Chi tiết" />
+                <TableColumn fx:id="tenkhoanphitable" prefWidth="111.199951171875" text="Tên khoản phí" />
+                <TableColumn fx:id="loaikhoanphitable" prefWidth="93.59991455078125" text="Loại khoản phí" />
+                <TableColumn fx:id="ngaybatdau" prefWidth="90.39999389648438" text="Ngày bắt đầu" />
+                <TableColumn fx:id="hannoptable" prefWidth="72.0" text="Hạn nộp" />
+                <TableColumn fx:id="sotientable" prefWidth="90.4000244140625" text="Số tiền" />
+                <TableColumn fx:id="sotiendanop" prefWidth="87.2000732421875" text="Số tiền đã nộp" />
+            <TableColumn fx:id="donvitable" prefWidth="62.4000244140625" text="Đơn vị" />
+                <TableColumn fx:id="chitiet" prefWidth="83.199951171875" text="Chi tiết" />
             </columns>
         </TableView>
 
@@ -90,7 +91,7 @@
                         <Insets top="5.0" />
                     </HBox.margin>
                 </Label>
-                <ComboBox fx:id="loaikhoanphi" editable="true" prefHeight="34.0" prefWidth="231.0" promptText="Loại khoản phí" style="-fx-border-color: #353A56;">
+                <ComboBox fx:id="loaikhoanphi" prefHeight="34.0" prefWidth="231.0" promptText="Loại khoản phí" style="-fx-border-color: #353A56;">
                     <HBox.margin>
                         <Insets top="-5.0" />
                     </HBox.margin>
@@ -114,6 +115,19 @@
                         <Insets top="-5.0" />
                     </HBox.margin>
                 </TextField>
+            <Label text="Đơn vị:">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Label>
+            <ComboBox fx:id="donvi" prefHeight="34.0" prefWidth="231.0" promptText="Đơn vị" style="-fx-border-color: #353A56;">
+               <HBox.margin>
+                  <Insets top="-5.0" />
+               </HBox.margin>
+            </ComboBox>
             </HBox>
             <HBox prefHeight="50.0" prefWidth="658.0" spacing="20.0">
                 <padding>
