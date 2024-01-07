@@ -11,102 +11,96 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="215.0" styleClass="panebentrai" stylesheets="@css/pinocchio.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.DashBoardController">
-    <children>
-        <Accordion layoutX="5.0" layoutY="291.0" />
-        <Label layoutX="30.0" layoutY="14.0" text="Quản lý chung cư" textFill="#f2e9e9">
+<AnchorPane prefHeight="750.0" prefWidth="215.0" styleClass="panebentrai" stylesheets="@css/pinocchio.css"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.ConTroller.DashBoardController">
+    <Accordion layoutX="5.0" layoutY="291.0"/>
+    <Label layoutX="30.0" layoutY="14.0" text="Quản lý chung cư" textFill="#f2e9e9">
+        <font>
+            <Font size="20.0"/>
+        </font>
+    </Label>
+    <Line endX="83.20001220703125" layoutX="124.0" layoutY="200.0" startX="-116.0"/>
+    <Label layoutX="57.0" layoutY="142.0" prefHeight="30.0" prefWidth="111.0" text="Chào mừng," textFill="#f4f0f0">
+        <font>
+            <Font name="Candara Bold" size="21.0"/>
+        </font>
+    </Label>
+    <Label layoutX="52.0" layoutY="172.0" text="Pinocchio LHP" textFill="#e4e1e1">
+        <font>
+            <Font name="Candara Bold" size="21.0"/>
+        </font>
+    </Label>
+    <Pane layoutX="5.0" layoutY="209.0" prefHeight="50.0" prefWidth="215.0" styleClass="side_ankerpane">
+        <Button fx:id="trangchu1" layoutX="16.0" layoutY="11.0" onAction="#trangchu" prefHeight="30.0"
+                prefWidth="183.0" styleClass="buttontrai1" text="Trang chủ" textFill="#eae2e2">
             <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-        <Line endX="83.20001220703125" layoutX="124.0" layoutY="200.0" startX="-116.0" />
-        <Label layoutX="57.0" layoutY="142.0" prefHeight="30.0" prefWidth="111.0" text="Chào mừng," textFill="#f4f0f0">
-            <font>
-                <Font name="Candara Bold" size="21.0" />
-            </font>
-        </Label>
-        <Label layoutX="52.0" layoutY="172.0" text="Pinocchio LHP" textFill="#e4e1e1">
-            <font>
-                <Font name="Candara Bold" size="21.0" />
-            </font>
-        </Label>
-        <Pane layoutX="5.0" layoutY="209.0" prefHeight="50.0" prefWidth="215.0" styleClass="side_ankerpane">
-            <children>
-
-                <Button fx:id="trangchu1" layoutX="16.0" layoutY="11.0" onAction="#trangchu" prefHeight="30.0" prefWidth="183.0" styleClass="buttontrai1" text="Trang chủ" textFill="#eae2e2">
-                    <font>
-                        <Font name="Candara Bold" size="13.0" />
-                    </font>
-                </Button>
-            </children>
-        </Pane>
-        <Pane layoutX="5.0" layoutY="264.0" prefHeight="50.0" prefWidth="215.0" styleClass="side_ankerpane">
-            <children>
-                <Button layoutX="16.0" layoutY="10.0" mnemonicParsing="false" onAction="#quanlyphongo" prefHeight="30.0" prefWidth="183.0" styleClass="buttontrai1" text="Quản lý hộ khẩu" textFill="#f4e8e8">
-                    <font>
-                        <Font name="Candara Bold" size="13.0" />
-                    </font>
-                </Button>
-            </children>
-        </Pane>
-        <Pane layoutX="5.0" layoutY="318.0" prefHeight="50.0" prefWidth="215.0" styleClass="side_ankerpane">
-            <children>
-                <Button layoutX="16.0" layoutY="10.0" mnemonicParsing="false" onAction="#thuphi" prefHeight="30.0" prefWidth="183.0" styleClass="buttontrai1" text="Thu phí " textFill="#efeaea">
-                    <font>
-                        <Font name="Candara Bold" size="13.0" />
-                    </font>
-                </Button>
-            </children>
-        </Pane>
-        <Pane layoutX="5.0" layoutY="372.0" prefHeight="50.0" prefWidth="215.0" styleClass="side_ankerpane">
-            <children>
-                <Button layoutX="16.0" layoutY="10.0" mnemonicParsing="false" onAction="#quanlynhankhau" prefHeight="30.0" prefWidth="183.0" styleClass="buttontrai1" text="Quản lý nhân khẩu" textFill="#ece8e8">
-                    <font>
-                        <Font name="Candara Bold" size="13.0" />
-                    </font>
-                </Button>
-            </children>
-        </Pane>
-        <Pane layoutX="5.0" layoutY="426.0" prefHeight="50.0" prefWidth="215.0" styleClass="side_ankerpane">
-            <children>
-                <Button layoutX="16.0" layoutY="10.0" mnemonicParsing="false" onAction="#quanlycackhoanphi" prefHeight="30.0" prefWidth="183.0" styleClass="buttontrai1" text="Quản lý các khoản phí" textFill="#f4f1f1">
-                    <font>
-                        <Font name="Candara Bold" size="13.0" />
-                    </font>
-                </Button>
-            </children>
-        </Pane>
-        <Pane layoutX="5.0" layoutY="480.0" prefHeight="50.0" prefWidth="215.0" styleClass="side_ankerpane">
-            <children>
-                <Button layoutX="16.0" layoutY="5.0" mnemonicParsing="false" onAction="#quanlythuphiguixe" prefHeight="37.0" prefWidth="183.0" styleClass="buttontrai1" text="Quản lý gửi xe" textFill="#ece8e8">
-                    <font>
-                        <Font name="Candara Bold" size="13.0" />
-                    </font>
-                </Button>
-            </children>
-        </Pane>
-        <Button fx:id="thongtintk" layoutX="21.0" layoutY="581.0" mnemonicParsing="false" onAction="#thongtintaikhoan" prefHeight="50.0" prefWidth="183.0" styleClass="buttontrai1" text="Thông tin tài khoản" textFill="#f7f2f2">
-            <graphic>
-                <FontAwesomeIconView fill="#eae5e5" glyphName="ADDRESS_BOOK_ALT" size="2em" />
-            </graphic>
-            <font>
-                <Font name="Candara Bold" size="14.0" />
+                <Font name="Candara Bold" size="13.0"/>
             </font>
         </Button>
-        <Button layoutX="21.0" layoutY="632.0" mnemonicParsing="false" onAction="#dangxuat" prefHeight="44.0" prefWidth="183.0" styleClass="buttontrai1" text="Đăng xuất" textFill="#f7f2f2">
-            <graphic>
-                <FontAwesomeIconView fill="#efecec" glyphName="SIGN_OUT" size="2em" />
-            </graphic>
+    </Pane>
+    <Pane layoutX="5.0" layoutY="264.0" prefHeight="50.0" prefWidth="215.0" styleClass="side_ankerpane">
+        <Button layoutX="16.0" layoutY="10.0" mnemonicParsing="false" onAction="#quanlyphongo" prefHeight="30.0"
+                prefWidth="183.0" styleClass="buttontrai1" text="Quản lý hộ khẩu" textFill="#f4e8e8">
             <font>
-                <Font name="Candara Bold" size="14.0" />
+                <Font name="Candara Bold" size="13.0"/>
             </font>
         </Button>
-        <ImageView fitHeight="89.0" fitWidth="146.0" layoutX="68.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/boy.png" />
-            </image>
-        </ImageView>
+    </Pane>
+    <Pane layoutX="5.0" layoutY="318.0" prefHeight="50.0" prefWidth="215.0" styleClass="side_ankerpane">
+        <Button layoutX="16.0" layoutY="10.0" mnemonicParsing="false" onAction="#thuphi" prefHeight="30.0"
+                prefWidth="183.0" styleClass="buttontrai1" text="Thu phí " textFill="#efeaea">
+            <font>
+                <Font name="Candara Bold" size="13.0"/>
+            </font>
+        </Button>
+    </Pane>
+    <Pane layoutX="5.0" layoutY="372.0" prefHeight="50.0" prefWidth="215.0" styleClass="side_ankerpane">
+        <Button layoutX="16.0" layoutY="10.0" mnemonicParsing="false" onAction="#quanlynhankhau" prefHeight="30.0"
+                prefWidth="183.0" styleClass="buttontrai1" text="Quản lý nhân khẩu" textFill="#ece8e8">
+            <font>
+                <Font name="Candara Bold" size="13.0"/>
+            </font>
+        </Button>
+    </Pane>
+    <Pane layoutX="5.0" layoutY="426.0" prefHeight="50.0" prefWidth="215.0" styleClass="side_ankerpane">
+        <Button layoutX="16.0" layoutY="10.0" mnemonicParsing="false" onAction="#quanlycackhoanphi"
+                prefHeight="30.0" prefWidth="183.0" styleClass="buttontrai1" text="Quản lý các khoản phí"
+                textFill="#f4f1f1">
+            <font>
+                <Font name="Candara Bold" size="13.0"/>
+            </font>
+        </Button>
+    </Pane>
+    <Pane layoutX="5.0" layoutY="480.0" prefHeight="50.0" prefWidth="215.0" styleClass="side_ankerpane">
+        <Button layoutX="16.0" layoutY="5.0" mnemonicParsing="false" onAction="#quanlythuphiguixe" prefHeight="37.0"
+                prefWidth="183.0" styleClass="buttontrai1" text="Quản lý gửi xe" textFill="#ece8e8">
+            <font>
+                <Font name="Candara Bold" size="13.0"/>
+            </font>
+        </Button>
+    </Pane>
+    <Button fx:id="thongtintk" layoutX="21.0" layoutY="581.0" mnemonicParsing="false" onAction="#thongtintaikhoan"
+            prefHeight="50.0" prefWidth="183.0" styleClass="buttontrai1" text="Thông tin tài khoản" textFill="#f7f2f2">
+        <graphic>
+            <FontAwesomeIconView fill="#eae5e5" glyphName="ADDRESS_BOOK_ALT" size="2em"/>
+        </graphic>
+        <font>
+            <Font name="Candara Bold" size="14.0"/>
+        </font>
+    </Button>
+    <Button layoutX="21.0" layoutY="632.0" mnemonicParsing="false" onAction="#dangxuat" prefHeight="44.0"
+            prefWidth="183.0" styleClass="buttontrai1" text="Đăng xuất" textFill="#f7f2f2">
+        <graphic>
+            <FontAwesomeIconView fill="#efecec" glyphName="SIGN_OUT" size="2em"/>
+        </graphic>
+        <font>
+            <Font name="Candara Bold" size="14.0"/>
+        </font>
+    </Button>
+    <ImageView fitHeight="89.0" fitWidth="146.0" layoutX="68.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../images/boy.png"/>
+    </ImageView>
 
-        
-    </children>
+
 </AnchorPane>

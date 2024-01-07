@@ -5,42 +5,45 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="717.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Tracuulichsugiaodich">
-   <children>
-
-       <HBox layoutX="36.0" prefHeight="100.0" prefWidth="650.0" spacing="35.0">
-           <children>
-               <Label layoutX="42.0" layoutY="24.0" text="Từ:">
-                   <font>
-                       <Font name="Arial Bold" size="14.0" />
-                   </font>
-               <HBox.margin>
-                  <Insets top="8.0" />
-               </HBox.margin></Label>
-               <DatePicker fx:id="tu" layoutX="90.0" layoutY="14.0" prefHeight="35.0" prefWidth="177.0" style="-fx-border-color: #353A56; -fx-background-color:#ffffff;"/>
-               <Label layoutX="317.0" layoutY="24.0" text="Đến:">
-                   <font>
-                       <Font name="Arial Bold" size="14.0" />
-                   </font>
-               <HBox.margin>
-                  <Insets top="8.0" />
-               </HBox.margin></Label>
-               <DatePicker fx:id="den" layoutX="373.0" layoutY="14.0" prefHeight="35.0" prefWidth="177.0" style="-fx-border-color: #353A56;" />
-               <Button layoutX="578.0" layoutY="14.0" mnemonicParsing="false" onAction="#tim" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #353A56; -fx-background-radius: 25px;" text="TÌM KIẾM" textFill="WHITE" />
-           </children>
-         <padding>
-            <Insets top="15.0" />
-         </padding>
-       </HBox>
-       <TableView fx:id="danhsachgiaodich" layoutX="35.0" layoutY="81.0" prefHeight="278.0" prefWidth="650.0">
-           <columns>
-               <TableColumn fx:id="sothutu" prefWidth="68.20001220703125" text="Số thự tự" />
-               <TableColumn fx:id="sophong" prefWidth="76.60000610351562" text="Số phòng" />
-               <TableColumn fx:id="sotang" prefWidth="70.60000610351562" text="Số tầng" />
-               <TableColumn fx:id="nguoinoptien" prefWidth="185.39999389648438" text="Người nộp tiền" />
-               <TableColumn fx:id="sotiennop" prefWidth="132.19998168945312" text="Số tiền nộp" />
-               <TableColumn fx:id="thoigiannop" prefWidth="115.0" text="Thời gian nộp" />
-           </columns>
-       </TableView>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="717.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Tracuulichsugiaodich">
+    <HBox layoutX="36.0" prefHeight="100.0" prefWidth="650.0" spacing="35.0">
+        <padding>
+            <Insets top="15.0"/>
+        </padding>
+        <Label layoutX="42.0" layoutY="24.0" text="Từ:">
+            <font>
+                <Font name="Arial Bold" size="14.0"/>
+            </font>
+            <HBox.margin>
+                <Insets top="8.0"/>
+            </HBox.margin>
+        </Label>
+        <DatePicker fx:id="tu" layoutX="90.0" layoutY="14.0" prefHeight="35.0" prefWidth="177.0"
+                    style="-fx-border-color: #353A56; -fx-background-color:#ffffff;"/>
+        <Label layoutX="317.0" layoutY="24.0" text="Đến:">
+            <font>
+                <Font name="Arial Bold" size="14.0"/>
+            </font>
+            <HBox.margin>
+                <Insets top="8.0"/>
+            </HBox.margin>
+        </Label>
+        <DatePicker fx:id="den" layoutX="373.0" layoutY="14.0" prefHeight="35.0" prefWidth="177.0"
+                    style="-fx-border-color: #353A56;"/>
+        <Button layoutX="578.0" layoutY="14.0" mnemonicParsing="false" onAction="#tim" prefHeight="35.0"
+                prefWidth="91.0" style="-fx-background-color: #353A56; -fx-background-radius: 25px;" text="TÌM KIẾM"
+                textFill="WHITE"/>
+    </HBox>
+    <TableView fx:id="danhsachgiaodich" layoutX="35.0" layoutY="81.0" prefHeight="278.0" prefWidth="650.0">
+        <columns>
+            <TableColumn fx:id="sothutu" prefWidth="68.20001220703125" text="Số thự tự"/>
+            <TableColumn fx:id="sophong" prefWidth="76.60000610351562" text="Số phòng"/>
+            <TableColumn fx:id="sotang" prefWidth="70.60000610351562" text="Số tầng"/>
+            <TableColumn fx:id="nguoinoptien" prefWidth="185.39999389648438" text="Người nộp tiền"/>
+            <TableColumn fx:id="sotiennop" prefWidth="132.19998168945312" text="Số tiền nộp"/>
+            <TableColumn fx:id="thoigiannop" prefWidth="115.0" text="Thời gian nộp"/>
+        </columns>
+    </TableView>
 </AnchorPane>
