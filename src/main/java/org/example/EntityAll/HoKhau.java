@@ -40,16 +40,16 @@ public class HoKhau {
     @Column(name = "So_nhan_khau")
     private int soNhanKhau;
 
-    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<NopPhi> nopPhis = new HashSet<>();
 
-    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<NhanKhau> nhanKhaus = new HashSet<>();
 
-    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<PhuongTien> phuongTiens = new HashSet<>();
 
-    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<LichSuThayDoi> lichSuThayDois = new HashSet<>();
 
     // Default constructor required by Hibernate
@@ -63,7 +63,7 @@ public class HoKhau {
         this.soTang = soTang;
         this.dienTichPhong = dienTichPhong;
         this.tenchuho = tenchuho;
-        this.ngaytaohokhau = (ngaytaohokhau != null) ? ngaytaohokhau : new Date(System.currentTimeMillis());
+        this.ngaytaohokhau =ngaytaohokhau;
         // No need to set soNhanKhau here
     }
     public String getSoDienThoai() {

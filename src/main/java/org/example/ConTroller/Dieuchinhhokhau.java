@@ -219,7 +219,6 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau);
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == buttonTypeOK) {
             for(NhanKhau nhanKhau : nhanKhaus) {
-                NhanKhauDao.getInstance().delete(nhanKhau);
                 getData.getInstance().removeNhankhau(nhanKhau);
             }
             HoKhauDao.getInstance().delete(hoKhaus);

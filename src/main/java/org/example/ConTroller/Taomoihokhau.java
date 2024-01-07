@@ -112,6 +112,7 @@ public class Taomoihokhau implements Initializable {
                 hoKhau.setTenchuho(tenchuho.getText());
                 hoKhau.setSoDienThoai(sodienthoai.getText());
                 hoKhau.setNgaytaohokhau(new Date(System.currentTimeMillis()));
+                hoKhau.setSoNhanKhau(1);
                 return hoKhau;
         }
 
