@@ -44,16 +44,16 @@ public class HoKhau {
     @Column(name = "So_nhan_khau")
     private int soNhanKhau;
 
-    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<NopPhi> nopPhis = new HashSet<>();
 
-    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<NhanKhau> nhanKhaus = new HashSet<>();
 
-    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<PhuongTien> phuongTiens = new HashSet<>();
 
-    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<LichSuThayDoi> lichSuThayDois = new HashSet<>();
 
     // Default constructor required by Hibernate
