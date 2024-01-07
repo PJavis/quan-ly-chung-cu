@@ -66,13 +66,6 @@ public class HoKhau {
         this.ngaytaohokhau = (ngaytaohokhau != null) ? ngaytaohokhau : new Date(System.currentTimeMillis());
         // No need to set soNhanKhau here
     }
-
-    @PrePersist
-    public void prePersist() {
-        this.ngaytaohokhau = (ngaytaohokhau != null) ? ngaytaohokhau : new Date(System.currentTimeMillis());
-        this.soNhanKhau = (soNhanKhau > 0) ? soNhanKhau : 1; // Set a default value if not already set
-    }
-
     public String getSoDienThoai() {
         return soDienThoai;
     }
