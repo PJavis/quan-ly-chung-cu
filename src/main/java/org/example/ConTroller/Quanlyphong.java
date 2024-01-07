@@ -62,6 +62,15 @@ public class Quanlyphong implements Initializable {
     private Label tongsohokhau;
 
     private List<HoKhau> hoKhauList=getData.getInstance().getHoKhaus();
+
+    public List<HoKhau> getHoKhauList() {
+        return hoKhauList;
+    }
+
+    public void setHoKhauList() {
+        this.hoKhauList = getData.getInstance().getHoKhaus();
+    }
+
     private ObservableList<HoKhau> hoKhaus;
     @FXML
     private BarChart<String,Number> hokhauchart;
