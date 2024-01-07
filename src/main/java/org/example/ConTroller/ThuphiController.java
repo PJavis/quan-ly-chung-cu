@@ -25,12 +25,12 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ThuphiController implements Initializable {
-    private  KhoanPhi khoanPhi;
-
+    private KhoanPhi khoanPhi;
+    private NopPhi nopPhi;
+    private double duNo = 0;
 
     @FXML
     private Label duno;
-
 
     @FXML
     private TextField sophong;
@@ -43,6 +43,7 @@ public class ThuphiController implements Initializable {
 
     @FXML
     private Label sotiendanop;
+
     @FXML
     private TextField nguoinopphi;
 
@@ -51,52 +52,105 @@ public class ThuphiController implements Initializable {
 
     @FXML
     private ComboBox<String> tenphi;
-    private NopPhi nopPhi;
 
     @FXML
     private TextField sodiennuoc;
 
+    @FXML
+    private Label chitiet;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initializeComboBox();
+    }
+
+    private void initializeComboBox() {
+        List<String> khoanphiString = getKhoanPhiNames();
+        tenphi.setItems(FXCollections.observableArrayList(khoanphiString));
+
+        tenphi.setOnAction(event -> {
+            khoanPhi = KhoanPhiDao.getInstance().selectByName(tenphi.getValue());
+            updateKhoanPhiDetails();
+            clearInputFields();
+        });
+    }
+
+    private List<String> getKhoanPhiNames() {
+        List<KhoanPhi> khoanPhis = getData.getInstance().getKhoanPhis();
+        ObservableList<String> khoanphiString = FXCollections.observableArrayList();
+        for (KhoanPhi khoanPhi1 : khoanPhis) {
+            khoanphiString.add(khoanPhi1.getTenKhoanPhi());
+        }
+        return khoanphiString;
+    }
+
+    private void updateKhoanPhiDetails() {
+        sotien.setText(khoanPhi.getDecimalFormatsotien());
+        chitiet.setText(khoanPhi.getLoaiKhoanPhi());
+    }
+
+    private void clearInputFields() {
+        sophong.clear();
+        sotang.clear();
+        sotiendanop.setText("");
+        sotiennop.clear();
+        duno.setText("");
+    }
 
     @FXML
     void nopphi(ActionEvent event) {
-        if(tenphi.getValue()==null||sophong.getText().isEmpty()||sotang.getText().isEmpty()){
-            Alert alert1=new Alert(Alert.AlertType.ERROR);
-            alert1.setHeaderText("Thất bại");
-            alert1.setContentText("Không tìm thấy khoản phí hoặc hộ khẩu");
-            alert1.showAndWait();
-            return;
-        }
-        try{
-        double d = Double.parseDouble(sotiennop.getText());}
-        catch (NumberFormatException e){
-            Alert alert1=new Alert(Alert.AlertType.ERROR);
-            alert1.setHeaderText("Thất bại");
-            alert1.setContentText("Hãy nhập số tiền bạn muốn nộp vào số tiền nộp");
-            alert1.showAndWait();
+        if (isInputInvalid()) {
+            showAlert("Thất bại", "Không tìm thấy khoản phí hoặc hộ khẩu");
             return;
         }
 
-        if(Double.parseDouble(sotiennop.getText())>duNo){
-            Alert alert1=new Alert(Alert.AlertType.ERROR);
-            alert1.setHeaderText("Thất bại");
-            alert1.setContentText("Bạn không thể nộp số tiền vượt quá số tiền phải đóng");
-            alert1.showAndWait();
-            sotiennop.setText("");
+        try {
+            double amount = Double.parseDouble(sotiennop.getText());
+        } catch (NumberFormatException e) {
+            showAlert("Thất bại", "Hãy nhập số tiền bạn muốn nộp vào số tiền nộp");
             return;
         }
-        if(nguoinopphi.getText().isEmpty()){
-            Alert alert1=new Alert(Alert.AlertType.ERROR);
-            alert1.setHeaderText("Thất bại");
-            alert1.setContentText("Hãy nhập tên người nôp;");
-            alert1.showAndWait();
+
+        if (Double.parseDouble(sotiennop.getText()) > duNo) {
+            showAlert("Thất bại", "Bạn không thể nộp số tiền vượt quá số tiền phải đóng");
+            sotiennop.clear();
             return;
         }
-        nopPhi.setSoTienDaDong(nopPhi.getSoTienDaDong()+Double.parseDouble(sotiennop.getText()));
+
+        if (nguoinopphi.getText().isEmpty()) {
+            showAlert("Thất bại", "Hãy nhập tên người nộp");
+            return;
+        }
+
+        updateNopPhiAndKhoanPhi();
+
+        saveLichSuGiaoDich();
+
+        clearInputFields();
+
+        showAlert("Thành công", "Nộp phí thành công");
+    }
+
+    private boolean isInputInvalid() {
+        return tenphi.getValue() == null || sophong.getText().isEmpty() || sotang.getText().isEmpty();
+    }
+
+    private void updateNopPhiAndKhoanPhi() {
+        nopPhi.setSoTienDaDong(nopPhi.getSoTienDaDong() + Double.parseDouble(sotiennop.getText()));
         NopPhiDao.getInstance().update(nopPhi);
-        khoanPhi.setTongsotien(khoanPhi.getTongsotien()+Double.parseDouble(sotiennop.getText()));
+
+        khoanPhi.setTongsotien(khoanPhi.getTongsotien() + Double.parseDouble(sotiennop.getText()));
         getData.getInstance().updateKhoanphi(khoanPhi);
         KhoanPhiDao.getInstance().update(khoanPhi);
-        LichSuGiaoDich lichSuGiaoDich=new LichSuGiaoDich();
+    }
+
+    private void saveLichSuGiaoDich() {
+        LichSuGiaoDich lichSuGiaoDich = createLichSuGiaoDich();
+        LichSuGiaoDichDao.getInstance().save(lichSuGiaoDich);
+    }
+
+    private LichSuGiaoDich createLichSuGiaoDich() {
+        LichSuGiaoDich lichSuGiaoDich = new LichSuGiaoDich();
         lichSuGiaoDich.setSoPhong(nopPhi.getSoPhong());
         lichSuGiaoDich.setSoTang(nopPhi.getSoTang());
         lichSuGiaoDich.setTenKhoanPhi(khoanPhi.getTenKhoanPhi());
@@ -104,65 +158,41 @@ public class ThuphiController implements Initializable {
         lichSuGiaoDich.setTennguoinop(nguoinopphi.getText());
         lichSuGiaoDich.setGiaTri(Double.parseDouble(sotiennop.getText()));
         LocalDate today = LocalDate.now();
-        Date date=Date.valueOf(today);
+        Date date = Date.valueOf(today);
         lichSuGiaoDich.setThoigiangiaodich(date);
-        LichSuGiaoDichDao.getInstance().save(lichSuGiaoDich);
-        sophong.clear();
-        sotang.clear();
-        sotiennop.clear();
-        duno.setText("");
-        sotiendanop.setText("");
-        nguoinopphi.clear();
-        Alert alert1=new Alert(Alert.AlertType.CONFIRMATION);
-        alert1.setHeaderText("Thành công");
-        alert1.setContentText("Nộp phí thành công");
-        alert1.showAndWait();
-
-
+        return lichSuGiaoDich;
     }
-    private double duNo=0;
+
+    private void showAlert(String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 
     @FXML
     void timphong(ActionEvent event) {
-        nopPhi= NopPhiDao.getInstance().selectByCondition(khoanPhi.getId(),Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
-        DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
         try {
-            sotiendanop.setText(decimalFormat.format(nopPhi.getSoTienDaDong()));
-                duNo = nopPhi.getGiaTri() - nopPhi.getSoTienDaDong();
-                duno.setText(decimalFormat.format(duNo));
-
-        }catch (Exception e){
-            sotiennop.clear();
-            sotiendanop.setText("");
-            nguoinopphi.clear();
-            duno.setText("");
-            Alert alert1=new Alert(Alert.AlertType.ERROR);
-            alert1.setHeaderText("Lỗi");
-            alert1.setContentText("Không tìm thấy hộ khẩu");
-            alert1.showAndWait();
+            nopPhi = NopPhiDao.getInstance().selectByCondition(khoanPhi.getId(),
+                    Integer.parseInt(sophong.getText()), Integer.parseInt(sotang.getText()));
+            updateNopPhiDetails();
+        } catch (Exception e) {
+            handleException(e);
         }
-
-
     }
-   private List<KhoanPhi> khoanPhis=getData.getInstance().getKhoanPhis();
-    @FXML
-    private Label chitiet;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-       List<String> khoanphiString=FXCollections.observableArrayList();
-       for(KhoanPhi khoanPhi1 : khoanPhis){
-           khoanphiString.add(khoanPhi1.getTenKhoanPhi());
-       }
-        tenphi.setItems((ObservableList<String>) khoanphiString);
-        tenphi.setOnAction(event -> {
-            khoanPhi= KhoanPhiDao.getInstance().selectByName(tenphi.getValue());
-            sotien.setText(khoanPhi.getDecimalFormatsotien());
-            chitiet.setText(khoanPhi.getLoaiKhoanPhi());
-            sophong.clear();
-            sotang.clear();
-            sotiendanop.setText("");
-            sotiennop.clear();
-            duno.setText("");
-        });
+
+    private void updateNopPhiDetails() {
+        DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
+        sotiendanop.setText(decimalFormat.format(nopPhi.getSoTienDaDong()));
+        duNo = nopPhi.getGiaTri() - nopPhi.getSoTienDaDong();
+        duno.setText(decimalFormat.format(duNo));
+    }
+
+    private void handleException(Exception e) {
+        sotiennop.clear();
+        sotiendanop.setText("");
+        nguoinopphi.clear();
+        duno.setText("");
+        showAlert("Lỗi", "Không tìm thấy hộ khẩu");
     }
 }

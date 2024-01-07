@@ -92,15 +92,20 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>{
         NopPhi nopPhi;
         try {
             session = Hibernate.getSession(sessionFactory);
-            nopPhi = session.createQuery("FROM NopPhi  WHERE  idKhoanPhi= :id AND soTang= :sotang AND soPhong= :sophong", NopPhi.class)
-                    .setParameter("id", idkhoanphi).setParameter("sophong", sophong).setParameter("sotang", sotang)
+            nopPhi = session.createQuery(
+                            "FROM NopPhi n WHERE n.khoanPhi.id = :id AND n.hoKhau.soTang = :sotang AND n.hoKhau.id = :sophong",
+                            NopPhi.class)
+                    .setParameter("id", idkhoanphi)
+                    .setParameter("sophong", sophong)
+                    .setParameter("sotang", sotang)
                     .uniqueResult();
             Hibernate.closeSession(session);
         } catch (Exception e) {
-        throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
         return nopPhi;
     }
+
 
     public List<NopPhi> selectByHoKhau(HoKhau hoKhau) {
         List<NopPhi> nopPhi;
