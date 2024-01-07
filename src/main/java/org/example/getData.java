@@ -96,7 +96,14 @@ public class getData {
         }
         return !isDuplicate;
     }
-
+public void updateHokhau(HoKhau hoKhau){
+        for(HoKhau hoKhau1:hoKhaus){
+            if(hoKhau1.getSoTang()== hoKhau.getSoTang()&&hoKhau1.getId()== hoKhau.getId()){
+                hoKhau1=hoKhau;
+                return;
+            }
+        }
+}
     public void removePhuongTien(PhuongTien phuongTien){phuongTiens.remove(phuongTien);}
 
     public void reloadNhankhau() {

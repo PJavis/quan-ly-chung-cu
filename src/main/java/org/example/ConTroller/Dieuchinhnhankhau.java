@@ -90,50 +90,92 @@ public class Dieuchinhnhankhau implements Initializable {
     }
     @FXML
         void dieuchinhnhankhau(ActionEvent event) {
-        if(isValidDateFormat(ngaysinh.getText())&&!tennhankhau.getText().isEmpty()){
-            nhanKhau.setTen(tennhankhau.getText());
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            String date= ngaysinh.getText();
-            LocalDate datetime = LocalDate.parse(date, formatter);
-            nhanKhau.setNgaySinh(Date.valueOf(datetime));
-            if(nam.isSelected())nhanKhau.setGioiTinh(1);
-            else nhanKhau.setGioiTinh(0);
-            HoKhau hoKhau1=HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
-            if(!(hoKhau1 ==null)){
-            nhanKhau.setHoKhau(hoKhau1);
-            nhanKhau.setTrangThai(trangthai.getText());
-            nhanKhau.setQuocTich(quoctich.getText());
-            NhanKhauDao.getInstance().update(nhanKhau);
-            getData.getInstance().setNhankhau(nhanKhau);
-            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-            alert1.setHeaderText("Thành công");
-            alert1.setContentText("Điều chỉnh nhân khẩu thành công");
-            alert1.showAndWait();
-            try {
-                Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlynhankhau.fxml"));
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                ag0r1.setScene(scene);
-                ag0r1.show();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
-        else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Thất bại");
-            alert.setContentText("Không tìm thấy phòng");
-            alert.showAndWait();
-
-        }}
-        else {
+         if(!isValidDateFormat(ngaysinh.getText())){
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Thất bại");
-            alert.setContentText("Vui lòng điền ngày sinh theo dạng dd/mm/yyyy và đầy đủ thông tin");
+            alert.setContentText("Vui lòng điền ngày sinh theo dạng dd/mm/yyyy");
             alert.showAndWait();
         }
+        else {
+             nhanKhau.setTen(tennhankhau.getText());
+             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+             String date= ngaysinh.getText();
+             LocalDate datetime = LocalDate.parse(date, formatter);
+             nhanKhau.setNgaySinh(Date.valueOf(datetime));
+             if(nam.isSelected())nhanKhau.setGioiTinh(1);
+             else nhanKhau.setGioiTinh(0);
+             nhanKhau.setTrangThai(trangthai.getText());
+             nhanKhau.setQuocTich(quoctich.getText());
 
+             HoKhau hoKhau1=nhanKhau.getHoKhau();
+             if(Integer.parseInt(sotang.getText())== hoKhau1.getSoTang()&&Integer.parseInt(sophong.getText())== hoKhau1.getId()){
+                 if(nhanKhau.isChuHo()){
+                     hoKhau1.setTenchuho(tennhankhau.getText());
+                     HoKhauDao.getInstance().update(hoKhau1);
+                     getData.getInstance().updateHokhau(hoKhau1);
+                 }
+                 NhanKhauDao.getInstance().update(nhanKhau);
+                 getData.getInstance().setNhankhau(nhanKhau);
+                 Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                 alert1.setHeaderText("Thành công");
+                 alert1.setContentText("Điều chỉnh nhân khẩu thành công");
+                 alert1.showAndWait();
+                 try {
+                     Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlynhankhau.fxml"));
+                     Parent root = loader.load();
+                     Scene scene = new Scene(root);
+                     ag0r1.setScene(scene);
+                     ag0r1.show();
+                 } catch (Exception e) {
+                     System.out.println(e.getMessage());
+                 }
+             }else {
+                 HoKhau hoKhau2=HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText()),Integer.parseInt(sotang.getText()));
+                 if(hoKhau2==null){
+                     Alert alert = new Alert(Alert.AlertType.ERROR);
+                     alert.setHeaderText("Thất bại");
+                     alert.setContentText("Không tìm thấy phòng");
+                     alert.showAndWait();
+                 } else if (nhanKhau.isChuHo()) {
+                     Alert alert = new Alert(Alert.AlertType.ERROR);
+                     alert.setHeaderText("Thất bại");
+                     alert.setContentText("Không thể đổi chủ hộ sang phòng khác");
+                     alert.showAndWait();
+                 }else {
+                     nhanKhau.setHoKhau(hoKhau2);
+                     NhanKhauDao.getInstance().update(nhanKhau);
+                     getData.getInstance().setNhankhau(nhanKhau);
+
+                     hoKhau1.setSoNhanKhau(hoKhau1.getSoNhanKhau()-1);
+                     HoKhauDao.getInstance().update(hoKhau1);
+                     getData.getInstance().updateHokhau(hoKhau1);
+
+                     hoKhau2.setSoNhanKhau(hoKhau2.getSoNhanKhau()+1);
+                     HoKhauDao.getInstance().update(hoKhau2);
+                     getData.getInstance().updateHokhau(hoKhau2);
+                     Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                     alert1.setHeaderText("Thành công");
+                     alert1.setContentText("Điều chỉnh nhân khẩu thành công");
+                     alert1.showAndWait();
+                     try {
+                         Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlynhankhau.fxml"));
+                         Parent root = loader.load();
+                         Scene scene = new Scene(root);
+                         ag0r1.setScene(scene);
+                         ag0r1.show();
+                     } catch (Exception e) {
+                         System.out.println(e.getMessage());
+                     }
+                 }
+             }
+
+
+
+
+
+        }
         }
     @FXML
     void xoanhankhau(ActionEvent event) {
@@ -159,9 +201,10 @@ public class Dieuchinhnhankhau implements Initializable {
                 alert2.setHeaderText("Thành công");
                 alert2.setContentText("Xóa nhân khẩu thành công");
                 alert2.showAndWait();
-                HoKhau hoKhau = HoKhauDao.getInstance().selectById(nhanKhau.getHoKhau().getId(), nhanKhau.getHoKhau().getSoTang());
+                HoKhau hoKhau = nhanKhau.getHoKhau();
                 hoKhau.setSoNhanKhau(hoKhau.getSoNhanKhau()-1);
                 HoKhauDao.getInstance().update(hoKhau);
+                getData.getInstance().updateHokhau(hoKhau);
                 NhanKhauDao.getInstance().delete(nhanKhau);
                 getData.getInstance().removeNhankhau(nhanKhau);
                 try {

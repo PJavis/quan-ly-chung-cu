@@ -1,5 +1,6 @@
 package org.example.Hibernatedao;
 
+import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
 import org.example.Function.*;
 import org.hibernate.Session;
@@ -139,14 +140,14 @@ public class NhanKhauDao implements Save<NhanKhau>, SelectAll, SelectByName<Nhan
 
 
 
-    public List<NhanKhau> selectNhanKhauById(int sophong,int sotang) {
+    public List<NhanKhau> selectNhanKhauById(HoKhau hoKhau) {
         List<NhanKhau> nhanKhau;
         try {
 
             session = Hibernate.getSession(sessionFactory);
-            nhanKhau = session.createQuery("FROM NhanKhau  WHERE  sophong= :sophong AND sotang = :sotang ", NhanKhau.class)
-                    .setParameter("sophong", sophong)
-                    .setParameter("sotang",sotang)
+            nhanKhau = session.createQuery("FROM NhanKhau  WHERE  hoKhau= :hoKhau  ", NhanKhau.class)
+                    .setParameter("hoKhau", hoKhau)
+
                     .getResultList();
             Hibernate.closeSession(session);
 

@@ -80,8 +80,8 @@ sophong.setText(String.valueOf(hoKhau.getId()));
 sotang.setText(String.valueOf(hoKhau.getSoTang()));
 dientichphong.setText(String.valueOf(hoKhau.getDienTichPhong()));
 sothanhvien.setText(String.valueOf(hoKhau.getSoNhanKhau()));
-nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhaus.getId(),hoKhaus.getSoTang());
-nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.getId());
+nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhau);
+nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau);
         danhsachthanhvien();
         danhsachkhoanphi();
     }
@@ -176,7 +176,7 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.ge
     @FXML
     void dieuchinh(ActionEvent event) {
 
-            getData.getInstance().removeHokhau(hoKhaus);
+
             NhanKhau q=danhsachthanhvien.getItems().get(0);
             try{
                 nhanKhau.setChuHo(true);
@@ -193,11 +193,12 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau.getSoTang(), hoKhau.ge
             hoKhaus.setTenchuho(nhanKhau.getTen());
 
             HoKhauDao.getInstance().update(hoKhaus);
+            getData.getInstance().updateHokhau(hoKhaus);
             Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
             alert1.setHeaderText("Thành công");
             alert1.setContentText("Điều chỉnh hộ khẩu thành công");
             alert1.showAndWait();
-            getData.getInstance().addHokhau(hoKhaus);
+
 
 
 
