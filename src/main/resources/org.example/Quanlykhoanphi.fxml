@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlykhoanphi" style="-fx-background-color: #ffffff;">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlykhoanphi">
     <fx:include source="DashBoard.fxml" />
     <Pane layoutX="222.0" layoutY="-5.0" prefHeight="759.0" prefWidth="777.0" styleClass="pane_11">
 
@@ -52,7 +62,7 @@
         <FontAwesomeIconView glyphName="SEARCH" layoutX="678.0" layoutY="122.0" size="17" />
 
 
-        <TableView fx:id="danhsachkhoanphi" layoutX="10.0" layoutY="158.0" onMouseClicked="#predieuchinh" prefHeight="361.0" prefWidth="736.0">
+        <TableView fx:id="danhsachkhoanphi" layoutX="10.0" layoutY="158.0" prefHeight="361.0" prefWidth="736.0">
             <columns>
                 <TableColumn fx:id="sothutu" prefWidth="66.0" text="Số thứ tự" />
                 <TableColumn fx:id="tenkhoanphitable" prefWidth="126.39999389648438" text="Tên khoản phí" />
@@ -69,76 +79,72 @@
 
             <HBox prefHeight="51.0" prefWidth="668.0" spacing="10.0">
                 <padding>
-                    <Insets top="20.0"/>
+                    <Insets top="20.0" />
                 </padding>
 
                 <Label text="Loại khoản phí:">
                     <font>
-                        <Font name="Arial Bold" size="14.0"/>
+                        <Font name="Arial Bold" size="14.0" />
                     </font>
                     <HBox.margin>
-                        <Insets top="5.0"/>
+                        <Insets top="5.0" />
                     </HBox.margin>
                 </Label>
-                <ComboBox fx:id="loaikhoanphi" editable="true" prefHeight="34.0" prefWidth="231.0"
-                          promptText="Loại khoản phí" style="-fx-border-color: #353A56;">
+                <ComboBox fx:id="loaikhoanphi" editable="true" prefHeight="34.0" prefWidth="231.0" promptText="Loại khoản phí" style="-fx-border-color: #353A56;">
                     <HBox.margin>
-                        <Insets top="-5.0"/>
+                        <Insets top="-5.0" />
                     </HBox.margin>
                 </ComboBox>
             </HBox>
             <HBox prefHeight="50.0" prefWidth="614.0" spacing="10.0">
                 <padding>
-                    <Insets top="20.0"/>
+                    <Insets top="20.0" />
                 </padding>
 
                 <Label text="Tên khoản phí:">
                     <font>
-                        <Font name="Arial Bold" size="14.0"/>
+                        <Font name="Arial Bold" size="14.0" />
                     </font>
                     <HBox.margin>
-                        <Insets top="5.0"/>
+                        <Insets top="5.0" />
                     </HBox.margin>
                 </Label>
-                <TextField fx:id="tenkhoanphi" prefHeight="34.0" prefWidth="231.0" promptText="Tên khoản phí"
-                           style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;">
+                <TextField fx:id="tenkhoanphi" prefHeight="34.0" prefWidth="231.0" promptText="Tên khoản phí" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;">
                     <HBox.margin>
-                        <Insets top="-5.0"/>
+                        <Insets top="-5.0" />
                     </HBox.margin>
                 </TextField>
             </HBox>
             <HBox prefHeight="50.0" prefWidth="658.0" spacing="20.0">
                 <padding>
-                    <Insets left="35.0" top="20.0"/>
+                    <Insets left="35.0" top="20.0" />
                 </padding>
 
                 <Label text="Số tiền:">
                     <font>
-                        <Font name="Arial Bold" size="14.0"/>
+                        <Font name="Arial Bold" size="14.0" />
                     </font>
                     <HBox.margin>
-                        <Insets top="5.0"/>
+                        <Insets top="5.0" />
                     </HBox.margin>
                 </Label>
-                <TextField fx:id="sotien" prefHeight="34.0" prefWidth="237.0" promptText="Số tiền"
-                           style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;">
+                <TextField fx:id="sotien" prefHeight="34.0" prefWidth="237.0" promptText="Số tiền" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;">
                     <HBox.margin>
-                        <Insets top="-5.0"/>
+                        <Insets top="-5.0" />
                     </HBox.margin>
                 </TextField>
 
                 <Label text="Hạn nộp:">
                     <font>
-                        <Font name="Arial Bold" size="14.0"/>
+                        <Font name="Arial Bold" size="14.0" />
                     </font>
                     <HBox.margin>
-                        <Insets top="5.0"/>
+                        <Insets top="5.0" />
                     </HBox.margin>
                 </Label>
-                <TextField fx:id="hannop" prefHeight="34.0" prefWidth="212.0" promptText="Hạn nộp"
-                           style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;">
+                <TextField fx:id="hannop" prefHeight="34.0" prefWidth="212.0" promptText="Hạn nộp" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;">
                     <HBox.margin>
-                        <Insets top="-5.0"/>
+                        <Insets top="-5.0" />
                     </HBox.margin>
                 </TextField>
             </HBox>
