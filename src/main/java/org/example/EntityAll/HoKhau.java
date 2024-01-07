@@ -1,8 +1,11 @@
 package org.example.EntityAll;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Embeddable
@@ -37,6 +40,21 @@ public class HoKhau {
 
     @Column(name = "So_nhan_khau")
     private int soNhanKhau;
+
+    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<NopPhi> nopPhis = new HashSet<>();;
+
+    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<NhanKhau> nhanKhaus = new HashSet<>();
+
+    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<PhuongTien> phuongTiens = new HashSet<>();
+
+    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<LichSuGiaoDich> lichSuGiaoDiches = new HashSet<>();
+
+    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<LichSuThayDoi> lichSuThayDois = new HashSet<>();
     // Default constructor required by Hibernate
     public HoKhau() {
     }
