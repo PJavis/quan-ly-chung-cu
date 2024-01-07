@@ -49,7 +49,7 @@ public class Chitietkhoanphi implements Initializable {
         SimpleDateFormat newDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         ngaytao.setText(newDateFormat.format(khoanPhi.getBatDau()));
         hannop.setText(newDateFormat.format(khoanPhi.getKetThuc()));
-        nopPhiList= NopPhiDao.getInstance().selectById(khoanPhi.getId());
+        nopPhiList= NopPhiDao.getInstance().selectById(khoanPhi);
         donvi.setText(khoanPhi.getDonVi());
         if(!Objects.equals(khoanPhi.getLoaiKhoanPhi(), "Bắt buộc")) batbuoc=false;
         danhsachhokhau();

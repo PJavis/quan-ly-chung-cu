@@ -67,7 +67,7 @@ public class Lichsugiaodich {
 
     public void setNopPhi(NopPhi nopPhi) {
         this.nopPhi = nopPhi;
-        lichSuGiaoDichList=LichSuGiaoDichDao.getInstance().selectByCondition(nopPhi.getIdKhoanPhi(), nopPhi.getSoTang(), nopPhi.getSoPhong());
+        lichSuGiaoDichList=LichSuGiaoDichDao.getInstance().selectByCondition(nopPhi);
         danhsachgiaodich();
         timkiem();
     }

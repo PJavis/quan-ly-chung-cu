@@ -1,6 +1,7 @@
 package org.example.Hibernatedao;
 
 import org.example.EntityAll.HoKhau;
+import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.NopPhi;
 import org.example.Function.*;
 import org.hibernate.Session;
@@ -8,7 +9,7 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>, SelectById<NopPhi>{
+public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>{
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session = null;
     public static NopPhiDao getInstance() {return  new NopPhiDao();}
@@ -71,14 +72,14 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>, Selec
         }
     }
 
-    @Override
-    public List<NopPhi> selectById(int id) {
+
+    public List<NopPhi> selectById(KhoanPhi khoanPhi) {
         List<NopPhi> nopPhis;
         try {
 
             session = Hibernate.getSession(sessionFactory);
-            nopPhis = session.createQuery("FROM NopPhi  WHERE  idKhoanPhi= :id", NopPhi.class)
-                    .setParameter("id", id)
+            nopPhis = session.createQuery("FROM NopPhi  WHERE  khoanPhi= :khoanPhi", NopPhi.class)
+                    .setParameter("khoanPhi", khoanPhi)
                     .getResultList();
             Hibernate.closeSession(session);
 
