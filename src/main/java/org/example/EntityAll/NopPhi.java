@@ -31,7 +31,7 @@ public class NopPhi {
     })
     private HoKhau hoKhau;
 
-    @OneToMany(mappedBy = "nopPhi", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "nopPhi", fetch = FetchType.LAZY)
     private Set<LichSuGiaoDich> lichSuGiaoDichs = new HashSet<>();
     @Column(name="ten_chu-ho")
     private String tenchuho;

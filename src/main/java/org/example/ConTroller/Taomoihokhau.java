@@ -82,40 +82,74 @@ public class Taomoihokhau implements Initializable {
         }
         @FXML
         void taomoi(ActionEvent event) {
-                if(isValidDateFormat(ngaysinh.getText())){
-                HoKhau hoKhau=new HoKhau();
+                if (isValidDateFormat(ngaysinh.getText())) {
+                        try {
+                                HoKhau hoKhau = createHoKhau();
+                                NhanKhau nhanKhau = createNhanKhau(hoKhau);
+
+                                HoKhauDao.getInstance().save(hoKhau);
+                                getData.getInstance().addHokhau(hoKhau);
+
+                                NhanKhauDao.getInstance().save(nhanKhau);
+                                getData.getInstance().addNhankhau(nhanKhau);
+
+                                showSuccessAlert("Tạo mới hộ khẩu thành công");
+
+                                clearInputFields();
+                        } catch (Exception e) {
+                                showErrorAlert("Số phòng đã tồn tại");
+                        }
+                } else {
+                        showErrorAlert("Vui lòng điền ngày sinh theo dạng dd/mm/yyyy");
+                }
+        }
+
+        private HoKhau createHoKhau() {
+                HoKhau hoKhau = new HoKhau();
                 hoKhau.setId(Integer.parseInt(sophong.getText()));
                 hoKhau.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
                 hoKhau.setSoTang(Integer.parseInt(sotang.getText()));
                 hoKhau.setTenchuho(tenchuho.getText());
                 hoKhau.setSoDienThoai(sodienthoai.getText());
-                hoKhau.setSoNhanKhau(1);
-                try {
-                        LocalDate currentDate = LocalDate.now();
-                        hoKhau.setNgaytaohokhau(Date.valueOf(currentDate));
-                        HoKhauDao.getInstance().save(hoKhau);
-                        getData.getInstance().addHokhau(hoKhau);
-                NhanKhau nhanKhau=new NhanKhau();
+                hoKhau.setNgaytaohokhau(new Date(System.currentTimeMillis()));
+                return hoKhau;
+        }
+
+        private NhanKhau createNhanKhau(HoKhau hoKhau) {
+                NhanKhau nhanKhau = new NhanKhau();
                 nhanKhau.setTen(tenchuho.getText());
-                if(nam.isSelected())
-                nhanKhau.setGioiTinh(1);
-                else nhanKhau.setGioiTinh(0);
+                nhanKhau.setGioiTinh(nam.isSelected() ? 1 : 0);
                 nhanKhau.setSoDienThoai(sodienthoai.getText());
                 nhanKhau.setCCCD(cancuoccongdan.getText());
                 nhanKhau.setQuocTich(quoctich.getText());
+
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                String date= ngaysinh.getText();
+                String date = ngaysinh.getText();
                 LocalDate datetime = LocalDate.parse(date, formatter);
+
                 nhanKhau.setNgaySinh(Date.valueOf(datetime));
                 nhanKhau.setChuHo(true);
                 nhanKhau.setHoKhau(hoKhau);
                 nhanKhau.setTrangThai("Đang ở");
-                NhanKhauDao.getInstance().save(nhanKhau);
-                getData.getInstance().addNhankhau(nhanKhau);
-                Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+
+                return nhanKhau;
+        }
+
+        private void showSuccessAlert(String message) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setHeaderText("Thành công");
-                alert.setContentText("Tạo mới hộ khẩu thành công");
+                alert.setContentText(message);
                 alert.showAndWait();
+        }
+
+        private void showErrorAlert(String message) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Thất bại");
+                alert.setContentText(message);
+                alert.showAndWait();
+        }
+
+        private void clearInputFields() {
                 sophong.clear();
                 sotang.clear();
                 dientichphong.clear();
@@ -124,20 +158,9 @@ public class Taomoihokhau implements Initializable {
                 cancuoccongdan.clear();
                 ngaysinh.clear();
                 gioitinh.selectToggle(null);
-                quoctich.clear();}
-                catch (Exception e){
-                        Alert alert=new Alert(Alert.AlertType.ERROR);
-                        alert.setHeaderText("Thất bại");
-                        alert.setContentText("Số phòng đã tồn tại");
-                        alert.showAndWait();
-                }}
-                else {
-                        Alert alert=new Alert(Alert.AlertType.ERROR);
-                        alert.setHeaderText("Thất bại");
-                        alert.setContentText("Vui lòng điền ngày sinh theo dạng dd/mm/yyyy");
-                        alert.showAndWait();
-                }
+                quoctich.clear();
         }
+
         private void checkAllFieldsFilled(TextField[] textFields,Button buttontaomoi ) {
                 boolean allFilled = true;
                 for (TextField textField : textFields) {

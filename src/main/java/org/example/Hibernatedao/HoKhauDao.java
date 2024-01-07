@@ -32,7 +32,6 @@ public class HoKhauDao implements Save<HoKhau>, SelectAll, Update<HoKhau>{
     public List<HoKhau> selectAll() {
         List<HoKhau> hoKhaus;
         try {
-
             session = Hibernate.getSession(sessionFactory);
             hoKhaus = session.createQuery("FROM HoKhau", HoKhau.class).getResultList();
             Hibernate.closeSession(session);

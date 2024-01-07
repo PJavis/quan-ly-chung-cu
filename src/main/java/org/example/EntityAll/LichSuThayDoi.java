@@ -19,7 +19,10 @@ public class LichSuThayDoi {
     private String thayDoi;
 
     @ManyToOne
-    @JoinColumn(name = "id_ho_khau", referencedColumnName = "id")
+    @JoinColumns({
+            @JoinColumn(name = "so_phong", referencedColumnName = "id"),
+            @JoinColumn(name = "so_tang", referencedColumnName = "so_tang")
+    })
     private HoKhau hoKhau;
 
     public LichSuThayDoi() {

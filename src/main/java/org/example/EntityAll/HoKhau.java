@@ -7,7 +7,6 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Embeddable
 class HoKhauId implements Serializable {
     private int id;
@@ -25,14 +24,18 @@ public class HoKhau {
     @Id
     @Column(name = "id")
     private int id;
+
     @Id
     @Column(name = "so_tang")
     private int soTang;
+
     @Column(name = "dien_tich_phong", columnDefinition = "double precision")
     private double dienTichPhong;
-    @Column(name="ten_chu_ho")
+
+    @Column(name = "ten_chu_ho")
     private String tenchuho;
-    @Column(name="ngay_tao_ho_khau")
+
+    @Column(name = "ngay_tao_ho_khau")
     private Date ngaytaohokhau;
 
     @Column(name = "So_dien_thoai")
@@ -41,29 +44,37 @@ public class HoKhau {
     @Column(name = "So_nhan_khau")
     private int soNhanKhau;
 
-    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<NopPhi> nopPhis = new HashSet<>();;
+    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY)
+    private Set<NopPhi> nopPhis = new HashSet<>();
 
-    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY)
     private Set<NhanKhau> nhanKhaus = new HashSet<>();
 
-    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY)
     private Set<PhuongTien> phuongTiens = new HashSet<>();
 
-    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "hoKhau", fetch = FetchType.LAZY)
     private Set<LichSuThayDoi> lichSuThayDois = new HashSet<>();
+
     // Default constructor required by Hibernate
     public HoKhau() {
+        // Other initialization if needed
     }
 
     // Parameterized constructor
-    public HoKhau(int id, int soTang, double dienTichPhong,String tenchuho,Date ngaytaohokhau) {
+    public HoKhau(int id, int soTang, double dienTichPhong, String tenchuho, Date ngaytaohokhau) {
         this.id = id;
         this.soTang = soTang;
         this.dienTichPhong = dienTichPhong;
-        this.tenchuho=tenchuho;
-        this.ngaytaohokhau=ngaytaohokhau;
-        this.soNhanKhau = 1;
+        this.tenchuho = tenchuho;
+        this.ngaytaohokhau = (ngaytaohokhau != null) ? ngaytaohokhau : new Date(System.currentTimeMillis());
+        // No need to set soNhanKhau here
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.ngaytaohokhau = (ngaytaohokhau != null) ? ngaytaohokhau : new Date(System.currentTimeMillis());
+        this.soNhanKhau = (soNhanKhau > 0) ? soNhanKhau : 1; // Set a default value if not already set
     }
 
     public String getSoDienThoai() {
@@ -103,12 +114,8 @@ public class HoKhau {
         return tenchuho;
     }
 
-
-
-
     public void setTenchuho(String tenchuho) {
         this.tenchuho = tenchuho;
-
     }
 
     public Date getNgaytaohokhau() {
