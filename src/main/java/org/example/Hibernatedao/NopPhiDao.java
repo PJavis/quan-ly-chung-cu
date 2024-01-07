@@ -93,11 +93,11 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>{
         try {
             session = Hibernate.getSession(sessionFactory);
             nopPhi = session.createQuery(
-                            "FROM NopPhi n WHERE n.khoanPhi.id = :id AND n.hoKhau.soTang = :sotang AND n.hoKhau.id = :sophong",
+                            "FROM NopPhi WHERE khoanPhi.id = :id AND hoKhau.soTang = :soTang AND hoKhau.id = :soPhong",
                             NopPhi.class)
                     .setParameter("id", idkhoanphi)
-                    .setParameter("sophong", sophong)
-                    .setParameter("sotang", sotang)
+                    .setParameter("soTang", sotang)
+                    .setParameter("soPhong", sophong)
                     .uniqueResult();
             Hibernate.closeSession(session);
         } catch (Exception e) {
@@ -105,6 +105,7 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>{
         }
         return nopPhi;
     }
+
 
 
     public List<NopPhi> selectByHoKhau(HoKhau hoKhau) {

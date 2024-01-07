@@ -16,7 +16,6 @@ public class NopPhi {
     @Column(name = "id")
     private int id;
 
-
     @ManyToOne
     @JoinColumn(name = "id_khoan_phi", nullable = false)
     private KhoanPhi khoanPhi;
@@ -39,11 +38,8 @@ public class NopPhi {
     @Column(name = "trang_thai_dong_phi")
     private boolean trangThaiDongPhi;
 
-
-
     @Column(name = "so_tien_da_dong")
     private double soTienDaDong;
-
 
     public NopPhi() {
         // Default constructor required by Hibernate

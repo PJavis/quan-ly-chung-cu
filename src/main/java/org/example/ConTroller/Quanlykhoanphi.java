@@ -15,7 +15,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
@@ -41,32 +40,26 @@ public class Quanlykhoanphi implements Initializable {
     private TableColumn< KhoanPhi, Void> chitiet;
     @FXML
     private TableColumn<KhoanPhi, String> donvitable;
-
     @FXML
     private TableView<KhoanPhi> danhsachkhoanphi;
-
     @FXML
     private ComboBox<String> donvi;
     @FXML
     private TextField hannop;
-
     @FXML
     private ComboBox<String> loaikhoanphi;
     @FXML
     private TableColumn<KhoanPhi, String> hannoptable;
     @FXML
     private TableColumn<KhoanPhi, String> loaikhoanphitable;
-
     @FXML
     private TableColumn<KhoanPhi, Integer> sothutu;
     @FXML
     private TextField sotien;
     @FXML
     private TableColumn<KhoanPhi, String> sotientable;
-
     @FXML
     private TableColumn<KhoanPhi, String> sotiendanop;
-
     @FXML
     private TextField tenkhoanphi;
     @FXML
@@ -185,76 +178,107 @@ public class Quanlykhoanphi implements Initializable {
         }
     }
     @FXML
-    void taomoi(ActionEvent event) {
-        if(hannop.getText().isEmpty()||tenkhoanphi.getText().isEmpty()||loaikhoanphi.getSelectionModel().isEmpty()||sotien.getText().isEmpty()||donvi.getSelectionModel().isEmpty()){
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Thất bại");
-            alert.setContentText("Vui lòng điền đầy đủ thông tin");
-            alert.showAndWait();
+    private void taomoi(ActionEvent event) {
+        if (isInputInvalid()) {
+            showErrorAlert("Vui lòng điền đầy đủ thông tin");
         } else if (!isValidDateFormat(hannop.getText())) {
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Thất bại");
-            alert.setContentText("Vui lòng điền hạn nộp theo dạng dd/mm/yyyy");
-            alert.showAndWait();
+            showErrorAlert("Vui lòng điền hạn nộp theo dạng dd/mm/yyyy");
         } else if (isAfter()) {
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Thất bại");
-            alert.setContentText("Vui lòng điền hạn nộp lớn hơn ngày hiện tại");
-            alert.showAndWait();
-        } else{
-            KhoanPhi khoanPhi=new KhoanPhi();
-            khoanPhi.setTenKhoanPhi(tenkhoanphi.getText());
-            khoanPhi.setTongsotien(0);
-            String donvi1=donvi.getSelectionModel().getSelectedItem();
-            khoanPhi.setDonVi(donvi1);
-            khoanPhi.setLoaiKhoanPhi(loaikhoanphi.getSelectionModel().getSelectedItem());
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            String date = hannop.getText();
-            LocalDate datetime = LocalDate.parse(date, formatter);
-            khoanPhi.setKetThuc(Date.valueOf(datetime));
-            khoanPhi.setGiaTri(Double.parseDouble(sotien.getText().replace(",","")));
-            LocalDate currentDate = LocalDate.now();
-            khoanPhi.setBatDau(Date.valueOf(currentDate));
-            if(getData.getInstance().addKhoanphi(khoanPhi)){
-                    Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setHeaderText("Thành công");
-                    alert.setContentText("Tạo khoản phí mới thành công");
-                    alert.showAndWait();
-                    KhoanPhiDao.getInstance().save(khoanPhi);
-                    List<HoKhau> hoKhaus=getData.getInstance().getHoKhaus();
-                    for(HoKhau hoKhau : hoKhaus){
-                        NopPhi nopPhi=new NopPhi();
-                        nopPhi.setKhoanPhi(khoanPhi);
-                        nopPhi.setHoKhau(hoKhau);
-                        nopPhi.setTenchuho(hoKhau.getTenchuho());
-                        nopPhi.setSoTienDaDong(0);
-                        if(Objects.equals(donvi1, "Số(kWh)")) nopPhi.setGiaTri(0);
-                        else if (Objects.equals(donvi1, "Diện tích(m²)")) {
-                            nopPhi.setGiaTri(hoKhau.getDienTichPhong()* khoanPhi.getGiaTri());
-                        } else if (Objects.equals(donvi1, "Khối(m³)")) {nopPhi.setGiaTri(0);
+            showErrorAlert("Vui lòng điền hạn nộp lớn hơn ngày hiện tại");
+        } else {
+            KhoanPhi khoanPhi = createNewKhoanPhi();
 
-                        }else nopPhi.setGiaTri(khoanPhi.getGiaTri());
+            if (getData.getInstance().addKhoanphi(khoanPhi)) {
+                showSuccessAlert("Tạo khoản phí mới thành công");
 
-                        NopPhiDao.getInstance().save(nopPhi);
-                    }
-            donvi.getEditor().clear();
-            tenkhoanphi.clear();
-            hannop.clear();
-            sotien.clear();
-            loaikhoanphi.getEditor().clear();
-            khoanPhiList=getData.getInstance().getKhoanPhis();
-            danhsachkhoanphi();
-            timkiem();
-        }
-            else {
-                    Alert alert=new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText("Thất bại");
-                    alert.setContentText("Đã có khoản phí được tạo trước đó vẫn còn hiệu lực");
-                    alert.showAndWait();
+                KhoanPhiDao.getInstance().save(khoanPhi);
+
+                List<HoKhau> hoKhaus = getData.getInstance().getHoKhaus();
+                for (HoKhau hoKhau : hoKhaus) {
+                    NopPhi nopPhi = createNopPhi(khoanPhi, hoKhau);
+                    NopPhiDao.getInstance().save(nopPhi);
                 }
+
+                clearInputFields();
+                khoanPhiList = getData.getInstance().getKhoanPhis();
+                danhsachkhoanphi();
+                timkiem();
+            } else {
+                showErrorAlert("Đã có khoản phí được tạo trước đó vẫn còn hiệu lực");
             }
+        }
     }
- public void timkiem(){
+
+    private boolean isInputInvalid() {
+        return hannop.getText().isEmpty()
+                || tenkhoanphi.getText().isEmpty()
+                || loaikhoanphi.getSelectionModel().isEmpty()
+                || sotien.getText().isEmpty()
+                || donvi.getSelectionModel().isEmpty();
+    }
+
+    private void showErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Thất bại");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private KhoanPhi createNewKhoanPhi() {
+        KhoanPhi khoanPhi = new KhoanPhi();
+        khoanPhi.setTenKhoanPhi(tenkhoanphi.getText());
+        khoanPhi.setTongsotien(0);
+        khoanPhi.setDonVi(donvi.getSelectionModel().getSelectedItem());
+        khoanPhi.setLoaiKhoanPhi(loaikhoanphi.getSelectionModel().getSelectedItem());
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String date = hannop.getText();
+        LocalDate datetime = LocalDate.parse(date, formatter);
+        khoanPhi.setKetThuc(Date.valueOf(datetime));
+
+        khoanPhi.setGiaTri(Double.parseDouble(sotien.getText().replace(",", "")));
+        khoanPhi.setBatDau(Date.valueOf(LocalDate.now()));
+
+        return khoanPhi;
+    }
+
+    private NopPhi createNopPhi(KhoanPhi khoanPhi, HoKhau hoKhau) {
+        NopPhi nopPhi = new NopPhi();
+        nopPhi.setKhoanPhi(khoanPhi);
+        nopPhi.setHoKhau(hoKhau);
+        nopPhi.setTenchuho(hoKhau.getTenchuho());
+        nopPhi.setSoTienDaDong(0);
+
+        String donvi1 = khoanPhi.getDonVi();
+        if (Objects.equals(donvi1, "Số(kWh)")) {
+            nopPhi.setGiaTri(0);
+        } else if (Objects.equals(donvi1, "Diện tích(m²)")) {
+            nopPhi.setGiaTri(hoKhau.getDienTichPhong() * khoanPhi.getGiaTri());
+        } else if (Objects.equals(donvi1, "Khối(m³)")) {
+            nopPhi.setGiaTri(0);
+        } else {
+            nopPhi.setGiaTri(khoanPhi.getGiaTri());
+        }
+
+        return nopPhi;
+    }
+
+    private void showSuccessAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Thành công");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void clearInputFields() {
+        donvi.getEditor().clear();
+        tenkhoanphi.clear();
+        hannop.clear();
+        sotien.clear();
+        loaikhoanphi.getEditor().clear();
+    }
+
+    public void timkiem(){
      FilteredList<KhoanPhi> filter = new FilteredList<>(khoanPhis, e -> true);
 
      timkiem.textProperty().addListener((Observable, oldValue, newValue) -> {

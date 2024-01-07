@@ -174,7 +174,7 @@ public class ThuphiController implements Initializable {
     void timphong(ActionEvent event) {
         try {
             nopPhi = NopPhiDao.getInstance().selectByCondition(khoanPhi.getId(),
-                    Integer.parseInt(sophong.getText()), Integer.parseInt(sotang.getText()));
+                    Integer.parseInt(sotang.getText()), Integer.parseInt(sophong.getText()));
             updateNopPhiDetails();
         } catch (Exception e) {
             handleException(e);
