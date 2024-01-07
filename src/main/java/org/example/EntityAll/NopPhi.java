@@ -5,6 +5,8 @@ import org.example.Hibernatedao.KhoanPhiDao;
 
 import java.sql.Date;
 import java.text.DecimalFormat;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "nop_phi")
@@ -29,6 +31,8 @@ public class NopPhi {
     })
     private HoKhau hoKhau;
 
+    @OneToMany(mappedBy = "nopPhi", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<LichSuGiaoDich> lichSuGiaoDichs = new HashSet<>();
     @Column(name="ten_chu-ho")
     private String tenchuho;
 

@@ -17,17 +17,16 @@ public class LichSuGiaoDich {
     @Column(name="ten_nguoi_nop")
     private String tennguoinop;
 
-    @ManyToOne
-    @JoinColumns({
-            @JoinColumn(name = "so_tang", referencedColumnName = "so_tang"),
-            @JoinColumn(name = "so_phong", referencedColumnName = "id")
-    })
-    private HoKhau hoKhau;
+    @Column(name = "so_tang")
+    private int soTang;
+    @Column(name = "so_phong")
+    private int soPhong;
 
     @Column(name = "ten_khoan_phi")
     private String tenKhoanPhi;
-    @Column(name = "id_khoan_phi", nullable = false)
-    private int idKhoanPhi;
+    @ManyToOne
+    @JoinColumn(name = "id_khoan_phi")
+    private NopPhi nopPhi;
 
     @Column(name = "thoi_gian_giao_dich")
     private Date thoigiangiaodich;
@@ -38,29 +37,38 @@ public class LichSuGiaoDich {
 
     }
 
-    public LichSuGiaoDich(String tennguoinop, HoKhau hoKhau, String tenKhoanPhi, int idKhoanPhi, Date thoigiangiaodich, double giaTri) {
+    public LichSuGiaoDich(String tennguoinop, int soTang, int soPhong, String tenKhoanPhi, NopPhi nopPhi, Date thoigiangiaodich, double giaTri) {
         this.tennguoinop = tennguoinop;
-        this.hoKhau = hoKhau;
+        this.soTang = soTang;
+        this.soPhong = soPhong;
         this.tenKhoanPhi = tenKhoanPhi;
-        this.idKhoanPhi = idKhoanPhi;
+        this.nopPhi = nopPhi;
         this.thoigiangiaodich = thoigiangiaodich;
         this.giaTri = giaTri;
     }
 
-    public HoKhau getHoKhau() {
-        return hoKhau;
+    public int getSoTang() {
+        return soTang;
     }
 
-    public void setHoKhau(HoKhau hoKhau) {
-        this.hoKhau = hoKhau;
+    public void setSoTang(int soTang) {
+        this.soTang = soTang;
     }
 
-    public int getIdKhoanPhi() {
-        return idKhoanPhi;
+    public int getSoPhong() {
+        return soPhong;
     }
 
-    public void setIdKhoanPhi(int idKhoanPhi) {
-        this.idKhoanPhi = idKhoanPhi;
+    public void setSoPhong(int soPhong) {
+        this.soPhong = soPhong;
+    }
+
+    public NopPhi getNopPhi() {
+        return nopPhi;
+    }
+
+    public void setNopPhi(NopPhi nopPhi) {
+        this.nopPhi = nopPhi;
     }
 
     public String getTennguoinop() {
@@ -70,15 +78,6 @@ public class LichSuGiaoDich {
     public void setTennguoinop(String tennguoinop) {
         this.tennguoinop = tennguoinop;
     }
-
-    public int getSophong() {
-        return this.getHoKhau().getId();
-    }
-
-    public int getSotang() {
-        return  this.getHoKhau().getSoTang();
-    }
-
 
     public String getTenKhoanPhi() {
         return tenKhoanPhi;

@@ -51,9 +51,6 @@ public class HoKhau {
     private Set<PhuongTien> phuongTiens = new HashSet<>();
 
     @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<LichSuGiaoDich> lichSuGiaoDiches = new HashSet<>();
-
-    @OneToMany(mappedBy = "hoKhau", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<LichSuThayDoi> lichSuThayDois = new HashSet<>();
     // Default constructor required by Hibernate
     public HoKhau() {

@@ -9,7 +9,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.LichSuGiaoDich;
 import org.example.EntityAll.NopPhi;
@@ -23,7 +22,6 @@ import java.sql.Date;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ThuphiController implements Initializable {
@@ -99,9 +97,10 @@ public class ThuphiController implements Initializable {
         getData.getInstance().updateKhoanphi(khoanPhi);
         KhoanPhiDao.getInstance().update(khoanPhi);
         LichSuGiaoDich lichSuGiaoDich=new LichSuGiaoDich();
-        lichSuGiaoDich.setHoKhau(nopPhi.getHoKhau());
+        lichSuGiaoDich.setSoPhong(nopPhi.getSoPhong());
+        lichSuGiaoDich.setSoTang(nopPhi.getSoTang());
         lichSuGiaoDich.setTenKhoanPhi(khoanPhi.getTenKhoanPhi());
-        lichSuGiaoDich.setIdKhoanPhi(khoanPhi.getId());
+        lichSuGiaoDich.setNopPhi(nopPhi);
         lichSuGiaoDich.setTennguoinop(nguoinopphi.getText());
         lichSuGiaoDich.setGiaTri(Double.parseDouble(sotiennop.getText()));
         LocalDate today = LocalDate.now();
