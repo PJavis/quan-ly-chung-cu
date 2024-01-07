@@ -8,85 +8,113 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Dieuchinhnhankhau">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Dieuchinhnhankhau">
    <fx:include source="DashBoard.fxml" />
-   <Pane layoutX="222.0" layoutY="-5.0" prefHeight="759.0" prefWidth="697.0" styleClass="pane_11">
+   <Pane layoutX="222.0" layoutY="-5.0" prefHeight="759.0" prefWidth="777.0" styleClass="pane_11">
       <children>
-         <Label layoutX="369.0" layoutY="23.0" prefHeight="61.0" prefWidth="295.0" text="Điều chỉnh nhân khẩu">
+         <Button layoutX="36.0" layoutY="36.0" mnemonicParsing="false" onAction="#quaylai" prefHeight="35.0" prefWidth="67.0" style="-fx-border-color: #353A56; -fx-border-radius: 15px; -fx-background-radius: 15px;">
+            <graphic>
+               <FontAwesomeIconView glyphName="LONG_ARROW_LEFT" size="20" wrappingWidth="20.0" />
+            </graphic></Button>
+         <Label layoutX="452.0" layoutY="23.0" prefHeight="61.0" prefWidth="295.0" text="Điều chỉnh nhân khẩu">
             <font>
                <Font name="Arial Bold" size="26.0" />
             </font></Label>
+         <Line endX="584.4000244140625" endY="-13.000015258789062" layoutX="135.0" layoutY="104.0" startX="-99.5999755859375" startY="-13.000015258789062" stroke="#a7a7b7">
+            <fill>
+               <LinearGradient endX="1.0" endY="1.0">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </LinearGradient>
+            </fill>
+         </Line>
+         <HBox layoutX="99.0" layoutY="107.0" prefHeight="100.0" prefWidth="579.0" spacing="60.0">
+            <children>
+               <Label text="Số phòng: ">
+                  <font>
+                     <Font name="Arial Bold" size="14.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets top="10.0" />
+                  </HBox.margin>
+               </Label>
+               <TextField fx:id="sophong" prefHeight="43.0" prefWidth="98.0" promptText="Số phòng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
+               <Label text="Số tầng:">
+                  <font>
+                     <Font name="Arial Bold" size="14.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets top="10.0" />
+                  </HBox.margin>
+               </Label>
+
+               <TextField fx:id="sotang" prefHeight="43.0" prefWidth="98.0" promptText="Số tầng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
+            </children>
+         </HBox>
+
+         <Line endX="584.4000244140625" endY="-76.80001831054688" layoutX="139.0" layoutY="242.0" startX="-102.5999755859375" startY="-76.80001831054688" stroke="#a7a7b7">
+            <fill>
+               <LinearGradient endX="1.0" endY="1.0">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </LinearGradient>
+            </fill>
+         </Line>
          <Label layoutX="41.0" layoutY="175.0" prefHeight="17.0" prefWidth="461.0" text="Hoàn thành các thông tin dưới đây để thay đổi thông tin của nhân khẩu  ">
             <font>
                <Font name="Calibri Light" size="14.0" />
             </font></Label>
-         <Line endX="524.4000244140625" endY="-13.000015258789062" layoutX="135.0" layoutY="104.0" startX="-99.5999755859375" startY="-13.000015258789062" stroke="#a7a7b7">
-            <fill>
-               <LinearGradient endX="1.0" endY="1.0">
-                  <stops>
-                     <Stop>
-                        <color>
-                           <Color />
-                        </color>
-                     </Stop>
-                     <Stop offset="1.0">
-                        <color>
-                           <Color red="1.0" green="1.0" blue="1.0" />
-                        </color>
-                     </Stop>
-                  </stops>
-               </LinearGradient>
-            </fill>
-         </Line>
 
-         <Line endX="515.4000244140625" endY="-76.80001831054688" layoutX="139.0" layoutY="242.0" startX="-102.5999755859375" startY="-76.80001831054688" stroke="#a7a7b7">
-            <fill>
-               <LinearGradient endX="1.0" endY="1.0">
-                  <stops>
-                     <Stop>
-                        <color>
-                           <Color />
-                        </color>
-                     </Stop>
-                     <Stop offset="1.0">
-                        <color>
-                           <Color red="1.0" green="1.0" blue="1.0" />
-                        </color>
-                     </Stop>
-                  </stops>
-               </LinearGradient>
-            </fill>
-         </Line>
-         <Pane layoutX="36.0" layoutY="223.0" prefHeight="332.0" prefWidth="619.0" style="-fx-background-color: #a7a7b7; -fx-background-radius: 15px;">
+         <Pane layoutX="36.0" layoutY="223.0" prefHeight="332.0" prefWidth="679.0" style="-fx-background-color: #a7a7b7; -fx-background-radius: 15px;">
             <children>
                <Label layoutX="14.0" layoutY="33.0" text="Tên nhân khẩu: ">
                   <font>
                      <Font name="Arial Bold" size="14.0" />
                   </font></Label>
-               <Label layoutX="11.0" layoutY="262.0" prefHeight="35.0" prefWidth="98.0" text="Ngày sinh: " GridPane.rowIndex="3">
+               <Label layoutX="11.0" layoutY="262.0" prefHeight="35.0" prefWidth="98.0" text="Ngày sinh: ">
                   <font>
                      <Font name="Arial Bold" size="14.0" />
                   </font></Label>
-               <TextField fx:id="tennhankhau" layoutX="132.0" layoutY="24.0" prefHeight="35.0" prefWidth="470.0" promptText="Họ và Tên" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" GridPane.columnIndex="1" />
-               <TextField fx:id="ngaysinh" layoutX="138.0" layoutY="262.0" prefHeight="35.0" prefWidth="200.0" promptText="Ngày sinh" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-               <Label layoutX="11.0" layoutY="208.0" text="Quốc tịch: " GridPane.rowIndex="7">
+               <TextField fx:id="tennhankhau" layoutX="132.0" layoutY="24.0" prefHeight="35.0" prefWidth="470.0" promptText="Họ và Tên" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
+               <TextField fx:id="ngaysinh" layoutX="138.0" layoutY="262.0" prefHeight="35.0" prefWidth="200.0" promptText="Ngày sinh" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
+               <Label layoutX="11.0" layoutY="208.0" text="Quốc tịch: ">
                   <font>
                      <Font name="Arial Bold" size="14.0" />
                   </font></Label>
-               <TextField fx:id="quoctich" layoutX="135.0" layoutY="199.0" prefHeight="35.0" prefWidth="200.0" promptText="Quốc tịch" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+               <TextField fx:id="quoctich" layoutX="135.0" layoutY="199.0" prefHeight="35.0" prefWidth="200.0" promptText="Quốc tịch" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
                <Label layoutX="10.0" layoutY="83.0" text="Trạng thái: " GridPane.rowIndex="8">
                   <font>
                      <Font name="Arial Bold" size="14.0" />
                   </font></Label>
-               <TextField fx:id="trangthai" layoutX="134.0" layoutY="74.0" prefHeight="35.0" prefWidth="200.0" promptText="Trạng thái" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-               <CheckBox fx:id="chuho" disable="true" layoutX="454.0" layoutY="83.0" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <TextField fx:id="trangthai" layoutX="134.0" layoutY="74.0" prefHeight="35.0" prefWidth="200.0" promptText="Trạng thái" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
+               <CheckBox fx:id="chuho" disable="true" layoutX="454.0" layoutY="83.0" mnemonicParsing="false">
                   <style>
                      -fx-background-color: #ffffff;
                      -fx-border-color: #353A56;
                      -fx-border-radius: 15px;
                   </style>
                </CheckBox>
-               <HBox layoutX="454.0" layoutY="257.0" prefHeight="61.0" prefWidth="156.0" spacing="18.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <HBox layoutX="454.0" layoutY="257.0" prefHeight="61.0" prefWidth="156.0" spacing="18.0">
                   <children>
                      <RadioButton fx:id="nam" mnemonicParsing="false" text="Nam">
                         <toggleGroup>
@@ -108,16 +136,16 @@
                      <Insets />
                   </opaqueInsets>
                </HBox>
-               <Label layoutX="353.0" layoutY="151.0" text="Số điện thoại:" GridPane.rowIndex="1">
+               <Label layoutX="353.0" layoutY="151.0" text="Số điện thoại:">
                   <font>
                      <Font name="Arial Bold" size="14.0" />
                   </font></Label>
-               <Label layoutX="11.0" layoutY="150.0" text="Số CCCD/CMND:" GridPane.rowIndex="2">
+               <Label layoutX="11.0" layoutY="150.0" text="Số CCCD/CMND:">
                   <font>
                      <Font name="Arial Bold" size="14.0" />
                   </font></Label>
-               <TextField fx:id="sodienthoai" layoutX="454.0" layoutY="141.0" prefHeight="35.0" prefWidth="143.0" promptText="Số điện thoại" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-               <TextField fx:id="cancuoccongdan" layoutX="134.0" layoutY="141.0" prefHeight="35.0" prefWidth="200.0" promptText="Số căn cước công dân" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               <TextField fx:id="sodienthoai" layoutX="454.0" layoutY="141.0" prefHeight="35.0" prefWidth="143.0" promptText="Số điện thoại" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
+               <TextField fx:id="cancuoccongdan" layoutX="134.0" layoutY="141.0" prefHeight="35.0" prefWidth="200.0" promptText="Số căn cước công dân" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
                <Label layoutX="353.0" layoutY="83.0" text="Chủ hộ: ">
                   <font>
                      <Font name="Arial Bold" size="14.0" />
@@ -133,23 +161,15 @@
             <font>
                <Font name="Arial Bold" size="14.0" />
             </font></Label>
-         <TextArea layoutX="119.0" layoutY="576.0" prefHeight="79.0" prefWidth="529.0" promptText="Lý do" style="-fx-background-color: #ffffff; -fx-border-color: #353A56;" />
-         <Button layoutX="531.0" layoutY="675.0" mnemonicParsing="false" onAction="#dieuchinhnhankhau" prefHeight="35.0" prefWidth="117.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="CẬP NHẬT" textFill="WHITE" />
-         <Button layoutX="395.0" layoutY="675.0" mnemonicParsing="false" onAction="#xoanhankhau" prefHeight="35.0" prefWidth="117.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="XÓA NHÂN KHẨU" textFill="WHITE" />
-         <TextField fx:id="sotang" layoutX="378.0" layoutY="109.0" prefHeight="43.0" prefWidth="98.0" promptText="Số tầng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
-         <Label layoutX="313.0" layoutY="122.0" text="Số tầng:">
-            <font>
-               <Font name="Arial Bold" size="14.0" />
-            </font></Label>
-         <TextField fx:id="sophong" layoutX="159.0" layoutY="109.0" prefHeight="43.0" prefWidth="98.0" promptText="Số phòng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
-         <Label layoutX="77.0" layoutY="122.0" text="Số phòng: ">
-            <font>
-               <Font name="Arial Bold" size="14.0" />
-            </font></Label>
-         <Button layoutX="36.0" layoutY="36.0" mnemonicParsing="false" onAction="#quaylai" prefHeight="35.0" prefWidth="67.0" style="-fx-border-color: #353A56; -fx-border-radius: 15px; -fx-background-radius: 15px;">
-            <graphic>
-               <FontAwesomeIconView glyphName="LONG_ARROW_LEFT" size="20" wrappingWidth="20.0" />
-            </graphic></Button>
+         <TextArea layoutX="119.0" layoutY="576.0" prefHeight="79.0" prefWidth="589.0" promptText="Lý do" style="-fx-background-color: #ffffff; -fx-border-color: #353A56;" />
+
+         <HBox layoutX="442.0" layoutY="681.0" prefHeight="100.0" prefWidth="282.0" spacing="30.0">
+            <children>
+               <Button mnemonicParsing="false" onAction="#xoanhankhau" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="XÓA NHÂN KHẨU" textFill="WHITE" />
+               <Button mnemonicParsing="false" onAction="#dieuchinhnhankhau" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="CẬP NHẬT" textFill="WHITE" />
+            </children>
+         </HBox>
+
       </children>
    </Pane>
 </AnchorPane>
