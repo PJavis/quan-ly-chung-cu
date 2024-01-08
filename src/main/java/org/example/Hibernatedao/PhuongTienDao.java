@@ -58,7 +58,7 @@ public class PhuongTienDao implements Save<PhuongTien>, SelectByName<PhuongTien>
         List<PhuongTien> phuongTiens;
         try {
             session = Hibernate.getSession(sessionFactory);
-            phuongTiens = session.createQuery("FROM PhuongTien  WHERE soTang= :sotang AND soPhong= :sophong", PhuongTien.class)
+            phuongTiens = session.createQuery("FROM PhuongTien  WHERE hoKhau.soTang = :soTang AND hoKhau.id = :soPhong", PhuongTien.class)
                     .setParameter("sophong", sophong).setParameter("sotang", sotang)
                     .getResultList();
             Hibernate.closeSession(session);
