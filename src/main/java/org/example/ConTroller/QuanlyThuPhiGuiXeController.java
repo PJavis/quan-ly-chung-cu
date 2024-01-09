@@ -173,7 +173,8 @@ public class QuanlyThuPhiGuiXeController {
             searchResult = FXCollections.observableArrayList(PhuongTienDao.getInstance().selectByName(bienso));
         }
         else {
-            searchResult = FXCollections.observableArrayList(PhuongTienDao.getInstance().selectByHoKhau(sotang1,sophong1));
+            HoKhau hoKhau= HoKhauDao.getInstance().selectById(sotang1,sophong1);
+            searchResult = FXCollections.observableArrayList(PhuongTienDao.getInstance().selectByHoKhau(hoKhau));
         }
         vehicleTableView.setItems(searchResult);
     }

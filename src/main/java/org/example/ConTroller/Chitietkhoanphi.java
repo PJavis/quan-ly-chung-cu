@@ -85,7 +85,7 @@ public class Chitietkhoanphi implements Initializable {
     private TextField sotien;
 
     @FXML
-    private TableColumn<NopPhi, Double> sotienchuanop;
+    private TableColumn<NopPhi, String> sotienchuanop;
 
     @FXML
     private Label sotiendanop;
@@ -103,9 +103,8 @@ public class Chitietkhoanphi implements Initializable {
     private TextField timkiem;
     private ObservableList<NopPhi> nopPhis=FXCollections.observableArrayList();
     public void danhsachhokhau() {
-
+        nopPhis = FXCollections.observableArrayList(nopPhiList);
         if(batbuoc) {
-            nopPhis = FXCollections.observableArrayList(nopPhiList);
             danhsachhokhau.setRowFactory(tv -> new TableRow<>() {
                 @Override
                 protected void updateItem(NopPhi nopPhi, boolean empty) {
@@ -142,15 +141,9 @@ public class Chitietkhoanphi implements Initializable {
 
         }
         else {
-            for(NopPhi nopPhi:nopPhiList){
-                if(nopPhi.getSoTienDaDong()>0){
-                    nopPhis.add(nopPhi);
-                }
-            }
             nopPhis.sort(Comparator.comparing(NopPhi::getSoTang).thenComparing(NopPhi::getSoPhong));
-
         }
-        sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotien"));
+        sotienchuanop.setCellValueFactory(new PropertyValueFactory<>("DecimalFormatsotien"));
         sothutu.setCellValueFactory(cellData -> {
             int rowIndex = cellData.getTableView().getItems().indexOf(cellData.getValue()) + 1;
             return javafx.beans.binding.Bindings.createObjectBinding(() -> rowIndex);
@@ -205,7 +198,7 @@ public class Chitietkhoanphi implements Initializable {
             if (newValue == null || newValue.isEmpty()) {
                 return true;
             }
-            if(predicateEmployeeData.getTenchuho().toLowerCase().contains(newValue.toLowerCase()))
+            if(predicateEmployeeData.getHoKhau().getTenchuho().toLowerCase().contains(newValue.toLowerCase()))
                 return true;
             else if(String.valueOf(predicateEmployeeData.getHoKhau().getId()).contains(newValue)){
                 return  true;
@@ -252,12 +245,17 @@ public class Chitietkhoanphi implements Initializable {
     }
     @FXML
     void dieuchinh(ActionEvent event) {
+
     double d=Double.parseDouble(sotien.getText().replace(",",""));
+        khoanPhi.setGiaTri(d);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String date = hannop.getText();
+        LocalDate datetime = LocalDate.parse(date, formatter);
+        khoanPhi.setKetThuc(Date.valueOf(datetime));
+        KhoanPhiDao.getInstance().update(khoanPhi);
     if(!Objects.equals(khoanPhi.getDonVi(), "Đồng")){
     for(NopPhi nopPhi :nopPhiList){
-        double d1=nopPhi.getGiaTri();
-        double dientich=d1/ khoanPhi.getGiaTri();
-        nopPhi.setGiaTri(d*dientich);
+        nopPhi.setGiaTri(d* nopPhi.getSodiennuoc());
         NopPhiDao.getInstance().update(nopPhi);
     }
     }else {
@@ -266,12 +264,7 @@ public class Chitietkhoanphi implements Initializable {
             NopPhiDao.getInstance().update(nopPhi);
         }
     }
-        khoanPhi.setGiaTri(d);
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    String date = hannop.getText();
-    LocalDate datetime = LocalDate.parse(date, formatter);
-    khoanPhi.setKetThuc(Date.valueOf(datetime));
-        KhoanPhiDao.getInstance().update(khoanPhi);
+
         Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Thành công");
         alert.setContentText("Điều chỉnh khoản phí thành công");

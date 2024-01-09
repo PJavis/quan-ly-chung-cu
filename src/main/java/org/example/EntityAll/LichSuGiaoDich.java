@@ -17,13 +17,6 @@ public class LichSuGiaoDich {
     @Column(name="ten_nguoi_nop")
     private String tennguoinop;
 
-    @Column(name = "so_tang")
-    private int soTang;
-    @Column(name = "so_phong")
-    private int soPhong;
-
-    @Column(name = "ten_khoan_phi")
-    private String tenKhoanPhi;
     @ManyToOne
     @JoinColumn(name = "id_khoan_phi")
     private NopPhi nopPhi;
@@ -37,31 +30,15 @@ public class LichSuGiaoDich {
 
     }
 
-    public LichSuGiaoDich(String tennguoinop, int soTang, int soPhong, String tenKhoanPhi, NopPhi nopPhi, Date thoigiangiaodich, double giaTri) {
+    public LichSuGiaoDich(String tennguoinop, NopPhi nopPhi, Date thoigiangiaodich, double giaTri) {
         this.tennguoinop = tennguoinop;
-        this.soTang = soTang;
-        this.soPhong = soPhong;
-        this.tenKhoanPhi = tenKhoanPhi;
+
         this.nopPhi = nopPhi;
         this.thoigiangiaodich = thoigiangiaodich;
         this.giaTri = giaTri;
     }
 
-    public int getSoTang() {
-        return soTang;
-    }
 
-    public void setSoTang(int soTang) {
-        this.soTang = soTang;
-    }
-
-    public int getSoPhong() {
-        return soPhong;
-    }
-
-    public void setSoPhong(int soPhong) {
-        this.soPhong = soPhong;
-    }
 
     public NopPhi getNopPhi() {
         return nopPhi;
@@ -79,13 +56,7 @@ public class LichSuGiaoDich {
         this.tennguoinop = tennguoinop;
     }
 
-    public String getTenKhoanPhi() {
-        return tenKhoanPhi;
-    }
 
-    public void setTenKhoanPhi(String tenKhoanPhi) {
-        this.tenKhoanPhi = tenKhoanPhi;
-    }
 
     public Date getThoigiangiaodich() {
         return thoigiangiaodich;

@@ -20,6 +20,8 @@ public class NopPhi {
     @JoinColumn(name = "id_khoan_phi", nullable = false)
     private KhoanPhi khoanPhi;
 
+    @Column(name="so_dien_nuoc")
+    private double sodiennuoc;
     @Column(name = "gia_tri")
     private double giaTri;
 
@@ -30,13 +32,16 @@ public class NopPhi {
     })
     private HoKhau hoKhau;
 
-    @OneToMany(mappedBy = "nopPhi", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "nopPhi", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<LichSuGiaoDich> lichSuGiaoDichs = new HashSet<>();
-    @Column(name="ten_chu_ho")
-    private String tenchuho;
+
 
     @Column(name = "trang_thai_dong_phi")
     private boolean trangThaiDongPhi;
+
+    public int getId() {
+        return id;
+    }
 
     @Column(name = "so_tien_da_dong")
     private double soTienDaDong;
@@ -45,14 +50,21 @@ public class NopPhi {
         // Default constructor required by Hibernate
     }
 
-    public NopPhi(KhoanPhi khoanPhi, double giaTri, HoKhau hoKhau, String tenchuho, boolean trangThaiDongPhi, double soTienDaDong, Set<LichSuGiaoDich> lichsugiaodiches) {
+    public NopPhi(KhoanPhi khoanPhi, double giaTri, HoKhau hoKhau, boolean trangThaiDongPhi, double soTienDaDong, Set<LichSuGiaoDich> lichsugiaodiches) {
         this.khoanPhi = khoanPhi;
         this.giaTri = giaTri;
         this.hoKhau = hoKhau;
-        this.tenchuho = tenchuho;
         this.trangThaiDongPhi = trangThaiDongPhi;
         this.lichSuGiaoDichs=lichsugiaodiches;
         this.soTienDaDong = soTienDaDong;
+    }
+
+    public double getSodiennuoc() {
+        return sodiennuoc;
+    }
+
+    public void setSodiennuoc(double sodiennuoc) {
+        this.sodiennuoc = sodiennuoc;
     }
 
     public KhoanPhi getKhoanPhi() {
@@ -81,17 +93,6 @@ public class NopPhi {
 
 
 
-
-
-    public String getTenchuho() {
-        return tenchuho;
-    }
-
-    public void setTenchuho(String tenchuho) {
-        this.tenchuho = tenchuho;
-    }
-
-
     public int getIdKhoanPhi() {
         return this.khoanPhi.getId();
     }
@@ -115,13 +116,15 @@ public class NopPhi {
     public double getSotienchuanop(){
         return giaTri-soTienDaDong;
     }
-    public  String getDecimalFormatSotien(){
+    public String getTenchuho(){
+        return this.hoKhau.getTenchuho();
+    }
+    public  String getDecimalFormatsotien(){
         double duno=giaTri-soTienDaDong;
         String pattern = "#,##0" + (duno % 1 == 0 ? "" : ".#########");
         DecimalFormat decimalFormat = new DecimalFormat(pattern);
         return decimalFormat.format(duno);
     }
-
     public  String getDecimalFormatSotiendanop(){
 
         String pattern = "#,##0" + (soTienDaDong % 1 == 0 ? "" : ".#########");
@@ -129,10 +132,10 @@ public class NopPhi {
         return decimalFormat.format(soTienDaDong);
     }
     public String getTenKhoanPhi(){
-        return KhoanPhiDao.getInstance().selectByid(this.khoanPhi.getId()).getTenKhoanPhi();
+        return khoanPhi.getTenKhoanPhi();
     }
     public String getLoaiKhoanPhi(){
-        return KhoanPhiDao.getInstance().selectByid(this.khoanPhi.getId()).getLoaiKhoanPhi();
+        return this.khoanPhi.getLoaiKhoanPhi();
     }
     public int getSoTang() {
         return this.getHoKhau().getSoTang();

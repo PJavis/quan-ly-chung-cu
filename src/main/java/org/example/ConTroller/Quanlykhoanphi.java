@@ -246,16 +246,18 @@ public class Quanlykhoanphi implements Initializable {
         NopPhi nopPhi = new NopPhi();
         nopPhi.setKhoanPhi(khoanPhi);
         nopPhi.setHoKhau(hoKhau);
-        nopPhi.setTenchuho(hoKhau.getTenchuho());
         nopPhi.setSoTienDaDong(0);
 
         String donvi1 = khoanPhi.getDonVi();
         if (Objects.equals(donvi1, "Số(kWh)")) {
+            nopPhi.setSodiennuoc(0);
             nopPhi.setGiaTri(0);
         } else if (Objects.equals(donvi1, "Diện tích(m²)")) {
+            nopPhi.setSodiennuoc(hoKhau.getDienTichPhong());
             nopPhi.setGiaTri(hoKhau.getDienTichPhong() * khoanPhi.getGiaTri());
         } else if (Objects.equals(donvi1, "Khối(m³)")) {
             nopPhi.setGiaTri(0);
+            nopPhi.setSodiennuoc(0);
         } else {
             nopPhi.setGiaTri(khoanPhi.getGiaTri());
         }

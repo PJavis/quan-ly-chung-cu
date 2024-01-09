@@ -35,7 +35,7 @@ public class KhoanPhi {
     private double tongsotien;
     @Column(name="don_vi")
     private String donVi;
-    @OneToMany(mappedBy = "khoanPhi", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "khoanPhi", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<NopPhi> nopPhis ;
     public KhoanPhi(String tenKhoanPhi, String loaiKhoanPhi, Date batDau, Date ketThuc, double giaTri, double tongsotien,Set<NopPhi> nopPhis) {
         this.tenKhoanPhi = tenKhoanPhi;
