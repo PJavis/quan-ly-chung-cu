@@ -36,7 +36,8 @@ public class Dieuchinhnopphi {
         giatri.setText(String.valueOf(nopPhi1.getGiaTri()));
         sodiennuoc.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
-                int numericValue = Integer.parseInt(newValue);
+                newValue.replace(",", "");
+                Double numericValue = Double.parseDouble(newValue);
                 // Nếu có thể chuyển đổi thành số, cập nhật giá trị của Label
                 giatri.setText(getDecimalFormatsotien(numericValue*nopPhi1.getKhoanPhi().getGiaTri()));
             } catch (NumberFormatException e) {
@@ -46,7 +47,7 @@ public class Dieuchinhnopphi {
     }
     @FXML
     void capnhat(ActionEvent event) {
-        nopPhi.setSodiennuoc(Integer.parseInt(sodiennuoc.getText()));
+        nopPhi.setSodiennuoc(Double.parseDouble(sodiennuoc.getText()));
         nopPhi.setGiaTri(Double.parseDouble(giatri.getText().replace(",", "")));
         NopPhiDao.getInstance().update(nopPhi);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

@@ -8,28 +8,27 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="111.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Dieuchinhnopphi">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="245.0" prefWidth="277.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Dieuchinhnopphi">
    <children>
-      <GridPane hgap="20.0" layoutX="14.0" layoutY="10.0" prefHeight="94.0" prefWidth="586.0">
+      <GridPane layoutX="14.0" layoutY="14.0" prefHeight="186.0" prefWidth="222.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.20001220703125" minWidth="10.0" prefWidth="90.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="415.79998779296875" minWidth="10.0" prefWidth="112.4" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Tên khoản phí:" />
-            <Label fx:id="tenkhoanphi" text="Label" GridPane.rowIndex="1" />
-            <Label text="Số điện nước:" GridPane.columnIndex="1" />
-            <Label fx:id="giatri" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label text="Giá trị:" GridPane.columnIndex="2" />
-            <TextField fx:id="sodiennuoc" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="tenkhoanphi" text="Label" GridPane.columnIndex="1" />
+            <TextField fx:id="sodiennuoc" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Số điện nước:" GridPane.rowIndex="2" />
+            <Label text="Giá trị:" GridPane.rowIndex="1" />
+            <Label fx:id="giatri" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="629.0" layoutY="43.0" mnemonicParsing="false" onAction="#capnhat" text="Cập nhật" />
+      <Button layoutX="172.0" layoutY="200.0" mnemonicParsing="false" onAction="#capnhat" text="Cập nhật" />
    </children>
 </AnchorPane>
