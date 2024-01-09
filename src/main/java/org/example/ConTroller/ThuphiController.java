@@ -136,7 +136,7 @@ public class ThuphiController implements Initializable {
     private TableView<NopPhi> thongtinkhoanphi;
     @FXML
     void timphong(ActionEvent event) {
-        hoKhau = HoKhauDao.getInstance().selectById(Integer.parseInt(sotang.getText()), Integer.parseInt(sophong.getText()));
+        hoKhau = HoKhauDao.getInstance().selectById(Integer.parseInt(sophong.getText()), Integer.parseInt(sotang.getText()));
         if(hoKhau==null){
             showAlert("Lỗi","Không tìm thấy hộ khẩu");
         }else{

@@ -131,7 +131,7 @@
                     <TableColumn fx:id="tenkhoanphi" prefWidth="126.79998779296875" text="Tên khoản phí" />
                     <TableColumn fx:id="loaikhoanphi" prefWidth="116.4000244140625" text="Loại khoản phí" />
                     <TableColumn fx:id="sotiendanop" prefWidth="136.0" text="Số tiền đã nộp" />
-                    <TableColumn fx:id="sotienchuanop" prefWidth="116.0" text="Số tiền chưa nộp" />
+                    <TableColumn fx:id="sotienchuanop" prefWidth="116.0" text="Dư nợ" />
                     <TableColumn fx:id="lichsugiaodich" prefWidth="128.0" text="Lịch sử giao dịch" />
                 </columns>
             </TableView>
