@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="215.0" styleClass="panebentrai" stylesheets="@css/pinocchio.css"
+<AnchorPane prefHeight="790.0" prefWidth="215.0" styleClass="panebentrai" stylesheets="@css/pinocchio.css"
             xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.example.ConTroller.DashBoardController">
     <Accordion layoutX="5.0" layoutY="291.0"/>

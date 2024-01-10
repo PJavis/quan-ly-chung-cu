@@ -128,7 +128,7 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>, Selec
         List<NopPhi> nopPhi;
         try {
             session = Hibernate.getSession(sessionFactory);
-            nopPhi = session.createQuery("FROM NopPhi  WHERE hoKhau= :hoKhau ", NopPhi.class)
+            nopPhi = session.createQuery("FROM NopPhi  WHERE hoKhau= :hoKhau AND khoanPhi.ketThuc > current_date AND giaTri>soTienDaDong", NopPhi.class)
                     .setParameter("hoKhau", hoKhau)
                     .getResultList();
             Hibernate.closeSession(session);
@@ -141,7 +141,7 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>, Selec
         List<NopPhi> nopPhi;
         try {
             session = Hibernate.getSession(sessionFactory);
-            nopPhi = session.createQuery("FROM NopPhi  WHERE hoKhau= :hoKhau AND khoanPhi.loaiKhoanPhi='Bắt buộc'", NopPhi.class)
+            nopPhi = session.createQuery("FROM NopPhi  WHERE hoKhau= :hoKhau AND khoanPhi.loaiKhoanPhi='Bắt buộc' AND khoanPhi.ketThuc > current_date ", NopPhi.class)
                     .setParameter("hoKhau", hoKhau)
                     .getResultList();
             Hibernate.closeSession(session);
@@ -154,7 +154,7 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>, Selec
         List<NopPhi> nopPhi;
         try {
             session = Hibernate.getSession(sessionFactory);
-            nopPhi = session.createQuery("FROM NopPhi  WHERE hoKhau= :hoKhau AND khoanPhi.loaiKhoanPhi='Đóng góp'", NopPhi.class)
+            nopPhi = session.createQuery("FROM NopPhi  WHERE hoKhau= :hoKhau AND khoanPhi.loaiKhoanPhi='Đóng góp' AND khoanPhi.ketThuc > current_date ", NopPhi.class)
                     .setParameter("hoKhau", hoKhau)
                     .getResultList();
             Hibernate.closeSession(session);
