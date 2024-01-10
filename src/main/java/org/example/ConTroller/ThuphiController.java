@@ -42,8 +42,17 @@ public class ThuphiController implements Initializable {
     private TableColumn<NopPhi, Integer> giatri;
     @FXML
     private TableColumn<NopPhi, String> sotiendanop;
+    @FXML
+    private TableColumn<NopPhi, String> sotiendanop1;
+    @FXML
+    private TableColumn<NopPhi, Void> chinhsua1;
+    @FXML
+    private TableColumn<NopPhi, Void> giatri1;
 
-
+    @FXML
+    private TableColumn<NopPhi, String> ten1;
+    @FXML
+    private TableView<NopPhi> thongtindonggop;
     @FXML
     private TextField sophong;
 
@@ -58,7 +67,19 @@ public class ThuphiController implements Initializable {
 
 
     @FXML
-    private GridPane thongtinphuongtien;
+    private TableColumn<PhuongTien, String> loaixe;
+    @FXML
+    private TableColumn<PhuongTien, String> sotiendanop11;
+    @FXML
+    private TableColumn<PhuongTien, String> ten11;
+    @FXML
+    private TableView<PhuongTien> thongtinphuongtien;
+    @FXML
+    private TableColumn<PhuongTien, Void> chinhsua11;
+    @FXML
+    private TableColumn<PhuongTien, String> duno;
+
+
     private boolean isInputInvalid() {
         return sophong.getText().isEmpty() || sotang.getText().isEmpty();
     }
@@ -144,7 +165,8 @@ public class ThuphiController implements Initializable {
             nopPhidonggop=NopPhiDao.getInstance().selectByHoKhauandDonggop(hoKhau);
             phuongTiens= PhuongTienDao.getInstance().selectByHoKhau(hoKhau);
             danhsachkhoanphi();
-
+            danhsachdonggop();
+            danhsachphuongtien();
         }
 
     }
@@ -225,6 +247,101 @@ public class ThuphiController implements Initializable {
         });
 
         thongtinkhoanphi.setItems(nopPhis);
+    }
+    public void danhsachdonggop(){
+        ObservableList<NopPhi> nopPhis=FXCollections.observableArrayList(nopPhidonggop);
+        ten1.setCellValueFactory(new PropertyValueFactory<>("TenKhoanPhi"));
+        giatri1.setCellValueFactory(new PropertyValueFactory<>("DecimalFormatsotien"));
+        sotiendanop1.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotiendanop"));
+        chinhsua1.setCellFactory(cell->{
+            return new TableCell<NopPhi,Void>(){
+                @Override
+                protected void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        NopPhi nopPhi= getTableView().getItems().get(getIndex());
+                        HBox vbox = new HBox(10); // 10 là khoảng cách giữa các thành phần
+                        Button button1 = new Button();
+                        FontAwesomeIconView iconView1 = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                        iconView1.setSize("16px");
+                        button1.setGraphic(iconView1);
+                        button1.setOnAction(event1 -> {
+                            try {
+                                Stage ag0r = (Stage) ((Node) event1.getSource()).getScene().getWindow();
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Chitietthuphi.fxml"));
+                                Parent root = loader.load();
+                                Scene scene = new Scene(root);
+                                Stage ag0r1=new Stage();
+                                ag0r1.setScene(scene);
+                                ag0r1.initModality(Modality.APPLICATION_MODAL);
+                                ag0r1.initOwner(ag0r);
+                                Chitietthuphi chitietthuphi = loader.getController();
+                                chitietthuphi.setNopphi(nopPhi);
+                                ag0r1.showAndWait();
+                                timphong(event1);
+
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
+                            }
+                        });
+                        vbox.getChildren().addAll(button1);
+                        setGraphic(vbox);
+                    }
+                }
+            };
+        });
+        thongtindonggop.setItems(nopPhis);
+    }
+    public void danhsachphuongtien(){
+        ObservableList<PhuongTien> phuongTiens1=FXCollections.observableArrayList(phuongTiens);
+        ten11.setCellValueFactory(new PropertyValueFactory<>("tenChuXe"));
+        giatri1.setCellValueFactory(new PropertyValueFactory<>("DecimalFormatsotien"));
+        loaixe.setCellValueFactory(new PropertyValueFactory<>("loaiPhuongTien"));
+        sotiendanop1.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotiendanop"));
+        chinhsua1.setCellFactory(cell->{
+            return new TableCell<NopPhi,Void>(){
+                @Override
+                protected void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        NopPhi nopPhi= getTableView().getItems().get(getIndex());
+                        HBox vbox = new HBox(10); // 10 là khoảng cách giữa các thành phần
+                        Button button1 = new Button();
+                        FontAwesomeIconView iconView1 = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                        iconView1.setSize("16px");
+                        button1.setGraphic(iconView1);
+                        button1.setOnAction(event1 -> {
+                            try {
+                                Stage ag0r = (Stage) ((Node) event1.getSource()).getScene().getWindow();
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Chitietthuphi.fxml"));
+                                Parent root = loader.load();
+                                Scene scene = new Scene(root);
+                                Stage ag0r1=new Stage();
+                                ag0r1.setScene(scene);
+                                ag0r1.initModality(Modality.APPLICATION_MODAL);
+                                ag0r1.initOwner(ag0r);
+                                Chitietthuphi chitietthuphi = loader.getController();
+                                chitietthuphi.setNopphi(nopPhi);
+                                ag0r1.showAndWait();
+                                timphong(event1);
+
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
+                            }
+                        });
+                        vbox.getChildren().addAll(button1);
+                        setGraphic(vbox);
+                    }
+                }
+            };
+        });
+        thongtinphuongtien.setItems(phuongTiens1);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

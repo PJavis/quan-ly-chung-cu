@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" stylesheets="@css/pinocchio.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.TrangchuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="@css/pinocchio.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.TrangchuController">
    <fx:include source="DashBoard.fxml" />
-   <Pane layoutX="222.0" prefHeight="750.0" prefWidth="777.0">
+   <Pane layoutX="222.0" prefHeight="800.0" prefWidth="777.0">
       <Label layoutX="26.0" layoutY="84.0" prefHeight="36.0" prefWidth="359.0" text="Pinocchio LHP">
          <font>
             <Font name="Century Gothic Bold" size="30.0" />
