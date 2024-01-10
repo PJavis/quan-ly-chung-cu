@@ -64,8 +64,7 @@ public class QuanlyThuPhiGuiXeController {
     private TableColumn<PhuongTien, Double> phiguixeColumn;
     @FXML
     private TableColumn<PhuongTien, Double> phidanopColumn;
-    @FXML
-    private TableColumn<PhuongTien, Void> nopphiColumn;
+
     @FXML
     private TableColumn<PhuongTien, String> loaixeColumn;
 
@@ -107,36 +106,6 @@ public class QuanlyThuPhiGuiXeController {
         chuxeColumn.setCellValueFactory(new PropertyValueFactory<>("tenChuXe"));
         phiguixeColumn.setCellValueFactory(new PropertyValueFactory<>("phiGuiXe"));
         phidanopColumn.setCellValueFactory(new PropertyValueFactory<>("soTienDaNop"));
-
-        nopphiColumn.setCellFactory(param -> new TableCell<PhuongTien, Void>() {
-            @Override
-            protected void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    Button button = new Button();
-                    FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
-                    iconView.setSize("16px");
-                    button.setOnAction(event -> {
-                        PhuongTien phuongTien = getTableView().getItems().get(getIndex());
-                        try {
-                            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Chitietthuphiguixe.fxml"));
-                            Parent root = loader.load();
-                            Scene scene = new Scene(root);
-                            ag0r.setScene(scene);
-                            Thuphiguixe thuphiguixe = loader.getController();
-                            thuphiguixe.setPhuongTien(phuongTien);
-                            ag0r.show();
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                        }
-                    });
-                    setGraphic(button);
-                }
-            }
-        });
 
         deleteColumn.setCellFactory(param -> new TableCell<PhuongTien, Void>() {
             @Override
@@ -270,13 +239,14 @@ public class QuanlyThuPhiGuiXeController {
                     phiguixe = 500;
                     break;
             }
-            PhuongTien newPhuongTien = new PhuongTien(loaiPhuongTien, bienSoXe, phiguixe, hoKhau, chuxe);
+            
 
             boolean checkName = false;
             List<NhanKhau> nhanKhaus = NhanKhauDao.getInstance().selectNhanKhauById(hoKhau);
+            String ten = "";
             for (NhanKhau nhanKhau : nhanKhaus) {
-                String ten = nhanKhau.getTen();
-                if (ten.equals(chuxe)) {
+                 ten = nhanKhau.getTen();
+                if (ten.toLowerCase().equals(chuxe.toLowerCase())) {
                     checkName = true;
                     break;
                 }
@@ -286,6 +256,7 @@ public class QuanlyThuPhiGuiXeController {
                 showAlert("Lỗi", "Chủ xe không có trong hộ khẩu.");
             } else {
                 // Thêm mới vào danh sách và cập nhật TableView
+                PhuongTien newPhuongTien = new PhuongTien(loaiPhuongTien, bienSoXe, phiguixe, hoKhau, ten);
                 boolean isAdded = getData.getInstance().addPhuongTien(newPhuongTien);
 
                 if (isAdded) {

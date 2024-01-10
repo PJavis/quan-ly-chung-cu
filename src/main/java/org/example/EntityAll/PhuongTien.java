@@ -14,6 +14,7 @@ public class PhuongTien {
     @Column(name = "loai_phuong_tien")
     private String loaiPhuongTien;
 
+
     @Column(name = "bien_so_xe", length = 50)
     private String bienSoXe;
 

@@ -19,14 +19,13 @@
         <TableView fx:id="vehicleTableView" layoutX="11.0" layoutY="67.0" prefHeight="456.0" prefWidth="760.0" AnchorPane.bottomAnchor="236.20000000000005" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="31.600000000000023" AnchorPane.topAnchor="67.0">
             <columns>
                 <TableColumn fx:id="biensoxeColumn" prefWidth="110.39996337890625" text="Biển số xe" />
-                <TableColumn fx:id="loaixeColumn" prefWidth="120.79998779296875" text="Loại xe" />
-                <TableColumn fx:id="sotangColumn" prefWidth="100.60000610351562" text="Số tầng" />
-                <TableColumn fx:id="sophongColumn" prefWidth="100.5999755859375" text="Số phòng" />
-                <TableColumn fx:id="chuxeColumn" prefWidth="180.40008544921875" text="Tên chủ xe" />
-                <TableColumn fx:id="deleteColumn" prefWidth="61.79998779296875" text="Xoá" />
-                <TableColumn fx:id="phiguixeColumn" prefWidth="180.7999267578125" text="Phí gửi(vnđ)" />
-                <TableColumn fx:id="phidanopColumn" prefWidth="180.7999267578125" text="Đã nộp(vnđ)" />
-                <TableColumn fx:id="nopphiColumn" prefWidth="180.7999267578125" text="Thu phí" />
+                <TableColumn fx:id="loaixeColumn" prefWidth="76.800048828125" text="Loại xe" />
+                <TableColumn fx:id="sotangColumn" prefWidth="81.60003662109375" text="Số tầng" />
+                <TableColumn fx:id="sophongColumn" prefWidth="82.39999389648438" text="Số phòng" />
+                <TableColumn fx:id="chuxeColumn" prefWidth="141.60003662109375" text="Tên chủ xe" />
+                <TableColumn fx:id="phiguixeColumn" prefWidth="127.99993896484375" text="Phí gửi(vnđ)" />
+                <TableColumn fx:id="phidanopColumn" prefWidth="134.4000244140625" text="Đã nộp(vnđ)" />
+                <TableColumn fx:id="deleteColumn" prefWidth="209.60003662109375" text="Xoá" />
                 <!-- Thêm các cột khác nếu cần -->
             </columns>
         </TableView>
