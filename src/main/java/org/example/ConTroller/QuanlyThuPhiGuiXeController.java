@@ -275,12 +275,7 @@ public class QuanlyThuPhiGuiXeController {
             boolean checkName = false;
             List<NhanKhau> nhanKhaus = NhanKhauDao.getInstance().selectNhanKhauById(hoKhau);
             for (NhanKhau nhanKhau : nhanKhaus) {
-                String hoTenDayDu = nhanKhau.getTen();
-                // Giả sử hoTenDayDu có định dạng "Họ Tên"
-                String[] phanTach = hoTenDayDu.split("\\s+");
-                String ten = phanTach[phanTach.length-1];
-
-                // Bạn có thể điều chỉnh điều kiện này dựa trên yêu cầu cụ thể của bạn
+                String ten = nhanKhau.getTen();
                 if (ten.equals(chuxe)) {
                     checkName = true;
                     break;
