@@ -52,6 +52,7 @@ public class Thuphiguixe {
             khoanPhi.setBatDau(Date.valueOf(firstDayOfMonth));
             khoanPhi.setKetThuc(Date.valueOf(firstDayOfMonth.plusMonths(1)));
             getData.getInstance().updatePhiGuiXe();
+            KhoanPhiDao.getInstance().update(khoanPhi);
         }
 
         // Tạo và lưu đối tượng NopPhi
