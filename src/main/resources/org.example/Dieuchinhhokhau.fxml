@@ -16,9 +16,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Dieuchinhhokhau">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1000.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Dieuchinhhokhau">
     <fx:include source="DashBoard.fxml" />
-    <Pane layoutX="222.0" prefHeight="800.0" prefWidth="778.0" styleClass="pane_11">
+    <Pane layoutX="222.0" prefHeight="790.0" prefWidth="778.0" styleClass="pane_11">
         <children>
             <Button layoutX="36.0" layoutY="27.0" mnemonicParsing="false" onAction="#quaylai" prefHeight="35.0" prefWidth="67.0" style="-fx-border-color: #353A56; -fx-border-radius: 15px; -fx-background-radius: 15px;">
                 <graphic>

@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.QuanlyThuPhiGuiXeController">
+<AnchorPane prefHeight="790.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.QuanlyThuPhiGuiXeController">
     <fx:include source="DashBoard.fxml" />
-    <Pane layoutX="222.0" prefHeight="800.0" prefWidth="777.0" styleClass="pane_11">
+    <Pane layoutX="222.0" prefHeight="790.0" prefWidth="777.0" styleClass="pane_11">
         <TextField fx:id="searchTextField" layoutX="11.0" layoutY="13.0" promptText="Nhập biển số xe" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="13.0" />
         <Button layoutX="164.0" layoutY="13.0" onAction="#searchButtonClicked" text="Tìm Kiếm" AnchorPane.leftAnchor="164.0" AnchorPane.topAnchor="13.0" />
 
