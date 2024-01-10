@@ -73,7 +73,7 @@
             </columns>
         </TableView>
 
-        <ComboBox fx:id="boxphong" editable="true" layoutX="502.0" layoutY="470.0" prefHeight="34.0" prefWidth="218.0" promptText="Thống kê" style="-fx-border-color: #353A56;" />
+        <ComboBox fx:id="boxphong" layoutX="502.0" layoutY="470.0" prefHeight="34.0" prefWidth="218.0" promptText="Thống kê" style="-fx-border-color: #353A56;" />
         <Label layoutX="41.0" layoutY="479.0" text="Tổng số hộ khẩu:">
             <font>
                 <Font name="Arial Bold" size="14.0" />
