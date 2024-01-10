@@ -79,7 +79,9 @@ public class ThuphiController implements Initializable {
     @FXML
     private TableColumn<PhuongTien, String> duno;
 
-
+    @FXML
+    private Label tongsotiennop;
+    private Double tongsotiennop1 = 0.0;
     private boolean isInputInvalid() {
         return sophong.getText().isEmpty() || sotang.getText().isEmpty();
     }
@@ -161,7 +163,12 @@ public class ThuphiController implements Initializable {
         if(hoKhau==null){
             showAlert("Lỗi","Không tìm thấy hộ khẩu");
         }else{
+            tongsotiennop1=0.0;
             nopPhikhoanphi=NopPhiDao.getInstance().selectByHoKhauandKhoanphi(hoKhau);
+            for(NopPhi nopPhi :nopPhikhoanphi){
+                tongsotiennop1+=nopPhi.getGiaTri()-nopPhi.getSoTienDaDong();
+            }
+            tongsotiennop.setText(getDecimalFormat(tongsotiennop1));
             nopPhidonggop=NopPhiDao.getInstance().selectByHoKhauandDonggop(hoKhau);
             phuongTiens= PhuongTienDao.getInstance().selectByHoKhau(hoKhau);
             danhsachkhoanphi();
@@ -189,7 +196,7 @@ public class ThuphiController implements Initializable {
                         NopPhi nopPhi= getTableView().getItems().get(getIndex());
                         HBox vbox = new HBox(10); // 10 là khoảng cách giữa các thành phần
                         Button button1 = new Button();
-                        FontAwesomeIconView iconView1 = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                        FontAwesomeIconView iconView1 = new FontAwesomeIconView(FontAwesomeIcon.MONEY);
                         iconView1.setSize("16px");
                         button1.setGraphic(iconView1);
                         button1.setOnAction(event1 -> {
@@ -265,7 +272,7 @@ public class ThuphiController implements Initializable {
                         NopPhi nopPhi= getTableView().getItems().get(getIndex());
                         HBox vbox = new HBox(10); // 10 là khoảng cách giữa các thành phần
                         Button button1 = new Button();
-                        FontAwesomeIconView iconView1 = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                        FontAwesomeIconView iconView1 = new FontAwesomeIconView(FontAwesomeIcon.MONEY);
                         iconView1.setSize("16px");
                         button1.setGraphic(iconView1);
                         button1.setOnAction(event1 -> {
@@ -287,7 +294,17 @@ public class ThuphiController implements Initializable {
                                 System.out.println(e.getMessage());
                             }
                         });
-                        vbox.getChildren().addAll(button1);
+                        CheckBox checkBox=new CheckBox();
+                        checkBox.setOnAction(event1->{
+                            if(checkBox.isSelected()){
+                                tongsotiennop1+=nopPhi.getGiaTri()-nopPhi.getSoTienDaDong();
+                                tongsotiennop.setText(getDecimalFormat(tongsotiennop1));
+                            }else {
+                                tongsotiennop1-=nopPhi.getGiaTri()-nopPhi.getSoTienDaDong();
+                                tongsotiennop.setText(getDecimalFormat(tongsotiennop1));
+                            }
+                        });
+                        vbox.getChildren().addAll(button1,checkBox);
                         setGraphic(vbox);
                     }
                 }
@@ -298,11 +315,11 @@ public class ThuphiController implements Initializable {
     public void danhsachphuongtien(){
         ObservableList<PhuongTien> phuongTiens1=FXCollections.observableArrayList(phuongTiens);
         ten11.setCellValueFactory(new PropertyValueFactory<>("tenChuXe"));
-        giatri1.setCellValueFactory(new PropertyValueFactory<>("DecimalFormatsotien"));
+        duno.setCellValueFactory(new PropertyValueFactory<>("DecimalFormatsotien"));
         loaixe.setCellValueFactory(new PropertyValueFactory<>("loaiPhuongTien"));
-        sotiendanop1.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotiendanop"));
-        chinhsua1.setCellFactory(cell->{
-            return new TableCell<NopPhi,Void>(){
+        sotiendanop11.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotiendanop"));
+        /*chinhsua11.setCellFactory(cell->{
+            return new TableCell<PhuongTien,Void>(){
                 @Override
                 protected void updateItem(Void item, boolean empty) {
                     super.updateItem(item, empty);
@@ -310,7 +327,7 @@ public class ThuphiController implements Initializable {
                     if (empty) {
                         setGraphic(null);
                     } else {
-                        NopPhi nopPhi= getTableView().getItems().get(getIndex());
+                        PhuongTien nopPhi= getTableView().getItems().get(getIndex());
                         HBox vbox = new HBox(10); // 10 là khoảng cách giữa các thành phần
                         Button button1 = new Button();
                         FontAwesomeIconView iconView1 = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
@@ -340,7 +357,7 @@ public class ThuphiController implements Initializable {
                     }
                 }
             };
-        });
+        });*/
         thongtinphuongtien.setItems(phuongTiens1);
     }
     @Override

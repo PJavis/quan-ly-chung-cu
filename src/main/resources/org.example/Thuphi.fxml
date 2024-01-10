@@ -50,7 +50,7 @@
            </font>
        </Label>
 
-       <Button layoutX="663.0" layoutY="699.0" mnemonicParsing="false" onAction="#nopphi" prefHeight="37.0" prefWidth="96.0" style="-fx-background-color: #353A56; -fx-background-radius: 15px;" text="Nộp" textFill="WHITE" />
+       <Button layoutX="665.0" layoutY="739.0" mnemonicParsing="false" onAction="#nopphi" prefHeight="37.0" prefWidth="96.0" style="-fx-background-color: #353A56; -fx-background-radius: 15px;" text="Nộp" textFill="WHITE" />
       <Label layoutX="14.0" layoutY="99.0" prefHeight="21.0" prefWidth="220.0" text="THÔNG TIN KHOẢN PHÍ:">
          <font>
             <Font name="Arial Bold" size="18.0" />
@@ -66,24 +66,27 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="thongtinkhoanphi" layoutX="25.0" layoutY="127.0" prefHeight="200.0" prefWidth="744.0">
+      <TableView fx:id="thongtinkhoanphi" editable="true" layoutX="25.0" layoutY="127.0" prefHeight="200.0" prefWidth="744.0">
         <columns>
           <TableColumn fx:id="ten" prefWidth="196.00006103515625" text="Tên" />
           <TableColumn fx:id="sodiennuoc" minWidth="0.0" prefWidth="202.39999389648438" text="Số điện /Số nước/ Diên tích phòng" />
             <TableColumn fx:id="giatri" prefWidth="154.4000244140625" text="Dư nợ" />
-            <TableColumn fx:id="sotiendanop" prefWidth="112.79998779296875" text="Số tiền đã nộp" />
-            <TableColumn fx:id="chinhsua" minWidth="0.0" prefWidth="70.0" text="Chỉnh sửa" />
+            <TableColumn fx:id="sotiendanop" prefWidth="97.59991455078125" text="Số tiền đã nộp" />
+            <TableColumn fx:id="chinhsua" minWidth="0.0" prefWidth="85.4000244140625" text="Chỉnh sửa" />
         </columns>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </TableView>
       <TableView fx:id="thongtindonggop" layoutX="25.0" layoutY="357.0" prefHeight="184.0" prefWidth="744.0">
          <columns>
             <TableColumn fx:id="ten1" prefWidth="196.00006103515625" text="Tên" />
             <TableColumn fx:id="giatri1" prefWidth="211.99996948242188" text="Dư nợ" />
             <TableColumn fx:id="sotiendanop1" prefWidth="220.0" text="Số tiền đã đóng góp" />
-            <TableColumn fx:id="chinhsua1" minWidth="0.0" prefWidth="110.4000244140625" text="Nộp phí" />
+            <TableColumn fx:id="chinhsua1" minWidth="0.0" prefWidth="110.4000244140625" text="Đóng góp" />
          </columns>
       </TableView>
-      <TableView fx:id="thongtinphuongtien" layoutX="17.0" layoutY="585.0" prefHeight="113.0" prefWidth="744.0">
+      <TableView fx:id="thongtinphuongtien" layoutX="17.0" layoutY="585.0" prefHeight="148.0" prefWidth="744.0">
          <columns>
             <TableColumn fx:id="ten11" prefWidth="196.00006103515625" text="Tên chủ xe" />
             <TableColumn fx:id="loaixe" prefWidth="128.80001831054688" text="Loại xe" />
@@ -92,6 +95,8 @@
             <TableColumn fx:id="chinhsua11" minWidth="0.0" prefWidth="137.5999755859375" text="Nộp phí" />
          </columns>
       </TableView>
+      <Label layoutX="17.0" layoutY="739.0" text="Tổng số tiền nộp:" />
+      <Label fx:id="tongsotiennop" layoutX="122.0" layoutY="739.0" text="Label" />
 
    </Pane>
 </AnchorPane>
