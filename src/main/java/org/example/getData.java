@@ -116,4 +116,13 @@ public class getData {
     public void reloadKhoanPhi(){this.khoanPhis= KhoanPhiDao.getInstance().selectAll();}
 
     public void  reloadPhuongTien(){this.phuongTiens = PhuongTienDao.getInstance().selectAll();}
+
+    public void updatePhiGuiXe() {
+        if (LocalDate.now().getDayOfMonth() == 1) {
+            for(PhuongTien phuongTien : phuongTiens) {
+                phuongTien.setSoTienDaNop(0);
+                PhuongTienDao.getInstance().save(phuongTien);
+            }
+        }
+    }
 }

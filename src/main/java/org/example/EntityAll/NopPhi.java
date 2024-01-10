@@ -1,9 +1,7 @@
 package org.example.EntityAll;
 
 import jakarta.persistence.*;
-import org.example.Hibernatedao.KhoanPhiDao;
 
-import java.sql.Date;
 import java.text.DecimalFormat;
 import java.util.HashSet;
 import java.util.Set;

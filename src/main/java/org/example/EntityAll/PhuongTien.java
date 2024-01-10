@@ -20,6 +20,9 @@ public class PhuongTien {
     @Column(name = "phi_gui_xe")
     private double phiGuiXe;
 
+    @Column(name = "so_tien_da_nop")
+    private double soTienDaNop;
+
     @ManyToOne
     @JoinColumns({
             @JoinColumn(name = "so_tang", referencedColumnName = "so_tang"),
@@ -87,5 +90,13 @@ public class PhuongTien {
 
     public void setPhiGuiXe(double phiGuiXe) {
         this.phiGuiXe = phiGuiXe;
+    }
+
+    public double getSoTienDaNop() {
+        return soTienDaNop;
+    }
+
+    public void setSoTienDaNop(double soTienDaNop) {
+        this.soTienDaNop = soTienDaNop;
     }
 }

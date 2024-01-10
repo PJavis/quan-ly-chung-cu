@@ -1,13 +1,20 @@
 // QuanlyThuPhiGuiXeController.java
 package org.example.ConTroller;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.NhanKhau;
 import org.example.EntityAll.PhuongTien;
@@ -53,8 +60,12 @@ public class QuanlyThuPhiGuiXeController {
 
     @FXML
     private TableColumn<PhuongTien, String> chuxeColumn;
-
-
+    @FXML
+    private TableColumn<PhuongTien, Double> phiguixeColumn;
+    @FXML
+    private TableColumn<PhuongTien, Double> phidanopColumn;
+    @FXML
+    private TableColumn<PhuongTien, Void> nopphiColumn;
     @FXML
     private TableColumn<PhuongTien, String> loaixeColumn;
 
@@ -94,6 +105,39 @@ public class QuanlyThuPhiGuiXeController {
         });
         loaiphuongtien.setItems(FXCollections.observableArrayList("Xe Máy", "Ô Tô", "Xe Đạp"));
         chuxeColumn.setCellValueFactory(new PropertyValueFactory<>("tenChuXe"));
+        phiguixeColumn.setCellValueFactory(new PropertyValueFactory<>("phiGuiXe"));
+        phidanopColumn.setCellValueFactory(new PropertyValueFactory<>("soTienDaNop"));
+
+        nopphiColumn.setCellFactory(param -> new TableCell<PhuongTien, Void>() {
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    Button button = new Button();
+                    FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
+                    iconView.setSize("16px");
+                    button.setOnAction(event -> {
+                        PhuongTien phuongTien = getTableView().getItems().get(getIndex());
+                        try {
+                            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Chitietthuphiguixe.fxml"));
+                            Parent root = loader.load();
+                            Scene scene = new Scene(root);
+                            ag0r.setScene(scene);
+                            Thuphiguixe thuphiguixe = loader.getController();
+                            thuphiguixe.setPhuongTien(phuongTien);
+                            ag0r.show();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                    });
+                    setGraphic(button);
+                }
+            }
+        });
+
         deleteColumn.setCellFactory(param -> new TableCell<PhuongTien, Void>() {
             @Override
             protected void updateItem(Void item, boolean empty) {

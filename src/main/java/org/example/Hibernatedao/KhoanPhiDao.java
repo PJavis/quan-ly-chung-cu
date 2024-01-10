@@ -71,7 +71,7 @@ public class KhoanPhiDao implements Save<KhoanPhi>, SelectAll, Update<KhoanPhi> 
             Hibernate.closeSession(session);
 
         } catch (Exception e) {
-            System.out.println("Luu ho khau co loi");
+            System.out.println("Luu khoan phi co loi");
             throw new RuntimeException(e);
         }
     }
