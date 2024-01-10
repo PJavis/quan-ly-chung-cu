@@ -2,15 +2,17 @@
 package org.example.ConTroller;
 
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.EntityAll.HoKhau;
+import org.example.EntityAll.NhanKhau;
 import org.example.EntityAll.PhuongTien;
 import org.example.Hibernatedao.HoKhauDao;
+import org.example.Hibernatedao.NhanKhauDao;
 import org.example.Hibernatedao.PhuongTienDao;
 import org.example.getData;
 
@@ -210,8 +212,6 @@ public class QuanlyThuPhiGuiXeController {
                 showAlert("Lỗi", "Xin hãy nhập số tầng và số phòng là số nguyên dương.");
             }
 
-
-
             // Tạo mới một đối tượng PhuongTien
             double phiguixe = 0;
             switch (loaiPhuongTien.toLowerCase()) {
@@ -228,22 +228,42 @@ public class QuanlyThuPhiGuiXeController {
             }
             PhuongTien newPhuongTien = new PhuongTien(loaiPhuongTien, bienSoXe, phiguixe, hoKhau, chuxe);
 
-            // Thêm mới vào danh sách và cập nhật TableView
-            boolean isAdded = getData.getInstance().addPhuongTien(newPhuongTien);
+            boolean checkName = false;
+            List<NhanKhau> nhanKhaus = NhanKhauDao.getInstance().selectNhanKhauById(hoKhau);
+            for (NhanKhau nhanKhau : nhanKhaus) {
+                String hoTenDayDu = nhanKhau.getTen();
+                // Giả sử hoTenDayDu có định dạng "Họ Tên"
+                String[] phanTach = hoTenDayDu.split("\\s+");
+                String ten = phanTach[phanTach.length-1];
 
-            if (isAdded) {
-                // Hiển thị thông báo khi thêm thành công
-                PhuongTienDao.getInstance().save(newPhuongTien);
-
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Thành công");
-                alert.setContentText("Đăng ký phương tiện mới thành công.");
-                alert.showAndWait();
-                phuongTiens = FXCollections.observableArrayList(phuongTienList);
-            } else {
-                // Hiển thị thông báo khi biển số xe đã tồn tại
-                showAlert("Lỗi", "Biển số xe đã tồn tại trong danh sách.");
+                // Bạn có thể điều chỉnh điều kiện này dựa trên yêu cầu cụ thể của bạn
+                if (ten.equals(chuxe)) {
+                    checkName = true;
+                    break;
+                }
             }
+
+            if (!checkName) {
+                showAlert("Lỗi", "Chủ xe không có trong hộ khẩu.");
+            } else {
+                // Thêm mới vào danh sách và cập nhật TableView
+                boolean isAdded = getData.getInstance().addPhuongTien(newPhuongTien);
+
+                if (isAdded) {
+                    // Hiển thị thông báo khi thêm thành công
+                    PhuongTienDao.getInstance().save(newPhuongTien);
+
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Thành công");
+                    alert.setContentText("Đăng ký phương tiện mới thành công.");
+                    alert.showAndWait();
+                    phuongTiens = FXCollections.observableArrayList(phuongTienList);
+                } else {
+                    // Hiển thị thông báo khi biển số xe đã tồn tại
+                    showAlert("Lỗi", "Biển số xe đã tồn tại trong danh sách.");
+                }
+            }
+
             vehicleTableView.setItems(phuongTiens);
 
             // (Optional) Clear các trường nhập liệu sau khi thêm mới

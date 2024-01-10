@@ -96,15 +96,15 @@ public class getData {
         }
         return !isDuplicate;
     }
-public void updateHokhau(HoKhau hoKhau){
-    for (int i = 0; i < hoKhaus.size(); i++) {
-        HoKhau hoKhau1 = hoKhaus.get(i);
-        if (hoKhau1.getSoTang() == hoKhau.getSoTang() && hoKhau1.getId() == hoKhau.getId()) {
-            hoKhaus.set(i, hoKhau);
-            return;
+    public void updateHokhau(HoKhau hoKhau){
+        for (int i = 0; i < hoKhaus.size(); i++) {
+            HoKhau hoKhau1 = hoKhaus.get(i);
+            if (hoKhau1.getSoTang() == hoKhau.getSoTang() && hoKhau1.getId() == hoKhau.getId()) {
+                hoKhaus.set(i, hoKhau);
+                return;
+            }
         }
     }
-}
     public void removePhuongTien(PhuongTien phuongTien){phuongTiens.remove(phuongTien);}
 
     public void reloadNhankhau() {
