@@ -16,9 +16,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.EntityAll.HoKhau;
+import org.example.EntityAll.LichSuGiaoDichPhiGuiXe;
 import org.example.EntityAll.NhanKhau;
 import org.example.EntityAll.PhuongTien;
 import org.example.Hibernatedao.HoKhauDao;
+import org.example.Hibernatedao.LichSuGiaoDichPhiGuiXeDao;
 import org.example.Hibernatedao.NhanKhauDao;
 import org.example.Hibernatedao.PhuongTienDao;
 import org.example.getData;
@@ -130,6 +132,10 @@ public class QuanlyThuPhiGuiXeController {
                         if (result.isPresent() && result.get() == buttonTypeOK) {
                             PhuongTien phuongTien = getTableView().getItems().get(getIndex());
                             // Thực hiện logic xoá tại đây
+                            List<LichSuGiaoDichPhiGuiXe> lichSuGiaoDichPhiGuiXes= LichSuGiaoDichPhiGuiXeDao.getInstance().selectByCondition(phuongTien);
+                            for(LichSuGiaoDichPhiGuiXe lichSuGiaoDichPhiGuiXe:lichSuGiaoDichPhiGuiXes){
+                                LichSuGiaoDichPhiGuiXeDao.getInstance().delete(lichSuGiaoDichPhiGuiXe);
+                            }
                             getData.getInstance().removePhuongTien(phuongTien);
                             PhuongTienDao.getInstance().delete(phuongTien);
 

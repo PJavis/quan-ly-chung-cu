@@ -115,7 +115,12 @@ public class Quanlykhoanphi implements Initializable {
 
                             Optional<ButtonType> result = alert.showAndWait();
                             if (result.isPresent() && result.get() == buttonTypeOK) {
+
                                 KhoanPhi person = getTableView().getItems().get(getIndex());
+                                List<NopPhi> nopPhis=NopPhiDao.getInstance().selectById(person);
+                                for(NopPhi nopPhi:nopPhis){
+                                    NopPhiDao.getInstance().delete(nopPhi);
+                                }
                                 KhoanPhiDao.getInstance().delete(person);
                                 Alert alert1=new Alert(Alert.AlertType.CONFIRMATION);
                                 alert1.setHeaderText("Thành công");
