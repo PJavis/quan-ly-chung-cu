@@ -78,7 +78,7 @@ public class LoginController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi Đăng Nhập");
             alert.setHeaderText(null);
-            alert.setContentText("Cau oi sai roi");
+            alert.setContentText("Tài khoản hoặc mật khẩu không chính xác");
             alert.showAndWait();
         }
     }
