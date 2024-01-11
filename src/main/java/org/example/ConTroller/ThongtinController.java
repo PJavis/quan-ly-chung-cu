@@ -7,11 +7,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -25,34 +23,36 @@ public class ThongtinController {
     private ImageView img;
 
     @FXML
-    private Label account;
+    private TextField account;
 
     @FXML
-    private Label diachi;
+    private TextField diachi;
 
     @FXML
-    private Label id;
+    private TextField id;
 
     @FXML
-    private Label idnqt;
+    private TextField idnqt;
 
     @FXML
-    private Label mail;
+    private TextField mail;
 
     @FXML
-    private Label mota;
+    private TextField mota;
 
     @FXML
-    private Label pass;
+    private TextField pass;
 
     @FXML
-    private Label sdt;
+    private TextField sdt;
 
     @FXML
-    private Label tennqt;
+    private TextField tennqt;
 
     private TaiKhoanBQT taiKhoanBQT;
 
+    @FXML
+    private Button savedata;
 
     public void initialize() {
         String taiKhoan = luuthongtin.getTaiKhoan();
@@ -61,29 +61,44 @@ public class ThongtinController {
         taiKhoanBQT = taiKhoanBQTDao.laythongtin(taiKhoan, matKhau);
 
         if (taiKhoanBQT != null) {
-            account.setText( taiKhoanBQT.getTaiKhoan());
-            pass.setText(  taiKhoanBQT.getMatKhau());
-            id.setText(""+taiKhoanBQT.getId());
-            idnqt.setText(""+taiKhoanBQT.getIdNguoiQuanTri());
+            account.setText(taiKhoanBQT.getTaiKhoan());
+            pass.setText(taiKhoanBQT.getMatKhau());
+            id.setText("" + taiKhoanBQT.getId());
+            idnqt.setText("" + taiKhoanBQT.getIdNguoiQuanTri());
             QuanTriChungCu quanTriChungCu = taiKhoanBQTDao.layThongTinQuanTriChungCu(taiKhoanBQT.getId());
             // lay anh tuy theo so thich nhe:)))
-//            String image = quanTriChungCu.laylinhanh();
-//            Image image1 = new Image("file:" + image);
-//            img.setImage(image1);
+            // String image = quanTriChungCu.laylinhanh();
+            // Image image1 = new Image("file:" + image);
+            // img.setImage(image1);
             tennqt.setText(quanTriChungCu.getTenNguoiQuanTri());
             diachi.setText(quanTriChungCu.getDiaChi());
             mail.setText(quanTriChungCu.getEmail());
             mota.setText(quanTriChungCu.getMoTa());
             sdt.setText(quanTriChungCu.getSoDienThoai());
-
         }
     }
-    private void initializeData() {
-        if (taiKhoanBQT != null) {
-            System.out.println("TaiKhoanBQT: " + taiKhoanBQT);
-            account.setText("Tài khoản: " + taiKhoanBQT.getTaiKhoan());
-            pass.setText("Mật khẩu: " + taiKhoanBQT.getMatKhau());
 
+    private void initializeData() {
+        String taiKhoan = luuthongtin.getTaiKhoan();
+        String matKhau = luuthongtin.getMatKhau();
+        TaiKhoanBQTDao taiKhoanBQTDao = TaiKhoanBQTDao.getInstance();
+        taiKhoanBQT = taiKhoanBQTDao.laythongtin(taiKhoan, matKhau);
+
+        if (taiKhoanBQT != null) {
+            account.setText(taiKhoanBQT.getTaiKhoan());
+            pass.setText(taiKhoanBQT.getMatKhau());
+            id.setText("" + taiKhoanBQT.getId());
+            idnqt.setText("" + taiKhoanBQT.getIdNguoiQuanTri());
+            QuanTriChungCu quanTriChungCu = taiKhoanBQTDao.layThongTinQuanTriChungCu(taiKhoanBQT.getId());
+            // lay anh tuy theo so thich nhe:)))
+            // String image = quanTriChungCu.laylinhanh();
+            // Image image1 = new Image("file:" + image);
+            // img.setImage(image1);
+            tennqt.setText(quanTriChungCu.getTenNguoiQuanTri());
+            diachi.setText(quanTriChungCu.getDiaChi());
+            mail.setText(quanTriChungCu.getEmail());
+            mota.setText(quanTriChungCu.getMoTa());
+            sdt.setText(quanTriChungCu.getSoDienThoai());
         }
     }
 

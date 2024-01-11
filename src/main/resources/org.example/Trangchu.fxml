@@ -63,45 +63,63 @@
             </font>
          </Label>
       </Pane>
-      <ScrollPane layoutX="39.0" layoutY="488.0" prefHeight="200.0" prefWidth="554.0">
-         <VBox fx:id="cacitem" prefHeight="200.0" prefWidth="540.0" style="-fx-background-color: #F0F0F0;" />
+      <ScrollPane layoutX="39.0" layoutY="488.0" prefHeight="200.0" prefWidth="677.0">
+         <VBox fx:id="cacitem" prefHeight="200.0" prefWidth="662.0" style="-fx-background-color: #F0F0F0;" />
       </ScrollPane>
-      <HBox layoutX="31.0" layoutY="423.0" prefHeight="62.0" prefWidth="590.0">
+      <HBox layoutX="39.0" layoutY="423.0" prefHeight="62.0" prefWidth="677.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-         <Label text="Số phòng">
+         <Label alignment="CENTER" prefHeight="62.0" prefWidth="115.0" style="-fx-background-color: #748CF1;" text="Số phòng">
             <HBox.margin>
-               <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
+               <Insets />
             </HBox.margin>
+            <font>
+               <Font size="16.0" />
+            </font>
          </Label>
-         <Label prefHeight="18.0" prefWidth="54.0" text="Số tầng">
+         <Label alignment="CENTER" prefHeight="62.0" prefWidth="116.0" style="-fx-background-color: #748CF1;" text="Số tầng">
             <HBox.margin>
-               <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
+               <Insets />
             </HBox.margin>
+            <font>
+               <Font size="16.0" />
+            </font>
          </Label>
-         <Label text="Tên chủ hộ">
+         <Label alignment="CENTER" prefHeight="62.0" prefWidth="98.0" style="-fx-background-color: #748CF1;" text="Tên chủ hộ">
             <HBox.margin>
-               <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
+               <Insets />
             </HBox.margin>
+            <font>
+               <Font size="16.0" />
+            </font>
          </Label>
-         <Label prefHeight="18.0" prefWidth="74.0" text="Số người ở">
+         <Label alignment="CENTER" prefHeight="62.0" prefWidth="114.0" style="-fx-background-color: #748CF1;" text="Số người ở">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
             <HBox.margin>
-               <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
+               <Insets />
             </HBox.margin>
+            <font>
+               <Font size="16.0" />
+            </font>
          </Label>
-         <Label prefHeight="18.0" prefWidth="61.0" text="Tiền thuê">
+         <Label alignment="CENTER" prefHeight="62.0" prefWidth="97.0" style="-fx-background-color: #748CF1;" text="Tiền thuê">
             <HBox.margin>
-               <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
+               <Insets />
             </HBox.margin>
+            <font>
+               <Font size="16.0" />
+            </font>
          </Label>
-         <Label text="Diện tích phòng">
+         <Label alignment="CENTER" prefHeight="62.0" prefWidth="139.0" style="-fx-background-color: #748CF1;" text="Diện tích phòng">
             <HBox.margin>
-               <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
+               <Insets />
             </HBox.margin>
+            <font>
+               <Font size="16.0" />
+            </font>
          </Label>
       </HBox>
       <Pane layoutX="566.0" layoutY="138.0" prefHeight="219.0" prefWidth="198.0" styleClass="pane_111">

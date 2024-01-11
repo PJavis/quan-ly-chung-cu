@@ -14,7 +14,6 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
     private Session session;
     public static QuanTriChungCuDao getInstance() {return new QuanTriChungCuDao(); }
-
     @Override
     public void save(QuanTriChungCu quanTriChungCu) {
         try {
@@ -53,6 +52,17 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
 
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+    public void update(QuanTriChungCu quanTriChungCu) {
+        try {
+            session = Hibernate.getSession(sessionFactory);
+            session.update(quanTriChungCu);
+        } catch (Exception e) {
+            System.out.println("Lưu thông tin quản trị chung cư có lỗi");
+            throw new RuntimeException(e);
+        } finally {
+            Hibernate.closeSession(session);
         }
     }
 }

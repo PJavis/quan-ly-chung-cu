@@ -2,6 +2,7 @@ package org.example.Hibernatedao;
 
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
+import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.QuanTriChungCu;
 import org.example.EntityAll.TaiKhoanBQT;
 import org.example.Function.Delete;
@@ -109,5 +110,15 @@ public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
             }
         }
     }
-
+    public void update(TaiKhoanBQT taiKhoanBQT) {
+        try {
+            session = Hibernate.getSession(sessionFactory);
+            session.update(taiKhoanBQT);
+        } catch (Exception e) {
+            System.out.println("Lưu thông tin quản trị chung cư có lỗi");
+            throw new RuntimeException(e);
+        } finally {
+            Hibernate.closeSession(session);
+        }
+    }
 }

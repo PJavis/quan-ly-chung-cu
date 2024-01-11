@@ -1,119 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="750.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.ThongtinController">
    <AnchorPane layoutX="226.0" layoutY="1.0" prefHeight="691.0" prefWidth="694.0" stylesheets="@css/pinocchio.css">
-      <Pane layoutX="329.0" layoutY="1.0" prefHeight="790.0" prefWidth="366.0" styleClass="progress" />
-      <Pane layoutX="-1.0" layoutY="-2.0" prefHeight="792.0" prefWidth="330.0" styleClass="pane_2">
+      <Label layoutX="70.0" layoutY="59.0" prefHeight="18.0" prefWidth="78.0" />
+      <Button fx:id="savedata" layoutX="62.0" layoutY="589.0" mnemonicParsing="false" onAction="#updatedata" prefHeight="35.0" prefWidth="63.0" style="-fx-background-color: #F9A885; -fx-background-radius: 20px;" text="Lưu" />
+      <Pane layoutX="35.0" layoutY="33.0" prefHeight="276.0" prefWidth="623.0">
          <children>
-            <Label fx:id="account1" layoutX="60.0" layoutY="50.0" prefHeight="20.0" prefWidth="120.0" text="Tên đăng nhập">
+            <Label layoutX="17.0" layoutY="14.0" prefHeight="26.0" prefWidth="230.0" text="Thông tin tài khoản">
+               <font>
+                  <Font name="Candara" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="account1" layoutX="22.0" layoutY="55.0" prefHeight="20.0" prefWidth="120.0" text="Tên đăng nhập">
                <font>
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="pass1" layoutX="60.0" layoutY="90.0" prefHeight="22.0" prefWidth="78.0" text="Mật khẩu">
+            <Label fx:id="pass1" layoutX="22.0" layoutY="105.0" prefHeight="22.0" prefWidth="78.0" text="Mật khẩu">
                <font>
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="id1" layoutX="60.0" layoutY="170.0" prefHeight="22.0" prefWidth="95.0" text="ID tài khoản">
+            <Label fx:id="idnqt1" layoutX="22.0" layoutY="150.0" prefHeight="22.0" prefWidth="168.0" text="ID nhà quản trị">
                <font>
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="idnqt1" layoutX="60.0" layoutY="130.0" prefHeight="22.0" prefWidth="168.0" text="ID nhà quản trị">
+            <Label fx:id="id1" layoutX="22.0" layoutY="240.0" prefHeight="22.0" prefWidth="95.0" text="ID tài khoản">
                <font>
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="tennqt1" layoutX="60.0" layoutY="210.0" prefHeight="22.0" prefWidth="168.0" text="Tên Người quản trị">
+            <Label fx:id="tennqt1" layoutX="22.0" layoutY="195.0" prefHeight="22.0" prefWidth="168.0" text="Tên Người quản trị">
                <font>
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="diachi1" layoutX="60.0" layoutY="250.0" prefHeight="22.0" prefWidth="63.0" text="Địa chỉ">
+            <TextField fx:id="account" layoutX="312.0" layoutY="55.0" prefHeight="20.0" prefWidth="300.0" text="Account_name">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="pass" layoutX="312.0" layoutY="100.0" prefHeight="20.0" prefWidth="300.0" text="passs">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="id" layoutX="312.0" layoutY="145.0" prefHeight="20.0" prefWidth="300.0" text="id">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="tennqt" layoutX="312.0" layoutY="190.0" prefHeight="20.0" prefWidth="300.0" text="Tên Người quản trị">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="idnqt" layoutX="312.0" layoutY="235.0" prefHeight="20.0" prefWidth="300.0" text="id_nguoi_quantri">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+      <Pane layoutX="39.0" layoutY="316.0" prefHeight="266.0" prefWidth="614.0">
+         <children>
+            <Label fx:id="mota1" layoutX="22.0" layoutY="140.0" prefHeight="22.0" prefWidth="63.0" text="Mô tả">
                <font>
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="mail1" layoutX="60.0" layoutY="290.0" prefHeight="22.0" prefWidth="51.0" text="Email">
+            <Label fx:id="sdt1" layoutX="22.0" layoutY="185.0" prefHeight="22.0" prefWidth="110.0" text="Số điện thoại">
                <font>
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="mota1" layoutX="60.0" layoutY="330.0" prefHeight="22.0" prefWidth="63.0" text="Mô tả">
+            <Label fx:id="diachi1" layoutX="22.0" layoutY="96.0" prefHeight="22.0" prefWidth="63.0" text="Địa chỉ">
                <font>
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="sdt1" layoutX="60.0" layoutY="370.0" prefHeight="22.0" prefWidth="110.0" text="Số điện thoại">
+            <Label fx:id="mail1" layoutX="22.0" layoutY="50.0" prefHeight="22.0" prefWidth="51.0" text="Email">
                <font>
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Label layoutX="60.0" layoutY="455.0" text="Ảnh">
+            <TextField fx:id="diachi" layoutX="314.0" layoutY="90.0" prefHeight="20.0" prefWidth="300.0" text="Địa chỉ">
                <font>
                   <Font name="Calibri" size="19.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="mail" layoutX="314.0" layoutY="45.0" prefHeight="20.0" prefWidth="300.0" text="Email">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="mota" layoutX="314.0" layoutY="135.0" prefHeight="20.0" prefWidth="300.0" text="Mô tả">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="sdt" layoutX="314.0" layoutY="180.0" prefHeight="20.0" prefWidth="300.0" text="Số điện thoại">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </TextField>
+            <Label layoutX="14.0" layoutY="10.0" text="Thông tin liên lạc">
+               <font>
+                  <Font name="Candara" size="20.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Label layoutX="70.0" layoutY="59.0" prefHeight="18.0" prefWidth="78.0" />
-      <Label fx:id="account" layoutX="365.0" layoutY="50.0" prefHeight="20.0" prefWidth="300.0" text="Account_name">
-         <font>
-            <Font name="Calibri" size="19.0" />
-         </font>
-      </Label>
-      <Label fx:id="pass" layoutX="365.0" layoutY="90.0" prefHeight="20.0" prefWidth="300.0" text="passs">
-         <font>
-            <Font name="Calibri" size="19.0" />
-         </font>
-      </Label>
-      <Label fx:id="id" layoutX="365.0" layoutY="130.0" prefHeight="20.0" prefWidth="300.0" text="id">
-         <font>
-            <Font name="Calibri" size="19.0" />
-         </font>
-      </Label>
-      <Label fx:id="idnqt" layoutX="365.0" layoutY="170.0" prefHeight="20.0" prefWidth="300.0" text="id_nguoi_quantri">
-         <font>
-            <Font name="Calibri" size="19.0" />
-         </font>
-      </Label>
-      <Label fx:id="tennqt" layoutX="365.0" layoutY="210.0" prefHeight="20.0" prefWidth="300.0" text="Tên Người quản trị">
-         <font>
-            <Font name="Calibri" size="19.0" />
-         </font>
-      </Label>
-      <Label fx:id="diachi" layoutX="365.0" layoutY="250.0" prefHeight="20.0" prefWidth="300.0" text="Địa chỉ">
-         <font>
-            <Font name="Calibri" size="19.0" />
-         </font>
-      </Label>
-      <Label fx:id="mail" layoutX="365.0" layoutY="290.0" prefHeight="20.0" prefWidth="300.0" text="Email">
-         <font>
-            <Font name="Calibri" size="19.0" />
-         </font>
-      </Label>
-      <Label fx:id="mota" layoutX="365.0" layoutY="334.0" prefHeight="20.0" prefWidth="300.0" text="Mô tả">
-         <font>
-            <Font name="Calibri" size="19.0" />
-         </font>
-      </Label>
-      <Label fx:id="sdt" layoutX="365.0" layoutY="370.0" prefHeight="20.0" prefWidth="300.0" text="Số điện thoại">
-         <font>
-            <Font name="Calibri" size="19.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="img" fitHeight="218.0" fitWidth="168.0" layoutX="365.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../images/pinocchio.jpg" />
-      </ImageView>
-      <Label layoutX="142.0" layoutY="74.0" prefHeight="18.0" prefWidth="78.0" />
    </AnchorPane>
    <fx:include source="DashBoard.fxml" />
 </AnchorPane>
