@@ -20,13 +20,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.example.EntityAll.HoKhau;
-import org.example.EntityAll.KhoanPhi;
-import org.example.EntityAll.NhanKhau;
-import org.example.EntityAll.NopPhi;
+import org.example.EntityAll.*;
 import org.example.Hibernatedao.HoKhauDao;
 import org.example.Hibernatedao.NhanKhauDao;
 import org.example.Hibernatedao.NopPhiDao;
+import org.example.Hibernatedao.PhuongTienDao;
 import org.example.getData;
 
 
@@ -35,6 +33,20 @@ import java.text.DecimalFormat;
 import java.util.*;
 
 public class Dieuchinhhokhau implements Initializable {
+    @FXML
+    private TableColumn<PhuongTien, String> biensoxe;
+    @FXML
+    private TableColumn<PhuongTien, Void> lichsugiaodich1;
+    @FXML
+    private TableColumn<PhuongTien, String> loaixe;
+
+    @FXML
+    private TableColumn<PhuongTien, String> sotiendanop11;
+    @FXML
+    private TableColumn<PhuongTien, String> ten11;
+    @FXML
+    private TableView<PhuongTien> thongtinphuongtien;
+
 
     @FXML
     private TableColumn<NhanKhau, Void> chuho;
@@ -82,8 +94,10 @@ dientichphong.setText(String.valueOf(hoKhau.getDienTichPhong()));
 sothanhvien.setText(String.valueOf(hoKhau.getSoNhanKhau()));
 nhanKhaus=NhanKhauDao.getInstance().selectNhanKhauById(hoKhau);
 nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau);
+phuongTiens= PhuongTienDao.getInstance().selectByHoKhau(hoKhau);
         danhsachthanhvien();
         danhsachkhoanphi();
+        danhsachphuongtien();
     }
  public void danhsachthanhvien(){
 
@@ -316,6 +330,52 @@ nopPhiList= NopPhiDao.getInstance().selectByHoKhau(hoKhau);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private List<PhuongTien> phuongTiens;
+    public void danhsachphuongtien(){
+        ObservableList<PhuongTien> phuongTiens1=FXCollections.observableArrayList(phuongTiens);
+        ten11.setCellValueFactory(new PropertyValueFactory<>("tenChuXe"));
+        biensoxe.setCellValueFactory(new PropertyValueFactory<>("BienSoXe"));
+        loaixe.setCellValueFactory(new PropertyValueFactory<>("loaiPhuongTien"));
+        sotiendanop11.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotiendanop"));
+        lichsugiaodich1.setCellFactory(cell-> {
+            return new TableCell<PhuongTien, Void>() {
+                @Override
+                protected void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        Button button = new Button();
+                        FontAwesomeIconView iconView = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
+                        iconView.setSize("16px");
+                        button.setGraphic(iconView);
+                        setGraphic(button);
+                        button.setOnAction(event -> {
+                            PhuongTien person = getTableView().getItems().get(getIndex());
+                            try {
+                                Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Lichsugiaodichthuphiguixe.fxml"));
+                                Parent root = loader.load();
+                                Scene scene = new Scene(root);
+                                Stage ag0r1=new Stage();
+                                ag0r1.setScene(scene);
+                                ag0r1.initModality(Modality.APPLICATION_MODAL);
+                                ag0r1.initOwner(ag0r);
+                                Lichsugiaodichthuphiguixe lichsugiaodich=loader.getController();
+                                lichsugiaodich.setNopPhi(person);
+                                ag0r1.showAndWait();
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
+                            }
+                        });
+                    }
+                }
+            };
+        });
+        thongtinphuongtien.setItems(phuongTiens1);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

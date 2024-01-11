@@ -104,7 +104,9 @@ public class ThuphiController implements Initializable {
             return;
         }
 
-        for(NopPhi nopPhi :nopPhikhoanphi){
+        for(NopPhi nopPhi :nopPhikhoanphi){if(nopPhi.getSotienchuanop()==0)continue;
+            nopPhi.setSoTienDaDong(nopPhi.getGiaTri());
+            NopPhiDao.getInstance().update(nopPhi);
             LichSuGiaoDich lichSuGiaoDich=new LichSuGiaoDich();
             lichSuGiaoDich.setTennguoinop(tennguoinopphi.getText());
             lichSuGiaoDich.setNopPhi(nopPhi);
@@ -113,14 +115,12 @@ public class ThuphiController implements Initializable {
             Date date = Date.valueOf(today);
             lichSuGiaoDich.setThoigiangiaodich(date);
             LichSuGiaoDichDao.getInstance().save(lichSuGiaoDich);
-            nopPhi.setSoTienDaDong(nopPhi.getGiaTri());
-            NopPhiDao.getInstance().update(nopPhi);
             KhoanPhi khoanPhi=nopPhi.getKhoanPhi();
             khoanPhi.setTongsotien(khoanPhi.getTongsotien()+nopPhi.getSotienchuanop());
             KhoanPhiDao.getInstance().update(khoanPhi);
             getData.getInstance().updateKhoanphi(khoanPhi);
         }
-        for(PhuongTien nopPhi :phuongTiens){
+        for(PhuongTien nopPhi :phuongTiens){if(nopPhi.getPhiGuiXe()-nopPhi.getSoTienDaNop()==0)continue;
             LichSuGiaoDichPhiGuiXe lichSuGiaoDich=new LichSuGiaoDichPhiGuiXe();
             lichSuGiaoDich.setTennguoinop(tennguoinopphi.getText());
             lichSuGiaoDich.setGiaTri(nopPhi.getPhiGuiXe()-nopPhi.getSoTienDaNop());

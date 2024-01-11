@@ -20,13 +20,13 @@
     <fx:include source="DashBoard.fxml" />
     <Pane layoutX="222.0" prefHeight="790.0" prefWidth="778.0" styleClass="pane_11">
         <children>
-            <Button layoutX="36.0" layoutY="27.0" mnemonicParsing="false" onAction="#quaylai" prefHeight="35.0" prefWidth="67.0" style="-fx-border-color: #353A56; -fx-border-radius: 15px; -fx-background-radius: 15px;">
+            <Button layoutX="36.0" layoutY="14.0" mnemonicParsing="false" onAction="#quaylai" prefHeight="35.0" prefWidth="67.0" style="-fx-border-color: #353A56; -fx-border-radius: 15px; -fx-background-radius: 15px;">
                 <graphic>
                     <FontAwesomeIconView glyphName="LONG_ARROW_LEFT" size="20" wrappingWidth="20.0" />
                 </graphic>
             </Button>
 
-            <Label layoutX="470.0" layoutY="14.0" prefHeight="61.0" prefWidth="295.0" text="Điều chỉnh hộ khẩu">
+            <Label layoutX="469.0" layoutY="1.0" prefHeight="61.0" prefWidth="295.0" text="Điều chỉnh hộ khẩu">
                 <font>
                     <Font name="Arial Bold" size="26.0" />
                 </font></Label>
@@ -115,7 +115,7 @@
                 </fill>
             </Line>
 
-            <TableView fx:id="danhsachthanhvien" layoutX="31.0" layoutY="187.0" prefHeight="227.0" prefWidth="688.0">
+            <TableView fx:id="danhsachthanhvien" layoutX="31.0" layoutY="187.0" prefHeight="201.0" prefWidth="694.0">
                 <columns>
                     <TableColumn fx:id="sothutu" prefWidth="75.0" text="Số thứ tự" />
                     <TableColumn fx:id="tenthanhvien" prefWidth="161.4000244140625" text="Tên thành viên" />
@@ -125,7 +125,7 @@
                     <TableColumn fx:id="dieuchinhnhankhau" prefWidth="89.0" text="Điều chỉnh" />
                 </columns>
             </TableView>
-            <TableView fx:id="danhsachkhoanphi" layoutX="31.0" layoutY="449.0" prefHeight="227.0" prefWidth="688.0">
+            <TableView fx:id="danhsachkhoanphi" layoutX="31.0" layoutY="423.0" prefHeight="170.0" prefWidth="694.0">
                 <columns>
                     <TableColumn fx:id="sothutu1" prefWidth="63.199981689453125" text="Số thứ tự" />
                     <TableColumn fx:id="tenkhoanphi" prefWidth="126.79998779296875" text="Tên khoản phí" />
@@ -136,17 +136,31 @@
                 </columns>
             </TableView>
 
-            <HBox layoutX="483.0" layoutY="698.0" prefHeight="61.0" prefWidth="282.0" spacing="30.0">
+            <HBox layoutX="535.0" layoutY="748.0" prefHeight="35.0" prefWidth="232.0" spacing="30.0">
                 <children>
                     <Button layoutX="537.0" layoutY="450.0" mnemonicParsing="false" onAction="#dieuchinh" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="CẬP NHẬT" textFill="WHITE" />
                     <Button layoutX="406.0" layoutY="450.0" mnemonicParsing="false" onAction="#xoahokhau" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="XÓA HỘ KHẨU" textFill="WHITE" />
                 </children>
             </HBox>
-         <Label layoutX="27.0" layoutY="419.0" prefHeight="35.0" prefWidth="392.0" text="DANH SÁCH KHOẢN PHÍ ĐÓNG GÓP CHƯA NỘP:">
+         <Label layoutX="29.0" layoutY="388.0" prefHeight="35.0" prefWidth="392.0" text="DANH SÁCH KHOẢN PHÍ ĐÓNG GÓP CHƯA NỘP:">
             <font>
                <Font name="Arial Bold" size="16.0" />
             </font>
          </Label>
+         <Label layoutX="29.0" layoutY="584.0" prefHeight="35.0" prefWidth="232.0" text="DANH SÁCH PHƯƠNG TIỆN:">
+            <font>
+               <Font name="Arial Bold" size="16.0" />
+            </font>
+         </Label>
+         <TableView fx:id="thongtinphuongtien" layoutX="23.0" layoutY="614.0" prefHeight="128.0" prefWidth="694.0">
+            <columns>
+               <TableColumn fx:id="ten11" prefWidth="142.40003967285156" text="Tên chủ xe" />
+               <TableColumn fx:id="biensoxe" prefWidth="142.4000244140625" text="BIển số xe" />
+               <TableColumn fx:id="loaixe" prefWidth="128.800048828125" text="Loại xe" />
+               <TableColumn fx:id="sotiendanop11" prefWidth="150.4000244140625" text="Số tiền đã nộp" />
+               <TableColumn fx:id="lichsugiaodich1" prefWidth="118.5999755859375" text="Lịch sử giao dịch" />
+            </columns>
+         </TableView>
         </children>
     </Pane>
 </AnchorPane>
