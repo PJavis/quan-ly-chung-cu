@@ -34,5 +34,6 @@
         <mapping class="org.example.EntityAll.LichSuThayDoi"/>
         <mapping class="org.example.EntityAll.LichSuGiaoDich"/>
         <mapping class="org.example.EntityAll.PhuongTien"/>
+        <mapping class="org.example.EntityAll.LichSuGiaoDichPhiGuiXe"/>
     </session-factory>
 </hibernate-configuration>

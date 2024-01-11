@@ -3,6 +3,8 @@ package org.example.EntityAll;
 
 import jakarta.persistence.*;
 
+import java.text.DecimalFormat;
+
 @Entity
 @Table(name = "phuong_tien")
 public class PhuongTien {
@@ -99,5 +101,17 @@ public class PhuongTien {
 
     public void setSoTienDaNop(double soTienDaNop) {
         this.soTienDaNop = soTienDaNop;
+    }
+    public  String getDecimalFormatsotien(){
+        double duno=phiGuiXe-soTienDaNop;
+        String pattern = "#,##0" + (duno % 1 == 0 ? "" : ".#########");
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        return decimalFormat.format(duno);
+    }
+    public  String getDecimalFormatSotiendanop(){
+
+        String pattern = "#,##0" + (soTienDaNop % 1 == 0 ? "" : ".#########");
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        return decimalFormat.format(soTienDaNop);
     }
 }

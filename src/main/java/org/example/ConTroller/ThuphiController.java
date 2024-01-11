@@ -78,6 +78,9 @@ public class ThuphiController implements Initializable {
     private TableColumn<PhuongTien, Void> chinhsua11;
     @FXML
     private TableColumn<PhuongTien, String> duno;
+    @FXML
+    private TextField tennguoinopphi;
+
 
     @FXML
     private Label tongsotiennop;
@@ -90,59 +93,57 @@ public class ThuphiController implements Initializable {
 
     @FXML
     void nopphi(ActionEvent event) {
-       /* if (isInputInvalid()) {
+        if (isInputInvalid()) {
             showAlert("Thất bại", "Không tìm thấy hộ khẩu");
             return;
         }
 
-        try {
-            double amount = Double.parseDouble(sotiennop.getText());
-        } catch (NumberFormatException e) {
-            showAlert("Thất bại", "Hãy nhập số tiền bạn muốn nộp vào số tiền nộp");
-            return;
-        }
 
-        if (Double.parseDouble(sotiennop.getText()) > duNo) {
-            showAlert("Thất bại", "Bạn không thể nộp số tiền vượt quá số tiền phải đóng");
-            sotiennop.clear();
-            return;
-        }
-
-        if (nguoinopphi.getText().isEmpty()) {
+        if (tennguoinopphi.getText().isEmpty()) {
             showAlert("Thất bại", "Hãy nhập tên người nộp");
             return;
         }
 
-        updateNopPhiAndKhoanPhi();
+        for(NopPhi nopPhi :nopPhikhoanphi){
+            LichSuGiaoDich lichSuGiaoDich=new LichSuGiaoDich();
+            lichSuGiaoDich.setTennguoinop(tennguoinopphi.getText());
+            lichSuGiaoDich.setNopPhi(nopPhi);
+            lichSuGiaoDich.setGiaTri(nopPhi.getSotienchuanop());
+            LocalDate today = LocalDate.now();
+            Date date = Date.valueOf(today);
+            lichSuGiaoDich.setThoigiangiaodich(date);
+            LichSuGiaoDichDao.getInstance().save(lichSuGiaoDich);
+            nopPhi.setSoTienDaDong(nopPhi.getGiaTri());
+            NopPhiDao.getInstance().update(nopPhi);
+            KhoanPhi khoanPhi=nopPhi.getKhoanPhi();
+            khoanPhi.setTongsotien(khoanPhi.getTongsotien()+nopPhi.getSotienchuanop());
+            KhoanPhiDao.getInstance().update(khoanPhi);
+            getData.getInstance().updateKhoanphi(khoanPhi);
+        }
+        for(PhuongTien nopPhi :phuongTiens){
+            LichSuGiaoDichPhiGuiXe lichSuGiaoDich=new LichSuGiaoDichPhiGuiXe();
+            lichSuGiaoDich.setTennguoinop(tennguoinopphi.getText());
+            lichSuGiaoDich.setGiaTri(nopPhi.getPhiGuiXe()-nopPhi.getSoTienDaNop());
+            LocalDate today = LocalDate.now();
+            Date date = Date.valueOf(today);
+            lichSuGiaoDich.setThoigiangiaodich(date);
+            lichSuGiaoDich.setPhuongTien(nopPhi);
+            LichSuGiaoDichPhiGuiXeDao.getInstance().save(lichSuGiaoDich);
+            nopPhi.setSoTienDaNop(nopPhi.getPhiGuiXe());
+            PhuongTienDao.getInstance().update(nopPhi);
+        }
 
-        saveLichSuGiaoDich();
 
-        clearInputFields();
+        tennguoinopphi.clear();
+        sophong.clear();
+        sotang.clear();
 
-        showAlert("Thành công", "Nộp phí thành công");*/
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Thành công");
+        alert.setContentText("Nộp phí thành công");
+        alert.showAndWait();
     }
 
-
-
-
-   /* private void saveLichSuGiaoDich() {
-        LichSuGiaoDich lichSuGiaoDich = createLichSuGiaoDich();
-        LichSuGiaoDichDao.getInstance().save(lichSuGiaoDich);
-    }
-
-    private LichSuGiaoDich createLichSuGiaoDich() {
-        LichSuGiaoDich lichSuGiaoDich = new LichSuGiaoDich();
-        lichSuGiaoDich.setSoPhong(nopPhi.getSoPhong());
-        lichSuGiaoDich.setSoTang(nopPhi.getSoTang());
-        lichSuGiaoDich.setTenKhoanPhi(khoanPhi.getTenKhoanPhi());
-        lichSuGiaoDich.setNopPhi(nopPhi);
-        lichSuGiaoDich.setTennguoinop(nguoinopphi.getText());
-        lichSuGiaoDich.setGiaTri(Double.parseDouble(sotiennop.getText()));
-        LocalDate today = LocalDate.now();
-        Date date = Date.valueOf(today);
-        lichSuGiaoDich.setThoigiangiaodich(date);
-        return lichSuGiaoDich;
-    }*/
 
     private void showAlert(String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -168,9 +169,14 @@ public class ThuphiController implements Initializable {
             for(NopPhi nopPhi :nopPhikhoanphi){
                 tongsotiennop1+=nopPhi.getGiaTri()-nopPhi.getSoTienDaDong();
             }
-            tongsotiennop.setText(getDecimalFormat(tongsotiennop1));
+
+
             nopPhidonggop=NopPhiDao.getInstance().selectByHoKhauandDonggop(hoKhau);
             phuongTiens= PhuongTienDao.getInstance().selectByHoKhau(hoKhau);
+            for(PhuongTien nopPhi :phuongTiens){
+                tongsotiennop1+=nopPhi.getPhiGuiXe()-nopPhi.getSoTienDaNop();
+            }
+            tongsotiennop.setText(getDecimalFormat(tongsotiennop1));
             danhsachkhoanphi();
             danhsachdonggop();
             danhsachphuongtien();
@@ -318,7 +324,7 @@ public class ThuphiController implements Initializable {
         duno.setCellValueFactory(new PropertyValueFactory<>("DecimalFormatsotien"));
         loaixe.setCellValueFactory(new PropertyValueFactory<>("loaiPhuongTien"));
         sotiendanop11.setCellValueFactory(new PropertyValueFactory<>("decimalFormatSotiendanop"));
-        /*chinhsua11.setCellFactory(cell->{
+        chinhsua11.setCellFactory(cell->{
             return new TableCell<PhuongTien,Void>(){
                 @Override
                 protected void updateItem(Void item, boolean empty) {
@@ -330,21 +336,21 @@ public class ThuphiController implements Initializable {
                         PhuongTien nopPhi= getTableView().getItems().get(getIndex());
                         HBox vbox = new HBox(10); // 10 là khoảng cách giữa các thành phần
                         Button button1 = new Button();
-                        FontAwesomeIconView iconView1 = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                        FontAwesomeIconView iconView1 = new FontAwesomeIconView(FontAwesomeIcon.MONEY);
                         iconView1.setSize("16px");
                         button1.setGraphic(iconView1);
                         button1.setOnAction(event1 -> {
                             try {
                                 Stage ag0r = (Stage) ((Node) event1.getSource()).getScene().getWindow();
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Chitietthuphi.fxml"));
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Chitietthuphiguixe.fxml"));
                                 Parent root = loader.load();
                                 Scene scene = new Scene(root);
                                 Stage ag0r1=new Stage();
                                 ag0r1.setScene(scene);
                                 ag0r1.initModality(Modality.APPLICATION_MODAL);
                                 ag0r1.initOwner(ag0r);
-                                Chitietthuphi chitietthuphi = loader.getController();
-                                chitietthuphi.setNopphi(nopPhi);
+                                Thuphiguixe chitietthuphi = loader.getController();
+                                chitietthuphi.setPhuongTien(nopPhi);
                                 ag0r1.showAndWait();
                                 timphong(event1);
 
@@ -357,7 +363,7 @@ public class ThuphiController implements Initializable {
                     }
                 }
             };
-        });*/
+        });
         thongtinphuongtien.setItems(phuongTiens1);
     }
     @Override

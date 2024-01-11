@@ -97,6 +97,8 @@
       </TableView>
       <Label layoutX="17.0" layoutY="739.0" text="Tổng số tiền nộp:" />
       <Label fx:id="tongsotiennop" layoutX="122.0" layoutY="739.0" text="Label" />
+      <Label layoutX="196.0" layoutY="739.0" text="Tên người nộp phí:" />
+      <TextField fx:id="tennguoinopphi" layoutX="297.0" layoutY="735.0" />
 
    </Pane>
 </AnchorPane>
