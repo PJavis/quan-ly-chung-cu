@@ -288,6 +288,7 @@ public class QuanlyThuPhiGuiXeController {
         loaiphuongtien.getSelectionModel().clearSelection();
         sotang.clear();
         sophong.clear();
+        tenchuxe.clear();
     }
 
 }
