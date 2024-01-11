@@ -1,13 +1,7 @@
 package org.example;
 
-import org.example.EntityAll.HoKhau;
-import org.example.EntityAll.KhoanPhi;
-import org.example.EntityAll.NhanKhau;
-import org.example.EntityAll.PhuongTien;
-import org.example.Hibernatedao.HoKhauDao;
-import org.example.Hibernatedao.KhoanPhiDao;
-import org.example.Hibernatedao.NhanKhauDao;
-import org.example.Hibernatedao.PhuongTienDao;
+import org.example.EntityAll.*;
+import org.example.Hibernatedao.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,6 +13,8 @@ public class getData {
     private List<KhoanPhi> khoanPhis;
     private List<HoKhau> hoKhaus;
     private Map<Integer,NhanKhau> nhanKhaus;
+    private Map<Integer, TaiKhoanBQT> taiKhoanBQTs;
+    private Map<Integer, QuanTriChungCu> quanTriChungCus;
 
     private List<NhanKhau> nhanKhauList;
 
@@ -30,6 +26,8 @@ public class getData {
         reloadNhankhau();
         reloadKhoanPhi();
         reloadPhuongTien();
+        reloadTaiKhoanBQT();
+        reloadQuanTriChungCu();
     }
 
     public static getData getInstance() {
@@ -37,6 +35,13 @@ public class getData {
             instance = new getData();
         }
         return instance;
+    }
+    public void setTaiKhoanBQT(int id, TaiKhoanBQT taiKhoanBQT) {
+        taiKhoanBQTs.put(id, taiKhoanBQT);
+    }
+
+    public void setQuanTriChungCu(int id, QuanTriChungCu quanTriChungCu) {
+        quanTriChungCus.put(id, quanTriChungCu);
     }
 
     public Map<Integer,NhanKhau> getNhanKhaus() {
@@ -119,6 +124,7 @@ public class getData {
     updatePhiGuiXe();
     }
 
+
     public void updatePhiGuiXe() {
         if (LocalDate.now().getDayOfMonth() == 1) {
             for(PhuongTien phuongTien : phuongTiens) {
@@ -126,5 +132,14 @@ public class getData {
                 PhuongTienDao.getInstance().save(phuongTien);
             }
         }
+    }
+    public void reloadTaiKhoanBQT() {
+        List<TaiKhoanBQT>taiKhoanBQTList=(List<TaiKhoanBQT>) TaiKhoanBQTDao.getInstance().selectAll();
+        this.taiKhoanBQTs=taiKhoanBQTList.stream().collect(Collectors.toMap(TaiKhoanBQT::getId, taiKhoanBQT -> taiKhoanBQT));
+    }
+
+    public void reloadQuanTriChungCu() {
+        List<QuanTriChungCu> quanTriChungCuList = (List<QuanTriChungCu>) QuanTriChungCuDao.getInstance().selectAll();
+        this.quanTriChungCus = quanTriChungCuList.stream().collect(Collectors.toMap(QuanTriChungCu::getId, quanTriChungCu -> quanTriChungCu));
     }
 }

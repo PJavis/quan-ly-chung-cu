@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 @Table(name = "tai_khoan_bqt")
 public class TaiKhoanBQT {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -40,6 +39,9 @@ public class TaiKhoanBQT {
 
     public int getId() {
         return id;
+    }
+    public void setid(int id){
+        this.id = id;
     }
     public String getTaiKhoan() {
         return taiKhoan;

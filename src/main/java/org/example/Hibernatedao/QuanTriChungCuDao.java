@@ -4,15 +4,16 @@ import org.example.EntityAll.QuanTriChungCu;
 import org.example.Function.Delete;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
+import org.example.Function.Update;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAll {
+public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAll, Update<QuanTriChungCu> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
-    private Session session;
+    private Session session = null;
     public static QuanTriChungCuDao getInstance() {return new QuanTriChungCuDao(); }
     @Override
     public void save(QuanTriChungCu quanTriChungCu) {
@@ -56,13 +57,12 @@ public class QuanTriChungCuDao implements Save<QuanTriChungCu>, Delete, SelectAl
     }
     public void update(QuanTriChungCu quanTriChungCu) {
         try {
-            session = Hibernate.getSession(sessionFactory);
-            session.update(quanTriChungCu);
+            session=Hibernate.getSession(sessionFactory);
+            quanTriChungCu = (QuanTriChungCu) session.merge(quanTriChungCu);
+            Hibernate.closeSession(session);
         } catch (Exception e) {
             System.out.println("Lưu thông tin quản trị chung cư có lỗi");
             throw new RuntimeException(e);
-        } finally {
-            Hibernate.closeSession(session);
         }
     }
 }

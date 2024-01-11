@@ -9,7 +9,6 @@ import java.sql.Date;
 @Table(name = "quan_tri_chung_cu")
 public class QuanTriChungCu {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -42,6 +41,7 @@ public class QuanTriChungCu {
 
 
     public QuanTriChungCu(String tenNguoiQuanTri, String email, String soDienThoai, String diaChi, String moTa,String imagelink) {
+        this.id = id;
         this.tenNguoiQuanTri = tenNguoiQuanTri;
         this.email = email;
         this.soDienThoai = soDienThoai;
@@ -92,6 +92,9 @@ public class QuanTriChungCu {
 
     public void setMoTa(String moTa) {
         this.moTa = moTa;
+    }
+    public void setId(int id){
+        this.id = id;
     }
     public String laylinhanh() {
         return imagelink;

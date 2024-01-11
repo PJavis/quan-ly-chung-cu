@@ -8,14 +8,15 @@ import org.example.EntityAll.TaiKhoanBQT;
 import org.example.Function.Delete;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
+import org.example.Function.Update;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
+public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll , Update<TaiKhoanBQT> {
     private SessionFactory sessionFactory = Hibernate.getSessionFactory();
-    private Session session;
+    private Session session=null;
     public static TaiKhoanBQTDao getInstance() {return new TaiKhoanBQTDao(); }
 
     @Override
@@ -113,12 +114,11 @@ public class TaiKhoanBQTDao implements Save<TaiKhoanBQT>, Delete, SelectAll {
     public void update(TaiKhoanBQT taiKhoanBQT) {
         try {
             session = Hibernate.getSession(sessionFactory);
-            session.update(taiKhoanBQT);
-        } catch (Exception e) {
-            System.out.println("Lưu thông tin quản trị chung cư có lỗi");
-            throw new RuntimeException(e);
-        } finally {
+            taiKhoanBQT = (TaiKhoanBQT) session.merge(taiKhoanBQT);
             Hibernate.closeSession(session);
+        } catch (Exception e) {
+            System.out.println("Lưu thông tin tài khoản có lỗi");
+            throw new RuntimeException(e);
         }
     }
 }
