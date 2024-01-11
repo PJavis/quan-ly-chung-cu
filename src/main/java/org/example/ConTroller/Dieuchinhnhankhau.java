@@ -79,6 +79,7 @@ public class Dieuchinhnhankhau implements Initializable {
         trangthai.setText(nhanKhau.getTrangThai());
         quoctich.setText(nhanKhau.getQuocTich());
         chuho.setSelected(nhanKhau.isChuHo());
+        lydo.setText(nhanKhau.getLydo());
     }
     private boolean isValidDateFormat(String date) {
         // Biểu thức chính quy cho định dạng dd/mm/yyyy
@@ -88,6 +89,10 @@ public class Dieuchinhnhankhau implements Initializable {
 
         return matcher.matches();
     }
+
+    @FXML
+    private TextArea lydo;
+
     @FXML
         void dieuchinhnhankhau(ActionEvent event) {
          if(!isValidDateFormat(ngaysinh.getText())){
@@ -106,7 +111,7 @@ public class Dieuchinhnhankhau implements Initializable {
              else nhanKhau.setGioiTinh(0);
              nhanKhau.setTrangThai(trangthai.getText());
              nhanKhau.setQuocTich(quoctich.getText());
-
+            nhanKhau.setLydo(lydo.getText());
              HoKhau hoKhau1=nhanKhau.getHoKhau();
              if(Integer.parseInt(sotang.getText())== hoKhau1.getSoTang()&&Integer.parseInt(sophong.getText())== hoKhau1.getId()){
                  if(nhanKhau.isChuHo()){

@@ -42,7 +42,8 @@ public class NhanKhau {
 
     @Column(name = "So_dien_thoai", length = 20)
     private String soDienThoai;
-
+    @Column(name="ly_do",length = 255)
+    private String lydo;
     public NhanKhau() {
         // Default constructor required by Hibernate
     }
@@ -60,6 +61,14 @@ public class NhanKhau {
         this.chuHo = chuHo;
         this.CCCD = CCCD;
         this.soDienThoai = soDienThoai;
+    }
+
+    public String getLydo() {
+        return lydo;
+    }
+
+    public void setLydo(String lydo) {
+        this.lydo = lydo;
     }
 
     public HoKhau getHoKhau() {

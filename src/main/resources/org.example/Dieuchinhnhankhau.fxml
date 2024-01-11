@@ -177,7 +177,7 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <TextArea layoutX="119.0" layoutY="576.0" prefHeight="79.0" prefWidth="589.0" promptText="Lý do" style="-fx-background-color: #ffffff; -fx-border-color: #353A56;" />
+      <TextArea fx:id="lydo" layoutX="119.0" layoutY="576.0" prefHeight="79.0" prefWidth="589.0" promptText="Lý do" style="-fx-background-color: #ffffff; -fx-border-color: #353A56;" />
 
       <HBox layoutX="442.0" layoutY="681.0" prefHeight="100.0" prefWidth="282.0" spacing="30.0">
          <Button mnemonicParsing="false" onAction="#xoanhankhau" prefHeight="43.0" prefWidth="117.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="XÓA NHÂN KHẨU" textFill="WHITE" />
