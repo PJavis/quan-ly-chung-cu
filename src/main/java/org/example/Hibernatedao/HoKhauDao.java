@@ -112,6 +112,33 @@ public class HoKhauDao implements Save<HoKhau>, SelectAll, Update<HoKhau>{
 
         return monthlyStatistics;
     }
+    public Map<Integer, Long> thongKeTongSoPhongtheonam() {
+        Map<Integer, Long> yearlyStatistics = new HashMap<>();
+
+        try {
+            session = Hibernate.getSession(sessionFactory);
+
+            List<Object[]> results = session.createQuery(
+                            "SELECT YEAR(h.ngaytaohokhau), COUNT(h.id) " +
+                                    "FROM HoKhau h " +
+                                    "GROUP BY YEAR(h.ngaytaohokhau) " +
+                                    "ORDER BY YEAR(h.ngaytaohokhau) DESC", Object[].class)
+                    .setMaxResults(3)  // ai muon bao nhieu nam thi de o day
+                    .getResultList();
+
+            for (Object[] result : results) {
+                int year = (int) result[0];
+                long count = (long) result[1];
+                yearlyStatistics.put(year, count);
+            }
+
+            Hibernate.closeSession(session);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return yearlyStatistics;
+    }
 
 
 }

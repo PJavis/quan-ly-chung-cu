@@ -102,3 +102,13 @@
 .background-hbox {
     -fx-background-color: #748CF1;
 }
+.anh-tron {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+}
+.pane_2{
+    -fx-background-color:#748CF1;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+}

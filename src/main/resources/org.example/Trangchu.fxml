@@ -27,7 +27,7 @@
             <Font name="Candara Bold" size="14.0" />
          </font>
       </Label>
-      <Pane layoutX="36.0" layoutY="215.0" prefHeight="65.0" prefWidth="513.0" styleClass="pane_1" stylesheets="@css/pinocchio.css">
+      <Pane layoutX="29.0" layoutY="215.0" prefHeight="65.0" prefWidth="520.0" styleClass="pane_1" stylesheets="@css/pinocchio.css">
          <Label layoutX="19.0" layoutY="18.0" prefHeight="17.0" prefWidth="231.0" text="Số người ở chung cư" textFill="#302e2e">
             <font>
                <Font name="Candara Bold" size="24.0" />
@@ -104,5 +104,9 @@
             </HBox.margin>
          </Label>
       </HBox>
+      <Pane layoutX="566.0" layoutY="138.0" prefHeight="219.0" prefWidth="198.0" styleClass="pane_111">
+         <children>
+            <Label layoutX="21.0" layoutY="30.0" prefHeight="121.0" prefWidth="154.0" text="Thêm gì vào đây gợi ý với" />
+         </children></Pane>
    </Pane>
 </AnchorPane>

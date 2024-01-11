@@ -239,13 +239,10 @@ public class Quanlynhankhau implements Initializable {
         for (Map.Entry<Integer, Long> entry : ageDistribution.entrySet()) {
             series.getData().add(new XYChart.Data<>(String.valueOf(entry.getKey()), entry.getValue()));
         }
-
         barChart.getData().clear();
         barChart.getData().add(series);
-
         panethongke.getChildren().clear();
         panethongke.getChildren().add(barChart);
-
         barChart.setPrefSize(panethongke.getPrefWidth(), panethongke.getPrefHeight());
     }
 
