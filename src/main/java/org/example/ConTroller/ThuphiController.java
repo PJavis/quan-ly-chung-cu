@@ -26,10 +26,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ThuphiController implements Initializable {
     private List<NopPhi> nopPhikhoanphi;
@@ -85,6 +82,7 @@ public class ThuphiController implements Initializable {
     @FXML
     private Label tongsotiennop;
     private Double tongsotiennop1 = 0.0;
+    private Map<Integer,NopPhi> nopPhiMap=new HashMap<>();
     private boolean isInputInvalid() {
         return sophong.getText().isEmpty() || sotang.getText().isEmpty();
     }
@@ -132,12 +130,32 @@ public class ThuphiController implements Initializable {
             nopPhi.setSoTienDaNop(nopPhi.getPhiGuiXe());
             PhuongTienDao.getInstance().update(nopPhi);
         }
+        for (Map.Entry<Integer, NopPhi> entry : nopPhiMap.entrySet()) {
+            NopPhi nopPhi = entry.getValue();
+            if(nopPhi.getSotienchuanop()==0)continue;
+            nopPhi.setSoTienDaDong(nopPhi.getGiaTri());
+            NopPhiDao.getInstance().update(nopPhi);
+            LichSuGiaoDich lichSuGiaoDich=new LichSuGiaoDich();
+            lichSuGiaoDich.setTennguoinop(tennguoinopphi.getText());
+            lichSuGiaoDich.setNopPhi(nopPhi);
+            lichSuGiaoDich.setGiaTri(nopPhi.getSotienchuanop());
+            LocalDate today = LocalDate.now();
+            Date date = Date.valueOf(today);
+            lichSuGiaoDich.setThoigiangiaodich(date);
+            LichSuGiaoDichDao.getInstance().save(lichSuGiaoDich);
+            KhoanPhi khoanPhi=nopPhi.getKhoanPhi();
+            khoanPhi.setTongsotien(khoanPhi.getTongsotien()+nopPhi.getSotienchuanop());
+            KhoanPhiDao.getInstance().update(khoanPhi);
+            getData.getInstance().updateKhoanphi(khoanPhi);
 
-
+        }
+        thongtinkhoanphi.setVisible(false);
+        thongtindonggop.setVisible(false);
+        thongtinphuongtien.setVisible(false);
         tennguoinopphi.clear();
         sophong.clear();
         sotang.clear();
-
+        tongsotiennop.setText("");
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Thành công");
         alert.setContentText("Nộp phí thành công");
@@ -177,6 +195,9 @@ public class ThuphiController implements Initializable {
                 tongsotiennop1+=nopPhi.getPhiGuiXe()-nopPhi.getSoTienDaNop();
             }
             tongsotiennop.setText(getDecimalFormat(tongsotiennop1));
+            thongtinkhoanphi.setVisible(true);
+            thongtindonggop.setVisible(true);
+            thongtinphuongtien.setVisible(true);
             danhsachkhoanphi();
             danhsachdonggop();
             danhsachphuongtien();
@@ -304,8 +325,10 @@ public class ThuphiController implements Initializable {
                         checkBox.setOnAction(event1->{
                             if(checkBox.isSelected()){
                                 tongsotiennop1+=nopPhi.getGiaTri()-nopPhi.getSoTienDaDong();
+                                nopPhiMap.put(nopPhi.getId(),nopPhi);
                                 tongsotiennop.setText(getDecimalFormat(tongsotiennop1));
                             }else {
+                                nopPhiMap.remove(nopPhi.getId());
                                 tongsotiennop1-=nopPhi.getGiaTri()-nopPhi.getSoTienDaDong();
                                 tongsotiennop.setText(getDecimalFormat(tongsotiennop1));
                             }

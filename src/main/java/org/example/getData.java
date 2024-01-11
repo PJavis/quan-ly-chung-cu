@@ -115,7 +115,9 @@ public class getData {
     public void reloadHokhau(){this.hoKhaus = HoKhauDao.getInstance().selectAll();}
     public void reloadKhoanPhi(){this.khoanPhis= KhoanPhiDao.getInstance().selectAll();}
 
-    public void  reloadPhuongTien(){this.phuongTiens = PhuongTienDao.getInstance().selectAll();}
+    public void  reloadPhuongTien(){this.phuongTiens = PhuongTienDao.getInstance().selectAll();
+    updatePhiGuiXe();
+    }
 
     public void updatePhiGuiXe() {
         if (LocalDate.now().getDayOfMonth() == 1) {
