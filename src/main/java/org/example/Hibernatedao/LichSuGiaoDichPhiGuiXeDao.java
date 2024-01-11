@@ -23,6 +23,17 @@ public class LichSuGiaoDichPhiGuiXeDao {
             throw new RuntimeException(e);
         }
     }
+    public void delete(LichSuGiaoDichPhiGuiXe phuongTien) {
+        try {
+
+            session = Hibernate.getSession(sessionFactory);
+            session.delete(phuongTien);
+            Hibernate.closeSession(session);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     public List<LichSuGiaoDichPhiGuiXe> selectByCondition(PhuongTien phuongTien) {
         List<LichSuGiaoDichPhiGuiXe> lichSuGiaoDich;
         try {

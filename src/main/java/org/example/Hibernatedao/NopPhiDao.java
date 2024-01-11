@@ -3,6 +3,7 @@ package org.example.Hibernatedao;
 import org.example.EntityAll.HoKhau;
 import org.example.EntityAll.KhoanPhi;
 import org.example.EntityAll.NopPhi;
+import org.example.EntityAll.PhuongTien;
 import org.example.Function.Save;
 import org.example.Function.SelectAll;
 import org.example.Function.SelectByHoKhau;
@@ -29,7 +30,17 @@ public class NopPhiDao implements Save<NopPhi>, SelectAll, Update<NopPhi>, Selec
             throw new RuntimeException(e);
         }
     }
+    public void delete(NopPhi phuongTien) {
+        try {
 
+            session = Hibernate.getSession(sessionFactory);
+            session.delete(phuongTien);
+            Hibernate.closeSession(session);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     public List<NopPhi> selectAll() {
         List<NopPhi> nopPhis;
         try {

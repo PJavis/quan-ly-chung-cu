@@ -21,10 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.EntityAll.*;
-import org.example.Hibernatedao.HoKhauDao;
-import org.example.Hibernatedao.NhanKhauDao;
-import org.example.Hibernatedao.NopPhiDao;
-import org.example.Hibernatedao.PhuongTienDao;
+import org.example.Hibernatedao.*;
 import org.example.getData;
 
 
@@ -234,8 +231,22 @@ phuongTiens= PhuongTienDao.getInstance().selectByHoKhau(hoKhau);
         if (result.isPresent() && result.get() == buttonTypeOK) {
             for(NhanKhau nhanKhau : nhanKhaus) {
                 getData.getInstance().removeNhankhau(nhanKhau);
+                NhanKhauDao.getInstance().delete(nhanKhau);
+            }
+            List<PhuongTien> phuongTiens1=PhuongTienDao.getInstance().selectByHoKhau(hoKhaus);
+            for(PhuongTien phuongTien:phuongTiens1){
+
+                List<LichSuGiaoDichPhiGuiXe>lichSuGiaoDichPhiGuiXes= LichSuGiaoDichPhiGuiXeDao.getInstance().selectByCondition(phuongTien);
+                for(LichSuGiaoDichPhiGuiXe lichSuGiaoDichPhiGuiXe : lichSuGiaoDichPhiGuiXes){
+                    LichSuGiaoDichPhiGuiXeDao.getInstance().delete(lichSuGiaoDichPhiGuiXe);
+                }
+                PhuongTienDao.getInstance().delete(phuongTien);
+            }
+            for(NopPhi nopPhi :nopPhiList){
+                NopPhiDao.getInstance().delete(nopPhi);
             }
             HoKhauDao.getInstance().delete(hoKhaus);
+
             getData.getInstance().removeHokhau(hoKhaus);
             Alert alert1=new Alert(Alert.AlertType.CONFIRMATION);
             alert1.setHeaderText("Thành công");

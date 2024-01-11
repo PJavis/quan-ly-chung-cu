@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 @Entity
-@Table(name = "lich_su_giao_dich")
+@Table(name = "lich_su_giao_dich_phi_gui_xe")
 public class LichSuGiaoDichPhiGuiXe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
