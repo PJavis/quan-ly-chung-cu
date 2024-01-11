@@ -28,7 +28,7 @@
         </font>
     </TextField>
     <FontAwesomeIconView glyphName="SEARCH" layoutX="656.0" layoutY="59.0" size="17" />
-    <TableView fx:id="danhsachgiaodich" layoutX="33.0" layoutY="93.0" prefHeight="278.0" prefWidth="654.0">
+    <TableView fx:id="danhsachgiaodich" layoutX="33.0" layoutY="93.0" prefHeight="278.0" prefWidth="660.0">
         <columns>
             <TableColumn fx:id="sothutu" prefWidth="86.20001220703125" text="Số thự tự" />
             <TableColumn fx:id="nguoinoptien" prefWidth="235.1999740600586" text="Người nộp tiền" />

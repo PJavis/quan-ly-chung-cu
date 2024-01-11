@@ -78,7 +78,7 @@
             <Insets />
          </opaqueInsets>
       </TableView>
-      <TableView fx:id="thongtindonggop" layoutX="25.0" layoutY="357.0" prefHeight="184.0" prefWidth="744.0">
+      <TableView fx:id="thongtindonggop" layoutX="25.0" layoutY="357.0" prefHeight="184.0" prefWidth="745.0">
          <columns>
             <TableColumn fx:id="ten1" prefWidth="196.00006103515625" text="Tên" />
             <TableColumn fx:id="giatri1" prefWidth="211.99996948242188" text="Dư nợ" />

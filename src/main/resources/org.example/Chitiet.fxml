@@ -131,7 +131,7 @@
 
     </Pane>
 
-      <TableView fx:id="danhsachhokhau" layoutX="261.0" layoutY="332.0" prefHeight="404.0" prefWidth="722.0">
+      <TableView fx:id="danhsachhokhau" layoutX="261.0" layoutY="332.0" prefHeight="404.0" prefWidth="729.0">
         <columns>
           <TableColumn fx:id="sothutu" prefWidth="75.0" text="Số thứ tự" />
           <TableColumn fx:id="sophong" prefWidth="66.39995574951172" text="Số phòng" />
