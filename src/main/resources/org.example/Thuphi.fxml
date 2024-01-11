@@ -66,7 +66,7 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="thongtinkhoanphi" editable="true" layoutX="25.0" layoutY="127.0" prefHeight="200.0" prefWidth="744.0">
+      <TableView fx:id="thongtinkhoanphi" editable="true" layoutX="25.0" layoutY="127.0" prefHeight="200.0" prefWidth="744.0" visible="false">
         <columns>
           <TableColumn fx:id="ten" prefWidth="196.00006103515625" text="Tên" />
           <TableColumn fx:id="sodiennuoc" minWidth="0.0" prefWidth="202.39999389648438" text="Số điện /Số nước/ Diên tích phòng" />
@@ -78,7 +78,7 @@
             <Insets />
          </opaqueInsets>
       </TableView>
-      <TableView fx:id="thongtindonggop" layoutX="25.0" layoutY="357.0" prefHeight="184.0" prefWidth="744.0">
+      <TableView fx:id="thongtindonggop" layoutX="25.0" layoutY="357.0" prefHeight="184.0" prefWidth="745.0" visible="false">
          <columns>
             <TableColumn fx:id="ten1" prefWidth="196.00006103515625" text="Tên" />
             <TableColumn fx:id="giatri1" prefWidth="211.99996948242188" text="Dư nợ" />
@@ -86,7 +86,7 @@
             <TableColumn fx:id="chinhsua1" minWidth="0.0" prefWidth="110.4000244140625" text="Đóng góp" />
          </columns>
       </TableView>
-      <TableView fx:id="thongtinphuongtien" layoutX="17.0" layoutY="585.0" prefHeight="148.0" prefWidth="744.0">
+      <TableView fx:id="thongtinphuongtien" layoutX="17.0" layoutY="585.0" prefHeight="148.0" prefWidth="744.0" visible="false">
          <columns>
             <TableColumn fx:id="ten11" prefWidth="196.00006103515625" text="Tên chủ xe" />
             <TableColumn fx:id="loaixe" prefWidth="128.80001831054688" text="Loại xe" />
@@ -96,7 +96,7 @@
          </columns>
       </TableView>
       <Label layoutX="17.0" layoutY="739.0" text="Tổng số tiền nộp:" />
-      <Label fx:id="tongsotiennop" layoutX="122.0" layoutY="739.0" text="Label" />
+      <Label fx:id="tongsotiennop" layoutX="122.0" layoutY="739.0" />
       <Label layoutX="196.0" layoutY="739.0" text="Tên người nộp phí:" />
       <TextField fx:id="tennguoinopphi" layoutX="297.0" layoutY="735.0" />
 
