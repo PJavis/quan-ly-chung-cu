@@ -82,6 +82,10 @@ public class Quanlyphong implements Initializable {
     private TableColumn<HoKhau, Integer> sonhankhau;
     @FXML
     private ComboBox<String> boxphong;
+    @FXML
+    private ComboBox<String> boxthang;
+    @FXML
+    private ComboBox<String> boxNam;
     public void danhsachhokhau(){
         tongsohokhau.setText(String.valueOf(hoKhauList.size()));
         hoKhaus= FXCollections.observableArrayList(hoKhauList);
@@ -192,14 +196,15 @@ public class Quanlyphong implements Initializable {
             e.printStackTrace();
         }
     }
-    public void chartnamnu() {
-        try {
-            Map<String, Long> genderDistribution = NhanKhauDao.getInstance().tinhtilenamnu();
-            updateGenderChart(genderDistribution);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    //chac k can thong ke nam nu trong ho khau dau
+//    public void chartnamnu() {
+//        try {
+//            Map<String, Long> genderDistribution = NhanKhauDao.getInstance().tinhtilenamnu();
+//            updateGenderChart(genderDistribution);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
     public void chartnamsinh() {
         try {
             // Thực hiện thống kê theo năm
@@ -211,11 +216,15 @@ public class Quanlyphong implements Initializable {
             e.printStackTrace();
         }
     }
-    public void chartthang(int year) {
+    public void chartthang() {
         try {
-            HoKhauDao hokhauDao = HoKhauDao.getInstance();
-            Map<Integer, Long> monthlyStatistics = hokhauDao.thongketheothang(year);
-            updatecharthang(monthlyStatistics);
+            String selectedNam = boxNam.getSelectionModel().getSelectedItem();
+            if (selectedNam != null) {
+                int nam = Integer.parseInt(selectedNam);
+                HoKhauDao hokhauDao = HoKhauDao.getInstance();
+                Map<Integer, Long> monthlyStatistics = hokhauDao.thongketheothang(nam);
+                updatecharthang(monthlyStatistics);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -276,6 +285,33 @@ public class Quanlyphong implements Initializable {
 
         barChart.setPrefSize(panehokhau.getPrefWidth(), panehokhau.getPrefHeight());
     }
+    public void chartnam() {
+        try {
+            HoKhauDao hokhauDao = HoKhauDao.getInstance();
+            Map<Integer, Long> yearlyStatistics = hokhauDao.thongKeTongSoPhongtheonam();
+            updatechartnam(yearlyStatistics);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void updatechartnam(Map<Integer, Long> yearlyStatistics) {
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
+        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+        for (Map.Entry<Integer, Long> entry : yearlyStatistics.entrySet()) {
+            series.getData().add(new XYChart.Data<>(String.valueOf(entry.getKey()), entry.getValue()));
+        }
+
+        barChart.getData().clear();
+        barChart.getData().add(series);
+
+        panehokhau.getChildren().clear();
+        panehokhau.getChildren().add(barChart);
+
+        barChart.setPrefSize(panehokhau.getPrefWidth(), panehokhau.getPrefHeight());
+    }
 
 
     public void updateChart(Map<Integer, Long> ageDistribution) {
@@ -296,15 +332,30 @@ public class Quanlyphong implements Initializable {
 
         barChart.setPrefSize(panehokhau.getPrefWidth(), panehokhau.getPrefHeight());
     }
+    private final String[] namArr = {"2022", "2023", "2024", "2025",};
+
+    public void setBoxNam() {
+        ObservableList<String> namList = FXCollections.observableArrayList(namArr);
+        boxNam.setItems(namList);
+        boxNam.getSelectionModel().selectFirst();
+    }
 
 
 
 
-    private  String luachon[] = {"Thống kê theo tháng","Thống kê theo năm sinh","Thống kê nam nữ"};
+    private  String luachon[] = {"Thống kê theo tháng","Thống kê theo tuổi","Thống kê theo năm"};
 
     public void setBoxluachon( ) {
         ObservableList<String>boxbox = FXCollections.observableArrayList(luachon);
         boxphong.setItems(boxbox);
+    }
+    private  String[] thangArr = {"January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"};
+
+    public void setBoxThang() {
+        ObservableList<String> thangList = FXCollections.observableArrayList(thangArr);
+        boxthang.setItems(thangList);
+        boxthang.getSelectionModel().selectFirst();
     }
 
     @Override
@@ -313,18 +364,19 @@ public class Quanlyphong implements Initializable {
         timkiemhokhau();
 //        chart();
         setBoxluachon();
+        setBoxNam();
         boxphong.setOnAction(event -> {
             String selectedOption = boxphong.getSelectionModel().getSelectedItem();
             if (selectedOption != null) {
                 switch (selectedOption) {
                     case "Thống kê theo tháng":
-                        chartthang(2024);
+                        chartthang();
                         break;
-                    case "Thống kê theo năm sinh":
+                    case "Thống kê theo tuổi":
                         chartnamsinh();
                         break;
-                    case "Thống kê theo nam nữ":
-                        chartnamnu();
+                    case "Thống kê theo năm":
+                        chartnam();
                         break;
                 }
             }
