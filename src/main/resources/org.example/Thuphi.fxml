@@ -74,7 +74,7 @@
       <TableView fx:id="thongtindonggop" layoutX="25.0" layoutY="357.0" prefHeight="184.0" prefWidth="745.0" visible="false">
          <columns>
             <TableColumn fx:id="ten1" prefWidth="196.00006103515625" text="Tên" />
-            <TableColumn fx:id="giatri1" prefWidth="211.99996948242188" text="Dư nợ" />
+            <TableColumn fx:id="giatri1" prefWidth="211.99996948242188" text="Giá trị" />
             <TableColumn fx:id="sotiendanop1" prefWidth="220.0" text="Số tiền đã đóng góp" />
             <TableColumn fx:id="chinhsua1" minWidth="0.0" prefWidth="110.4000244140625" text="Đóng góp" />
          </columns>

@@ -26,7 +26,7 @@
             <Font name="Candara Bold" size="21.0"/>
         </font>
     </Label>
-    <Label layoutX="52.0" layoutY="172.0" text="Pinocchio LHP" textFill="#e4e1e1">
+    <Label layoutX="52.0" layoutY="172.0" text="BlueMoon" textFill="#e4e1e1">
         <font>
             <Font name="Candara Bold" size="21.0"/>
         </font>
