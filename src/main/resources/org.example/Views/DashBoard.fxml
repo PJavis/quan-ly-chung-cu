@@ -24,7 +24,7 @@
             <Font name="Candara Bold" size="21.0" />
         </font>
     </Label>
-    <Label alignment="CENTER" layoutX="13.0" layoutY="172.0" text="Nhà quản trị chung cư" textFill="#e4e1e1">
+    <Label layoutX="52.0" layoutY="172.0" text="BlueMoon" textFill="#e4e1e1">
         <font>
             <Font name="Candara Bold" size="21.0" />
         </font>
