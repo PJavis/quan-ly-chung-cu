@@ -9,11 +9,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.effect.Lighting;
-import org.example.EntityAll.LichSuGiaoDich;
-import org.example.EntityAll.NhanKhau;
-import org.example.EntityAll.NopPhi;
-import org.example.Hibernatedao.LichSuGiaoDichDao;
+import org.example.Model.EntityAll.LichSuGiaoDich;
+import org.example.Model.EntityAll.NopPhi;
+import org.example.Model.Hibernatedao.LichSuGiaoDichDao;
 
 import java.util.Comparator;
 import java.util.List;

@@ -7,9 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.example.EntityAll.*;
-import org.example.Hibernatedao.*;
-import org.example.getData;
+import org.example.Model.EntityAll.*;
+import org.example.Model.Hibernatedao.*;
 
 import java.sql.Date;
 import java.time.LocalDate;

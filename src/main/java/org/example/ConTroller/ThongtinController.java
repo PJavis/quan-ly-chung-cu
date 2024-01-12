@@ -2,22 +2,14 @@ package org.example.ConTroller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import org.example.EntityAll.QuanTriChungCu;
-import org.example.EntityAll.TaiKhoanBQT;
-import org.example.Hibernatedao.QuanTriChungCuDao;
-import org.example.Hibernatedao.TaiKhoanBQTDao;
+import org.example.Model.EntityAll.QuanTriChungCu;
+import org.example.Model.EntityAll.TaiKhoanBQT;
+import org.example.Model.Hibernatedao.QuanTriChungCuDao;
+import org.example.Model.Hibernatedao.TaiKhoanBQTDao;
 import org.example.getData;
 
 public class ThongtinController {

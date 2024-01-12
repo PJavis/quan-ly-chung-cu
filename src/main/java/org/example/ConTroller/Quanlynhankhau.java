@@ -22,9 +22,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.example.EntityAll.HoKhau;
-import org.example.EntityAll.NhanKhau;
-import org.example.Hibernatedao.NhanKhauDao;
+import org.example.Model.EntityAll.HoKhau;
+import org.example.Model.EntityAll.NhanKhau;
+import org.example.Model.Hibernatedao.NhanKhauDao;
 import org.example.getData;
 
 import java.net.URL;
@@ -126,7 +126,7 @@ public class Quanlynhankhau implements Initializable {
                         NhanKhau person = getTableView().getItems().get(getIndex());
                         try {
                             Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Dieuchinhnhankhau.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Dieuchinhnhankhau.fxml"));
                             Parent root = loader.load();
                             Scene scene = new Scene(root);
                             ag0r.setScene(scene);
@@ -147,7 +147,7 @@ public class Quanlynhankhau implements Initializable {
     void taomoinhankhau(ActionEvent event) {
         try {
             Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Taomoinhankhau.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Taomoinhankhau.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             ag0r.setScene(scene);

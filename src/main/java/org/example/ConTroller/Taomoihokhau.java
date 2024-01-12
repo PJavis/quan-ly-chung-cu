@@ -10,10 +10,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.example.EntityAll.HoKhau;
-import org.example.EntityAll.NhanKhau;
-import org.example.Hibernatedao.HoKhauDao;
-import org.example.Hibernatedao.NhanKhauDao;
+import org.example.Model.EntityAll.HoKhau;
+import org.example.Model.EntityAll.NhanKhau;
+import org.example.Model.Hibernatedao.HoKhauDao;
+import org.example.Model.Hibernatedao.NhanKhauDao;
 import org.example.getData;
 
 import java.net.URL;
@@ -63,7 +63,7 @@ public class Taomoihokhau implements Initializable {
         void huy(ActionEvent event) {
                 try {
                         Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlyphong.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Quanlyphong.fxml"));
                         Parent root = loader.load();
                         Scene scene = new Scene(root);
                         ag0r1.setScene(scene);

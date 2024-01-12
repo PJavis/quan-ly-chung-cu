@@ -5,7 +5,6 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,12 +13,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.example.EntityAll.*;
-import org.example.Hibernatedao.*;
+import org.example.Model.EntityAll.*;
+import org.example.Model.Hibernatedao.*;
 import org.example.getData;
 
 import java.net.URL;
@@ -229,7 +227,7 @@ public class ThuphiController implements Initializable {
                         button1.setOnAction(event1 -> {
                             try {
                                 Stage ag0r = (Stage) ((Node) event1.getSource()).getScene().getWindow();
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Chitietthuphi.fxml"));
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Chitietthuphi.fxml"));
                                 Parent root = loader.load();
                                 Scene scene = new Scene(root);
                                 Stage ag0r1=new Stage();
@@ -256,7 +254,7 @@ public class ThuphiController implements Initializable {
                             button.setOnAction(event -> {
                                 try {
                                     Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Dieuchinhnopphi.fxml"));
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Dieuchinhnopphi.fxml"));
                                     Parent root = loader.load();
                                     Scene scene = new Scene(root);
                                     Stage ag0r1=new Stage();
@@ -305,7 +303,7 @@ public class ThuphiController implements Initializable {
                         button1.setOnAction(event1 -> {
                             try {
                                 Stage ag0r = (Stage) ((Node) event1.getSource()).getScene().getWindow();
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Chitietthuphi.fxml"));
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Chitietthuphi.fxml"));
                                 Parent root = loader.load();
                                 Scene scene = new Scene(root);
                                 Stage ag0r1=new Stage();
@@ -365,7 +363,7 @@ public class ThuphiController implements Initializable {
                         button1.setOnAction(event1 -> {
                             try {
                                 Stage ag0r = (Stage) ((Node) event1.getSource()).getScene().getWindow();
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Chitietthuphiguixe.fxml"));
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Chitietthuphiguixe.fxml"));
                                 Parent root = loader.load();
                                 Scene scene = new Scene(root);
                                 Stage ag0r1=new Stage();

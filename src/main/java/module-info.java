@@ -8,10 +8,11 @@ module quan.ly.chung.cu {
 
     requires javafx.base;
     requires de.jensd.fx.glyphs.fontawesome;
+    requires com.jfoenix;
     exports org.example;
     exports org.example.ConTroller;
-    exports org.example.EntityAll;
-    opens org.example.EntityAll to org.hibernate.orm.core, javafx.base;
+    exports org.example.Model.EntityAll;
+    opens org.example.Model.EntityAll to org.hibernate.orm.core, javafx.base;
     opens org.example to javafx.fxml;
     opens org.example.ConTroller to javafx.fxml;
 }

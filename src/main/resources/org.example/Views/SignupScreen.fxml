@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="512.0" prefWidth="678.0" style="-fx-background-radius: 40; -fx-border-radius: 40;"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.ConTroller.SignupController">
+   <Pane layoutX="359.0" layoutY="22.0" opacity="0.89" prefHeight="413.0" prefWidth="297.0"
+         style="-fx-background-radius: 20; -fx-background-color: white;">
+      <ImageView fitHeight="96.0" fitWidth="117.0" layoutX="95.0" layoutY="14.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@images/logimg.png"/>
+      </ImageView>
+      <TextField fx:id="username" layoutX="40.0" layoutY="148.0" prefHeight="27.0" prefWidth="221.0"/>
+      <PasswordField fx:id="pass1" layoutX="40.0" layoutY="197.0" prefHeight="25.0" prefWidth="221.0"/>
+      <ImageView fitHeight="27.0" fitWidth="43.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@images/lookicon.png"/>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="49.0" layoutX="-3.0" layoutY="150.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@images/user2.png"/>
+      </ImageView>
+      <Label layoutX="112.0" layoutY="110.0" text="Sign Up">
+         <font>
+            <Font name="System Bold" size="26.0"/>
+         </font>
+      </Label>
+      <Button fx:id="lgbutton" layoutX="42.0" layoutY="272.0" mnemonicParsing="false" onAction="#returnlogin"
+              prefHeight="27.0" prefWidth="107.0" style="-fx-background-radius: 40; -fx-background-color: blue;"
+              text="Login " textFill="#fff6f6">
+         <font>
+            <Font name="System Bold" size="19.0"/>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND"/>
+         </cursor>
+      </Button>
+      <Button fx:id="subutton" layoutX="169.0" layoutY="272.0" mnemonicParsing="false" onAction="#returnlogin"
+              prefHeight="25.0" prefWidth="96.0" style="-fx-background-radius: 40; -fx-background-color: blue;"
+              text="Sign Up" textFill="#fff6f6">
+         <font>
+            <Font name="System Bold" size="19.0"/>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND"/>
+         </cursor>
+      </Button>
+      <ImageView fitHeight="27.0" fitWidth="43.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@images/lookicon.png"/>
+      </ImageView>
+      <PasswordField fx:id="pass2" layoutX="38.0" layoutY="241.0" prefHeight="25.0" prefWidth="221.0"/>
+   </Pane>
+   <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnlogin" prefHeight="27.0"
+           prefWidth="107.0" style="-fx-background-radius: 40; -fx-background-color: red;" text="Home"
+           textFill="#fcf6f6">
+      <font>
+         <Font name="System Bold" size="19.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+   </Button>
+</AnchorPane>

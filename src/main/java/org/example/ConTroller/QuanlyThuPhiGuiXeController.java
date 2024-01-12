@@ -1,28 +1,21 @@
 // QuanlyThuPhiGuiXeController.java
 package org.example.ConTroller;
 
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import org.example.EntityAll.HoKhau;
-import org.example.EntityAll.LichSuGiaoDichPhiGuiXe;
-import org.example.EntityAll.NhanKhau;
-import org.example.EntityAll.PhuongTien;
-import org.example.Hibernatedao.HoKhauDao;
-import org.example.Hibernatedao.LichSuGiaoDichPhiGuiXeDao;
-import org.example.Hibernatedao.NhanKhauDao;
-import org.example.Hibernatedao.PhuongTienDao;
+import org.example.Model.EntityAll.HoKhau;
+import org.example.Model.EntityAll.LichSuGiaoDichPhiGuiXe;
+import org.example.Model.EntityAll.NhanKhau;
+import org.example.Model.EntityAll.PhuongTien;
+import org.example.Model.Hibernatedao.HoKhauDao;
+import org.example.Model.Hibernatedao.LichSuGiaoDichPhiGuiXeDao;
+import org.example.Model.Hibernatedao.NhanKhauDao;
+import org.example.Model.Hibernatedao.PhuongTienDao;
 import org.example.getData;
 
 import java.util.Comparator;

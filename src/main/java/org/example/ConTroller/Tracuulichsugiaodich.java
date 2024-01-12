@@ -9,11 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.StringConverter;
-import org.example.EntityAll.HoKhau;
-import org.example.EntityAll.KhoanPhi;
-import org.example.EntityAll.LichSuGiaoDich;
-import org.example.EntityAll.NopPhi;
-import org.example.Hibernatedao.LichSuGiaoDichDao;
+import org.example.Model.EntityAll.HoKhau;
+import org.example.Model.EntityAll.KhoanPhi;
+import org.example.Model.EntityAll.LichSuGiaoDich;
+import org.example.Model.Hibernatedao.LichSuGiaoDichDao;
 
 import java.net.URL;
 import java.sql.Date;

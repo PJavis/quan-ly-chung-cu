@@ -1,10 +1,5 @@
 package org.example.ConTroller;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import org.example.ConTroller.LoginController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
-import org.example.EntityAll.TaiKhoanBQT;
 
 import java.awt.*;
 import java.io.IOException;
@@ -39,7 +33,7 @@ public class SignupController {
     private TextField username;
     @FXML
     public void returnlogin (ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org.example/Loginscreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/org.example/Views/Loginscreen.fxml"));
         stage2 = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene2 = new Scene(root);
         stage2.setScene(scene2);

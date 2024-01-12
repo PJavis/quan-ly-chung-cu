@@ -17,11 +17,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import org.example.EntityAll.HoKhau;
-import org.example.EntityAll.KhoanPhi;
-import org.example.EntityAll.NopPhi;
-import org.example.Hibernatedao.KhoanPhiDao;
-import org.example.Hibernatedao.NopPhiDao;
+import org.example.Model.EntityAll.HoKhau;
+import org.example.Model.EntityAll.KhoanPhi;
+import org.example.Model.EntityAll.NopPhi;
+import org.example.Model.Hibernatedao.KhoanPhiDao;
+import org.example.Model.Hibernatedao.NopPhiDao;
 import org.example.getData;
 
 import java.net.URL;
@@ -142,7 +142,7 @@ public class Quanlykhoanphi implements Initializable {
                             KhoanPhi person = getTableView().getItems().get(getIndex());
                             try {
                                 Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Chitiet.fxml"));
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Chitiet.fxml"));
                                 Parent root = loader.load();
                                 Scene scene = new Scene(root);
                                 ag0r.setScene(scene);

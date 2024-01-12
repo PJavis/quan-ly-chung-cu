@@ -6,11 +6,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.example.EntityAll.HoKhau;
+import org.example.Model.EntityAll.HoKhau;
+import org.example.Model.EntityAll.KhoanPhi;
 import org.example.getData;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class TrangchuController implements Initializable {
@@ -29,12 +31,14 @@ public class TrangchuController implements Initializable {
         this.tongsonguoio.setText(String.valueOf(getData.getInstance().getNhanKhaus().size()));
     }
     public void setSophongcontrong(){
-        this.sophongcontrong.setText(String.valueOf(1000-getData.getInstance().getHoKhaus().size()));
+        this.sophongcontrong.setText(String.valueOf(175-getData.getInstance().getNhanKhaus().size()));
     }
-    public void setTongsotienthuduoc(){
-        this.tongsotienthuduoc.setText(String.valueOf(10000000*getData.getInstance().getHoKhaus().size()));
-    }
+    public void setTongsotienthuduoc() {
+        List<KhoanPhi> khoanPhis = getData.getInstance().getKhoanPhis();
+        double tongSotienThuDuoc = getData.getTongSoTienTatCaKhoanPhi(khoanPhis);
 
+        this.tongsotienthuduoc.setText(String.valueOf(tongSotienThuDuoc));
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setTongsonguoio();
@@ -42,7 +46,7 @@ public class TrangchuController implements Initializable {
         setTongsotienthuduoc();
         for (HoKhau hoKhau : getData.getInstance().getHoKhaus()) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/thongtinnha.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/thongtinnha.fxml"));
                 HBox hbox = loader.load();
                 thongtinnhaController thongtinnhaController = loader.getController();
                 thongtinnhaController.laydata(hoKhau);

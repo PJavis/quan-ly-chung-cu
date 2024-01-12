@@ -7,12 +7,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.example.EntityAll.KhoanPhi;
-import org.example.EntityAll.LichSuGiaoDich;
-import org.example.EntityAll.NopPhi;
-import org.example.Hibernatedao.KhoanPhiDao;
-import org.example.Hibernatedao.LichSuGiaoDichDao;
-import org.example.Hibernatedao.NopPhiDao;
+import org.example.Model.EntityAll.KhoanPhi;
+import org.example.Model.EntityAll.LichSuGiaoDich;
+import org.example.Model.EntityAll.NopPhi;
+import org.example.Model.Hibernatedao.KhoanPhiDao;
+import org.example.Model.Hibernatedao.LichSuGiaoDichDao;
+import org.example.Model.Hibernatedao.NopPhiDao;
 import org.example.getData;
 
 import java.sql.Date;

@@ -17,10 +17,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.example.EntityAll.KhoanPhi;
-import org.example.EntityAll.NopPhi;
-import org.example.Hibernatedao.KhoanPhiDao;
-import org.example.Hibernatedao.NopPhiDao;
+import org.example.Model.EntityAll.KhoanPhi;
+import org.example.Model.EntityAll.NopPhi;
+import org.example.Model.Hibernatedao.KhoanPhiDao;
+import org.example.Model.Hibernatedao.NopPhiDao;
 
 import java.net.URL;
 import java.sql.Date;
@@ -167,7 +167,7 @@ public class Chitietkhoanphi implements Initializable {
                         NopPhi person = getTableView().getItems().get(getIndex());
                         try {
                             Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Lichsugiaodich.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Lichsugiaodich.fxml"));
                             Parent root = loader.load();
                             Scene scene = new Scene(root);
                             Stage ag0r1 = new Stage();
@@ -212,7 +212,7 @@ public class Chitietkhoanphi implements Initializable {
     void tracuugiaodich(ActionEvent event) {
         try {
             Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Tracuulichsugiaodich.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Tracuulichsugiaodich.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage ag0r1=new Stage();
@@ -231,7 +231,7 @@ public class Chitietkhoanphi implements Initializable {
     void quaylai(ActionEvent event) {
         try {
             Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlykhoanphi.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Quanlykhoanphi.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             ag0r1.setScene(scene);

@@ -20,12 +20,11 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.example.EntityAll.HoKhau;
-import org.example.EntityAll.NhanKhau;
-import org.example.Hibernatedao.HoKhauDao;
-import org.example.Hibernatedao.NhanKhauDao;
+import org.example.Model.EntityAll.HoKhau;
+import org.example.Model.EntityAll.NhanKhau;
+import org.example.Model.Hibernatedao.HoKhauDao;
+import org.example.Model.Hibernatedao.NhanKhauDao;
 import org.example.getData;
 
 import java.net.URL;
@@ -120,7 +119,7 @@ public class Quanlyphong implements Initializable {
 
                             try {
                                 Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Dieuchinhhokhau.fxml"));
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Dieuchinhhokhau.fxml"));
                                 Parent root = loader.load();
                                 Scene scene = new Scene(root);
                                 ag0r.setScene(scene);
@@ -174,7 +173,7 @@ public class Quanlyphong implements Initializable {
     void taomoihokhau(ActionEvent event) {
         try {
             Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Taomoihokhau.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Taomoihokhau.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             ag0r.setScene(scene);

@@ -25,15 +25,15 @@
         <!-- Specify the SQL initialization file -->
 
         <!-- Mention annotated class -->
-        <mapping class="org.example.EntityAll.HoKhau"/>
-        <mapping class="org.example.EntityAll.KhoanPhi"/>
-        <mapping class="org.example.EntityAll.NopPhi"/>
-        <mapping class="org.example.EntityAll.NhanKhau"/>
-        <mapping class="org.example.EntityAll.QuanTriChungCu"/>
-        <mapping class="org.example.EntityAll.TaiKhoanBQT"/>
-        <mapping class="org.example.EntityAll.LichSuThayDoi"/>
-        <mapping class="org.example.EntityAll.LichSuGiaoDich"/>
-        <mapping class="org.example.EntityAll.PhuongTien"/>
-        <mapping class="org.example.EntityAll.LichSuGiaoDichPhiGuiXe"/>
+        <mapping class="org.example.Model.EntityAll.HoKhau"/>
+        <mapping class="org.example.Model.EntityAll.KhoanPhi"/>
+        <mapping class="org.example.Model.EntityAll.NopPhi"/>
+        <mapping class="org.example.Model.EntityAll.NhanKhau"/>
+        <mapping class="org.example.Model.EntityAll.QuanTriChungCu"/>
+        <mapping class="org.example.Model.EntityAll.TaiKhoanBQT"/>
+        <mapping class="org.example.Model.EntityAll.LichSuThayDoi"/>
+        <mapping class="org.example.Model.EntityAll.LichSuGiaoDich"/>
+        <mapping class="org.example.Model.EntityAll.PhuongTien"/>
+        <mapping class="org.example.Model.EntityAll.LichSuGiaoDichPhiGuiXe"/>
     </session-factory>
 </hibernate-configuration>

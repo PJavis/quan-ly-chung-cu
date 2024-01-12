@@ -11,9 +11,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.example.EntityAll.TaiKhoanBQT;
-import org.example.Hibernatedao.TaiKhoanBQTDao;
-
+import org.example.Model.EntityAll.TaiKhoanBQT;
+import org.example.Model.Hibernatedao.TaiKhoanBQTDao;
+import com.jfoenix.controls.JFXToggleButton;
+import javax.swing.*;
 import java.io.IOException;
 
 public class LoginController {
@@ -29,13 +30,17 @@ public class LoginController {
     private Button signupbutton;
     @FXML
     private Button returnhome;
+    @FXML
+    private JFXToggleButton hideshowbutton;
 
     @FXML
     private PasswordField password_field;
 
-
+    @FXML
+    private TextField matkhau;
     @FXML
     private TextField tendangnhap;
+    String pass;
 
 //    @FXML
 //    public void dangki (ActionEvent event) throws IOException {
@@ -47,7 +52,7 @@ public class LoginController {
 //    }
     @FXML
     public void vedashboard(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org.example/Trangchu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/org.example/Views/Trangchu.fxml"));
         stage2 = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene2 = new Scene(root);
         stage2.setScene(scene2);
@@ -56,6 +61,14 @@ public class LoginController {
     String password;
     @FXML
     public  void initialize(){
+        matkhau.setVisible(false);
+        password_field.setVisible(true);
+        password_field.textProperty().addListener((observable, oldValue, newValue) -> {
+            pass = newValue;
+        });
+        matkhau.textProperty().addListener((observable,oldValue,newValue) -> {
+            pass = newValue;
+        });
     }
 
     @FXML
@@ -68,7 +81,7 @@ public class LoginController {
 
         if (taiKhoanBQT != null) {
             luuthongtin.setThongTinDangNhap(taiKhoan,matKhau);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Trangchu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Trangchu.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -82,5 +95,15 @@ public class LoginController {
             alert.showAndWait();
         }
     }
-
+    @FXML
+    public void hienmk(ActionEvent event) throws IOException {
+        if (hideshowbutton.isSelected()) {
+            matkhau.setText(pass);
+            matkhau.setVisible(true);
+            password_field.setVisible(false);
+        } else {
+            password_field.setVisible(true);
+            matkhau.setVisible(false);
+        }
+    }
 }

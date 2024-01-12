@@ -9,15 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.example.EntityAll.HoKhau;
-import org.example.EntityAll.NhanKhau;
-import org.example.Hibernatedao.HoKhauDao;
-import org.example.Hibernatedao.NhanKhauDao;
+import org.example.Model.EntityAll.HoKhau;
+import org.example.Model.EntityAll.NhanKhau;
+import org.example.Model.Hibernatedao.HoKhauDao;
+import org.example.Model.Hibernatedao.NhanKhauDao;
 import org.example.getData;
 
 import java.net.URL;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
@@ -127,7 +126,7 @@ public class Dieuchinhnhankhau implements Initializable {
                  alert1.showAndWait();
                  try {
                      Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlynhankhau.fxml"));
+                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Quanlynhankhau.fxml"));
                      Parent root = loader.load();
                      Scene scene = new Scene(root);
                      ag0r1.setScene(scene);
@@ -165,7 +164,7 @@ public class Dieuchinhnhankhau implements Initializable {
                      alert1.showAndWait();
                      try {
                          Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlynhankhau.fxml"));
+                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Quanlynhankhau.fxml"));
                          Parent root = loader.load();
                          Scene scene = new Scene(root);
                          ag0r1.setScene(scene);
@@ -214,7 +213,7 @@ public class Dieuchinhnhankhau implements Initializable {
                 getData.getInstance().removeNhankhau(nhanKhau);
                 try {
                     Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlynhankhau.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Quanlynhankhau.fxml"));
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
                     ag0r1.setScene(scene);
@@ -230,7 +229,7 @@ public class Dieuchinhnhankhau implements Initializable {
     void quaylai(ActionEvent event) {
         try {
             Stage ag0r1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Quanlynhankhau.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Quanlynhankhau.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             ag0r1.setScene(scene);

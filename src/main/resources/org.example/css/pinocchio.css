@@ -112,3 +112,8 @@
     -fx-border-style: solid;
     -fx-border-color: #748CF1;
 }
+.txtfield{
+-fx-background-radius: 20px;
+-fx-border-color:#748CF1;
+-fx-border-radius:20px;
+}

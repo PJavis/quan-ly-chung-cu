@@ -7,8 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.example.EntityAll.NopPhi;
-import org.example.Hibernatedao.NopPhiDao;
+import org.example.Model.EntityAll.NopPhi;
+import org.example.Model.Hibernatedao.NopPhiDao;
 
 import java.text.DecimalFormat;
 

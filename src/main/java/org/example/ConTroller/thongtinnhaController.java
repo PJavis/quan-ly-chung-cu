@@ -2,7 +2,7 @@ package org.example.ConTroller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import org.example.EntityAll.HoKhau;
+import org.example.Model.EntityAll.HoKhau;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,7 +32,6 @@ public class thongtinnhaController implements Initializable {
         sotang.setText(String.valueOf(hoKhau.getSoTang()));
         tenchuho.setText(hoKhau.getTenchuho());
         sonhankhau.setText(String.valueOf(hoKhau.getSoNhanKhau()));
-        tienthue.setText(String.valueOf(hoKhau.getDienTichPhong() * 100));
         dientich.setText(String.valueOf(hoKhau.getDienTichPhong()));
     }
 

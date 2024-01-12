@@ -1,7 +1,7 @@
 package org.example;
 
-import org.example.EntityAll.*;
-import org.example.Hibernatedao.*;
+import org.example.Model.EntityAll.*;
+import org.example.Model.Hibernatedao.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -141,5 +141,14 @@ public class getData {
     public void reloadQuanTriChungCu() {
         List<QuanTriChungCu> quanTriChungCuList = (List<QuanTriChungCu>) QuanTriChungCuDao.getInstance().selectAll();
         this.quanTriChungCus = quanTriChungCuList.stream().collect(Collectors.toMap(QuanTriChungCu::getId, quanTriChungCu -> quanTriChungCu));
+    }
+    public static double getTongSoTienTatCaKhoanPhi(List<KhoanPhi> khoanPhis) {
+        double tongSoTien = 0;
+
+        for (KhoanPhi khoanPhi : khoanPhis) {
+            tongSoTien += khoanPhi.getTongsotien();
+        }
+
+        return tongSoTien;
     }
 }

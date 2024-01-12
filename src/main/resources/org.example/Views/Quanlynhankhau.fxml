@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1000.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Quanlynhankhau">
+    <fx:include source="DashBoard.fxml" />
+    <Pane layoutX="222.0" prefHeight="790.0" prefWidth="777.0" styleClass="pane_11">
+        <Label layoutX="25.0" layoutY="15.0" prefHeight="61.0" prefWidth="295.0" text="Danh sách nhân khẩu">
+            <font>
+                <Font name="Arial Bold" size="26.0" />
+            </font>
+        </Label>
+        <Line endX="594.5999755859375" endY="-13.000015258789062" layoutX="136.0" layoutY="82.0" startX="-113.19999694824219" startY="-13.000015258789062" stroke="#a7a7b7">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="1.0" green="1.0" blue="1.0" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Line>
+        <TextField fx:id="timkiem" layoutX="419.0" layoutY="80.0" prefHeight="40.0" prefWidth="240.0" promptText="Tìm kiếm" style="-fx-background-radius: 25px; -fx-border-color: #353A56; -fx-border-radius: 25px;">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <padding>
+                <Insets left="20.0" />
+            </padding>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </TextField>
+
+        <FontAwesomeIconView glyphName="SEARCH" layoutX="638.0" layoutY="106.0" size="17" text="" />
+
+        <Button layoutX="668.0" layoutY="80.0" mnemonicParsing="false" onAction="#taomoinhankhau" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="TẠO MỚI" textFill="WHITE">
+            <graphic>
+                <FontAwesomeIconView glyphName="PLUS" size="20" />
+            </graphic>
+        </Button>
+
+        <TableView fx:id="danhsachnhankhau" layoutX="22.0" layoutY="135.0" prefHeight="320.0" prefWidth="751.0">
+            <columns>
+                <TableColumn fx:id="sothutu" prefWidth="70.4000244140625" text="Số thứ tự" />
+                <TableColumn fx:id="hovaten" prefWidth="95.199951171875" text="Họ và tên" />
+            <TableColumn fx:id="cancuoccongdan" prefWidth="114.4000244140625" text="Căn cước công dân" />
+                <TableColumn fx:id="sodienthoai" prefWidth="86.39996337890625" text="Số điện thoại" />
+                <TableColumn fx:id="ngaysinh" prefWidth="81.60003662109375" text="Ngày sinh" />
+                <TableColumn fx:id="sophongdango" minWidth="0.0" prefWidth="71.99993896484375" text="Số phòng" />
+                <TableColumn fx:id="sotang" prefWidth="73.20001220703125" text="Số tầng" />
+                <TableColumn fx:id="trangthai" minWidth="6.4000244140625" prefWidth="79.9998779296875" text="Trạng thái" />
+                <TableColumn fx:id="dieuchinh" prefWidth="68.800048828125" text="Điều chỉnh" />
+            </columns>
+        </TableView>
+
+        <ComboBox fx:id="boxluachon" layoutX="539.0" layoutY="470.0" prefHeight="34.0" prefWidth="229.0" promptText="Thống kê" style="-fx-border-color: #353A56;" />
+        <Label layoutX="41.0" layoutY="479.0" text="Tổng số nhân khẩu:">
+            <font>
+                <Font name="Arial Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="tongsonhankhau" layoutX="195.0" layoutY="478.0" text="Label" />
+
+        <Pane fx:id="panethongke" layoutX="22.0" layoutY="517.0" prefHeight="227.0" prefWidth="751.0" style="-fx-border-color: #353A56;" />
+
+    </Pane>
+</AnchorPane>
