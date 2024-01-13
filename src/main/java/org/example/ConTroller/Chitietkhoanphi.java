@@ -37,6 +37,7 @@ public class Chitietkhoanphi implements Initializable {
     private List<NopPhi> nopPhiList;
     private boolean batbuoc=true;
 
+
     public void setKhoanPhi(KhoanPhi khoanPhi) {
         this.khoanPhi = khoanPhi;
         tenkhoanphi.setText(khoanPhi.getTenKhoanPhi());
