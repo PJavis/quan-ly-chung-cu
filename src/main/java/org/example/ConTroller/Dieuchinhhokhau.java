@@ -208,7 +208,7 @@ phuongTiens= PhuongTienDao.getInstance().selectByHoKhau(hoKhau);
                     LichSuThayDoi lichSuThayDoi=new LichSuThayDoi();
                     lichSuThayDoi.setHoKhau(hoKhaus);
                     lichSuThayDoi.setNgayThayDoi(Date.valueOf(LocalDate.now()));
-                    lichSuThayDoi.setThayDoi("Đổi chủ hộ có tên là "+q.getTen()+" sang chủ hộ có tên là "+nhanKhau.getTen());
+                    lichSuThayDoi.setThayDoi("Đổi chủ hộ có tên là "+q.getTen()+" sang chủ hộ có tên là  "+nhanKhau.getTen());
                     LichSuThayDoiDao.getInstance().save(lichSuThayDoi);
                 }
             }
@@ -225,10 +225,7 @@ phuongTiens= PhuongTienDao.getInstance().selectByHoKhau(hoKhau);
             alert1.setHeaderText("Thành công");
             alert1.setContentText("Điều chỉnh hộ khẩu thành công");
             alert1.showAndWait();
-
-
-
-
+            
     }
 
 
