@@ -3,8 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -14,11 +12,6 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1000.0" stylesheets="@../css/pinocchio.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.TrangchuController">
    <fx:include source="DashBoard.fxml" />
    <Pane layoutX="222.0" prefHeight="790.0" prefWidth="780.0" styleClass="panepino" stylesheets="@../css/pinocchio.css">
-      <ImageView fitHeight="794.0" fitWidth="744.0" layoutX="2.0" layoutY="0.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/anhchungcu.png" />
-         </image>
-      </ImageView>
       <Label alignment="CENTER" layoutX="23.0" layoutY="58.0" prefHeight="47.0" prefWidth="677.0" text="Chào mừng các bạn đến với chung cư BlueMoon">
          <font>
             <Font name="Candara Bold" size="30.0" />
