@@ -265,25 +265,6 @@ public class Quanlyphong implements Initializable {
         }
     }
 
-
-    public void updateGenderChart(Map<String, Long> genderDistribution) {
-        CategoryAxis xAxis = new CategoryAxis();
-        NumberAxis yAxis = new NumberAxis();
-        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-
-        for (Map.Entry<String, Long> entry : genderDistribution.entrySet()) {
-            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
-        }
-
-        barChart.getData().clear();
-        barChart.getData().add(series);
-
-        panehokhau.getChildren().clear();
-        panehokhau.getChildren().add(barChart);
-
-        barChart.setPrefSize(panehokhau.getPrefWidth(), panehokhau.getPrefHeight());
-    }
     public void chartnam() {
         try {
             HoKhauDao hokhauDao = HoKhauDao.getInstance();
