@@ -91,7 +91,7 @@
                                     <Font name="Arial Bold" size="14.0" />
                                 </font></Label>
                             <TextField fx:id="dientichphong" layoutX="177.0" layoutY="133.0" prefHeight="35.0" prefWidth="207.0" promptText="Diện tích phòng" style="-fx-background-radius: 15px; -fx-border-color: #353A56; -fx-border-radius: 15px;" />
-                     <Button mnemonicParsing="false" onAction="#lichsuthaydoi" text="Lịch sử thay đổi" />
+                     <Button mnemonicParsing="false" onAction="#lichsuthaydoi" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #353A56; -fx-background-radius: 20px;" text="LICH SỬ THAY ĐỔI" textFill="WHITE" />
                         </children>
                     </HBox>
                 </children>
