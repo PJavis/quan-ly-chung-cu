@@ -10,8 +10,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.example.Model.EntityAll.HoKhau;
+import org.example.Model.EntityAll.LichSuThayDoi;
 import org.example.Model.EntityAll.NhanKhau;
 import org.example.Model.Hibernatedao.HoKhauDao;
+import org.example.Model.Hibernatedao.LichSuThayDoiDao;
 import org.example.Model.Hibernatedao.NhanKhauDao;
 import org.example.getData;
 
@@ -115,6 +117,7 @@ public class Dieuchinhnhankhau implements Initializable {
              if(Integer.parseInt(sotang.getText())== hoKhau1.getSoTang()&&Integer.parseInt(sophong.getText())== hoKhau1.getId()){
                  if(nhanKhau.isChuHo()){
                      hoKhau1.setTenchuho(tennhankhau.getText());
+                     hoKhau1.setSoDienThoai(sodienthoai.getText());
                      HoKhauDao.getInstance().update(hoKhau1);
                      getData.getInstance().updateHokhau(hoKhau1);
                  }
@@ -154,10 +157,21 @@ public class Dieuchinhnhankhau implements Initializable {
                      hoKhau1.setSoNhanKhau(hoKhau1.getSoNhanKhau()-1);
                      HoKhauDao.getInstance().update(hoKhau1);
                      getData.getInstance().updateHokhau(hoKhau1);
+                     LichSuThayDoi lichSuThayDoi=new LichSuThayDoi();
+                     lichSuThayDoi.setHoKhau(hoKhau1);
+                     lichSuThayDoi.setNgayThayDoi(Date.valueOf(LocalDate.now()));
+                     lichSuThayDoi.setThayDoi("Xóa nhân khẩu có tên là "+nhanKhau.getTen());
+                     LichSuThayDoiDao.getInstance().save(lichSuThayDoi);
 
                      hoKhau2.setSoNhanKhau(hoKhau2.getSoNhanKhau()+1);
                      HoKhauDao.getInstance().update(hoKhau2);
                      getData.getInstance().updateHokhau(hoKhau2);
+                     LichSuThayDoi lichSuThayDoi1=new LichSuThayDoi();
+                     lichSuThayDoi1.setHoKhau(hoKhau2);
+                     lichSuThayDoi1.setNgayThayDoi(Date.valueOf(LocalDate.now()));
+                     lichSuThayDoi1.setThayDoi("Thêm nhân khẩu có tên là "+nhanKhau.getTen());
+                     LichSuThayDoiDao.getInstance().save(lichSuThayDoi1);
+
                      Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                      alert1.setHeaderText("Thành công");
                      alert1.setContentText("Điều chỉnh nhân khẩu thành công");
@@ -209,6 +223,11 @@ public class Dieuchinhnhankhau implements Initializable {
                 hoKhau.setSoNhanKhau(hoKhau.getSoNhanKhau()-1);
                 HoKhauDao.getInstance().update(hoKhau);
                 getData.getInstance().updateHokhau(hoKhau);
+                LichSuThayDoi lichSuThayDoi=new LichSuThayDoi();
+                lichSuThayDoi.setHoKhau(hoKhau);
+                lichSuThayDoi.setNgayThayDoi(Date.valueOf(LocalDate.now()));
+                lichSuThayDoi.setThayDoi("Xóa nhân khẩu có tên là "+nhanKhau.getTen());
+                LichSuThayDoiDao.getInstance().save(lichSuThayDoi);
                 NhanKhauDao.getInstance().delete(nhanKhau);
                 getData.getInstance().removeNhankhau(nhanKhau);
                 try {

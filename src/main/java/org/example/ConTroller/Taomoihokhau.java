@@ -11,8 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.example.Model.EntityAll.HoKhau;
+import org.example.Model.EntityAll.LichSuThayDoi;
 import org.example.Model.EntityAll.NhanKhau;
 import org.example.Model.Hibernatedao.HoKhauDao;
+import org.example.Model.Hibernatedao.LichSuThayDoiDao;
 import org.example.Model.Hibernatedao.NhanKhauDao;
 import org.example.getData;
 
@@ -92,7 +94,11 @@ public class Taomoihokhau implements Initializable {
 
                                 NhanKhauDao.getInstance().save(nhanKhau);
                                 getData.getInstance().addNhankhau(nhanKhau);
-
+                                LichSuThayDoi lichSuThayDoi=new LichSuThayDoi();
+                                lichSuThayDoi.setHoKhau(hoKhau);
+                                lichSuThayDoi.setNgayThayDoi(Date.valueOf(LocalDate.now()));
+                                lichSuThayDoi.setThayDoi("Tạo hộ khẩu mới với chủ hộ là "+tenchuho.getText());
+                                LichSuThayDoiDao.getInstance().save(lichSuThayDoi);
                                 showSuccessAlert("Tạo mới hộ khẩu thành công");
 
                                 clearInputFields();

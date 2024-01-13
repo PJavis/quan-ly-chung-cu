@@ -1,6 +1,8 @@
 package org.example.Model.EntityAll;
 
 import jakarta.persistence.*;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -68,5 +70,9 @@ public class LichSuThayDoi {
 
     public void setHoKhau(HoKhau hoKhau) {
         this.hoKhau = hoKhau;
+    }
+    public String getFormattedDatebatdau(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dateFormat.format(ngayThayDoi);
     }
 }

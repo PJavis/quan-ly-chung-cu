@@ -14,7 +14,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1000.0" stylesheets="@../css/pinocchio.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.TrangchuController">
    <fx:include source="DashBoard.fxml" />
    <Pane layoutX="222.0" prefHeight="790.0" prefWidth="780.0" styleClass="panepino" stylesheets="@../css/pinocchio.css">
-      <ImageView fitHeight="794.0" fitWidth="744.0" layoutX="2.0" layoutY="-1.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="794.0" fitWidth="744.0" layoutX="2.0" layoutY="0.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/anhchungcu.png" />
          </image>

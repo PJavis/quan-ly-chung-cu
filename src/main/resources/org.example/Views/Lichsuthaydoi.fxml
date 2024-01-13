@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="717.0" style="-fx-background-color: #ffffff;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ConTroller.Lichsuthaydoi">
+   <children>
+      <Label layoutX="42.0" layoutY="36.0" text="Lịch sử thay đổi:">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="timkiem" layoutX="448.0" layoutY="33.0" prefHeight="40.0" prefWidth="240.0" promptText="Tìm kiếm" style="-fx-background-radius: 25px; -fx-border-color: #353A56; -fx-border-radius: 25px;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <FontAwesomeIconView glyphName="SEARCH" layoutX="656.0" layoutY="59.0" size="17" />
+      <TableView fx:id="danhsachthaydoi" layoutX="33.0" layoutY="93.0" prefHeight="278.0" prefWidth="660.0">
+         <columns>
+            <TableColumn fx:id="sothutu" prefWidth="86.20001220703125" text="Số thự tự" />
+            <TableColumn fx:id="mota" prefWidth="432.80001068115234" text="Mô tả" />
+            <TableColumn fx:id="thoigian" prefWidth="132.79998779296875" text="Thời gian" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -26,6 +26,8 @@ import org.example.getData;
 
 
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Dieuchinhhokhau implements Initializable {
@@ -167,8 +169,17 @@ phuongTiens= PhuongTienDao.getInstance().selectByHoKhau(hoKhau);
                                 alert1.setHeaderText("Thành công");
                                 alert1.setContentText("Xóa nhân khẩu thành công");
                                 alert1.showAndWait();
+                                LichSuThayDoi lichSuThayDoi=new LichSuThayDoi();
+                                lichSuThayDoi.setHoKhau(hoKhaus);
+                                lichSuThayDoi.setNgayThayDoi(Date.valueOf(LocalDate.now()));
+                                lichSuThayDoi.setThayDoi("Xóa nhân khẩu có tên là "+person.getTen());
+                                LichSuThayDoiDao.getInstance().save(lichSuThayDoi);
+                                sothanhvien.setText(String.valueOf(hoKhaus.getSoNhanKhau()));
                                 NhanKhauDao.getInstance().delete(person);
                             getData.getInstance().removeNhankhau(person);
+                            hoKhaus.setSoNhanKhau(hoKhaus.getSoNhanKhau()-1);
+                            HoKhauDao.getInstance().update(hoKhaus);
+                            getData.getInstance().updateHokhau(hoKhaus);
                             nhanKhaus.remove(person);
                             danhsachthanhvien();
                             }
@@ -185,15 +196,21 @@ phuongTiens= PhuongTienDao.getInstance().selectByHoKhau(hoKhau);
  }
     @FXML
     void dieuchinh(ActionEvent event) {
-
-
             NhanKhau q=danhsachthanhvien.getItems().get(0);
+
             try{
+                if(!(nhanKhau.getIdNguoiDan()==q.getIdNguoiDan())){
                 nhanKhau.setChuHo(true);
                 getData.getInstance().setNhankhau(nhanKhau);
                 NhanKhauDao.getInstance().update(nhanKhau);
                 q.setChuHo(false);
                 NhanKhauDao.getInstance().update(q);
+                    LichSuThayDoi lichSuThayDoi=new LichSuThayDoi();
+                    lichSuThayDoi.setHoKhau(hoKhaus);
+                    lichSuThayDoi.setNgayThayDoi(Date.valueOf(LocalDate.now()));
+                    lichSuThayDoi.setThayDoi("Đổi chủ hộ có tên là "+q.getTen()+" sang chủ hộ có tên là "+nhanKhau.getTen());
+                    LichSuThayDoiDao.getInstance().save(lichSuThayDoi);
+                }
             }
             catch (Exception e){
                 nhanKhau=q;
@@ -201,7 +218,7 @@ phuongTiens= PhuongTienDao.getInstance().selectByHoKhau(hoKhau);
             getData.getInstance().setNhankhau(q);
             hoKhaus.setDienTichPhong(Double.parseDouble(dientichphong.getText()));
             hoKhaus.setTenchuho(nhanKhau.getTen());
-
+            hoKhaus.setSoDienThoai(nhanKhau.getSoDienThoai());
             HoKhauDao.getInstance().update(hoKhaus);
             getData.getInstance().updateHokhau(hoKhaus);
             Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
@@ -243,6 +260,10 @@ phuongTiens= PhuongTienDao.getInstance().selectByHoKhau(hoKhau);
             }
             for(NopPhi nopPhi :nopPhiList){
                 NopPhiDao.getInstance().delete(nopPhi);
+            }
+            List<LichSuThayDoi>lichSuThayDois=LichSuThayDoiDao.getInstance().selectByHoKhau(hoKhaus);
+            for(LichSuThayDoi lichSuThayDoi : lichSuThayDois){
+                LichSuThayDoiDao.getInstance().delete(lichSuThayDoi);
             }
             HoKhauDao.getInstance().delete(hoKhaus);
 
@@ -386,6 +407,25 @@ phuongTiens= PhuongTienDao.getInstance().selectByHoKhau(hoKhau);
             };
         });
         thongtinphuongtien.setItems(phuongTiens1);
+    }
+
+    @FXML
+    void lichsuthaydoi(ActionEvent event) {
+        try {
+            Stage ag0r = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org.example/Views/Lichsuthaydoi.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage ag0r1=new Stage();
+            ag0r1.setScene(scene);
+            ag0r1.initModality(Modality.APPLICATION_MODAL);
+            ag0r1.initOwner(ag0r);
+            Lichsuthaydoi lichsugiaodich=loader.getController();
+            lichsugiaodich.setlichsu(hoKhaus);
+            ag0r1.showAndWait();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
