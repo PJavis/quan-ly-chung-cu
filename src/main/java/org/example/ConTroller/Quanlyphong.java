@@ -323,7 +323,7 @@ public class Quanlyphong implements Initializable {
 
 
 
-    private  String luachon[] = {"Thống kê theo tháng","Thống kê theo tuổi","Thống kê theo năm"};
+    private  String luachon[] = {"Thống kê theo tháng","Thống kê theo năm"};
 
     public void setBoxluachon( ) {
         ObservableList<String>boxbox = FXCollections.observableArrayList(luachon);
@@ -351,9 +351,6 @@ public class Quanlyphong implements Initializable {
                 switch (selectedOption) {
                     case "Thống kê theo tháng":
                         chartthang();
-                        break;
-                    case "Thống kê theo tuổi":
-                        chartnamsinh();
                         break;
                     case "Thống kê theo năm":
                         chartnam();
