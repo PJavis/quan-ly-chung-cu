@@ -99,7 +99,7 @@ public class QuanlyThuPhiGuiXeController {
         });
         loaiphuongtien.setItems(FXCollections.observableArrayList("Xe Máy", "Ô Tô", "Xe Đạp"));
         chuxeColumn.setCellValueFactory(new PropertyValueFactory<>("tenChuXe"));
-        phiguixeColumn.setCellValueFactory(new PropertyValueFactory<>("phiGuiXe"));
+        phiguixeColumn.setCellValueFactory(new PropertyValueFactory<>("DecimalFormatphigui"));
         phidanopColumn.setCellValueFactory(new PropertyValueFactory<>("soTienDaNop"));
 
         deleteColumn.setCellFactory(param -> new TableCell<PhuongTien, Void>() {
@@ -228,14 +228,14 @@ public class QuanlyThuPhiGuiXeController {
             double phiguixe = 0;
             switch (loaiPhuongTien.toLowerCase()) {
                 case "xe máy":
-                    phiguixe = 700;
+                    phiguixe = 70000;
                     break;
                 case "ô tô":
-                    phiguixe = 1200;
+                    phiguixe = 1200000;
                     break;
                 // Thêm các trường hợp khác nếu cần
                 default:
-                    phiguixe = 500;
+                    phiguixe = 50000;
                     break;
             }
             

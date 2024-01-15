@@ -101,8 +101,6 @@ public class ThuphiController implements Initializable {
         }
 
         for(NopPhi nopPhi :nopPhikhoanphi){if(nopPhi.getSotienchuanop()==0)continue;
-            nopPhi.setSoTienDaDong(nopPhi.getGiaTri());
-            NopPhiDao.getInstance().update(nopPhi);
             LichSuGiaoDich lichSuGiaoDich=new LichSuGiaoDich();
             lichSuGiaoDich.setTennguoinop(tennguoinopphi.getText());
             lichSuGiaoDich.setNopPhi(nopPhi);
@@ -115,6 +113,8 @@ public class ThuphiController implements Initializable {
             khoanPhi.setTongsotien(khoanPhi.getTongsotien()+nopPhi.getSotienchuanop());
             KhoanPhiDao.getInstance().update(khoanPhi);
             getData.getInstance().updateKhoanphi(khoanPhi);
+            nopPhi.setSoTienDaDong(nopPhi.getGiaTri());
+            NopPhiDao.getInstance().update(nopPhi);
         }
         for(PhuongTien nopPhi :phuongTiens){if(nopPhi.getPhiGuiXe()-nopPhi.getSoTienDaNop()==0)continue;
             LichSuGiaoDichPhiGuiXe lichSuGiaoDich=new LichSuGiaoDichPhiGuiXe();
@@ -131,8 +131,6 @@ public class ThuphiController implements Initializable {
         for (Map.Entry<Integer, NopPhi> entry : nopPhiMap.entrySet()) {
             NopPhi nopPhi = entry.getValue();
             if(nopPhi.getSotienchuanop()==0)continue;
-            nopPhi.setSoTienDaDong(nopPhi.getGiaTri());
-            NopPhiDao.getInstance().update(nopPhi);
             LichSuGiaoDich lichSuGiaoDich=new LichSuGiaoDich();
             lichSuGiaoDich.setTennguoinop(tennguoinopphi.getText());
             lichSuGiaoDich.setNopPhi(nopPhi);
@@ -145,7 +143,8 @@ public class ThuphiController implements Initializable {
             khoanPhi.setTongsotien(khoanPhi.getTongsotien()+nopPhi.getSotienchuanop());
             KhoanPhiDao.getInstance().update(khoanPhi);
             getData.getInstance().updateKhoanphi(khoanPhi);
-
+            nopPhi.setSoTienDaDong(nopPhi.getGiaTri());
+            NopPhiDao.getInstance().update(nopPhi);
         }
         thongtinkhoanphi.setVisible(false);
         thongtindonggop.setVisible(false);

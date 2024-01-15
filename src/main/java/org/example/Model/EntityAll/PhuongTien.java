@@ -114,4 +114,10 @@ public class PhuongTien {
         DecimalFormat decimalFormat = new DecimalFormat(pattern);
         return decimalFormat.format(soTienDaNop);
     }
+    public  String getDecimalFormatphigui(){
+
+        String pattern = "#,##0" + (phiGuiXe % 1 == 0 ? "" : ".#########");
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        return decimalFormat.format(phiGuiXe);
+    }
 }

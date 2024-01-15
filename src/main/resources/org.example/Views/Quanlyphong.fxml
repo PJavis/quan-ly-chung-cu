@@ -73,7 +73,7 @@
             </columns>
         </TableView>
 
-        <ComboBox fx:id="boxphong" layoutX="285.0" layoutY="470.0" prefHeight="34.0" prefWidth="100.0" promptText="Thống kê" style="-fx-border-color: #353A56;" />
+        <ComboBox fx:id="boxphong" layoutX="285.0" layoutY="470.0" prefHeight="34.0" prefWidth="173.0" promptText="Thống kê" style="-fx-border-color: #353A56;" />
         <Label layoutX="41.0" layoutY="479.0" text="Tổng số hộ khẩu:">
             <font>
                 <Font name="Arial Bold" size="14.0" />
@@ -81,7 +81,7 @@
         </Label>
         <Label fx:id="tongsohokhau" layoutX="179.0" layoutY="479.0" text="Label" />
         <Pane fx:id="panehokhau" layoutX="22.0" layoutY="517.0" prefHeight="227.0" prefWidth="700.0" style="-fx-border-color: #353A56;" />
-      <ComboBox fx:id="boxNam" layoutX="397.0" layoutY="470.0" prefHeight="34.0" prefWidth="117.0" promptText="Chọn năm" />
+      <ComboBox fx:id="boxNam" layoutX="473.0" layoutY="471.0" prefHeight="34.0" prefWidth="117.0" promptText="Chọn năm" />
 
     </Pane>
 
